@@ -3198,59 +3198,42 @@ Chaque livre est conçu sur mesure pour l’élève. Le tarif inclut la personna
 <section class="contact-section" id="contact">
     <div class="section-container">
         <div class="section-header">
-            <div class="section-tag">📞 Contact</div>
+            <div class="section-tag">📅 Rendez-vous & Contact</div>
             <h2>Discutons de votre projet</h2>
-            <p>Le premier échange est toujours gratuit et sans engagement.</p>
+            <p>Le premier échange est toujours gratuit. Réservez un créneau ou envoyez-moi un message.</p>
         </div>
 
-        <div class="contact-grid fade-in">
-            <div class="contact-card">
-                <div class="contact-card-icon">🏢</div>
-                <h3>Organisme / Entreprise</h3>
-                <p>Vous avez un projet de formation à créer ou à améliorer. Vous cherchez un ingénieur pédagogique.</p>
-                <a href="mailto:contact@educoncret.net" class="btn btn-teal btn-sm">Prendre rendez-vous (30 min) →</a>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            
+            <div class="contact-card" style="padding: 2rem; background: var(--white); border: 2px solid var(--gold);">
+                <div class="contact-card-icon">🕒</div>
+                <h3 style="color: var(--ink);">Prendre rendez-vous</h3>
+                <p style="color: var(--ink-3); font-size: 0.9rem; margin-bottom: 1.5rem;">Choisissez un créneau de 30 minutes dans mon agenda.</p>
+                
+                <div class="calendly-inline-widget" data-url="https://calendly.com/toure-moctar/30min" style="min-width:100%; height:450px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             </div>
-            <div class="contact-card">
-                <div class="contact-card-icon">🧭</div>
-                <h3>Particulier / Porteur de projet</h3>
-                <p>Vous voulez créer votre activité en ligne ou obtenir une compétence via un Passeport 48H.</p>
-                <a href="mailto:contact@educoncret.net" class="btn btn-terra btn-sm">Prendre rendez-vous (20 min) →</a>
+
+            <div class="contact-card" style="padding: 2rem; background: var(--white);">
+                <div class="contact-card-icon">✉️</div>
+                <h3 style="color: var(--ink);">Envoyer un message</h3>
+                <p style="color: var(--ink-3); font-size: 0.9rem; margin-bottom: 1.5rem;">Je vous réponds sous 24h ouvrées.</p>
+                
+                <form action="https://formspree.io/f/mvzvydpa" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <input type="text" name="name" placeholder="Votre nom" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--cream-3); background: var(--cream);">
+                    <input type="email" name="email" placeholder="Votre email" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--cream-3); background: var(--cream);">
+                    <textarea name="message" rows="5" placeholder="Votre projet ou question..." required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--cream-3); background: var(--cream); resize: none;"></textarea>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; margin-top: 1rem;">Envoyer le message</button>
+                </form>
             </div>
-            <div class="contact-card">
-                <div class="contact-card-icon">🧸</div>
-                <h3>Parent</h3>
-                <p>Vous voulez offrir un livre de maths personnalisé à votre enfant ou en savoir plus sur la méthode.</p>
-                <a href="mailto:contact@educoncret.net" class="btn btn-sky btn-sm">Prendre rendez-vous (15 min) →</a>
-            </div>
-            <div class="contact-card">
-                <div class="contact-card-icon">🎫</div>
-                <h3>Passeport 48H</h3>
-                <p>Vous savez déjà quelle compétence vous voulez maîtriser. Réservez directement votre session.</p>
-                <a href="mailto:contact@educoncret.net" class="btn btn-lav btn-sm">Choisir mon Passeport →</a>
-            </div>
+
         </div>
 
-        <div class="contact-direct fade-in">
-            <h3>📧 Contact direct</h3>
-            <div class="contact-info-grid">
-                <div class="contact-info-item">
-                    <div class="label">Email</div>
-                    <div class="value"><a href="mailto:contact@educoncret.net">contact@educoncret.net</a></div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="label">Téléphone</div>
-                    <div class="value"><a href="tel:+33764070161">07 64 07 01 61</a></div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="label">Réponse</div>
-                    <div class="value">Garantie sous 24h ouvrées</div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="label">Localisation</div>
-                    <div class="value">Paris, France</div>
-                </div>
-            </div>
-            <p style="color: rgba(247,243,237,0.35); font-size: 0.82rem; margin-top: 0.5rem;">Interventions à distance (visio) partout en France et à l'international.<br>Interventions en présentiel possibles en Île-de-France.</p>
+        <div class="contact-direct fade-in" style="margin-top: 3rem; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem;">
+            <p style="font-size: 0.9rem; color: var(--ink-3);">
+                Email direct : <a href="mailto:contact@educoncret.net" style="color: var(--gold); font-weight: 600;">contact@educoncret.net</a> | 
+                Téléphone : <a href="tel:+33764070161" style="color: var(--gold); font-weight: 600;">07 64 07 01 61</a>
+            </p>
         </div>
     </div>
 </section>
