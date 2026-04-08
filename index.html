@@ -1270,141 +1270,178 @@ Chaque enfant apprend à travers une histoire qui lui ressemble.
         .lav-cta-box > p { color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
 
         /* ─── FAMILY SECTION ─── */
-        .family-section { background: var(--cream); }
+       <!-- ESPACE FAMILLE -->
+<section class="family-section" id="espace-famille">
+  <div class="section-container">
 
-        .family-section .section-tag {
-            background: rgba(46,111,168,0.1);
-            color: var(--sky);
-        }
+    <!-- HEADER -->
+    <div class="section-header">
+      <div class="section-tag">🧸 Espace Famille</div>
+      <h2>Des livres personnalisés pour apprendre autrement</h2>
+      <p>
+        Votre enfant devient le héros de son propre livre et apprend les mathématiques
+        à travers une histoire concrète, immersive et adaptée à son niveau.
+      </p>
+    </div>
 
-        .family-quote { max-width: 660px; margin: 0 auto 3rem; text-align: center; }
+    <!-- PROMESSE -->
+    <div class="family-quote fade-in">
+      <blockquote>
+        Apprendre les mathématiques devient une expérience vivante,
+        concrète et motivante.
+      </blockquote>
+    </div>
 
-        .family-quote blockquote {
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--ink);
-            line-height: 1.7;
-        }
+    <!-- BENEFICES -->
+    <div class="problem-section fade-in">
+      <h3>🎯 Les bénéfices pour votre enfant</h3>
 
-        .story-example {
-            background: rgba(46,111,168,0.06);
-            border-left: 3px solid var(--sky);
-            border-radius: 0 var(--radius) var(--radius) 0;
-            padding: 1.35rem 1.75rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
+      <div class="problem-list">
 
-        .story-example p {
-            font-size: 0.92rem;
-            color: var(--ink-3);
-            font-style: italic;
-            line-height: 1.8;
-        }
+        <div class="problem-item">
+          <div class="problem-item-icon">📚</div>
+          <p><strong>Lecture renforcée :</strong> l’enfant lit pour avancer dans l’histoire.</p>
+        </div>
 
-        .story-example strong { color: var(--ink); font-style: normal; }
+        <div class="problem-item">
+          <div class="problem-item-icon">🧠</div>
+          <p><strong>Mathématiques concrètes :</strong> les notions sont appliquées dans des situations réelles.</p>
+        </div>
 
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1.35rem;
-            margin-bottom: 3rem;
-        }
+        <div class="problem-item">
+          <div class="problem-item-icon">🎯</div>
+          <p><strong>Motivation :</strong> l’enfant s’identifie à son avatar et s’implique davantage.</p>
+        </div>
 
-        .step-card { text-align: center; padding: 1.75rem 1.25rem; }
+        <div class="problem-item">
+          <div class="problem-item-icon">💪</div>
+          <p><strong>Confiance :</strong> il progresse et reprend confiance en lui.</p>
+        </div>
 
-        .step-number {
-            width: 44px; height: 44px;
-            background: var(--sky);
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.85rem;
-            font-family: 'Fraunces', serif;
-        }
+        <div class="problem-item">
+          <div class="problem-item-icon">🧩</div>
+          <p><strong>Autonomie :</strong> il peut travailler seul sans blocage.</p>
+        </div>
 
-        .step-card h4 {
-            font-family: 'Fraunces', serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 0.35rem;
-        }
+      </div>
+    </div>
 
-        .step-card p { font-size: 0.82rem; color: var(--ink-3); opacity: 0.7; }
+    <!-- FONCTIONNEMENT -->
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h4>Choix de l’univers</h4>
+        <p>Boutique, voyage, sport ou univers personnalisé</p>
+      </div>
 
-        /* Book Gallery */
-        .book-gallery { margin-bottom: 4rem; }
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h4>Adaptation au niveau</h4>
+        <p>Programme scolaire respecté</p>
+      </div>
 
-        .book-gallery > h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 0.4rem;
-            text-align: center;
-        }
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h4>Immersion</h4>
+        <p>L’enfant devient le héros</p>
+      </div>
 
-        .book-gallery > p { text-align: center; color: var(--ink-3); opacity: 0.65; margin-bottom: 2rem; font-size: 0.93rem; }
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h4>Progression</h4>
+        <p>Apprentissage structuré et motivant</p>
+      </div>
+    </div>
 
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.75rem;
-            margin-bottom: 2.5rem;
-        }
+    <!-- LIVRES -->
+    <div class="book-gallery">
+      <h3>📘 Nos livres disponibles</h3>
 
-        .book-item {
-            text-align: center;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+      <div class="book-grid">
 
-        .book-item:hover { transform: translateY(-10px) rotate(-1deg); }
+        <div class="book-item">
+          <div class="book-cover">
+            <img src="https://i.postimg.cc/pLVx82Zj/Chat-GPT-Image-8-avr-2026-23-06-48.png">
+            <div class="book-cover-badge">CM1</div>
+          </div>
+          <div class="book-info">
+            <h4>Kawaii et Compagnie</h4>
+            <p>Gestion d’une boutique japonaise</p>
+            <a href="#contact" class="btn btn-sky btn-sm">Commander</a>
+          </div>
+        </div>
 
-        .book-cover {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            aspect-ratio: 3/4;
-        }
+        <div class="book-item">
+          <div class="book-cover">
+            <img src="https://i.postimg.cc/dVSMyfNK/Chat-GPT-Image-8-avr-2026-23-08-07.png">
+            <div class="book-cover-badge">6e</div>
+          </div>
+          <div class="book-info">
+            <h4>Eliza in New York</h4>
+            <p>Aventure urbaine immersive</p>
+            <a href="#contact" class="btn btn-sky btn-sm">Commander</a>
+          </div>
+        </div>
 
-        .book-item:hover .book-cover { box-shadow: 0 24px 60px rgba(14,12,10,0.2); }
+        <div class="book-item">
+          <div class="book-cover">
+            <img src="https://i.postimg.cc/HL7N7k7Q/Chat-GPT-Image-8-avr-2026-23-09-02.png">
+            <div class="book-cover-badge">4e</div>
+          </div>
+          <div class="book-info">
+            <h4>Barça Foot & Math</h4>
+            <p>Mathématiques et football</p>
+            <a href="#contact" class="btn btn-sky btn-sm">Commander</a>
+          </div>
+        </div>
 
-        .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      </div>
+    </div>
 
-        .book-cover-badge {
-            position: absolute;
-            top: 10px; left: 10px;
-            background: rgba(14,12,10,0.75);
-            color: var(--cream);
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 0.25rem 0.55rem;
-            border-radius: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(6px);
-        }
+    <!-- EXEMPLES -->
+    <div class="book-gallery">
+      <h3>🎨 Exemples de personnalisation</h3>
 
-        .book-info { padding: 0.85rem 0.4rem 0; }
+      <div class="example-books" style="text-align:center;">
+        <img src="https://i.postimg.cc/KzpmvzX3/Chat-GPT-Image-8-avr-2026-15-17-23.png"
+             style="max-width:900px;width:100%;border-radius:16px;">
+      </div>
+    </div>
 
-        .book-info h4 {
-            font-family: 'Fraunces', serif;
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 0.2rem;
-            line-height: 1.3;
-        }
+    <!-- PRIX -->
+    <div class="family-pricing">
 
-        .book-info p { font-size: 0.75rem; color: var(--ink-3); opacity: 0.6; }
+      <div class="family-price-card">
+        <h4>📘 1 livre</h4>
+        <div class="price">59€</div>
+        <p>Idéal pour tester</p>
+      </div>
 
+      <div class="family-price-card featured">
+        <h4>📚 2 livres</h4>
+        <div class="price">109€</div>
+        <p>Progression pédagogique</p>
+      </div>
+
+      <div class="family-price-card">
+        <h4>🎓 3 livres</h4>
+        <div class="price">179€</div>
+        <p>Suivi complet</p>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="terra-cta-box">
+      <h3>Offrez un livre qui donne envie d’apprendre</h3>
+      <p>Un support concret, personnalisé et motivant pour votre enfant</p>
+      <a href="#contact" class="btn" style="background:white;color:black;">
+        Commander maintenant →
+      </a>
+    </div>
+
+  </div>
+</section>
         /* Family Pricing */
         .family-pricing {
             display: grid;
