@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moctar Touré | EduConcret — Ingénieur Pédagogique Expert</title>
-  <meta name="description" content="Moctar Touré — Ingénieur Pédagogique & Directeur Pédagogique LOGIX FORMA. Formations sur mesure, accompagnement adultes, livres de maths personnalisés pour enfants. Paris.">
+  <title>Mocatar Touré | EduConcret — Ingénieur Pédagogique Expert</title>
+  <meta name="description" content="Mocatar Touré — Ingénieur Pédagogique &amp; Directeur Pédagogique LOGIX FORMA. Formations sur mesure, accompagnement adultes, livres de maths personnalisés pour enfants. Paris.">
   <meta name="keywords" content="ingénieur pédagogique, formateur, Qualiopi, formation adultes, livres maths enfants, solo-preneur, EduConcret">
-  <meta property="og:title" content="Moctar Touré | EduConcret — Ingénieur Pédagogique Expert">
+  <meta property="og:title" content="Mocatar Touré | EduConcret — Ingénieur Pédagogique Expert">
   <meta property="og:description" content="+10 ans d'expertise · +50 formations conçues · 3000+ apprenants impactés. Solutions pédagogiques sur mesure.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ===== RESET & BASE ===== */
+    /* ===== RESET & VARIABLES ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
@@ -39,9 +39,9 @@
       --radius-lg: 18px;
       --radius-xl: 28px;
     }
-    
+
     html { scroll-behavior: smooth; }
-    
+
     body {
       font-family: 'DM Sans', sans-serif;
       color: var(--ink);
@@ -49,10 +49,10 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
-    
-    /* NOISE TEXTURE OVERLAY */
+
+    /* Noise texture overlay */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -60,18 +60,20 @@
       z-index: 9999;
       opacity: 0.4;
     }
-    
+
     /* ===== NAVIGATION ===== */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       background: rgba(14,12,10,0.96);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(201,168,76,0.15);
       transition: all 0.3s ease;
     }
-    
+
     .nav-inner {
       max-width: 1260px;
       margin: 0 auto;
@@ -81,7 +83,7 @@
       justify-content: space-between;
       height: 70px;
     }
-    
+
     .nav-brand {
       display: flex;
       align-items: center;
@@ -93,21 +95,22 @@
       font-size: 1.3rem;
       letter-spacing: -0.01em;
     }
-    
+
     .nav-brand-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       background: var(--gold);
       border-radius: 50%;
       flex-shrink: 0;
     }
-    
+
     .nav-links {
       display: flex;
       align-items: center;
       gap: 0.15rem;
       list-style: none;
     }
-    
+
     .nav-links a {
       color: rgba(247,243,237,0.6);
       text-decoration: none;
@@ -118,25 +121,24 @@
       letter-spacing: 0.01em;
       transition: all 0.2s ease;
     }
-    
-    .nav-links a:hover,
-    .nav-links a.active {
+
+    .nav-links a:hover, .nav-links a.active {
       color: var(--cream);
       background: rgba(247,243,237,0.08);
     }
-    
+
     .nav-cta {
       background: var(--gold) !important;
       color: var(--ink) !important;
       font-weight: 600 !important;
       padding: 0.45rem 1.1rem !important;
     }
-    
+
     .nav-cta:hover {
       background: var(--gold-light) !important;
       transform: translateY(-1px);
     }
-    
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -146,7 +148,7 @@
       background: none;
       border: none;
     }
-    
+
     .hamburger span {
       width: 22px;
       height: 1.5px;
@@ -154,7 +156,7 @@
       border-radius: 2px;
       transition: all 0.3s ease;
     }
-    
+
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
@@ -167,36 +169,20 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .hero-bg-lines {
       position: absolute;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
       background-size: 80px 80px;
     }
-    
-    .hero-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      animation: pulse 8s ease-in-out infinite alternate;
-    }
-    
-    @keyframes pulse {
-      0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-      100% { opacity: 1; transform: translate(-50%, -60%) scale(1.15); }
-    }
-    
+
     .hero-content {
       position: relative;
       z-index: 2;
       max-width: 820px;
     }
-    
+
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
@@ -210,15 +196,15 @@
       opacity: 0;
       animation: fadeUp 0.8s ease 0.2s forwards;
     }
-    
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: '';
-      width: 32px; height: 1px;
+
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: "";
+      width: 32px;
+      height: 1px;
       background: var(--gold);
       opacity: 0.5;
     }
-    
+
     .hero h1 {
       font-family: 'Fraunces', serif;
       font-size: clamp(3rem, 7vw, 5.5rem);
@@ -230,12 +216,12 @@
       opacity: 0;
       animation: fadeUp 0.8s ease 0.4s forwards;
     }
-    
+
     .hero h1 em {
       font-style: italic;
       color: var(--gold);
     }
-    
+
     .hero-tagline {
       font-family: 'Fraunces', serif;
       font-size: clamp(1.1rem, 2.2vw, 1.5rem);
@@ -247,7 +233,7 @@
       opacity: 0;
       animation: fadeUp 0.8s ease 0.55s forwards;
     }
-    
+
     .hero-destinations {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -256,7 +242,7 @@
       opacity: 0;
       animation: fadeUp 0.8s ease 0.75s forwards;
     }
-    
+
     .dest-card {
       background: rgba(247,243,237,0.04);
       border: 1px solid rgba(201,168,76,0.2);
@@ -269,30 +255,32 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .dest-card::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
       opacity: 0;
       transition: opacity 0.3s;
     }
-    
+
     .dest-card:hover {
       transform: translateY(-6px);
       border-color: rgba(201,168,76,0.5);
       box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.2);
     }
-    
-    .dest-card:hover::after { opacity: 1; }
-    
+
+    .dest-card:hover::after {
+      opacity: 1;
+    }
+
     .dest-card-icon {
       font-size: 2rem;
       margin-bottom: 0.75rem;
       display: block;
     }
-    
+
     .dest-card h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.1rem;
@@ -300,14 +288,14 @@
       margin-bottom: 0.4rem;
       color: var(--cream);
     }
-    
+
     .dest-card p {
       font-size: 0.8rem;
       color: rgba(247,243,237,0.45);
       line-height: 1.6;
     }
-    
-    .dest-card.dest-arrow {
+
+    .dest-card .dest-arrow {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -318,23 +306,24 @@
       letter-spacing: 0.05em;
       transition: gap 0.3s;
     }
-    
-    .dest-card:hover.dest-arrow { gap: 0.7rem; }
-    
+
+    .dest-card:hover .dest-arrow {
+      gap: 0.7rem;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
-    /* ===== SECTIONS GENERAL ===== */
+
+    /* ===== SECTIONS GENERALES ===== */
     section { padding: 6rem 2rem; }
     .section-container { max-width: 1180px; margin: 0 auto; }
-    
     .section-header {
       text-align: center;
       margin-bottom: 4rem;
     }
-    
+
     .section-tag {
       display: inline-flex;
       align-items: center;
@@ -347,7 +336,7 @@
       border-radius: 50px;
       margin-bottom: 1rem;
     }
-    
+
     .section-header h2 {
       font-family: 'Fraunces', serif;
       font-size: clamp(1.9rem, 4vw, 2.9rem);
@@ -357,7 +346,7 @@
       letter-spacing: -0.03em;
       line-height: 1.15;
     }
-    
+
     .section-header p {
       font-size: 1.05rem;
       color: var(--ink-3);
@@ -365,24 +354,19 @@
       margin: 0 auto;
       opacity: 0.7;
     }
-    
-    /* ===== FADE ANIMATIONS ===== */
+
+    /* ===== FADE ANIMATION ===== */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
-    
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
     .fade-in-delay-1 { transition-delay: 0.1s; }
     .fade-in-delay-2 { transition-delay: 0.2s; }
     .fade-in-delay-3 { transition-delay: 0.3s; }
     .fade-in-delay-4 { transition-delay: 0.4s; }
-    
+
     /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex;
@@ -399,75 +383,38 @@
       font-family: inherit;
       letter-spacing: -0.01em;
     }
-    
+
     .btn-gold { background: var(--gold); color: var(--ink); }
-    .btn-gold:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(201,168,76,0.35);
-    }
-    
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
     .btn-terra { background: var(--terracotta); color: white; }
-    .btn-terra:hover {
-      background: var(--terracotta-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(199,90,58,0.35);
-    }
-    
+    .btn-terra:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(199,90,58,0.35); }
     .btn-teal { background: var(--teal); color: white; }
-    .btn-teal:hover {
-      background: var(--teal-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(42,123,110,0.35);
-    }
-    
+    .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,123,110,0.35); }
     .btn-lav { background: var(--lavender); color: white; }
-    .btn-lav:hover {
-      background: var(--lavender-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(92,77,138,0.35);
-    }
-    
+    .btn-lav:hover { background: var(--lavender-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,77,138,0.35); }
     .btn-sky { background: var(--sky); color: white; }
-    .btn-sky:hover {
-      background: var(--sky-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(46,111,168,0.35);
-    }
-    
+    .btn-sky:hover { background: var(--sky-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,111,168,0.35); }
     .btn-outline-ink {
       background: transparent;
       border: 1.5px solid var(--ink-3);
       color: var(--ink);
     }
-    .btn-outline-ink:hover {
-      background: var(--ink);
-      color: var(--cream);
-    }
-    
+    .btn-outline-ink:hover { background: var(--ink); color: var(--cream); }
     .btn-outline-cream {
       background: transparent;
       border: 1.5px solid rgba(247,243,237,0.3);
       color: var(--cream);
     }
-    .btn-outline-cream:hover {
-      background: rgba(247,243,237,0.1);
-    }
-    
-    .btn-sm {
-      padding: 0.6rem 1.35rem;
-      font-size: 0.85rem;
-    }
-    
+    .btn-outline-cream:hover { background: rgba(247,243,237,0.1); }
+    .btn-sm { padding: 0.6rem 1.35rem; font-size: 0.85rem; }
+
     /* ===== WHY SECTION ===== */
     .why-section { background: var(--cream); }
-    
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
     }
-    
     .why-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -477,26 +424,25 @@
       position: relative;
       overflow: hidden;
     }
-    
     .why-card::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 0;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
       background: var(--gold);
       transition: height 0.4s ease;
     }
-    
     .why-card:hover::before { height: 100%; }
-    
     .why-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow);
       border-color: transparent;
     }
-    
     .why-card-icon {
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -505,7 +451,6 @@
       margin-bottom: 1.1rem;
       background: var(--cream-2);
     }
-    
     .why-card h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.05rem;
@@ -513,27 +458,18 @@
       color: var(--ink);
       margin-bottom: 0.4rem;
     }
-    
     .why-card p {
       font-size: 0.875rem;
       color: var(--ink-3);
       line-height: 1.7;
       opacity: 0.8;
     }
-    
+
     /* ===== PRO SECTION ===== */
     .pro-section {
       background: #0e0c0a;
       padding: 100px 0;
-      font-family: 'DM Sans', sans-serif;
     }
-    
-    .pro-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
     .pro-table {
       width: 100%;
       border-collapse: separate;
@@ -545,10 +481,8 @@
       margin-bottom: 4rem;
       box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
-    
-    .pro-table thead { background: #c9a84c; }
-    
     .pro-table th {
+      background: #c9a84c;
       padding: 1.2rem 1.5rem;
       text-align: left;
       color: #0e0c0a;
@@ -557,7 +491,6 @@
       font-weight: 800;
       letter-spacing: 0.05em;
     }
-    
     .pro-table td {
       padding: 1.2rem 1.5rem;
       border-bottom: 1px solid #eee;
@@ -565,56 +498,48 @@
       font-size: 1rem;
       line-height: 1.5;
     }
-    
     .pro-table td:first-child {
       font-weight: 700;
       color: #8a6d1d;
       background: #fcfaf7;
       width: 30%;
     }
-    
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.5rem;
     }
-    
     .project-card {
       background: #1a1714;
-      border: 1px solid rgba(201, 168, 76, 0.3);
+      border: 1px solid rgba(201,168,76,0.3);
       border-radius: 18px;
       padding: 2.5rem;
       position: relative;
       transition: all 0.3s ease;
     }
-    
     .project-card:hover {
       border-color: #c9a84c;
       transform: translateY(-5px);
     }
-    
     .project-number {
       position: absolute;
-      top: -10px; right: 15px;
+      top: -10px;
+      right: 15px;
       font-size: 4.5rem;
       font-weight: 900;
-      color: rgba(201, 168, 76, 0.1);
+      color: rgba(201,168,76,0.1);
       font-family: 'Fraunces', serif;
     }
-    
     .project-card h3 {
       color: #ffffff;
       font-family: 'Fraunces', serif;
       font-size: 1.3rem;
       margin-bottom: 1.5rem;
     }
-    
     .project-card ul {
       list-style: none;
-      padding: 0;
       margin-bottom: 1.5rem;
     }
-    
     .project-card ul li {
       color: #ffffff;
       font-size: 0.95rem;
@@ -622,18 +547,18 @@
       padding-left: 1.2rem;
       position: relative;
     }
-    
     .project-card ul li::before {
-      content: '';
+      content: "";
       position: absolute;
-      left: 0; top: 0.5rem;
-      width: 6px; height: 6px;
+      left: 0;
+      top: 0.5rem;
+      width: 6px;
+      height: 6px;
       background: #c9a84c;
       border-radius: 50%;
     }
-    
     .project-result {
-      background: rgba(201, 168, 76, 0.15);
+      background: rgba(201,168,76,0.15);
       border: 1px solid #c9a84c;
       color: #e8c96a;
       padding: 0.65rem 1rem;
@@ -641,48 +566,9 @@
       border-radius: 8px;
       font-size: 0.85rem;
     }
-    
-    /* ===== ADULT SECTION ===== */
-    .adult-section { background: var(--cream-2); }
-    
-    .adult-section .section-tag {
-      background: rgba(199,90,58,0.1);
-      color: var(--terracotta);
-    }
-    
-    .adult-section .section-header h2 { color: var(--ink); }
-    
-    .adult-quote {
-      max-width: 680px;
-      margin: 0 auto 3rem;
-      text-align: center;
-    }
-    
-    .adult-quote blockquote {
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.6;
-      position: relative;
-      padding: 0 1.5rem;
-    }
-    
-    .adult-quote blockquote::before {
-      content: '\201C';
-      font-size: 5rem;
-      color: var(--terracotta);
-      opacity: 0.25;
-      position: absolute;
-      top: -2rem; left: -0.5rem;
-      font-family: 'Fraunces', serif;
-    }
-    
-    .problem-section {
-      max-width: 780px;
-      margin: 0 auto 3.5rem;
-    }
-    
+
+    /* ===== TIMELINE & KIT ===== */
+    .problem-section { max-width: 780px; margin: 0 auto 3.5rem; }
     .problem-section > h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
@@ -690,13 +576,7 @@
       margin-bottom: 1.25rem;
       color: var(--ink);
     }
-    
-    .problem-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-    
+    .problem-list { display: flex; flex-direction: column; gap: 0.85rem; }
     .problem-item {
       display: flex;
       gap: 1rem;
@@ -706,19 +586,9 @@
       border-radius: var(--radius);
       padding: 1.1rem 1.25rem;
     }
-    
-    .problem-item-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-    
-    .problem-item p {
-      font-size: 0.9rem;
-      color: var(--ink-3);
-    }
-    
+    .problem-item-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .problem-item p { font-size: 0.9rem; color: var(--ink-3); }
     .problem-item strong { color: var(--ink); }
-    
     .solution-box {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -727,7 +597,6 @@
       max-width: 780px;
       margin: 0 auto 3rem;
     }
-    
     .solution-box h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
@@ -735,18 +604,12 @@
       color: var(--ink);
       margin-bottom: 0.85rem;
     }
-    
     .solution-box p {
       color: var(--ink-3);
       margin-bottom: 0.85rem;
       font-size: 0.93rem;
     }
-    
-    .timeline {
-      max-width: 780px;
-      margin: 0 auto 3rem;
-    }
-    
+    .timeline { max-width: 780px; margin: 0 auto 3rem; }
     .timeline > h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
@@ -755,12 +618,7 @@
       text-align: center;
       color: var(--ink);
     }
-    
-    .timeline-grid {
-      display: grid;
-      gap: 1rem;
-    }
-    
+    .timeline-grid { display: grid; gap: 1rem; }
     .timeline-item {
       display: flex;
       gap: 1.25rem;
@@ -771,12 +629,10 @@
       padding: 1.35rem;
       transition: all 0.3s ease;
     }
-    
     .timeline-item:hover {
       border-color: var(--terracotta);
       box-shadow: var(--shadow);
     }
-    
     .timeline-week {
       background: var(--terracotta);
       color: white;
@@ -788,7 +644,6 @@
       flex-shrink: 0;
       letter-spacing: 0.03em;
     }
-    
     .timeline-content h4 {
       font-family: 'Fraunces', serif;
       font-size: 0.98rem;
@@ -796,20 +651,17 @@
       color: var(--ink);
       margin-bottom: 0.2rem;
     }
-    
     .timeline-content p {
       font-size: 0.86rem;
       color: var(--ink-3);
       opacity: 0.75;
     }
-    
     .kit-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin-bottom: 3rem;
     }
-    
     .kit-item {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -818,18 +670,12 @@
       text-align: center;
       transition: all 0.3s ease;
     }
-    
     .kit-item:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow);
       border-color: var(--terracotta);
     }
-    
-    .kit-item-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.6rem;
-    }
-    
+    .kit-item-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
     .kit-item h4 {
       font-family: 'Fraunces', serif;
       font-size: 0.9rem;
@@ -837,13 +683,11 @@
       color: var(--ink);
       margin-bottom: 0.2rem;
     }
-    
     .kit-item p {
       font-size: 0.78rem;
       color: var(--ink-3);
       opacity: 0.7;
     }
-    
     .pricing-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -851,7 +695,6 @@
       max-width: 760px;
       margin: 0 auto 3rem;
     }
-    
     .pricing-card {
       background: var(--white);
       border: 2px solid var(--cream-3);
@@ -860,16 +703,15 @@
       position: relative;
       transition: all 0.3s ease;
     }
-    
-    .pricing-card.featured {
+    .pricing-card-featured {
       border-color: var(--terracotta);
       box-shadow: var(--shadow-lg);
     }
-    
-    .pricing-card.featured::before {
+    .pricing-card-featured::before {
       content: 'Populaire';
       position: absolute;
-      top: -13px; left: 50%;
+      top: -13px;
+      left: 50%;
       transform: translateX(-50%);
       background: var(--terracotta);
       color: white;
@@ -880,7 +722,6 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
-    
     .pricing-card h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.15rem;
@@ -888,7 +729,6 @@
       color: var(--ink);
       margin-bottom: 0.85rem;
     }
-    
     .pricing-price {
       font-family: 'Fraunces', serif;
       font-size: 2.8rem;
@@ -897,19 +737,16 @@
       margin-bottom: 1.35rem;
       letter-spacing: -0.03em;
     }
-    
     .pricing-price span {
       font-size: 0.95rem;
       font-weight: 400;
       color: var(--ink-3);
       opacity: 0.5;
     }
-    
     .pricing-features {
       list-style: none;
       margin-bottom: 1.75rem;
     }
-    
     .pricing-features li {
       padding: 0.4rem 0;
       font-size: 0.875rem;
@@ -918,22 +755,19 @@
       align-items: flex-start;
       gap: 0.65rem;
     }
-    
     .pricing-features li::before {
-      content: '✓';
+      content: "✓";
       color: var(--teal);
       font-weight: 700;
       font-size: 1rem;
       flex-shrink: 0;
     }
-    
     .check-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 0.75rem;
       margin-bottom: 3rem;
     }
-    
     .check-item {
       display: flex;
       align-items: flex-start;
@@ -941,11 +775,18 @@
       font-size: 0.9rem;
       color: var(--ink-3);
     }
-    
-    .check-item.yes::before { content: '✅'; flex-shrink: 0; }
-    .check-item.no::before { content: '❌'; flex-shrink: 0; }
-    .check-item.no { color: var(--ink-3); opacity: 0.55; }
-    
+    .check-item.yes::before {
+      content: "✓";
+      flex-shrink: 0;
+    }
+    .check-item.no::before {
+      content: "✗";
+      flex-shrink: 0;
+    }
+    .check-item.no {
+      color: var(--ink-3);
+      opacity: 0.55;
+    }
     .terra-cta-box {
       background: var(--terracotta);
       border-radius: var(--radius-xl);
@@ -953,35 +794,18 @@
       text-align: center;
       color: white;
     }
-    
     .terra-cta-box h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.7rem;
       margin-bottom: 0.75rem;
     }
-    
     .terra-cta-box > p {
       color: rgba(255,255,255,0.65);
       margin-bottom: 2rem;
     }
-    
-    .section-divider {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    .section-divider hr {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cream-3), transparent);
-    }
-    
-    .divider-text {
-      text-align: center;
-      margin: 2.5rem 0;
-    }
-    
+    .section-divider { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+    .section-divider hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--cream-3), transparent); }
+    .divider-text { text-align: center; margin: 2.5rem 0; }
     .divider-text span {
       display: inline-block;
       background: var(--cream-2);
@@ -995,15 +819,13 @@
       border: 1px solid var(--cream-3);
       border-radius: 50px;
     }
-    
+
     /* ===== PASSEPORT SECTION ===== */
     .passeport-section { background: var(--cream-2); }
-    
     .passeport-section .section-tag {
       background: rgba(92,77,138,0.1);
       color: var(--lavender);
     }
-    
     .passeport-principle {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1012,7 +834,6 @@
       max-width: 780px;
       margin: 0 auto 3rem;
     }
-    
     .passeport-principle h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
@@ -1020,13 +841,11 @@
       color: var(--ink);
       margin-bottom: 0.85rem;
     }
-    
     .passeport-principle p {
       color: var(--ink-3);
       margin-bottom: 0.75rem;
       font-size: 0.93rem;
     }
-    
     .passeport-example {
       background: var(--ink);
       border-radius: var(--radius-xl);
@@ -1035,7 +854,6 @@
       margin: 0 auto 3rem;
       color: var(--cream);
     }
-    
     .passeport-example h4 {
       font-size: 0.72rem;
       text-transform: uppercase;
@@ -1043,15 +861,13 @@
       color: rgba(247,243,237,0.4);
       margin-bottom: 0.9rem;
     }
-    
-    .passeport-example.old-way {
+    .passeport-example .old-way {
       color: rgba(247,243,237,0.3);
       font-size: 0.9rem;
       text-decoration: line-through;
       margin-bottom: 0.4rem;
     }
-    
-    .passeport-example.vs {
+    .passeport-example .vs {
       color: rgba(247,243,237,0.35);
       font-size: 0.78rem;
       margin: 0.75rem 0;
@@ -1059,7 +875,6 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    
     .passeport-example blockquote {
       font-family: 'Fraunces', serif;
       font-size: 1.1rem;
@@ -1069,7 +884,6 @@
       border-left: 3px solid var(--lavender);
       padding-left: 1.35rem;
     }
-    
     .passeport-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1078,12 +892,10 @@
       overflow: hidden;
       transition: all 0.3s ease;
     }
-    
     .passeport-card:hover {
       border-color: var(--lavender);
       box-shadow: var(--shadow-lg);
     }
-    
     .passeport-card-header {
       display: flex;
       align-items: center;
@@ -1092,18 +904,16 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    
     .passeport-card-header:hover { background: var(--cream); }
-    
     .passeport-card-header-left {
       display: flex;
       align-items: center;
       gap: 1.1rem;
     }
-    
     .passeport-card-emoji {
       font-size: 1.8rem;
-      width: 52px; height: 52px;
+      width: 52px;
+      height: 52px;
       background: rgba(92,77,138,0.08);
       border-radius: var(--radius);
       display: flex;
@@ -1111,7 +921,6 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    
     .passeport-card-header h4 {
       font-family: 'Fraunces', serif;
       font-size: 1.05rem;
@@ -1119,13 +928,11 @@
       color: var(--ink);
       margin-bottom: 0.15rem;
     }
-    
     .passeport-card-header p {
       font-size: 0.8rem;
       color: var(--ink-3);
       opacity: 0.65;
     }
-    
     .passeport-card-price {
       background: var(--lavender);
       color: white;
@@ -1136,7 +943,6 @@
       border-radius: var(--radius);
       white-space: nowrap;
     }
-    
     .passeport-card-toggle {
       font-size: 1.2rem;
       color: var(--ink-3);
@@ -1145,22 +951,16 @@
       margin-left: 0.9rem;
       flex-shrink: 0;
     }
-    
-    .passeport-card.open .passeport-card-toggle {
-      transform: rotate(180deg);
-    }
-    
+    .passeport-card.open .passeport-card-toggle { transform: rotate(180deg); }
     .passeport-card-body {
       display: none;
       padding: 0 1.75rem 1.75rem;
       border-top: 1px solid var(--cream-2);
     }
-    
     .passeport-card.open .passeport-card-body {
       display: block;
       padding-top: 1.5rem;
     }
-    
     .passeport-card-body h5 {
       font-size: 0.78rem;
       font-weight: 700;
@@ -1171,9 +971,7 @@
       letter-spacing: 0.08em;
       opacity: 0.65;
     }
-    
     .passeport-card-body h5:first-child { margin-top: 0; }
-    
     .passeport-act {
       display: flex;
       gap: 0.9rem;
@@ -1183,7 +981,6 @@
       background: var(--cream);
       border-radius: var(--radius);
     }
-    
     .passeport-act-badge {
       background: var(--lavender);
       color: white;
@@ -1195,28 +992,22 @@
       flex-shrink: 0;
       letter-spacing: 0.03em;
     }
-    
     .passeport-act-content {
       font-size: 0.875rem;
       color: var(--ink-3);
       line-height: 1.6;
     }
-    
     .passeport-livrable {
       background: rgba(92,77,138,0.06);
       border: 1px solid rgba(92,77,138,0.12);
       border-radius: var(--radius);
       padding: 0.9rem 1rem;
     }
-    
     .passeport-livrable p {
       font-size: 0.875rem;
       color: var(--ink-3);
       margin-bottom: 0.2rem;
     }
-    
-    .passeport-livrable strong { color: var(--ink); }
-    
     .packs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -1226,7 +1017,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
     .pack-card {
       background: var(--white);
       border: 2px solid var(--cream-3);
@@ -1235,117 +1025,49 @@
       text-align: center;
       transition: all 0.3s ease;
     }
-    
     .pack-card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
       border-color: var(--lavender);
     }
-    
-    .pack-card.featured {
+    .pack-card-featured {
       background: var(--ink);
       border-color: var(--lavender);
     }
-    
     .pack-card h4 {
       font-family: 'Fraunces', serif;
       font-size: 1.1rem;
       font-weight: 700;
+      margin-bottom: 0.75rem;
       color: var(--ink);
-      margin-bottom: 0.4rem;
     }
-    
-    .pack-card.featured h4 { color: var(--cream); }
-    
-    .pack-card.pack-desc {
-      font-size: 0.82rem;
-      color: var(--ink-3);
-      opacity: 0.7;
-      margin-bottom: 0.85rem;
-    }
-    
-    .pack-card.featured.pack-desc {
-      color: rgba(247,243,237,0.45);
-      opacity: 1;
-    }
-    
-    .pack-card.pack-price {
-      font-family: 'Fraunces', serif;
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: var(--ink);
-      margin-bottom: 0.2rem;
-      letter-spacing: -0.03em;
-    }
-    
-    .pack-card.featured.pack-price { color: var(--cream); }
-    
-    .pack-card.pack-old-price {
-      font-size: 0.95rem;
-      color: var(--ink-3);
-      text-decoration: line-through;
-      opacity: 0.45;
-      margin-bottom: 0.2rem;
-    }
-    
-    .pack-card.featured.pack-old-price {
-      color: rgba(247,243,237,0.3);
-      opacity: 1;
-    }
-    
-    .pack-card.pack-savings {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--teal);
-      margin-bottom: 1.35rem;
-    }
-    
-    .pack-card.pack-bonus {
-      background: rgba(92,77,138,0.1);
-      border: 1px solid rgba(92,77,138,0.2);
-      border-radius: var(--radius);
-      padding: 0.65rem 0.85rem;
-      font-size: 0.78rem;
-      color: var(--lavender);
-      font-weight: 600;
-      margin-bottom: 1.35rem;
-    }
-    
-    .pack-card.featured.pack-bonus {
-      background: rgba(247,243,237,0.08);
-      border-color: rgba(247,243,237,0.15);
-      color: rgba(247,243,237,0.7);
-    }
-    
     .lav-cta-box {
-      background: linear-gradient(135deg, var(--lavender), var(--lavender-light));
+      background: var(--lavender);
       border-radius: var(--radius-xl);
       padding: 3rem;
       text-align: center;
       color: white;
     }
-    
     .lav-cta-box h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.7rem;
       margin-bottom: 0.75rem;
     }
-    
     .lav-cta-box > p {
       color: rgba(255,255,255,0.65);
       margin-bottom: 1.5rem;
     }
-    
+
     /* ===== FAMILY SECTION ===== */
-    .family-section { background: var(--cream-2); }
-    
+    .family-section {
+      background: var(--cream);
+    }
     .family-pricing {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 1.35rem;
       margin-bottom: 3rem;
     }
-    
     .family-price-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1355,22 +1077,20 @@
       transition: all 0.3s ease;
       position: relative;
     }
-    
     .family-price-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: var(--sky);
     }
-    
     .family-price-card.featured {
       border-color: var(--sky);
       box-shadow: var(--shadow);
     }
-    
     .family-price-card.featured::before {
-      content: '⭐ Meilleur rapport';
+      content: 'Meilleur rapport';
       position: absolute;
-      top: -13px; left: 50%;
+      top: -13px;
+      left: 50%;
       transform: translateX(-50%);
       background: var(--sky);
       color: white;
@@ -1381,7 +1101,6 @@
       text-transform: uppercase;
       white-space: nowrap;
     }
-    
     .family-price-card h4 {
       font-family: 'Fraunces', serif;
       font-size: 1.1rem;
@@ -1389,8 +1108,7 @@
       color: var(--ink);
       margin-bottom: 0.4rem;
     }
-    
-    .family-price-card.price {
+    .family-price-card .price {
       font-family: 'Fraunces', serif;
       font-size: 2.8rem;
       font-weight: 900;
@@ -1398,28 +1116,26 @@
       margin: 0.85rem 0;
       letter-spacing: -0.03em;
     }
-    
-    .family-price-card.price span {
+    .family-price-card .price span {
       font-size: 1rem;
       font-weight: 400;
       color: var(--ink-3);
       opacity: 0.5;
     }
-    
     .family-price-card p {
       font-size: 0.82rem;
       color: var(--ink-3);
       opacity: 0.7;
       margin-bottom: 1.35rem;
     }
-    
+
+    /* ===== TESTIMONIALS ===== */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 1.35rem;
       margin-bottom: 3rem;
     }
-    
     .testimonial-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1427,17 +1143,16 @@
       padding: 1.75rem;
       position: relative;
     }
-    
     .testimonial-card::before {
-      content: '\201C';
+      content: '"';
       font-family: 'Fraunces', serif;
       font-size: 4rem;
       color: var(--sky);
       opacity: 0.18;
       position: absolute;
-      top: 0.3rem; left: 1.25rem;
+      top: 0.3rem;
+      left: 1.25rem;
     }
-    
     .testimonial-card p {
       font-size: 0.9rem;
       color: var(--ink-3);
@@ -1445,30 +1160,20 @@
       margin-bottom: 0.85rem;
       position: relative;
     }
-    
     .testimonial-author {
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--ink);
     }
-    
-    /* ===== ABOUT SECTION ===== */
+
+    /* ===== ABOUT ===== */
     .about-section {
       background: var(--ink);
       color: var(--cream);
     }
-    
     .about-section .section-header h2 { color: var(--cream); }
-    .about-section .section-header p {
-      color: rgba(247,243,237,0.5);
-      opacity: 1;
-    }
-    
-    .about-section .section-tag {
-      background: rgba(247,243,237,0.08);
-      color: rgba(247,243,237,0.6);
-    }
-    
+    .about-section .section-header p { color: rgba(247,243,237,0.5); opacity: 1; }
+    .about-section .section-tag { background: rgba(247,243,237,0.08); color: rgba(247,243,237,0.6); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1476,7 +1181,6 @@
       align-items: start;
       margin-bottom: 4rem;
     }
-    
     .about-content h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
@@ -1484,36 +1188,26 @@
       color: var(--cream);
       margin-bottom: 0.9rem;
     }
-    
     .about-content p {
       color: rgba(247,243,237,0.65);
       margin-bottom: 1.25rem;
       line-height: 1.85;
       font-size: 0.93rem;
     }
-    
     .about-content strong { color: var(--cream); }
-    
-    .about-content ul {
-      list-style: none;
-      margin-bottom: 1.25rem;
-    }
-    
+    .about-content ul { list-style: none; margin-bottom: 1.25rem; }
     .about-content ul li {
       padding: 0.3rem 0;
       color: rgba(247,243,237,0.65);
       font-size: 0.9rem;
     }
-    
     .about-content ul li strong { color: var(--cream); }
-    
     .about-sidebar {
       background: rgba(247,243,237,0.05);
       border: 1px solid rgba(201,168,76,0.15);
       border-radius: var(--radius-xl);
       padding: 2.25rem;
     }
-    
     .about-sidebar h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.05rem;
@@ -1521,16 +1215,15 @@
       color: var(--cream);
       margin-bottom: 1.35rem;
     }
-    
     .about-item {
       display: flex;
       gap: 0.9rem;
       align-items: flex-start;
       margin-bottom: 1.1rem;
     }
-    
     .about-item-icon {
-      width: 34px; height: 34px;
+      width: 34px;
+      height: 34px;
       background: rgba(247,243,237,0.07);
       border-radius: 8px;
       display: flex;
@@ -1539,19 +1232,16 @@
       flex-shrink: 0;
       font-size: 0.95rem;
     }
-    
     .about-item h4 {
       font-size: 0.86rem;
       font-weight: 600;
       color: var(--cream);
       margin-bottom: 0.1rem;
     }
-    
     .about-item p {
       font-size: 0.78rem;
       color: rgba(247,243,237,0.45);
     }
-    
     .philosophy-box {
       background: rgba(201,168,76,0.08);
       border: 1px solid rgba(201,168,76,0.2);
@@ -1560,7 +1250,6 @@
       text-align: center;
       margin-bottom: 3rem;
     }
-    
     .philosophy-box blockquote {
       font-family: 'Fraunces', serif;
       font-size: 1.5rem;
@@ -1568,7 +1257,6 @@
       color: var(--gold);
       margin-bottom: 1.35rem;
     }
-    
     .philosophy-box p {
       color: rgba(247,243,237,0.55);
       max-width: 580px;
@@ -1576,24 +1264,22 @@
       line-height: 1.85;
       font-size: 0.93rem;
     }
-    
     .philosophy-box strong { color: var(--cream); }
-    
-    /* ===== CONTACT SECTION ===== */
-    .contact-section { background: var(--cream-2); }
-    
+
+    /* ===== CONTACT ===== */
+    .contact-section {
+      background: var(--cream-2);
+    }
     .contact-section .section-tag {
       background: rgba(42,123,110,0.1);
       color: var(--teal);
     }
-    
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
-    
     .contact-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1602,18 +1288,12 @@
       text-align: center;
       transition: all 0.3s ease;
     }
-    
     .contact-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: transparent;
     }
-    
-    .contact-card-icon {
-      font-size: 2.25rem;
-      margin-bottom: 0.85rem;
-    }
-    
+    .contact-card-icon { font-size: 2.25rem; margin-bottom: 0.85rem; }
     .contact-card h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.05rem;
@@ -1621,7 +1301,6 @@
       color: var(--ink);
       margin-bottom: 0.4rem;
     }
-    
     .contact-card p {
       font-size: 0.82rem;
       color: var(--ink-3);
@@ -1629,7 +1308,6 @@
       margin-bottom: 1.35rem;
       line-height: 1.6;
     }
-    
     .contact-direct {
       background: var(--ink);
       border-radius: var(--radius-xl);
@@ -1637,50 +1315,41 @@
       text-align: center;
       color: var(--cream);
     }
-    
     .contact-direct h3 {
       font-family: 'Fraunces', serif;
       font-size: 1.5rem;
       margin-bottom: 2rem;
     }
-    
     .contact-info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 1.25rem;
       margin-bottom: 2rem;
     }
-    
     .contact-info-item {
       background: rgba(247,243,237,0.05);
       border: 1px solid rgba(247,243,237,0.08);
       border-radius: var(--radius);
       padding: 1.1rem;
     }
-    
-    .contact-info-item.label {
+    .contact-info-item .label {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: rgba(247,243,237,0.4);
       margin-bottom: 0.4rem;
     }
-    
-    .contact-info-item.value {
+    .contact-info-item .value {
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--cream);
     }
-    
-    .contact-info-item.value a {
+    .contact-info-item .value a {
       color: var(--cream);
       text-decoration: none;
     }
-    
-    .contact-info-item.value a:hover {
-      color: var(--gold);
-    }
-    
+    .contact-info-item .value a:hover { color: var(--gold); }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--ink-2);
@@ -1689,9 +1358,7 @@
       text-align: center;
       border-top: 1px solid rgba(201,168,76,0.1);
     }
-    
     .footer-inner { max-width: 1180px; margin: 0 auto; }
-    
     .footer-brand {
       font-family: 'Fraunces', serif;
       font-size: 1.2rem;
@@ -1699,7 +1366,6 @@
       color: var(--cream);
       margin-bottom: 0.3rem;
     }
-    
     .footer-links {
       display: flex;
       justify-content: center;
@@ -1707,24 +1373,21 @@
       margin: 1.35rem 0;
       flex-wrap: wrap;
     }
-    
     .footer-links a {
       color: rgba(247,243,237,0.4);
       text-decoration: none;
       font-size: 0.82rem;
       transition: color 0.2s;
     }
-    
     .footer-links a:hover { color: var(--cream); }
-    
     .footer-copy {
       font-size: 0.75rem;
       margin-top: 1.35rem;
       padding-top: 1.35rem;
       border-top: 1px solid rgba(247,243,237,0.07);
     }
-    
-    /* ===== SERVICE CARDS ===== */
+
+    /* ===== UTILITAIRES ===== */
     .service-card {
       background: rgba(247,243,237,0.04);
       border: 1px solid rgba(201,168,76,0.15);
@@ -1732,12 +1395,10 @@
       padding: 2rem;
       transition: all 0.3s ease;
     }
-    
     .service-card:hover {
       border-color: rgba(201,168,76,0.4);
       background: rgba(201,168,76,0.04);
     }
-    
     .svc-badge {
       font-size: 0.72rem;
       padding: 0.18rem 0.55rem;
@@ -1746,36 +1407,32 @@
       font-weight: 600;
       vertical-align: middle;
     }
-    
     .svc-list {
       list-style: none;
       margin-bottom: 1rem;
     }
-    
     .svc-list li {
       padding: 0.28rem 0 0.28rem 1.2rem;
       font-size: 0.875rem;
       color: rgba(247,243,237,0.65);
       position: relative;
     }
-    
     .svc-list li::before {
-      content: '';
+      content: "";
       position: absolute;
-      left: 0; top: 0.58rem;
-      width: 5px; height: 5px;
+      left: 0;
+      top: 0.58rem;
+      width: 5px;
+      height: 5px;
       background: rgba(201,168,76,0.6);
       border-radius: 50%;
     }
-    
     .svc-goal {
       border-radius: var(--radius);
       padding: 0.65rem 1rem;
       font-size: 0.8rem;
       font-weight: 600;
     }
-    
-    /* ===== SECTEUR CARDS ===== */
     .secteur-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1784,18 +1441,12 @@
       text-align: center;
       transition: all 0.3s ease;
     }
-    
     .secteur-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: var(--terracotta);
     }
-    
-    .secteur-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-    }
-    
+    .secteur-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
     .secteur-card h4 {
       font-family: 'Fraunces', serif;
       font-size: 0.95rem;
@@ -1803,14 +1454,11 @@
       color: var(--ink);
       margin-bottom: 0.35rem;
     }
-    
     .secteur-card p {
       font-size: 0.78rem;
       color: var(--ink-3);
       opacity: 0.7;
     }
-    
-    /* ===== METHOD/RESULTS/WHY SECTIONS ===== */
     .method-step {
       display: flex;
       gap: 1.25rem;
@@ -1821,14 +1469,13 @@
       padding: 1.5rem;
       transition: all 0.3s ease;
     }
-    
     .method-step:hover {
       border-color: var(--teal);
       box-shadow: var(--shadow);
     }
-    
     .method-step-num {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       background: var(--teal);
       color: white;
       font-family: 'Fraunces', serif;
@@ -1840,7 +1487,6 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    
     .method-step h4 {
       font-family: 'Fraunces', serif;
       font-size: 1rem;
@@ -1848,13 +1494,11 @@
       color: var(--ink);
       margin-bottom: 0.25rem;
     }
-    
     .method-step p {
       font-size: 0.875rem;
       color: var(--ink-3);
       opacity: 0.75;
     }
-    
     .result-card {
       background: var(--white);
       border: 1px solid var(--cream-3);
@@ -1863,18 +1507,12 @@
       text-align: center;
       transition: all 0.3s ease;
     }
-    
     .result-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: var(--teal);
     }
-    
-    .result-icon {
-      font-size: 2.25rem;
-      margin-bottom: 0.75rem;
-    }
-    
+    .result-icon { font-size: 2.25rem; margin-bottom: 0.75rem; }
     .result-card h4 {
       font-family: 'Fraunces', serif;
       font-size: 1rem;
@@ -1882,20 +1520,17 @@
       color: var(--ink);
       margin-bottom: 0.3rem;
     }
-    
     .result-card p {
       font-size: 0.82rem;
       color: var(--ink-3);
       opacity: 0.7;
     }
-    
     .why-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.25rem;
       margin-bottom: 3rem;
     }
-    
     .why-row-card {
       background: var(--ink);
       border: 1px solid rgba(201,168,76,0.15);
@@ -1903,17 +1538,11 @@
       padding: 1.75rem;
       transition: all 0.3s ease;
     }
-    
     .why-row-card:hover {
       border-color: rgba(201,168,76,0.4);
       background: rgba(14,12,10,0.95);
     }
-    
-    .why-row-card .wr-icon {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-    }
-    
+    .why-row-card .wr-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
     .why-row-card h4 {
       font-family: 'Fraunces', serif;
       font-size: 1rem;
@@ -1921,17 +1550,18 @@
       color: var(--cream);
       margin-bottom: 0.35rem;
     }
-    
     .why-row-card p {
       font-size: 0.84rem;
       color: rgba(247,243,237,0.5);
     }
-    
-    /* ===== UTILITIES ===== */
+
+    /* ===== BACK TO TOP ===== */
     .back-to-top {
       position: fixed;
-      bottom: 2rem; right: 2rem;
-      width: 44px; height: 44px;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
       background: var(--ink);
       color: var(--cream);
       border: 1px solid rgba(201,168,76,0.3);
@@ -1947,28 +1577,29 @@
       box-shadow: var(--shadow-lg);
       z-index: 999;
     }
-    
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
     }
-    
     .back-to-top:hover {
       transform: translateY(-3px);
       background: var(--ink-2);
       color: var(--gold);
     }
-    
+
+    /* ===== SCROLL PROGRESS ===== */
     .scroll-progress {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       height: 3px;
       width: 0%;
       background: linear-gradient(90deg, var(--gold), var(--terracotta));
       z-index: 2000;
       transition: width 0.1s linear;
     }
-    
+
+    /* ===== STAT COUNTERS ===== */
     .stat-number {
       font-family: 'Fraunces', serif;
       font-size: 1.6rem;
@@ -1976,18 +1607,12 @@
       color: var(--cream);
       letter-spacing: -0.03em;
     }
-    
-    .section-accent {
-      display: block;
-      width: 48px; height: 3px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin: 0 auto 1.5rem;
-    }
-    
+
+    /* ===== HERO SCROLL ===== */
     .hero-scroll {
       position: absolute;
-      bottom: 2.5rem; left: 50%;
+      bottom: 2.5rem;
+      left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
@@ -1999,59 +1624,28 @@
       text-transform: uppercase;
       animation: scrollBounce 2s ease-in-out infinite;
     }
-    
     .hero-scroll-line {
-      width: 1px; height: 40px;
+      width: 1px;
+      height: 40px;
       background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
     }
-    
     @keyframes scrollBounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(6px); }
     }
-    
-    .premium-quote {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 4rem;
-      padding: 2.5rem;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(199,90,58,0.04));
-      border: 1px solid rgba(201,168,76,0.15);
-      position: relative;
-    }
-    
-    .premium-quote::before {
-      content: '\201C';
-      font-family: 'Fraunces', serif;
-      font-size: 6rem;
-      color: var(--gold);
-      opacity: 0.15;
-      position: absolute;
-      top: -1.5rem; left: 1.5rem;
-      line-height: 1;
-    }
-    
-    .premium-quote p {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.8;
-    }
-    
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .book-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-grid[style*="repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
-      .testimonials-grid[style*="repeat(3"] { grid-template-columns: 1fr !important; }
+      .why-grid[style*="repeat(3)"] { grid-template-columns: repeat(2, 1fr) !important; }
+      .testimonials-grid[style*="repeat(3)"] { grid-template-columns: 1fr !important; }
     }
-    
     @media (max-width: 768px) {
       .nav-links {
         display: none;
         position: fixed;
-        top: 70px; left: 0; right: 0;
+        top: 70px;
+        left: 0;
+        right: 0;
         background: var(--ink-2);
         flex-direction: column;
         padding: 1rem;
@@ -2059,48 +1653,30 @@
         border-bottom: 1px solid rgba(201,168,76,0.1);
       }
       .nav-links.open { display: flex; }
-      .nav-links a {
-        padding: 0.65rem 1rem;
-        width: 100%;
-        text-align: center;
-      }
+      .nav-links a { padding: 0.65rem 1rem; width: 100%; text-align: center; }
       .hamburger { display: flex; }
       .hero-destinations { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       section { padding: 4rem 1.5rem; }
       .hero { padding: 7rem 1.5rem 4rem; }
-      .pricing-cards,
-      .family-pricing,
-      .packs-grid { grid-template-columns: 1fr; }
-      .book-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .dark-cta-box,
-      .terra-cta-box,
-      .lav-cta-box { padding: 2rem 1.5rem; }
-      .solution-box,
-      .passeport-principle { padding: 1.75rem 1.5rem; }
-      .why-grid[style*="repeat(3"] { grid-template-columns: 1fr !important; }
-      .testimonials-grid[style*="repeat(3"] { grid-template-columns: 1fr !important; }
-      .passeport-card-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.85rem;
-      }
+      .pricing-cards, .family-pricing, .packs-grid { grid-template-columns: 1fr; }
+      .why-grid[style*="repeat(3)"] { grid-template-columns: 1fr !important; }
+      .testimonials-grid[style*="repeat(3)"] { grid-template-columns: 1fr !important; }
+      .passeport-card-header { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
       .passeport-card-price { align-self: flex-start; }
       .hero-scroll { display: none; }
     }
-    
     @media (max-width: 480px) {
       .hero h1 { font-size: 2.2rem; }
       .section-header h2 { font-size: 1.75rem; }
-      .book-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
       .nav-brand span { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
-  
-  <!-- NAV -->
+
+  <!-- NAVIGATION -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#accueil" class="nav-brand">
@@ -2127,29 +1703,29 @@
   <!-- HERO -->
   <section class="hero" id="accueil">
     <div class="hero-bg-lines"></div>
-    <div class="hero-glow"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Ingénieur Pédagogique · Directeur Pédagogique LOGIX FORMA</div>
       <h1>Des livres de mathématiques personnalisés du CP à la 3e</h1>
       <p class="hero-tagline">Votre enfant devient le héros de son apprentissage et progresse avec une méthode concrète et efficace.</p>
-      <p style="text-align:center; max-width:700px; margin:auto;">
-        EduConcret conçoit des livres immersifs et personnalisés couvrant l'intégralité du programme de mathématiques, du CP à la 3e.
-        Chaque enfant apprend à travers une histoire qui lui ressemble.
-      </p>
+      <p style="text-align:center; max-width:700px; margin:0 auto 1rem;">EduConcret conçoit des livres immersifs et personnalisés couvrant l'intégralité du programme de mathématiques, du CP à la 3e. Chaque enfant apprend à travers une histoire qui lui ressemble.</p>
       <p class="hero-tagline">Je transforme les savoirs complexes en expériences<br>d'apprentissage concrètes et mémorables.</p>
-      <div class="hero-promise fade-in" style="display:inline-flex;align-items:center;gap:0.75rem;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);padding:0.75rem 1.75rem;border-radius:50px;margin:2rem 0 2.5rem;opacity:0;animation:fadeUp 0.8s ease 0.7s forwards;">
-        <span style="color:var(--gold);font-size:0.9rem;font-weight:500;">🏆 +10 ans d'expertise · +50 formations conçues · 3000+ apprenants impactés</span>
+      
+      <div class="hero-promise" style="display:inline-flex;align-items:center;gap:0.75rem;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);padding:0.75rem 1.75rem;border-radius:50px;margin:2rem 0 2.5rem;opacity:0;animation:fadeUp 0.8s ease 0.7s forwards;">
+        <span style="color:var(--gold);font-size:0.9rem;font-weight:500;">+10 ans d'expertise · +50 formations conçues · 3000+ apprenants impactés</span>
       </div>
+      
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;opacity:0;animation:fadeUp 0.8s ease 0.9s forwards;">
         <a href="#espace-pro" class="btn btn-gold">Espace Professionnel →</a>
         <a href="#espace-adulte" class="btn btn-outline-cream">Espace Adulte →</a>
         <a href="#espace-famille" class="btn btn-outline-cream">Espace Famille →</a>
       </div>
+      
       <p style="color:rgba(247,243,237,0.35);font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;opacity:0;animation:fadeUp 0.8s ease 1.1s forwards;">↓ Découvrez mon expertise</p>
-    </div>
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
-      <span>Scroll</span>
+      
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
     </div>
   </section>
 
@@ -2182,7 +1758,7 @@
   <section class="why-section" id="pourquoi" style="padding:5rem 2rem;background:var(--cream);">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">🏆 Pourquoi un expert fait la différence</div>
+        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">Pourquoi un expert fait la différence</div>
         <h2>L'expertise qui transforme vos formations</h2>
         <p>Ne confiez pas votre pédagogie au hasard. Voici ce que j'apporte.</p>
       </div>
@@ -2193,18 +1769,22 @@
           <p>Je ne crée pas juste des supports. Je structure votre offre de formation pour qu'elle soit rentable et scalable.</p>
         </div>
         <div class="why-card fade-in fade-in-delay-1" style="background:var(--white);">
-          <div class="why-card-icon" style="background:rgba(42,123,110,0.15);">⚡</div>
+          <div class="why-card-icon" style="background:rgba(42,123,110,0.15);">📈</div>
           <h3>Efficacité prouvée</h3>
-          <p>Mes méthodes ont fait leurs preuves: +22% de satisfaction, -30% de temps de production, conformité Qualiopi garantie.</p>
+          <p>Mes méthodes ont fait leurs preuves : +22% de satisfaction, -30% de temps de production, conformité Qualiopi garantie.</p>
         </div>
         <div class="why-card fade-in fade-in-delay-2" style="background:var(--white);">
-          <div class="why-card-icon" style="background:rgba(199,90,58,0.15);">🔒</div>
+          <div class="why-card-icon" style="background:rgba(199,90,58,0.15);">🛡️</div>
           <h3>Tranquillité totale</h3>
           <p>Je prends en charge la complexité. Vous vous concentrez sur votre cœur de métier. Tout est documenté, livré, testé.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:3rem;" class="fade-in">
-        <p>📧 <a href="mailto:contact@educoncret.net" style="color:var(--teal);text-decoration:none;font-weight:600;">contact@educoncret.net</a> &nbsp;&nbsp;|&nbsp;&nbsp; 📞 <a href="tel:+33764070161" style="color:var(--teal);text-decoration:none;font-weight:600;">07 64 07 01 61</a></p>
+        <p>
+          <a href="mailto:contact@educoncret.net" style="color:var(--teal);text-decoration:none;font-weight:600;">contact@educoncret.net</a>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <a href="tel:+33764070161" style="color:var(--teal);text-decoration:none;font-weight:600;">07 64 07 01 61</a>
+        </p>
       </div>
     </div>
   </section>
@@ -2213,26 +1793,26 @@
   <section id="ce-que-je-fais" style="background: var(--ink); padding: 6rem 2rem;">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">🧠 Ce que je fais</div>
+        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">Ce que je fais</div>
         <h2 style="color:var(--cream);">Mes domaines d'expertise</h2>
         <p style="color:rgba(247,243,237,0.5);opacity:1;">Des solutions conçues pour chaque contexte, chaque public.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;">
         <div class="service-card fade-in">
-          <div style="font-size:2rem;margin-bottom:1rem;">📘</div>
-          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Ingénierie Pédagogique d'Excellence<span class="svc-badge" style="background:rgba(201,168,76,0.2);color:var(--gold);">Enfants</span></h3>
+          <div style="font-size:2rem;margin-bottom:1rem;">📚</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Ingénierie Pédagogique d'Excellence <span class="svc-badge" style="background:rgba(201,168,76,0.2);color:var(--gold);">Enfants</span></h3>
           <ul class="svc-list">
-            <li>Livres de mathématiques sur mesure (primaire → collège)</li>
+            <li>Livres de mathématiques sur mesure (primaire & collège)</li>
             <li>Apprentissage par immersion et situations réelles</li>
             <li>Développement de l'autonomie et de la confiance</li>
           </ul>
           <div class="svc-goal" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);color:var(--gold);">
-            👉 Permettre à chaque enfant de comprendre réellement les mathématiques
+            Permettre à chaque enfant de comprendre réellement les mathématiques
           </div>
         </div>
         <div class="service-card fade-in fade-in-delay-1">
-          <div style="font-size:2rem;margin-bottom:1rem;">🎓</div>
-          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Formations Professionnelles Sur Mesure<span class="svc-badge" style="background:rgba(199,90,58,0.25);color:var(--terracotta-light);">Adultes</span></h3>
+          <div style="font-size:2rem;margin-bottom:1rem;">👨‍💼</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Formations Professionnelles Sur Mesure <span class="svc-badge" style="background:rgba(199,90,58,0.25);color:var(--terracotta-light);">Adultes</span></h3>
           <ul class="svc-list">
             <li>Conception adaptée aux besoins réels</li>
             <li>Présentiel, distanciel et hybride</li>
@@ -2240,12 +1820,12 @@
             <li>Accompagnement à la montée en compétences</li>
           </ul>
           <div class="svc-goal" style="background:rgba(199,90,58,0.12);border:1px solid rgba(199,90,58,0.25);color:var(--terracotta-light);">
-            👉 Développer des compétences concrètes et utilisables immédiatement
+            Développer des compétences concrètes et utilisables immédiatement
           </div>
         </div>
         <div class="service-card fade-in fade-in-delay-2">
-          <div style="font-size:2rem;margin-bottom:1rem;">🤝</div>
-          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Conseil & Audit Pédagogique<span class="svc-badge" style="background:rgba(42,123,110,0.25);color:var(--teal-light);">Organisations</span></h3>
+          <div style="font-size:2rem;margin-bottom:1rem;">🔍</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Conseil & Audit Pédagogique <span class="svc-badge" style="background:rgba(42,123,110,0.25);color:var(--teal-light);">Organisations</span></h3>
           <ul class="svc-list">
             <li>Analyse des besoins</li>
             <li>Structuration d'offres de formation</li>
@@ -2253,19 +1833,19 @@
             <li>Accompagnement des formateurs</li>
           </ul>
           <div class="svc-goal" style="background:rgba(42,123,110,0.12);border:1px solid rgba(42,123,110,0.25);color:var(--teal-light);">
-            👉 Améliorer la qualité et l'efficacité des formations
+            Améliorer la qualité et l'efficacité des formations
           </div>
         </div>
         <div class="service-card fade-in fade-in-delay-3">
-          <div style="font-size:2rem;margin-bottom:1rem;">🏗</div>
-          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Direction Pédagogique<span class="svc-badge" style="background:rgba(92,77,138,0.3);color:var(--lavender-light);">LOGIX FORMA</span></h3>
+          <div style="font-size:2rem;margin-bottom:1rem;">🏢</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Direction Pédagogique <span class="svc-badge" style="background:rgba(92,77,138,0.3);color:var(--lavender-light);">LOGIX FORMA</span></h3>
           <ul class="svc-list">
             <li>Structuration d'un organisme de formation</li>
             <li>Mise en place de formations à distance</li>
             <li>Pilotage pédagogique et qualité (Qualiopi)</li>
           </ul>
           <div class="svc-goal" style="background:rgba(92,77,138,0.12);border:1px solid rgba(92,77,138,0.25);color:var(--lavender-light);">
-            👉 Direction pédagogique chez LOGIX FORMA
+            Direction pédagogique chez LOGIX FORMA
           </div>
         </div>
       </div>
@@ -2276,7 +1856,7 @@
   <section id="secteurs" style="background:var(--cream-2);padding:6rem 2rem;">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background:rgba(199,90,58,0.1);color:var(--terracotta);">🚀 Secteurs d'intervention</div>
+        <div class="section-tag" style="background:rgba(199,90,58,0.1);color:var(--terracotta);">Secteurs d'intervention</div>
         <h2>Là où je crée de la valeur</h2>
         <p>Des secteurs qui recrutent, avec des besoins en formation réels et concrets.</p>
       </div>
@@ -2287,17 +1867,17 @@
           <p>Bureautique, outils, compétences digitales</p>
         </div>
         <div class="secteur-card fade-in fade-in-delay-1">
-          <div class="secteur-icon">🏥</div>
+          <div class="secteur-icon">🤝</div>
           <h4>Médico-Social</h4>
           <p>Accompagnement, compétences terrain</p>
         </div>
         <div class="secteur-card fade-in fade-in-delay-2">
-          <div class="secteur-icon">🏗</div>
+          <div class="secteur-icon">🏗️</div>
           <h4>BTP & Techniques</h4>
           <p>Métiers manuels, sécurité, savoir-faire</p>
         </div>
         <div class="secteur-card fade-in fade-in-delay-3">
-          <div class="secteur-icon">📈</div>
+          <div class="secteur-icon">🚀</div>
           <h4>Entrepreneuriat & Insertion</h4>
           <p>Création d'activité, retour à l'emploi</p>
         </div>
@@ -2345,182 +1925,104 @@
   <section class="pro-section" id="espace-pro">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">💼 Espace Professionnel</div>
-        <h2>Ingénierie de Formation & Pilotage Pédagogique</h2>
+        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">💼 Espace Professionnel</div>
+        <h2 style="color:var(--cream);">Ingénierie de Formation & Pilotage Pédagogique</h2>
+        <p style="color:rgba(247,243,237,0.5);">Vous êtes un organisme de formation, une entreprise, ou un formateur indépendant. Vous avez besoin de solidité, de conformité et d'efficacité.</p>
       </div>
-      <p class="pro-intro fade-in">Vous êtes un organisme de formation, une entreprise, ou un formateur indépendant. Vous avez besoin de solidité, de conformité et d'efficacité.</p>
-      <h3 class="section-sub fade-in">🎯 Domaines d'intervention</h3>
-      <table class="pro-table fade-in">
+      
+      <h3 style="font-family:'Fraunces',serif;font-size:1.25rem;color:var(--gold);margin-bottom:1rem;">📋 Domaines d'intervention</h3>
+      <table class="pro-table">
         <thead>
           <tr><th>Domaine</th><th>Ce que je fais pour vous</th></tr>
         </thead>
         <tbody>
           <tr><td>Ingénierie de Formation</td><td>Analyse du besoin, création de référentiels de compétences, découpage en blocs modulaires.</td></tr>
-          <tr><td>Ingénierie Pédagogique</td><td>Scénarisation de modules (présentiel, distanciel FOAD, hybride), conception de supports engageants.</td></tr>
-          <tr><td>Pilotage Qualité</td><td>Mise en place de systèmes de veille automatisés, préparation aux audits Qualiopi, processus d'amélioration continue.</td></tr>
+          <tr><td>Ingénierie Pédagogique</td><td>Scénarisation de modules (présentiel, FOAD, hybride), conception de supports engageants.</td></tr>
+          <tr><td>Pilotage Qualité</td><td>Mise en place de systèmes de veille automatisés, préparation aux audits Qualiopi, amélioration continue.</td></tr>
           <tr><td>Digitalisation (FOAD)</td><td>Transformation de vos contenus papier en parcours e-learning intégrables sur votre LMS.</td></tr>
           <tr><td>Coordination d'équipe</td><td>Harmonisation des pratiques pédagogiques, animation de communautés de formateurs.</td></tr>
         </tbody>
       </table>
-      <h3 class="section-sub fade-in">🚀 Projets menés</h3>
+      
+      <h3 style="font-family:'Fraunces',serif;font-size:1.25rem;color:var(--gold);margin-bottom:1rem;">🎯 Projets menés</h3>
       <div class="projects-grid">
-        <div class="project-card fade-in">
-          <div class="project-number">1</div>
-          <h3>Mise en place d'un système de veille pédagogique et réglementaire</h3>
-          <ul>
-            <li>Conception d'un système de veille automatisé.</li>
-            <li>Structuration des sources institutionnelles, scientifiques et marché.</li>
-            <li>Création d'un modèle réplicable pour les équipes.</li>
-          </ul>
-          <div class="project-result">📊 Amélioration continue garantie et conformité Qualiopi renforcée.</div>
-        </div>
-        <div class="project-card fade-in">
-          <div class="project-number">2</div>
-          <h3>Audit et amélioration d'une formation présentielle</h3>
-          <ul>
-            <li>Analyse des techniques d'animation de 12 formateurs.</li>
-            <li>Optimisation des supports pédagogiques (clarté, interactivité).</li>
-            <li>Refonte des méthodes d'évaluation des compétences.</li>
-          </ul>
-          <div class="project-result">📈 Taux de satisfaction apprenants en hausse de 22%.</div>
-        </div>
-        <div class="project-card fade-in">
-          <div class="project-number">3</div>
-          <h3>Digitalisation d'un module de formation (FOAD)</h3>
-          <ul>
-            <li>Transformation d'un cours présentiel de 21h en parcours e-learning.</li>
-            <li>Création de contenus vidéo, quiz interactifs et études de cas.</li>
-            <li>Intégration sur LMS Moodle.</li>
-          </ul>
-          <div class="project-result">🌐 Formation accessible à distance pour 300+ apprenants par an.</div>
-        </div>
-        <div class="project-card fade-in">
-          <div class="project-number">4</div>
-          <h3>Conception d'un cursus qualifiant en blocs de compétences</h3>
-          <ul>
-            <li>Analyse du marché et benchmark concurrentiel.</li>
-            <li>Création d'un référentiel de 8 blocs de compétences.</li>
-            <li>Structuration pédagogique modulaire et évaluations associées.</li>
-          </ul>
-          <div class="project-result">✅ Formation éligible au CPF et financements publics.</div>
-        </div>
-        <div class="project-card fade-in">
-          <div class="project-number">5</div>
-          <h3>Pilotage et coordination d'équipe pédagogique</h3>
-          <ul>
-            <li>Coordination de 15 intervenants externes.</li>
-            <li>Mise en place de process de création de contenu et de suivi qualité.</li>
-            <li>Animation de réunions pédagogiques mensuelles.</li>
-          </ul>
-          <div class="project-result">⚡ Cohérence des parcours et réduction des délais de production de 30%.</div>
-        </div>
+        <div class="project-card"><div class="project-number">01</div><h3>Système de Veille Pédagogique</h3><ul><li>Conception d'un système de veille automatisé.</li><li>Structuration des sources institutionnelles et marché.</li><li>Création d'un modèle réplicable pour les équipes.</li></ul><div class="project-result">Conformité Qualiopi renforcée</div></div>
+        <div class="project-card"><div class="project-number">02</div><h3>Audit Formation Présentielle</h3><ul><li>Analyse des techniques de 12 formateurs.</li><li>Optimisation des supports et de l'interactivité.</li><li>Refonte des méthodes d'évaluation.</li></ul><div class="project-result">Satisfaction apprenants +22%</div></div>
+        <div class="project-card"><div class="project-number">03</div><h3>Digitalisation (FOAD)</h3><ul><li>Transformation de 21h en parcours e-learning.</li><li>Création de vidéos et quiz interactifs.</li><li>Intégration sur LMS Moodle.</li></ul><div class="project-result">Accessible à 300+ apprenants/an</div></div>
+        <div class="project-card"><div class="project-number">04</div><h3>Cursus Blocs de Compétences</h3><ul><li>Analyse du marché et benchmark concurrentiel.</li><li>Création d'un référentiel de 8 blocs.</li><li>Structuration pédagogique modulaire.</li></ul><div class="project-result">Éligible CPF & Financements</div></div>
+        <div class="project-card"><div class="project-number">05</div><h3>Coordination d'Équipe</h3><ul><li>Coordination de 15 intervenants externes.</li><li>Mise en place de process qualité.</li><li>Animation de réunions mensuelles.</li></ul><div class="project-result">Délais de production -30%</div></div>
+        <div class="project-card" style="border: 2px solid #c9a84c;"><div class="project-number">06</div><h3 style="color: #c9a84c;">Vidéo & Montage</h3><ul><li>Tournage de capsules pédagogiques.</li><li>Montage dynamique sur Adobe Premiere.</li><li>Post-production et habillage graphique.</li></ul><div class="project-result">Qualité Studio Pro</div></div>
       </div>
-      <div class="dark-cta-box fade-in">
-        <h3>🤝 Travaillons ensemble</h3>
+      
+      <div class="terra-cta-box fade-in" style="margin-top:3rem;">
+        <h3>Travaillons ensemble</h3>
         <p>Vous avez un projet de formation à structurer, à améliorer ou à digitaliser ?</p>
-        <div class="cta-options">
-          <div class="cta-option">
-            <h4>1. Mission d'audit et de conseil</h4>
-            <p>J'analyse votre existant et je vous livre des recommandations actionnables sous 10 jours.</p>
-          </div>
-          <div class="cta-option">
-            <h4>2. Accompagnement sur mesure</h4>
-            <p>Je pilote le projet de A à Z (conception, production, déploiement).</p>
-          </div>
-        </div>
         <div style="margin-bottom: 1.5rem;">
-          <p style="color: rgba(247,243,237,0.4); font-size: 0.85rem;">
-            📧 <a href="mailto:contact@educoncret.net" style="color: var(--gold); text-decoration: none;">contact@educoncret.net</a> &nbsp;&nbsp;|&nbsp;&nbsp; 📞 <a href="tel:+33764070161" style="color: var(--gold); text-decoration: none;">07 64 07 01 61</a>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+            📧 <a href="mailto:contact@educoncret.net" style="color: var(--gold); text-decoration: none;">contact@educoncret.net</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            📞 <a href="tel:+33764070161" style="color: var(--gold); text-decoration: none;">07 64 07 01 61</a>
           </p>
         </div>
-        <a href="#contact" class="btn btn-gold">Prendre rendez-vous pour un échange découverte (30 min) →</a>
+        <a href="#contact" class="btn btn-gold" style="background:white;color:var(--terracotta);">Prendre rendez-vous pour un échange découverte (30 min) →</a>
       </div>
     </div>
   </section>
 
   <!-- ESPACE ADULTE -->
-  <section class="adult-section" id="espace-adulte">
+  <section id="espace-adulte" style="background:var(--cream);padding:6rem 2rem;">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">🧭 Espace Adulte</div>
+        <div class="section-tag" style="background:rgba(199,90,58,0.1);color:var(--terracotta);">🚀 Espace Adulte</div>
         <h2>L'Expédition Solo-Preneur</h2>
       </div>
-      <div class="adult-quote fade-in">
-        <blockquote>Vous avez une idée qui dort dans un tiroir depuis des mois.<br>Dans 28 jours, elle vous rapportera votre premier euro.</blockquote>
-        <p style="color: var(--ink-3); font-size: 0.85rem; margin-top: 0.85rem; opacity: 0.6;">Sans site web compliqué, sans jargon administratif, sans être un "geek".</p>
+      
+      <div class="fade-in" style="max-width:780px;margin:0 auto 2rem;text-align:center;">
+        <blockquote style="font-family:'Fraunces',serif;font-size:1.2rem;font-style:italic;color:var(--ink);">"Vous avez une idée qui dort dans un tiroir depuis des mois. Dans 28 jours, elle vous rapportera votre premier euro."</blockquote>
+        <p style="color:var(--ink-3);font-size:0.85rem;margin-top:0.85rem;opacity:0.6;">Sans site web compliqué, sans jargon administratif, sans être un "geek".</p>
       </div>
+      
       <div class="problem-section fade-in">
-        <h3>😤 Le problème que vous connaissez trop bien</h3>
-        <p style="color: var(--ink-3); margin-bottom: 1.25rem; font-size: 0.93rem;">Vous voulez créer votre activité. Mais à chaque fois que vous essayez d'avancer...</p>
+        <h3>Le problème que vous connaissez trop bien</h3>
+        <p style="color:var(--ink-3);margin-bottom:1.25rem;">Vous voulez créer votre activité. Mais à chaque fois que vous essayez d'avancer...</p>
         <div class="problem-list">
-          <div class="problem-item">
-            <div class="problem-item-icon">📺</div>
-            <p>Vous ouvrez un tuto YouTube. Au bout de 3 minutes, on vous parle de <strong>"TVA intracommunautaire"</strong>. <strong>Vous fermez l'onglet.</strong></p>
-          </div>
-          <div class="problem-item">
-            <div class="problem-item-icon">💸</div>
-            <p>Vous regardez des formations à 2000€ qui durent 6 mois. <strong>Vous n'avez pas le temps.</strong></p>
-          </div>
-          <div class="problem-item">
-            <div class="problem-item-icon">💻</div>
-            <p>Vous essayez de créer un site web. Vous passez 4 heures sur la police du titre. <strong>Résultat: zéro client.</strong></p>
-          </div>
+          <div class="problem-item"><div class="problem-item-icon">📺</div><p>Vous ouvrez un tuto YouTube. Au bout de 3 minutes, on vous parle de <strong>"TVA intracommunautaire"</strong>. <strong>Vous fermez l'onglet.</strong></p></div>
+          <div class="problem-item"><div class="problem-item-icon">💸</div><p>Vous regardez des formations à 2000€ qui durent 6 mois. <strong>Vous n'avez pas le temps.</strong></p></div>
+          <div class="problem-item"><div class="problem-item-icon">💻</div><p>Vous essayez de créer un site web. Vous passez 4 heures sur la police du titre. <strong>Résultat : zéro client.</strong></p></div>
         </div>
-        <p style="color: var(--ink); font-weight: 600; margin-top: 1.35rem; text-align: center; font-size: 1rem;">
-          👉 Le vrai problème ? Ce n'est pas vous. C'est la <strong style="color: var(--terracotta);">Jungle de l'Information</strong>.
-        </p>
+        <p style="color:var(--ink);font-weight:600;margin-top:1.35rem;text-align:center;">Le vrai problème ? Ce n'est pas vous. C'est la <strong style="color:var(--terracotta);">Jungle de l'Information</strong>.</p>
       </div>
+      
       <div class="solution-box fade-in">
-        <h3>🗺 La solution: une vraie carte pour traverser la jungle</h3>
+        <h3>La solution : une vraie carte pour traverser la jungle</h3>
         <p>Mon métier, c'est de rendre les choses compliquées <strong>incroyablement simples et concrètes</strong>.</p>
         <p>J'ai créé <strong>L'Expédition Solo-Preneur</strong>, un accompagnement de 4 semaines qui transforme votre idée en activité qui encaisse.</p>
         <p><strong>Ici, pas de théorie ennuyeuse.</strong> Vous êtes l'Explorateur. Votre futur client est le Trésor. Et moi, je suis votre guide dans la jungle.</p>
         <p>On avance <strong>étape par étape</strong>, en visio, en direct. Je vous montre mon écran, on clique ensemble.</p>
       </div>
+      
       <div class="timeline fade-in">
-        <h3>📅 Votre voyage en 4 semaines</h3>
+        <h3>Votre voyage en 4 semaines</h3>
         <div class="timeline-grid">
-          <div class="timeline-item">
-            <div class="timeline-week">Semaine 1</div>
-            <div class="timeline-content">
-              <h4>🗺 La Carte au Trésor</h4>
-              <p>Définir votre offre en une phrase. Savoir exactement à qui vous parlez.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-week">Semaine 2</div>
-            <div class="timeline-content">
-              <h4>🏕 Le Camp de Base</h4>
-              <p>Créer une page simple qui encaisse les paiements. Avoir un lien à envoyer.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-week">Semaine 3</div>
-            <div class="timeline-content">
-              <h4>🧭 La Boussole Administrative</h4>
-              <p>Être 100% légal. Obtenir votre SIRET en 20 minutes.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-week">Semaine 4</div>
-            <div class="timeline-content">
-              <h4>🏆 La Chasse au Trésor</h4>
-              <p>Trouver votre premier client grâce au "Message Colibri".</p>
-            </div>
-          </div>
+          <div class="timeline-item"><div class="timeline-week">Semaine 1</div><div class="timeline-content"><h4>La Boussole</h4><p>Votre idée devient une offre claire et vendable. On trouve votre premier client potentiel.</p></div></div>
+          <div class="timeline-item"><div class="timeline-week">Semaine 2</div><div class="timeline-content"><h4>La Carte</h4><p>Création de votre page de paiement et de vos supports de vente (sans être graphiste).</p></div></div>
+          <div class="timeline-item"><div class="timeline-week">Semaine 3</div><div class="timeline-content"><h4>Le Guide</h4><p>Scripts pour contacter vos premiers clients. On les envoie ENSEMBLE.</p></div></div>
+          <div class="timeline-item"><div class="timeline-week">Semaine 4</div><div class="timeline-content"><h4>Le Trésor</h4><p>Votre premier encaissement. On prépare la suite pour que ça tourne tout seul.</p></div></div>
         </div>
       </div>
-      <h3 class="fade-in" style="text-align: center; font-family:'Fraunces', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1.35rem; color: var(--ink);">📦 Le Kit de Survie Inclus</h3>
+      
+      <h3 class="fade-in" style="text-align:center;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:1.35rem;">📦 Le Kit de Survie Inclus</h3>
       <div class="kit-grid fade-in">
-        <div class="kit-item"><div class="kit-item-icon">🗺</div><h4>La Carte d'Expédition</h4><p>Votre feuille de route visuelle (Document Notion interactif)</p></div>
-        <div class="kit-item"><div class="kit-item-icon">🏕</div><h4>Page de Paiement</h4><p>Un lien vers votre mini-site prêt à vendre</p></div>
-        <div class="kit-item"><div class="kit-item-icon">🧾</div><h4>Facture Magique</h4><p>Un tableur qui calcule vos charges et bénéfices automatiquement</p></div>
-        <div class="kit-item"><div class="kit-item-icon">📜</div><h4>Script Colibri</h4><p>Le message texte à copier-coller pour trouver un client sans démarcher</p></div>
+        <div class="kit-item"><div class="kit-item-icon">🗺️</div><h4>La Carte d'Expédition</h4><p>Votre feuille de route visuelle (Document Notion interactif)</p></div>
+        <div class="kit-item"><div class="kit-item-icon">💳</div><h4>Page de Paiement</h4><p>Un lien vers votre mini-site prêt à vendre</p></div>
+        <div class="kit-item"><div class="kit-item-icon">📄</div><h4>Facture Magique</h4><p>Un tableur qui calcule vos charges et bénéfices automatiquement</p></div>
+        <div class="kit-item"><div class="kit-item-icon">📱</div><h4>Script Colibri</h4><p>Le message texte à copier-coller pour trouver un client sans démarcher</p></div>
         <div class="kit-item"><div class="kit-item-icon">💬</div><h4>Accès WhatsApp</h4><p>Contact direct pendant 28 jours pour débloquer toute situation</p></div>
       </div>
+      
       <div class="pricing-cards fade-in">
-        <div class="pricing-card featured">
-          <h3>🧭 L'Expédition Guidée</h3>
+        <div class="pricing-card pricing-card-featured">
+          <h3>L'Expédition Guidée</h3>
           <div class="pricing-price">497€</div>
           <ul class="pricing-features">
             <li>4 Semaines d'accompagnement</li>
@@ -2528,21 +2030,22 @@
             <li>Carte + Page + Facturier + Scripts</li>
             <li>Accès WhatsApp pendant 28 jours</li>
           </ul>
-          <a href="#contact" class="btn btn-terra" style="width: 100%; justify-content: center;">Je réserve mon appel découverte →</a>
+          <a href="#contact" class="btn btn-terra" style="width:100%;justify-content:center;">Je réserve mon appel découverte</a>
         </div>
         <div class="pricing-card">
-          <h3>🎒 Sac à Dos Complet</h3>
-          <div class="pricing-price">547€<span>+50€</span></div>
+          <h3>Sac à Dos Complet</h3>
+          <div class="pricing-price">547€ <span>+50€</span></div>
           <ul class="pricing-features">
             <li>Tout l'Expédition Guidée</li>
             <li>+ 1 Livre de Maths Personnalisé offert</li>
             <li>Pour votre enfant, neveu ou nièce</li>
             <li>Accès WhatsApp pendant 28 jours</li>
           </ul>
-          <a href="#contact" class="btn btn-outline-ink" style="width: 100%; justify-content: center;">Choisir cette option →</a>
+          <a href="#contact" class="btn btn-outline-ink" style="width:100%;justify-content:center;">Choisir cette option</a>
         </div>
       </div>
-      <h3 class="fade-in" style="font-family:'Fraunces', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--ink);">Est-ce pour vous ?</h3>
+      
+      <h3 class="fade-in" style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.85rem;text-align:center;">Est-ce pour vous ?</h3>
       <div class="check-list fade-in">
         <div class="check-item yes">Vous avez une idée de service (conseil, coaching, création, formation).</div>
         <div class="check-item yes">Vous voulez un cadre simple pour ne pas vous éparpiller.</div>
@@ -2552,227 +2055,175 @@
         <div class="check-item no">Vous refusez de parler à des humains (même gentiment).</div>
         <div class="check-item no">Vous préférez passer 6 mois à faire un logo plutôt que de trouver un client.</div>
       </div>
+      
       <div class="terra-cta-box fade-in">
-        <h3>🔥 Prêt(e) à lancer l'Expédition ?</h3>
+        <h3>Prêt(e) à lancer l'Expédition ?</h3>
         <p>Le plus dur, c'est le premier pas dans la jungle. Une fois que vous êtes dedans avec une bonne carte, tout devient clair.</p>
-        <div style="text-align: left; max-width: 480px; margin: 0 auto 2rem; background: rgba(255,255,255,0.12); border-radius: var(--radius); padding: 1.35rem;">
-          <p style="margin-bottom: 0.4rem; font-size: 0.875rem; color: rgba(255,255,255,0.85);">1️⃣ Vous cliquez sur le bouton ci-dessous.</p>
-          <p style="margin-bottom: 0.4rem; font-size: 0.875rem; color: rgba(255,255,255,0.85);">2️⃣ Vous réservez un <strong>Appel Découverte offert de 20 minutes</strong>.</p>
-          <p style="margin-bottom: 0.4rem; font-size: 0.875rem; color: rgba(255,255,255,0.85);">3️⃣ On vérifie ensemble que votre idée est bonne et que je peux vous aider.</p>
-          <p style="margin-bottom: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85);">4️⃣ Si c'est un "Oui" des deux côtés, on fixe la date de départ.</p>
+        <div style="text-align:left;max-width:480px;margin:0 auto 2rem;background:rgba(255,255,255,0.12);border-radius:var(--radius);padding:1.35rem;">
+          <p style="margin-bottom:0.4rem;font-size:0.875rem;">👉 Vous cliquez sur le bouton ci-dessous.</p>
+          <p style="margin-bottom:0.4rem;font-size:0.875rem;">👉 Vous réservez un <strong>Appel Découverte offert de 20 minutes</strong>.</p>
+          <p style="margin-bottom:0.4rem;font-size:0.875rem;">👉 On vérifie ensemble que votre idée est bonne et que je peux vous aider.</p>
+          <p style="margin-bottom:0;font-size:0.875rem;">👉 Si c'est un "Oui" des deux côtés, on fixe la date de départ.</p>
         </div>
-        <a href="#contact" class="btn" style="background: white; color: var(--terracotta); font-weight: 700;">JE RÉSERVE MON APPEL DÉCOUVERTE OFFERT →</a>
+        <a href="#contact" class="btn" style="background:white;color:var(--terracotta);font-weight:700;">JE RÉSERVE MON APPEL DÉCOUVERTE OFFERT →</a>
       </div>
-      <div class="section-divider" style="margin-top: 5rem;">
-        <hr>
-        <div class="divider-text"><span>✦ Ou alors, une entrée rapide ✦</span></div>
-        <hr>
-      </div>
-      <div style="height: 3rem;"></div>
+    </div>
+  </section>
+
+  <!-- PASSEPORT 48H -->
+  <section style="background:var(--cream-2);padding:6rem 2rem;">
+    <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background: rgba(92,77,138,0.1); color: var(--lavender);">🎫 Le Passeport 48H</div>
+        <div class="section-tag" style="background:rgba(92,77,138,0.1);color:var(--lavender);">🎫 Le Passeport 48H</div>
         <h2>Maîtrisez une compétence professionnelle en 2 heures</h2>
         <p>La méthode narrative pour apprendre l'essentiel, tout de suite.</p>
       </div>
+      
       <div class="problem-section fade-in">
-        <h3>😤 Le problème</h3>
-        <p style="color: var(--ink-3); margin-bottom: 1.25rem; font-size: 0.93rem;">Vous avez besoin d'acquérir une compétence précise, mais :</p>
+        <h3>Le problème</h3>
+        <p style="color:var(--ink-3);margin-bottom:1.25rem;">Vous avez besoin d'acquérir une compétence précise, mais :</p>
         <div class="problem-list">
-          <div class="problem-item"><div class="problem-item-icon">📚</div><p><strong>Les formations longues :</strong> 2 à 5 jours, trop cher, trop long, pas dispo quand vous en avez besoin.</p></div>
+          <div class="problem-item"><div class="problem-item-icon">⏰</div><p><strong>Les formations longues :</strong> 2 à 5 jours, trop cher, trop long, pas dispo quand vous en avez besoin.</p></div>
           <div class="problem-item"><div class="problem-item-icon">📺</div><p><strong>Les tutos YouTube :</strong> Vous passez 3h à chercher l'info utile dans 10 vidéos contradictoires.</p></div>
-          <div class="problem-item"><div class="problem-item-icon">📄</div><p><strong>Les livres blancs :</strong> 50 pages de blabla pour 2 pages utiles.</p></div>
+          <div class="problem-item"><div class="problem-item-icon">📖</div><p><strong>Les livres blancs :</strong> 50 pages de blabla pour 2 pages utiles.</p></div>
         </div>
       </div>
+      
       <div class="passeport-principle fade-in">
-        <h3>💡 La solution: L'Immersion Narrative de 2 Heures</h3>
+        <h3>La solution : L'Immersion Narrative de 2 Heures</h3>
         <p>J'ai créé <strong>Le Passeport 48H</strong>, un format de formation express qui vous donne l'essentiel actionnable sur une compétence précise.</p>
-        <ul style="list-style: none; margin: 1rem 0;">
-          <li style="padding: 0.35rem 0; font-size: 0.9rem; color: var(--ink-3);">🎯 Vous choisissez votre <strong>destination</strong> parmi un catalogue de compétences.</li>
-          <li style="padding: 0.35rem 0; font-size: 0.9rem; color: var(--ink-3);">🧑 Vous vivez une <strong>session individuelle de 2 heures</strong> (visio).</li>
-          <li style="padding: 0.35rem 0; font-size: 0.9rem; color: var(--ink-3);">📄 Vous repartez avec une <strong>"Carte d'Action"</strong> : un document A4 qui résume tout.</li>
+        <ul style="list-style:none;margin:1rem 0;">
+          <li style="padding:0.35rem 0;">✅ Vous choisissez votre <strong>destination</strong> parmi un catalogue de compétences.</li>
+          <li style="padding:0.35rem 0;">✅ Vous vivez une <strong>session individuelle de 2 heures</strong> (visio).</li>
+          <li style="padding:0.35rem 0;">✅ Vous repartez avec une <strong>"Carte d'Action"</strong> : un document A4 qui résume tout.</li>
         </ul>
       </div>
+      
       <div class="passeport-example fade-in">
         <h4>La signature pédagogique</h4>
-        <p class="old-way">On ne vous dit pas : "Voici les 7 principes du copywriting".</p>
+        <p class="old-way">On ne vous dit pas : "Voici les 7 principes du copywriting."</p>
         <div class="vs">On vous dit :</div>
         <blockquote>"Vous êtes chargé d'écrire la page d'accueil. Le visiteur arrive. Qu'est-ce qu'il doit ressentir dans les 3 premières secondes ? Voici les 3 leviers narratifs pour le capturer."</blockquote>
       </div>
-      <h3 class="fade-in" style="font-family:'Fraunces', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1.75rem; color: var(--ink); text-align: center;">🧰 Catalogue des "Passeports 48H"</h3>
+      
+      <h3 class="fade-in" style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:1.75rem;text-align:center;">📚 Catalogue des "Passeports 48H"</h3>
+      
       <!-- Passeport 1 -->
       <div class="passeport-card fade-in" id="passeport1">
         <div class="passeport-card-header" onclick="togglePasseport('passeport1')">
           <div class="passeport-card-header-left">
-            <div class="passeport-card-emoji">📝</div>
-            <div>
-              <h4>Passeport N°1: Écrire pour Vendre</h4>
-              <p>Copywriting Narratif — Pour rédiger des textes qui convertissent</p>
-            </div>
+            <div class="passeport-card-emoji">✍️</div>
+            <div><h4>Passeport N°1 : Écrire pour Vendre</h4><p>Copywriting Narratif — Pour rédiger des textes qui convertissent</p></div>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="passeport-card-price">197€</div>
-            <span class="passeport-card-toggle">▼</span>
-          </div>
+          <div style="display:flex;align-items:center;"><div class="passeport-card-price">197€</div><span class="passeport-card-toggle">▼</span></div>
         </div>
         <div class="passeport-card-body">
           <h5>Pour qui ?</h5>
-          <p style="font-size: 0.875rem; color: var(--ink-3); margin-bottom: 0.9rem;">Toute personne qui doit rédiger une page de vente, un post LinkedIn, un email commercial ou une brochure.</p>
+          <p>Toute personne qui doit rédiger une page de vente, un post LinkedIn, un email commercial ou une brochure.</p>
           <h5>Ce que vous allez vivre (2h)</h5>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 1 — 30 min</span><div class="passeport-act-content"><strong>L'Appel de l'Aventure.</strong> On analyse votre client idéal. Qui est-il ? De quoi a-t-il peur ? Que désire-t-il secrètement ?</div></div>
-          <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>La Traversée.</strong> Je vous donne la Structure du Conteur (une trame en 5 étapes, ultra-simple, utilisable partout). On rédige ENSEMBLE votre premier texte commercial.</div></div>
-          <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Trésor.</strong> Vous repartez avec votre texte finalisé + la trame pour refaire l'exercice seul(e) la prochaine fois.</div></div>
+          <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>La Traversée.</strong> Je vous donne la Structure du Conteur (une trame en 5 étapes). On rédige ENSEMBLE votre premier texte commercial.</div></div>
+          <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Trésor.</strong> Vous repartez avec votre texte finalisé + la trame pour refaire l'exercice seul(e).</div></div>
           <h5>Livrable</h5>
-          <div class="passeport-livrable">
-            <p>📄 <strong>La Carte du Conteur (PDF)</strong> : La trame des 5 étapes avec des exemples.</p>
-            <p>✍ <strong>Votre texte finalisé</strong>, prêt à publier.</p>
-          </div>
+          <div class="passeport-livrable"><p><strong>La Carte du Conteur (PDF)</strong> : La trame des 5 étapes avec des exemples.</p><p><strong>Votre texte finalisé</strong>, prêt à publier.</p></div>
         </div>
       </div>
+      
       <!-- Passeport 2 -->
       <div class="passeport-card fade-in" id="passeport2">
         <div class="passeport-card-header" onclick="togglePasseport('passeport2')">
           <div class="passeport-card-header-left">
             <div class="passeport-card-emoji">🎤</div>
-            <div>
-              <h4>Passeport N°2: Prendre la Parole sans Trembler</h4>
-              <p>Aisance Orale — Gérer son stress et structurer son discours</p>
-            </div>
+            <div><h4>Passeport N°2 : Prendre la Parole sans Trembler</h4><p>Aisance Orale — Gérer son stress et structurer son discours</p></div>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="passeport-card-price">197€</div>
-            <span class="passeport-card-toggle">▼</span>
-          </div>
+          <div style="display:flex;align-items:center;"><div class="passeport-card-price">197€</div><span class="passeport-card-toggle">▼</span></div>
         </div>
         <div class="passeport-card-body">
           <h5>Pour qui ?</h5>
-          <p style="font-size: 0.875rem; color: var(--ink-3); margin-bottom: 0.9rem;">Toute personne qui a une présentation client, une réunion importante ou une prise de parole en public qui la stresse.</p>
+          <p>Toute personne qui a une présentation client, une réunion importante ou une prise de parole en public qui la stresse.</p>
           <h5>Ce que vous allez vivre (2h)</h5>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 1 — 30 min</span><div class="passeport-act-content"><strong>Le Dragon.</strong> On identifie précisément ce qui vous fait peur.</div></div>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>L'Épée et le Bouclier.</strong> Méthode du Conteur Debout + technique de respiration + structure en 3 temps. Simulation en direct.</div></div>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Retour au Village.</strong> Débriefing et ajustements. Plan clair et confiance décuplée.</div></div>
           <h5>Livrable</h5>
-          <div class="passeport-livrable">
-            <p>📄 <strong>La Carte de l'Orateur (PDF)</strong> : Structure de discours + exercice de respiration.</p>
-            <p>🎥 <strong>L'enregistrement de votre simulation</strong> (si vous le souhaitez).</p>
-          </div>
+          <div class="passeport-livrable"><p><strong>La Carte de l'Orateur (PDF)</strong> : Structure de discours + exercice de respiration.</p><p><strong>L'enregistrement de votre simulation</strong> (si vous le souhaitez).</p></div>
         </div>
       </div>
+      
       <!-- Passeport 3 -->
       <div class="passeport-card fade-in" id="passeport3">
         <div class="passeport-card-header" onclick="togglePasseport('passeport3')">
           <div class="passeport-card-header-left">
-            <div class="passeport-card-emoji">🗣</div>
-            <div>
-              <h4>Passeport N°3: Gérer un Conflit sans s'Épuiser</h4>
-              <p>Communication Difficile — Désamorcer avec 3 phrases</p>
-            </div>
+            <div class="passeport-card-emoji">🤝</div>
+            <div><h4>Passeport N°3 : Gérer un Conflit sans s'Épuiser</h4><p>Communication Difficile — Désamorcer avec 3 phrases</p></div>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="passeport-card-price">197€</div>
-            <span class="passeport-card-toggle">▼</span>
-          </div>
+          <div style="display:flex;align-items:center;"><div class="passeport-card-price">197€</div><span class="passeport-card-toggle">▼</span></div>
         </div>
         <div class="passeport-card-body">
           <h5>Pour qui ?</h5>
-          <p style="font-size: 0.875rem; color: var(--ink-3); margin-bottom: 0.9rem;">Managers, chefs de projet, indépendants qui subissent des tensions avec un collègue, un client ou un prestataire.</p>
+          <p>Managers, chefs de projet, indépendants qui subissent des tensions avec un collègue, un client ou un prestataire.</p>
           <h5>Ce que vous allez vivre (2h)</h5>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 1 — 30 min</span><div class="passeport-act-content"><strong>Le Terrain Miné.</strong> On cartographie la situation conflictuelle.</div></div>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>La Machette Verbale.</strong> Technique de désamorçage en 3 phrases. Simulation avec VOTRE situation réelle.</div></div>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Traité de Paix.</strong> Script personnalisé pour votre prochaine conversation difficile.</div></div>
           <h5>Livrable</h5>
-          <div class="passeport-livrable">
-            <p>📄 <strong>La Carte du Médiateur (PDF)</strong> : Les 3 phrases + les pièges à éviter.</p>
-            <p>📝 <strong>Votre script personnalisé</strong> pour votre situation.</p>
-          </div>
+          <div class="passeport-livrable"><p><strong>La Carte du Médiateur (PDF)</strong> : Les 3 phrases + les pièges à éviter.</p><p><strong>Votre script personnalisé</strong> pour votre situation.</p></div>
         </div>
       </div>
+      
       <!-- Passeport 4 -->
       <div class="passeport-card fade-in" id="passeport4">
         <div class="passeport-card-header" onclick="togglePasseport('passeport4')">
           <div class="passeport-card-header-left">
             <div class="passeport-card-emoji">🤖</div>
-            <div>
-              <h4>Passeport N°4: Domestiquer ChatGPT</h4>
-              <p>IA pour les Nuls — Utiliser l'IA efficacement pour son travail</p>
-            </div>
+            <div><h4>Passeport N°4 : Domestiquer ChatGPT</h4><p>IA pour les Nuls — Utiliser l'IA efficacement pour son travail</p></div>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="passeport-card-price">197€</div>
-            <span class="passeport-card-toggle">▼</span>
-          </div>
+          <div style="display:flex;align-items:center;"><div class="passeport-card-price">197€</div><span class="passeport-card-toggle">▼</span></div>
         </div>
         <div class="passeport-card-body">
           <h5>Pour qui ?</h5>
-          <p style="font-size: 0.875rem; color: var(--ink-3); margin-bottom: 0.9rem;">Toute personne qui sent que l'IA peut l'aider mais qui ne sait pas quoi lui demander.</p>
+          <p>Toute personne qui sent que l'IA peut l'aider mais qui ne sait pas quoi lui demander.</p>
           <h5>Ce que vous allez vivre (2h)</h5>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 1 — 30 min</span><div class="passeport-act-content"><strong>La Créature Sauvage.</strong> Comprendre comment "pense" ChatGPT (c'est un conteur, pas un moteur de recherche).</div></div>
-          <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>Le Dressage.</strong> La Méthode du Génie dans la Lampe : les 4 éléments pour obtenir exactement ce que vous voulez. 5 exercices pratiques sur VOS besoins.</div></div>
+          <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>Le Dressage.</strong> La Méthode du Génie dans la Lampe : les 4 éléments pour obtenir exactement ce que vous voulez.</div></div>
           <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Grimoire.</strong> Bibliothèque de "prompts magiques" prêts à copier-coller.</div></div>
           <h5>Livrable</h5>
-          <div class="passeport-livrable">
-            <p>📄 <strong>La Carte de l'Ingénieur IA (PDF)</strong> : La méthode des 4 éléments + 20 prompts modèles.</p>
-            <p>📚 <strong>Votre bibliothèque personnalisée de prompts</strong>.</p>
-          </div>
+          <div class="passeport-livrable"><p><strong>Le Grimoire (PDF)</strong> : 50+ prompts classés par usage.</p><p><strong>Votre prompt personnalisé</strong> pour votre besoin spécifique.</p></div>
         </div>
       </div>
+      
       <!-- Passeport 5 -->
       <div class="passeport-card fade-in" id="passeport5">
         <div class="passeport-card-header" onclick="togglePasseport('passeport5')">
           <div class="passeport-card-header-left">
-            <div class="passeport-card-emoji">🗂</div>
-            <div>
-              <h4>Passeport N°5: Organiser son Travail sans Devenir Fou</h4>
-              <p>Productivité Douce — Retrouver le contrôle sur son temps</p>
-            </div>
+            <div class="passeport-card-emoji">⏱️</div>
+            <div><h4>Passeport N°5 : Prioriser sans Craquer</h4><p>Gestion du Temps — La méthode de l'Explorateur pour faire plus en moins de temps</p></div>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="passeport-card-price">197€</div>
-            <span class="passeport-card-toggle">▼</span>
-          </div>
+          <div style="display:flex;align-items:center;"><div class="passeport-card-price">197€</div><span class="passeport-card-toggle">▼</span></div>
         </div>
         <div class="passeport-card-body">
           <h5>Pour qui ?</h5>
-          <p style="font-size: 0.875rem; color: var(--ink-3); margin-bottom: 0.9rem;">Les personnes débordées qui ont l'impression de courir toute la journée sans avancer sur l'essentiel.</p>
+          <p>Professionnels débordés, entrepreneurs, chefs de projet qui ont l'impression de courir après le temps.</p>
           <h5>Ce que vous allez vivre (2h)</h5>
-          <div class="passeport-act"><span class="passeport-act-badge">Acte 1 — 30 min</span><div class="passeport-act-content"><strong>La Forêt des Tâches.</strong> On liste TOUT ce que vous avez à faire. On identifie les "arbres qui cachent la forêt".</div></div>
-          <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>La Boussole et le Sablier.</strong> Méthode du Chef d'Expédition : 3 colonnes (Aujourd'hui / Cette Semaine / Plus Tard) + la règle des 25 minutes.</div></div>
-          <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Campement.</strong> Votre semaine organisée + méthode claire pour ne plus jamais vous sentir submergé.</div></div>
+          <div class="passeport-act"><span class="passeport-act-badge">Acte 1 — 30 min</span><div class="passeport-act-content"><strong>Le Bazar.</strong> Audit de votre semaine type. Où passe vraiment votre temps ?</div></div>
+          <div class="passeport-act"><span class="passeport-act-badge">Acte 2 — 60 min</span><div class="passeport-act-content"><strong>La Méthode des 3 Colonnes.</strong> Urgent/Important/Autre. La règle des 25 minutes. On planifie VOTRE semaine idéale.</div></div>
+          <div class="passeport-act"><span class="passeport-act-badge">Acte 3 — 30 min</span><div class="passeport-act-content"><strong>Le Rangement.</strong> Mise en place d'un système simple pour ne plus rien oublier.</div></div>
           <h5>Livrable</h5>
-          <div class="passeport-livrable">
-            <p>📄 <strong>La Carte de l'Explorateur Organisé (PDF)</strong> : Système des 3 colonnes + règle des 25 minutes.</p>
-            <p>📅 <strong>Votre planning de la semaine</strong> organisé.</p>
-          </div>
+          <div class="passeport-livrable"><p><strong>La Carte de l'Explorateur Organisé (PDF)</strong> : Système des 3 colonnes + règle des 25 minutes.</p><p><strong>Votre planning de la semaine</strong> organisé.</p></div>
         </div>
       </div>
-      <!-- Offres groupées -->
-      <h3 class="fade-in" style="text-align: center; font-family:'Fraunces', serif; font-size: 1.2rem; font-weight: 700; margin: 3rem 0 2rem; color: var(--ink);">🎁 Les Offres Groupées: "Le Compas Complet"</h3>
-      <p class="fade-in" style="text-align: center; color: var(--ink-3); opacity: 0.65; margin-bottom: 2rem; font-size: 0.9rem;">Pour ceux qui veulent plusieurs compétences ou un accompagnement plus profond.</p>
+      
+      <h3 class="fade-in" style="text-align:center;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin:3rem 0 2rem;">🎁 Les Offres Groupées : "Le Compas Complet"</h3>
       <div class="packs-grid fade-in">
-        <div class="pack-card">
-          <h4>🧭 Le Compas</h4>
-          <p class="pack-desc">3 Passeports au choix</p>
-          <p class="pack-old-price">591€</p>
-          <p class="pack-price">497€</p>
-          <p class="pack-savings">Vous économisez 94€</p>
-          <a href="#contact" class="btn btn-lav btn-sm">Choisir →</a>
-        </div>
-        <div class="pack-card featured">
-          <h4>🌍 Le Tour du Monde</h4>
-          <p class="pack-desc">5 Passeports + 1 séance de suivi (30 min)</p>
-          <p class="pack-old-price">985€</p>
-          <p class="pack-price">797€</p>
-          <p class="pack-savings">Vous économisez 188€</p>
-          <div class="pack-bonus">🎁 Bonus : 1 séance de suivi offerte 1 mois après pour faire le point</div>
-          <div style="margin-top: 1rem;">
-            <a href="#contact" class="btn btn-sm" style="background: var(--lavender-light); color: white;">Choisir →</a>
-          </div>
-        </div>
+        <div class="pack-card"><h4>Le Compas</h4><p class="pack-desc">3 Passeports au choix</p><p class="pack-old-price" style="text-decoration:line-through;opacity:0.6;">591€</p><p class="pack-price" style="font-size:1.8rem;font-weight:900;">497€</p><p>Vous économisez 94€</p><a href="#contact" class="btn btn-lav btn-sm" style="margin-top:1rem;">Choisir →</a></div>
+        <div class="pack-card pack-card-featured" style="background:var(--ink);color:white;"><h4 style="color:var(--cream);">Le Tour du Monde</h4><p class="pack-desc">5 Passeports + 1 séance de suivi (30 min)</p><p style="text-decoration:line-through;opacity:0.6;">985€</p><p style="font-size:1.8rem;font-weight:900;">797€</p><p>Vous économisez 188€</p><div class="pack-bonus" style="margin:0.5rem 0;font-size:0.75rem;background:var(--lavender);display:inline-block;padding:0.2rem 0.8rem;border-radius:20px;">Bonus : 1 séance de suivi offerte</div><a href="#contact" class="btn btn-sm" style="margin-top:1rem;background:var(--lavender-light);color:white;">Choisir →</a></div>
       </div>
+      
       <div class="lav-cta-box fade-in">
-        <h3>🎫 Prêt(e) à obtenir votre Passeport ?</h3>
+        <h3>Prêt(e) à obtenir votre Passeport ?</h3>
         <p>Choisissez votre destination et vivez l'immersion narrative en 2 heures.</p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="#contact" class="btn" style="background: white; color: var(--lavender); font-weight: 700;">Je choisis mon Passeport et je réserve ma session →</a>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#contact" class="btn" style="background:white;color:var(--lavender);font-weight:700;">Je choisis mon Passeport et je réserve ma session →</a>
           <a href="#contact" class="btn btn-outline-cream btn-sm">Un doute ? Appel découverte offert (15 min)</a>
         </div>
       </div>
@@ -2780,157 +2231,118 @@
   </section>
 
   <!-- ESPACE FAMILLE -->
-  <section class="family-section" id="espace-famille">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag">🧸 Espace Famille</div>
-        <h2>Livres de Mathématiques Personnalisés</h2>
-        <p>Des livres immersifs et personnalisés couvrant l'ensemble du programme de mathématiques, du CP à la 3e, à travers des univers variés, modernes et motivants.</p>
-      </div>
-      <div class="family-quote fade-in">
-        <blockquote>Votre enfant est le héros de l'histoire.<br>Les maths deviennent une aventure, pas une corvée.</blockquote>
-        <p style="color:var(--ink-3);font-size:0.85rem;margin-top:0.85rem;opacity:0.6;">Du CP à la 3e. Méthode narrative EduConcret.</p>
-      </div>
-      <div class="story-example fade-in">
-        <p><strong>Exemple :</strong> au lieu d'enchaîner des exercices abstraits, l'enfant progresse dans un univers qui lui parle. Il résout des problèmes, comprend les notions et avance avec davantage de motivation, de confiance et d'autonomie.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card fade-in">
-          <div class="step-number">1</div>
-          <h4>Vous choisissez un univers</h4>
-          <p>Boutique kawaii, voyage, football ou projet sur mesure.</p>
-        </div>
-        <div class="step-card fade-in fade-in-delay-1">
-          <div class="step-number">2</div>
-          <h4>Nous adaptons au niveau</h4>
-          <p>CP, primaire, collège, avec progression claire et cohérente.</p>
-        </div>
-        <div class="step-card fade-in fade-in-delay-2">
-          <div class="step-number">3</div>
-          <h4>L'enfant entre dans l'histoire</h4>
-          <p>Les apprentissages deviennent concrets, vivants et mémorables.</p>
-        </div>
-        <div class="step-card fade-in fade-in-delay-3">
-          <div class="step-number">4</div>
-          <h4>Vous recevez un support utile</h4>
-          <p>Un livre motivant, structuré et pensé pour faire progresser.</p>
-        </div>
-      </div>
-      <!-- LIVRES DISPONIBLES -->
-      <div class="book-gallery fade-in">
-        <h3>Nos livres disponibles</h3>
-        <p>Trois univers déjà prêts pour démarrer avec EduConcret.</p>
-        <div class="book-grid">
-          <div class="book-item">
-            <div class="book-cover">
-              <img src="https://i.postimg.cc/pLVx82Zj/Chat-GPT-Image-8-avr-2026-23-06-48.png" alt="Kawaii et Compagnie CM1" loading="lazy">
-              <div class="book-cover-badge">CM1</div>
-            </div>
-            <div class="book-info">
-              <h4>Kawaii et Compagnie CM1</h4>
-              <p>CM1 · Boutique japonaise · Programme complet</p>
-              <a href="#contact" class="btn btn-sky btn-sm" style="margin-top:0.8rem;">Commander ce livre</a>
-            </div>
+<!-- ESPACE FAMILLE -->
+<section class="family-section" id="espace-famille">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-tag" style="background:rgba(46,111,168,0.1);color:var(--sky);">👨‍👩‍👧 Espace Famille</div>
+      <h2>Livres de Mathématiques Personnalisés</h2>
+      <p>Des livres immersifs et personnalisés couvrant l'ensemble du programme de mathématiques, du CP à la 3e, à travers des univers variés, modernes et motivants.</p>
+    </div>
+    
+    <div class="fade-in" style="max-width:780px;margin:0 auto 2rem;text-align:center;background:var(--white);border-radius:var(--radius-xl);padding:2rem;">
+      <blockquote style="font-family:'Fraunces',serif;font-size:1.2rem;font-style:italic;color:var(--ink);">"Votre enfant est le héros de l'histoire. Les maths deviennent une aventure, pas une corvée."</blockquote>
+      <p style="color:var(--ink-3);font-size:0.85rem;margin-top:0.85rem;opacity:0.6;">Du CP à la 3e. Méthode narrative EduConcret.</p>
+    </div>
+    
+    <div class="fade-in" style="max-width:780px;margin:0 auto 2rem;background:rgba(46,111,168,0.05);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;">
+      <p><strong>Exemple :</strong> au lieu d'enchaîner des exercices abstraits, l'enfant progresse dans un univers qui lui parle. Il résout des problèmes, comprend les notions et avance avec davantage de motivation, de confiance et d'autonomie.</p>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:3rem;">
+      <div class="step-card fade-in" style="text-align:center;background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;"><div class="step-number" style="width:40px;height:40px;background:var(--sky);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:bold;">1</div><h4>Vous choisissez un univers</h4><p>Boutique kawaii, voyage, football ou projet sur mesure.</p></div>
+      <div class="step-card fade-in fade-in-delay-1" style="text-align:center;background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;"><div class="step-number" style="width:40px;height:40px;background:var(--sky);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:bold;">2</div><h4>Nous adaptons au niveau</h4><p>CP, primaire, collège, avec progression claire et cohérente.</p></div>
+      <div class="step-card fade-in fade-in-delay-2" style="text-align:center;background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;"><div class="step-number" style="width:40px;height:40px;background:var(--sky);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:bold;">3</div><h4>L'enfant entre dans l'histoire</h4><p>Les apprentissages deviennent concrets, vivants et mémorables.</p></div>
+      <div class="step-card fade-in fade-in-delay-3" style="text-align:center;background:var(--white);border-radius:var(--radius-lg);padding:1.5rem;"><div class="step-number" style="width:40px;height:40px;background:var(--sky);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:bold;">4</div><h4>Vous recevez un support utile</h4><p>Un livre motivant, structuré et pensé pour faire progresser.</p></div>
+    </div>
+    
+    <!-- LIVRES DISPONIBLES AVEC IMAGES MISES À JOUR -->
+    <div class="fade-in" style="margin-bottom:3rem;">
+      <h3 style="text-align:center;font-family:'Fraunces',serif;margin-bottom:0.5rem;">Nos livres disponibles</h3>
+      <p style="text-align:center;color:var(--ink-3);margin-bottom:2rem;">Trois univers déjà prêts pour démarrer avec EduConcret.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;">
+        
+        <!-- Livre 1 : Kawaii et Compagnie -->
+        <div style="background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="height:250px;overflow:hidden;">
+            <img src="https://i.postimg.cc/w7rSYtRx/Chat-GPT-Image-8-avr-2026-23-06-48.png" alt="Livre Kawaii et Compagnie CM1" style="width:100%;height:100%;object-fit:cover;">
           </div>
-          <div class="book-item">
-            <div class="book-cover">
-              <img src="https://i.postimg.cc/dVSMyfNK/Chat-GPT-Image-8-avr-2026-23-08-07.png" alt="Eliza in New York 6e" loading="lazy">
-              <div class="book-cover-badge">6e</div>
-            </div>
-            <div class="book-info">
-              <h4>Eliza in New York 6e</h4>
-              <p>6e · Voyage urbain · Programme complet</p>
-              <a href="#contact" class="btn btn-sky btn-sm" style="margin-top:0.8rem;">Commander ce livre</a>
-            </div>
-          </div>
-          <div class="book-item">
-            <div class="book-cover">
-              <img src="https://i.postimg.cc/HL7N7k7Q/Chat-GPT-Image-8-avr-2026-23-09-02.png" alt="Barça Foot et Math 4e" loading="lazy">
-              <div class="book-cover-badge">4e</div>
-            </div>
-            <div class="book-info">
-              <h4>Barça Foot et Math 4e</h4>
-              <p>4e · Football · Programme complet</p>
-              <a href="#contact" class="btn btn-sky btn-sm" style="margin-top:0.8rem;">Commander ce livre</a>
-            </div>
+          <div style="padding:1.5rem;">
+            <h4 style="font-family:'Fraunces',serif;">Kawaii et Compagnie CM1</h4>
+            <p>CM1 · Boutique japonaise · Programme complet</p>
+            <a href="#contact" class="btn btn-sky btn-sm" style="margin-top:1rem;">Commander ce livre →</a>
           </div>
         </div>
-      </div>
-      <!-- EXEMPLES -->
-      <div class="book-gallery fade-in">
-        <h3>Exemples de créations personnalisées</h3>
-        <p>Voici quelques exemples d'univers possibles. Chaque projet peut être adapté au prénom, au niveau et aux centres d'intérêt de l'enfant.</p>
-        <div class="example-books" style="text-align:center;">
-          <img src="https://i.postimg.cc/KzpmvzX3/Chat-GPT-Image-8-avr-2026-15-17-23.png" alt="Exemples de livres personnalisés" loading="lazy" style="max-width:900px;width:100%;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.12);">
+        
+        <!-- Livre 2 : Eliza in New York -->
+        <div style="background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="height:250px;overflow:hidden;">
+            <img src="https://i.postimg.cc/WdrfR5P9/Chat-GPT-Image-8-avr-2026-23-08-07.png" alt="Livre Eliza in New York 6e" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="padding:1.5rem;">
+            <h4 style="font-family:'Fraunces',serif;">Eliza in New York 6e</h4>
+            <p>6e · Voyage urbain · Programme complet</p>
+            <a href="#contact" class="btn btn-sky btn-sm" style="margin-top:1rem;">Commander ce livre →</a>
+          </div>
         </div>
-      </div>
-      <!-- TARIFS FAMILLE -->
-      <h3 class="fade-in" style="text-align:center;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:1.35rem;color:var(--ink);">💶 Offres famille</h3>
-      <div class="family-pricing fade-in">
-        <div class="family-price-card">
-          <h4>📘 Livre unique</h4>
-          <div class="price">59€</div>
-          <p>1 livre personnalisé<br><small>Idéal pour découvrir la méthode</small></p>
-          <a href="#contact" class="btn btn-sm btn-sky">Choisir →</a>
+        
+        <!-- Livre 3 : Barça Foot et Math -->
+        <div style="background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="height:250px;overflow:hidden;">
+            <img src="https://i.postimg.cc/PLTyghyx/Chat-GPT-Image-8-avr-2026-23-09-02.png" alt="Livre Barça Foot et Math 4e" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="padding:1.5rem;">
+            <h4 style="font-family:'Fraunces',serif;">Barça Foot et Math 4e</h4>
+            <p>4e · Football · Programme complet</p>
+            <a href="#contact" class="btn btn-sky btn-sm" style="margin-top:1rem;">Commander ce livre →</a>
+          </div>
         </div>
-        <div class="family-price-card featured">
-          <h4>📚 Pack progression</h4>
-          <div class="price">109€</div>
-          <p>2 livres personnalisés<br><small>Pour installer une vraie dynamique d'apprentissage</small></p>
-          <a href="#contact" class="btn btn-sm btn-sky">Choisir →</a>
-        </div>
-        <div class="family-price-card">
-          <h4>🎓 Suivi annuel</h4>
-          <div class="price">179€</div>
-          <p>3 livres dans l'année + progression pédagogique<br><small>Suivi de l'évolution de l'élève</small></p>
-          <a href="#contact" class="btn btn-sm btn-sky">Choisir →</a>
-        </div>
-      </div>
-      <!-- AVIS -->
-      <h3 class="fade-in" style="text-align:center;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:1.35rem;color:var(--ink);">💬 Ce que disent les parents</h3>
-      <div class="testimonials-grid fade-in">
-        <div class="testimonial-card">
-          <p>Le livre d'Eliza a changé sa manière de travailler. Elle s'implique davantage, comprend mieux et avance avec beaucoup plus d'autonomie.</p>
-          <div class="testimonial-author">— Besse, mère d'Eliza</div>
-        </div>
-        <div class="testimonial-card">
-          <p>Yoyo s'est reconnue dans l'histoire. Elle a pris confiance et elle accepte enfin de travailler les mathématiques avec plaisir.</p>
-          <div class="testimonial-author">— Marie Madelene, mère de Yoyo</div>
-        </div>
-        <div class="testimonial-card">
-          <p>Célia s'est sentie valorisée. Le fait d'avoir un livre à son nom l'a motivée immédiatement et elle a retrouvé l'envie d'apprendre.</p>
-          <div class="testimonial-author">— Fatima, mère de Célia</div>
-        </div>
-        <div class="testimonial-card">
-          <p>On voit qu'il y a une vraie réflexion pédagogique derrière chaque livre. Ce n'est pas un simple support, c'est un outil de progression.</p>
-          <div class="testimonial-author">— Parent accompagné par EduConcret</div>
-        </div>
-        <div class="testimonial-card">
-          <p>Le concept est fort, moderne et utile. Mon enfant apprend mieux quand il devient le héros de son propre livre.</p>
-          <div class="testimonial-author">— Famille cliente EduConcret</div>
-        </div>
-        <div class="testimonial-card">
-          <p>J'ai apprécié la personnalisation, la clarté des exercices et la cohérence avec le niveau scolaire. Le rendu est sérieux et motivant.</p>
-          <div class="testimonial-author">— Parent d'élève collège</div>
-        </div>
-      </div>
-      <!-- CTA -->
-      <div class="terra-cta-box fade-in">
-        <h3>Prêt à offrir un livre qui donne envie d'apprendre ?</h3>
-        <p>Choisissez un univers, échangeons sur le niveau de votre enfant et construisons un support concret, motivant et utile.</p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="#contact" class="btn" style="background:white;color:var(--terracotta);font-weight:700;">Je demande mon livre personnalisé →</a>
-          <a href="#contact" class="btn btn-outline-cream btn-sm">Je pose mes questions</a>
-        </div>
+        
       </div>
     </div>
-  </section>
+    
+    <!-- EXEMPLES DE CRÉATIONS PERSONNALISÉES -->
+    <div class="fade-in" style="margin-bottom:3rem;">
+      <h3 style="text-align:center;font-family:'Fraunces',serif;margin-bottom:0.5rem;">Exemples de créations personnalisées</h3>
+      <p style="text-align:center;color:var(--ink-3);margin-bottom:2rem;">Voici quelques exemples d'univers possibles. Chaque projet peut être adapté au prénom, au niveau et aux centres d'intérêt de l'enfant.</p>
+      <div style="text-align:center;">
+        <img src="https://i.postimg.cc/G8DWXbmb/Chat-GPT-Image-8-avr-2026-15-17-23.png" alt="Exemples de livres personnalisés" loading="lazy" style="max-width:900px;width:100%;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.12);">
+      </div>
+    </div>
+    
+    <!-- TARIFS FAMILLE -->
+    <h3 class="fade-in" style="text-align:center;font-family:'Fraunces',serif;margin-bottom:1.35rem;">💰 Offres famille</h3>
+    <div class="family-pricing fade-in">
+      <div class="family-price-card"><h4>Livre unique</h4><div class="price">59€</div><p>1 livre personnalisé<br><small>Idéal pour découvrir la méthode</small></p><a href="#contact" class="btn btn-sm btn-sky">Choisir →</a></div>
+      <div class="family-price-card featured"><h4>Pack progression</h4><div class="price">109€</div><p>2 livres personnalisés<br><small>Pour installer une vraie dynamique d'apprentissage</small></p><a href="#contact" class="btn btn-sm btn-sky">Choisir →</a></div>
+      <div class="family-price-card"><h4>Suivi annuel</h4><div class="price">179€</div><p>3 livres dans l'année + progression pédagogique<br><small>Suivi de l'évolution de l'élève</small></p><a href="#contact" class="btn btn-sm btn-sky">Choisir →</a></div>
+    </div>
+    
+    <!-- AVIS PARENTS -->
+    <h3 class="fade-in" style="text-align:center;font-family:'Fraunces',serif;margin-bottom:1.35rem;">⭐ Ce que disent les parents</h3>
+    <div class="testimonials-grid fade-in">
+      <div class="testimonial-card"><p>"Le livre d'Eliza a changé sa manière de travailler. Elle s'implique davantage, comprend mieux et avance avec beaucoup plus d'autonomie."</p><div class="testimonial-author">— Besse, mère d'Eliza</div></div>
+      <div class="testimonial-card"><p>"Yoyo s'est reconnue dans l'histoire. Elle a pris confiance et elle accepte enfin de travailler les mathématiques avec plaisir."</p><div class="testimonial-author">— Marie Madelene, mère de Yoyo</div></div>
+      <div class="testimonial-card"><p>"Célia s'est sentie valorisée. Le fait d'avoir un livre à son nom l'a motivée immédiatement."</p><div class="testimonial-author">— Fatima, mère de Célia</div></div>
+    </div>
+    
+    <!-- CTA FINAL -->
+    <div class="terra-cta-box fade-in">
+      <h3>Prêt à offrir un livre qui donne envie d'apprendre ?</h3>
+      <p>Choisissez un univers, échangeons sur le niveau de votre enfant et construisons un support concret, motivant et utile.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#contact" class="btn" style="background:white;color:var(--terracotta);font-weight:700;">Je demande mon livre personnalisé →</a>
+        <a href="#contact" class="btn btn-outline-cream btn-sm">Je pose mes questions</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- À PROPOS EXPERT -->
+  <!-- À PROPOS -->
   <section class="about-section" id="a-propos">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">👤 L'Expert</div>
+        <div class="section-tag">👨‍🏫 L'Expert</div>
         <h2>Moctar Touré</h2>
         <p>Ingénieur Pédagogique · Directeur Pédagogique · Auteur</p>
       </div>
@@ -2940,45 +2352,28 @@
           <p>Depuis plus de <strong>10 ans</strong>, je résous un problème fondamental : <strong>le fossé entre la théorie et la pratique</strong>.</p>
           <p>J'ai conçu et piloté <strong>plus de 50 formations</strong> pour des organismes publics et privés. J'ai formé des centaines d'adultes en reconversion. J'ai créé une méthode unique de <strong>narration mathématique</strong> qui réconcilie les enfants avec les chiffres.</p>
           <p>Aujourd'hui, je mets cette expertise au service de trois publics :</p>
-          <ul>
-            <li>🏢 <strong>Les organisations</strong> qui veulent des formations efficaces et conformes.</li>
-            <li>🧭 <strong>Les adultes</strong> qui veulent créer leur activité ou monter en compétence rapidement.</li>
-            <li>🧸 <strong>Les enfants</strong> qui méritent de comprendre les maths en s'amusant.</li>
-          </ul>
+          <ul><li><strong>Les organisations</strong> qui veulent des formations efficaces et conformes.</li><li><strong>Les adultes</strong> qui veulent créer leur activité ou monter en compétence rapidement.</li><li><strong>Les enfants</strong> qui méritent de comprendre les maths en s'amusant.</li></ul>
         </div>
         <div class="about-sidebar">
           <h3>Chiffres clés</h3>
-          <div class="about-item">
-            <div class="about-item-icon">📊</div>
-            <div><h4 class="stat-number">+50</h4><p>Formations conçues et déployées</p></div>
-          </div>
-          <div class="about-item">
-            <div class="about-item-icon">👥</div>
-            <div><h4 class="stat-number">3 000+</h4><p>Apprenants accompagnés</p></div>
-          </div>
-          <div class="about-item">
-            <div class="about-item-icon">🏆</div>
-            <div><h4 class="stat-number">+22%</h4><p>Satisfaction apprenants (moyenne)</p></div>
-          </div>
-          <div class="about-item">
-            <div class="about-item-icon">⚡</div>
-            <div><h4 class="stat-number">-30%</h4><p>Temps de production des formations</p></div>
-          </div>
-          <div class="about-item">
-            <div class="about-item-icon">✅</div>
-            <div><h4>Qualiopi</h4><p>Audits réussis, conformité garantie</p></div>
-          </div>
+          <div class="about-item"><div class="about-item-icon">📊</div><div><h4 class="stat-number">+50</h4><p>Formations conçues et déployées</p></div></div>
+          <div class="about-item"><div class="about-item-icon">👥</div><div><h4 class="stat-number">3 000+</h4><p>Apprenants accompagnés</p></div></div>
+          <div class="about-item"><div class="about-item-icon">🏆</div><div><h4 class="stat-number">+22%</h4><p>Satisfaction apprenants (moyenne)</p></div></div>
+          <div class="about-item"><div class="about-item-icon">⚡</div><div><h4 class="stat-number">-30%</h4><p>Temps de production des formations</p></div></div>
+          <div class="about-item"><div class="about-item-icon">✅</div><div><h4>Qualiopi</h4><p>Audits réussis, conformité garantie</p></div></div>
         </div>
       </div>
+      
       <div class="philosophy-box fade-in">
         <blockquote>"On ne comprend vraiment que ce que l'on vit."</blockquote>
         <p>C'est ma conviction profonde. C'est pour cela que tout ce que je crée — modules e-learning, accompagnements, livres pour enfants — est construit autour d'une <strong>progression narrative</strong> et d'une <strong>mise en action immédiate</strong>.</p>
         <br>
         <p><strong>Je ne vends pas des slides. Je crée des expériences d'apprentissage qui transforment.</strong></p>
       </div>
+      
       <div style="text-align:center;" class="fade-in">
-        <h3 style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.85rem;color:var(--cream);">Parlons de votre projet</h3>
-        <p style="color:rgba(247,243,237,0.5);margin-bottom:1.35rem;font-size:0.9rem;">Que vous soyez un organisme, un futur entrepreneur, ou un parent inquiet... Votre défi mérite une solution sur mesure.</p>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.85rem;">Parlons de votre projet</h3>
+        <p style="color:rgba(247,243,237,0.5);margin-bottom:1.35rem;">Que vous soyez un organisme, un futur entrepreneur, ou un parent inquiet... Votre défi mérite une solution sur mesure.</p>
         <p>📧 <a href="mailto:contact@educoncret.net" style="color:var(--gold);text-decoration:none;font-weight:600;">contact@educoncret.net</a> &nbsp;&nbsp;|&nbsp;&nbsp; 📞 <a href="tel:+33764070161" style="color:var(--gold);text-decoration:none;font-weight:600;">07 64 07 01 61</a></p>
       </div>
     </div>
@@ -2988,39 +2383,15 @@
   <section style="background:var(--cream-2);padding:6rem 2rem;">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background:rgba(42,123,110,0.1);color:var(--teal);">🧠 Ma Méthode</div>
+        <div class="section-tag" style="background:rgba(42,123,110,0.1);color:var(--teal);">📐 Ma Méthode</div>
         <h2>Une approche en 4 étapes</h2>
         <p>Basée sur le concret et la mise en situation à chaque étape.</p>
       </div>
       <div style="display:grid;gap:1.1rem;max-width:760px;margin:0 auto 3rem;">
-        <div class="method-step fade-in">
-          <div class="method-step-num">1</div>
-          <div>
-            <h4>Analyse des besoins</h4>
-            <p>Je prends le temps de comprendre votre contexte, vos objectifs et vos contraintes avant de proposer quoi que ce soit.</p>
-          </div>
-        </div>
-        <div class="method-step fade-in fade-in-delay-1">
-          <div class="method-step-num">2</div>
-          <div>
-            <h4>Conception pédagogique</h4>
-            <p>Je construis une solution sur mesure : structure, contenu, activités et évaluations adaptés à votre public.</p>
-          </div>
-        </div>
-        <div class="method-step fade-in fade-in-delay-2">
-          <div class="method-step-num">3</div>
-          <div>
-            <h4>Mise en œuvre</h4>
-            <p>Je déploie la solution avec vous, en m'assurant que chaque apprenant peut progresser à son rythme.</p>
-          </div>
-        </div>
-        <div class="method-step fade-in fade-in-delay-3">
-          <div class="method-step-num">4</div>
-          <div>
-            <h4>Évaluation et amélioration</h4>
-            <p>Je mesure les résultats et j'ajuste continuellement pour maximiser l'impact sur le terrain.</p>
-          </div>
-        </div>
+        <div class="method-step fade-in"><div class="method-step-num">1</div><div><h4>Analyse des besoins</h4><p>Je prends le temps de comprendre votre contexte, vos objectifs et vos contraintes avant de proposer quoi que ce soit.</p></div></div>
+        <div class="method-step fade-in fade-in-delay-1"><div class="method-step-num">2</div><div><h4>Conception pédagogique</h4><p>Je construis une solution sur mesure : structure, contenu, activités et évaluations adaptés à votre public.</p></div></div>
+        <div class="method-step fade-in fade-in-delay-2"><div class="method-step-num">3</div><div><h4>Mise en œuvre</h4><p>Je déploie la solution avec vous, en m'assurant que chaque apprenant peut progresser à son rythme.</p></div></div>
+        <div class="method-step fade-in fade-in-delay-3"><div class="method-step-num">4</div><div><h4>Évaluation et amélioration</h4><p>Je mesure les résultats et j'ajuste continuellement pour maximiser l'impact sur le terrain.</p></div></div>
       </div>
       <div class="fade-in" style="background:var(--teal);border-radius:var(--radius-xl);padding:2rem;text-align:center;max-width:680px;margin:0 auto;">
         <p style="color:white;font-size:1rem;font-weight:500;font-family:'Fraunces',serif;font-style:italic;">"L'approche est basée sur le concret et la mise en situation — pas sur la théorie pour la théorie."</p>
@@ -3032,31 +2403,15 @@
   <section style="background:var(--cream);padding:6rem 2rem;">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">🎯 Résultats</div>
+        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">📈 Résultats</div>
         <h2>Ce que vous obtenez concrètement</h2>
         <p>Des bénéfices mesurables pour vous, vos apprenants, votre organisation.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-bottom:3rem;">
-        <div class="result-card fade-in">
-          <div class="result-icon">🧠</div>
-          <h4>Compréhension réelle</h4>
-          <p>Les apprenants comprennent vraiment, pas seulement en surface.</p>
-        </div>
-        <div class="result-card fade-in fade-in-delay-1">
-          <div class="result-icon">⚡</div>
-          <h4>Montée en compétences rapide</h4>
-          <p>Des progrès visibles dès les premières sessions.</p>
-        </div>
-        <div class="result-card fade-in fade-in-delay-2">
-          <div class="result-icon">📈</div>
-          <h4>Formations plus efficaces</h4>
-          <p>Moins de temps perdu, plus d'impact sur les comportements réels.</p>
-        </div>
-        <div class="result-card fade-in fade-in-delay-3">
-          <div class="result-icon">🔥</div>
-          <h4>Engagement des apprenants</h4>
-          <p>Des apprenants impliqués et motivés, pas passifs.</p>
-        </div>
+        <div class="result-card fade-in"><div class="result-icon">🧠</div><h4>Compréhension réelle</h4><p>Les apprenants comprennent vraiment, pas seulement en surface.</p></div>
+        <div class="result-card fade-in fade-in-delay-1"><div class="result-icon">⚡</div><h4>Montée en compétences rapide</h4><p>Des progrès visibles dès les premières sessions.</p></div>
+        <div class="result-card fade-in fade-in-delay-2"><div class="result-icon">🎯</div><h4>Formations plus efficaces</h4><p>Moins de temps perdu, plus d'impact sur les comportements réels.</p></div>
+        <div class="result-card fade-in fade-in-delay-3"><div class="result-icon">💪</div><h4>Engagement des apprenants</h4><p>Des apprenants impliqués et motivés, pas passifs.</p></div>
       </div>
     </div>
   </section>
@@ -3065,31 +2420,15 @@
   <section style="background:var(--ink);padding:6rem 2rem;">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">💬 Pourquoi travailler avec moi</div>
+        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">🤝 Pourquoi travailler avec moi</div>
         <h2 style="color:var(--cream);">Ce qui me différencie</h2>
-        <p style="color:rgba(247,243,237,0.5);opacity:1;">Une combinaison rare d'expertise, d'expérience terrain et d'approche concrète.</p>
+        <p style="color:rgba(247,243,237,0.5);">Une combinaison rare d'expertise, d'expérience terrain et d'approche concrète.</p>
       </div>
       <div class="why-row">
-        <div class="why-row-card fade-in">
-          <div class="wr-icon">🎓</div>
-          <h4>Expertise enfants + adultes</h4>
-          <p>Je maîtrise les deux univers : pédagogie pour enfants et ingénierie de formation pour adultes.</p>
-        </div>
-        <div class="why-row-card fade-in fade-in-delay-1">
-          <div class="wr-icon">🔧</div>
-          <h4>Approche concrète et opérationnelle</h4>
-          <p>Pas de théorie inutile. Tout ce que je crée est immédiatement applicable sur le terrain.</p>
-        </div>
-        <div class="why-row-card fade-in fade-in-delay-2">
-          <div class="wr-icon">💼</div>
-          <h4>Expérience terrain + ingénierie</h4>
-          <p>J'ai à la fois conçu et animé des formations. Je comprends les deux côtés de la barrière.</p>
-        </div>
-        <div class="why-row-card fade-in fade-in-delay-3">
-          <div class="wr-icon">🗂</div>
-          <h4>Capacité à structurer et piloter</h4>
-          <p>Je prends en charge la complexité pour vous : du besoin à la livraison, tout est cadré.</p>
-        </div>
+        <div class="why-row-card fade-in"><div class="wr-icon">👨‍👧</div><h4>Expertise enfants + adultes</h4><p>Je maîtrise les deux univers : pédagogie pour enfants et ingénierie de formation pour adultes.</p></div>
+        <div class="why-row-card fade-in fade-in-delay-1"><div class="wr-icon">🔧</div><h4>Approche concrète et opérationnelle</h4><p>Pas de théorie inutile. Tout ce que je crée est immédiatement applicable sur le terrain.</p></div>
+        <div class="why-row-card fade-in fade-in-delay-2"><div class="wr-icon">🏔️</div><h4>Expérience terrain + ingénierie</h4><p>J'ai à la fois conçu et animé des formations. Je comprends les deux côtés de la barrière.</p></div>
+        <div class="why-row-card fade-in fade-in-delay-3"><div class="wr-icon">📋</div><h4>Capacité à structurer et piloter</h4><p>Je prends en charge la complexité pour vous : du besoin à la livraison, tout est cadré.</p></div>
       </div>
     </div>
   </section>
@@ -3098,13 +2437,13 @@
   <section style="background:linear-gradient(135deg,var(--teal) 0%,#1a5249 100%);padding:6rem 2rem;">
     <div class="section-container">
       <div style="max-width:720px;margin:0 auto;text-align:center;">
-        <div class="section-tag fade-in" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);display:inline-flex;margin-bottom:1.5rem;">🎯 Travaillons ensemble</div>
-        <h2 class="fade-in" style="font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:white;margin-bottom:1.25rem;letter-spacing:-0.03em;line-height:1.15;">Chaque projet est unique.</h2>
-        <p class="fade-in" style="font-size:1.05rem;color:rgba(255,255,255,0.75);margin-bottom:1rem;line-height:1.8;">Je vous accompagne dans la conception de solutions pédagogiques adaptées à votre réalité terrain.</p>
+        <div class="section-tag fade-in" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);display:inline-flex;margin-bottom:1.5rem;">🤝 Travaillons ensemble</div>
+        <h2 class="fade-in" style="font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:white;margin-bottom:1.25rem;">Chaque projet est unique.</h2>
+        <p class="fade-in" style="font-size:1.05rem;color:rgba(255,255,255,0.75);margin-bottom:1rem;">Je vous accompagne dans la conception de solutions pédagogiques adaptées à votre réalité terrain.</p>
         <p class="fade-in" style="font-size:1.1rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:2.5rem;">Contactez-moi pour échanger sur votre besoin.</p>
         <div class="fade-in" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;">
-          <a href="mailto:contact@educoncret.net" class="btn" style="background:white;color:var(--teal);font-weight:700;">📧 contact@educoncret.net</a>
-          <a href="tel:+33764070161" class="btn btn-outline-cream">📞 07 64 07 01 61</a>
+          <a href="mailto:contact@educoncret.net" class="btn" style="background:white;color:var(--teal);font-weight:700;">contact@educoncret.net</a>
+          <a href="tel:+33764070161" class="btn btn-outline-cream">07 64 07 01 61</a>
         </div>
         <p class="fade-in" style="color:rgba(255,255,255,0.45);font-size:0.82rem;">Réponse rapide et accompagnement personnalisé · Paris & à distance partout en France</p>
       </div>
@@ -3115,49 +2454,48 @@
   <section class="contact-section" id="contact">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">Rendez-vous & Contact</div>
+        <div class="section-tag">📅 Rendez-vous & Contact</div>
         <h2>Discutons de votre projet</h2>
         <p>Le premier échange est gratuit. Réservez un créneau ou envoyez-moi un message.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:3rem;">
         <!-- CALENDLY -->
-        <div class="contact-card" style="padding: 2rem; background: var(--white); border: 2px solid var(--gold);">
-          <h3 style="color: var(--ink);">📅 Prendre rendez-vous</h3>
-          <p style="color: var(--ink-3); margin-bottom: 1.5rem;">Choisissez un créneau de 30 minutes directement dans mon agenda.</p>
+        <div class="contact-card" style="padding:2rem;background:var(--white);border:2px solid var(--gold);">
+          <h3 style="color:var(--ink);">📆 Prendre rendez-vous</h3>
+          <p style="color:var(--ink-3);margin-bottom:1.5rem;">Choisissez un créneau de 30 minutes directement dans mon agenda.</p>
           <iframe src="https://calendly.com/contact-educoncret/30min" width="100%" height="500" frameborder="0"></iframe>
         </div>
+        
         <!-- FORMULAIRE -->
-        <div class="contact-card" style="padding: 2rem; background: var(--white);">
-          <h3 style="color: var(--ink);">✉ Envoyer un message</h3>
-          <p style="color: var(--ink-3); margin-bottom: 1.5rem;">Réponse sous 24h ouvrées.</p>
-          <form action="https://formspree.io/f/xykbvvvr" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
-            <input type="text" name="nom" placeholder="Votre nom" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--cream-3);">
-            <input type="email" name="email" placeholder="Votre email" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--cream-3);">
-            <textarea name="message" rows="5" placeholder="Votre message..." required style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--cream-3);"></textarea>
-            <!-- Anti-spam -->
+        <div class="contact-card" style="padding:2rem;background:var(--white);">
+          <h3 style="color:var(--ink);">✉️ Envoyer un message</h3>
+          <p style="color:var(--ink-3);margin-bottom:1.5rem;">Réponse sous 24h ouvrées.</p>
+          <form action="https://formspree.io/f/xykbvvr" method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+            <input type="text" name="nom" placeholder="Votre nom" required style="padding:0.8rem;border-radius:8px;border:1px solid var(--cream-3);">
+            <input type="email" name="email" placeholder="Votre email" required style="padding:0.8rem;border-radius:8px;border:1px solid var(--cream-3);">
+            <textarea name="message" rows="5" placeholder="Votre message..." required style="padding:0.8rem;border-radius:8px;border:1px solid var(--cream-3);"></textarea>
             <input type="text" name="_gotcha" style="display:none">
-            <!-- Sujet email -->
             <input type="hidden" name="_subject" value="Nouveau contact LOGIX FORMA">
-            <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1rem;">Envoyer le message</button>
+            <button type="submit" class="btn btn-gold" style="width:100%;margin-top:1rem;">Envoyer le message</button>
           </form>
         </div>
       </div>
-      <!-- INFOS CONTACT -->
-      <div class="contact-direct fade-in" style="margin-top: 3rem; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem;">
-        <p style="font-size: 0.9rem; color: var(--ink-3);">Email direct: <a href="mailto:contact@educoncret.net" style="color: var(--gold); font-weight: 600;">contact@educoncret.net</a></p>
-        <p style="font-size: 0.9rem; color: var(--ink-3);">Téléphone: <a href="tel:+33764070161" style="color: var(--gold); font-weight: 600;">+33 7 64 07 01 61</a></p>
+      
+      <div class="contact-direct fade-in" style="margin-top:3rem;text-align:center;background:var(--ink);border-radius:var(--radius-xl);padding:2rem;">
+        <p style="font-size:0.9rem;color:rgba(247,243,237,0.7);">📧 Email direct : <a href="mailto:contact@educoncret.net" style="color:var(--gold);font-weight:600;">contact@educoncret.net</a></p>
+        <p style="font-size:0.9rem;color:rgba(247,243,237,0.7);margin-top:0.5rem;">📞 Téléphone : <a href="tel:+33764070161" style="color:var(--gold);font-weight:600;">+33 7 64 07 01 61</a></p>
       </div>
     </div>
   </section>
 
-  <!-- CLIENTS/PARTENAIRES -->
+  <!-- CLIENTS / PARTENAIRES -->
   <section style="background:var(--cream);padding:3rem 2rem;border-top:1px solid var(--cream-3);">
     <div class="section-container">
       <p style="text-align:center;color:var(--ink-3);opacity:0.5;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:2rem;">Ils m'ont fait confiance</p>
-      <div style="display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;opacity:0.4;">
+      <div style="display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;opacity:0.6;">
         <span style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--ink);">LOGIX FORMA</span>
         <span style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--ink);">AFPA</span>
-        <span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--ink);">PÔLE EMPLOI</span>
+        <span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--ink);">POLE EMPLOI</span>
         <span style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--ink);">CCI</span>
       </div>
     </div>
@@ -3168,7 +2506,7 @@
     <div class="footer-inner">
       <div class="footer-brand">EduConcret</div>
       <p style="font-size:1rem;color:var(--cream);margin-bottom:0.5rem;font-family:'Fraunces',serif;font-style:italic;">Apprendre en vivant.</p>
-      <p style="font-size:0.82rem;color:rgba(247,243,237,0.4);margin-bottom:1.5rem;">Moctar Touré · Ingénieur Pédagogique · Directeur Pédagogique LOGIX FORMA</p>
+      <p style="font-size:0.82rem;color:rgba(247,243,237,0.4);margin-bottom:1.5rem;">Moctar Touré - Ingénieur Pédagogique · Directeur Pédagogique LOGIX FORMA</p>
       <div class="footer-links">
         <a href="#accueil">Accueil</a>
         <a href="#ce-que-je-fais">Services</a>
@@ -3181,7 +2519,11 @@
       </div>
       <div style="margin:1.5rem 0;">
         <p style="color:rgba(247,243,237,0.3);font-size:0.8rem;">
-          📧 <a href="mailto:contact@educoncret.net" style="color:rgba(247,243,237,0.4);text-decoration:none;">contact@educoncret.net</a> &nbsp;|&nbsp; 📞 <a href="tel:+33764070161" style="color:rgba(247,243,237,0.4);text-decoration:none;">07 64 07 01 61</a> &nbsp;|&nbsp; 📍 Paris, France
+          <a href="mailto:contact@educoncret.net" style="color:rgba(247,243,237,0.4);text-decoration:none;">contact@educoncret.net</a>
+          &nbsp; | &nbsp;
+          <a href="tel:+33764070161" style="color:rgba(247,243,237,0.4);text-decoration:none;">07 64 07 01 61</a>
+          &nbsp; | &nbsp;
+          Paris, France
         </p>
       </div>
       <div class="footer-copy">
@@ -3196,43 +2538,25 @@
   <script>
     // SCROLL PROGRESS BAR
     const scrollProgress = document.getElementById('scrollProgress');
-    const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('backToTop');
-
+    
     window.addEventListener('scroll', () => {
-      // Progress bar
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       scrollProgress.style.width = (scrollTop / docHeight * 100) + '%';
       
-      // Navbar
-      if (scrollTop > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-      
-      // Back to top
       if (scrollTop > 500) backToTop.classList.add('visible');
       else backToTop.classList.remove('visible');
-      
-      // Active nav link
-      const sections = document.querySelectorAll('section[id]');
-      let current = '';
-      sections.forEach(s => {
-        if (scrollTop >= s.offsetTop - 120) current = s.getAttribute('id');
-      });
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-      });
     });
-
+    
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
+    
     // HAMBURGER MENU
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
-
+    
     // SCROLL REVEAL
     const fadeEls = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
@@ -3244,29 +2568,27 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     fadeEls.forEach(el => fadeObserver.observe(el));
-
+    
     // ANIMATED COUNTERS
     function animateCounter(el) {
-      const target = el.innerText.replace(/[^0-9]/g, '');
-      const prefix = el.innerText.match(/^[+\-]/) ? el.innerText[0] : '';
-      const suffix = el.innerText.replace(/[0-9+\-]/g, '');
+      const target = el.innerText.replace(/[^0-9]/g, "");
+      const prefix = el.innerText.match(/^[+\- ]/) ? el.innerText[0] : "";
+      const suffix = el.innerText.replace(/[0-9+\- ]/g, "");
       if (!target) return;
       const duration = 1800;
       const start = performance.now();
-      const from = 0;
       const to = parseInt(target);
-
       function update(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(from + (to - from) * eased);
+        const current = Math.round(0 + (to - 0) * eased);
         el.innerText = prefix + current.toLocaleString('fr-FR') + suffix;
         if (progress < 1) requestAnimationFrame(update);
       }
       requestAnimationFrame(update);
     }
-
+    
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -3275,8 +2597,9 @@
         }
       });
     }, { threshold: 0.3 });
+    
     document.querySelectorAll('.about-sidebar').forEach(el => counterObserver.observe(el));
-
+    
     // PASSEPORT ACCORDIONS
     function togglePasseport(id) {
       const card = document.getElementById(id);
@@ -3284,8 +2607,8 @@
       document.querySelectorAll('.passeport-card').forEach(c => c.classList.remove('open'));
       if (!wasOpen) card.classList.add('open');
     }
-
-    // SMOOTH ANCHOR OFFSET (fixed nav compensation)
+    
+    // SMOOTH ANCHOR OFFSET
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
