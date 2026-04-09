@@ -498,63 +498,90 @@ Chaque enfant apprend à travers une histoire qui lui ressemble.
         }
 
         /* ─── PRO SECTION ─── */
-       <style>
-    .pro-section { background: var(--ink); color: var(--cream); padding: 80px 0; }
+     <style>
+    .pro-section { 
+        background: #0e0c0a; /* Fond noir profond */
+        color: #f7f3ed; 
+        padding: 80px 0; 
+    }
+
     .pro-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    .pro-section .section-header { text-align: center; margin-bottom: 3rem; }
-    .pro-section .section-header h2 { color: var(--cream); font-family: 'Fraunces', serif; font-size: 2.5rem; }
-    .pro-section .section-header p { color: rgba(247,243,237,0.55); margin-top: 1rem; }
 
+    /* AMÉLIORATION DU TABLEAU */
     .pro-table {
-        width: 100%; border-collapse: separate; border-spacing: 0;
-        background: rgba(247,243,237,0.04); border: 1px solid rgba(201,168,76,0.15);
-        border-radius: 18px; overflow: hidden; margin-bottom: 3rem;
+        width: 100%; 
+        border-collapse: separate; 
+        border-spacing: 0;
+        background: rgba(255, 255, 255, 0.05); /* Fond légèrement plus clair pour le détacher */
+        border: 2px solid #c9a84c; /* Bordure dorée affirmée */
+        border-radius: 18px; 
+        overflow: hidden; 
+        margin-bottom: 3rem;
     }
-    .pro-table thead { background: rgba(201,168,76,0.12); }
-    .pro-table th { padding: 1rem 1.5rem; text-align: left; color: var(--gold); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
-    .pro-table td { padding: 1.1rem 1.5rem; border-bottom: 1px solid rgba(247,243,237,0.07); font-size: 0.875rem; color: rgba(247,243,237,0.75); }
-    .pro-table td:first-child { font-weight: 600; color: var(--cream); }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+    .pro-table thead { 
+        background: #c9a84c; /* Fond doré pour l'entête */
+    }
+
+    .pro-table th { 
+        padding: 1.2rem 1.5rem; 
+        text-align: left; 
+        color: #0e0c0a; /* Texte noir sur fond doré pour un contraste maximum */
+        font-size: 0.9rem; 
+        text-transform: uppercase; 
+        font-weight: 800;
+        letter-spacing: 0.05em; 
+    }
+
+    .pro-table td { 
+        padding: 1.2rem 1.5rem; 
+        border-bottom: 1px solid rgba(201, 168, 76, 0.2); 
+        font-size: 1rem; 
+        color: #ffffff; /* Texte blanc pur pour la lecture */
+    }
+
+    .pro-table td:first-child { 
+        font-weight: 700; 
+        color: #c9a84c; /* Titres de lignes en doré */
+    }
+
+    /* AMÉLIORATION DES CARTES */
     .project-card {
-        background: rgba(247,243,237,0.04); border: 1px solid rgba(201,168,76,0.12);
-        border-radius: 18px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease;
+        background: #1a1714; /* Fond de carte plus distinct du fond de page */
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        border-radius: 18px; 
+        padding: 2.5rem; 
+        position: relative; 
+        transition: all 0.3s ease;
     }
-    .project-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
-    .project-number {
-        position: absolute; top: -8px; right: 20px; font-size: 4.5rem; font-weight: 900;
-        color: rgba(201,168,76,0.08); font-family: 'Fraunces', serif;
+
+    .project-card h3 { 
+        color: #f7f3ed; 
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Ombre portée pour détacher le texte */
     }
-    .project-card h3 { font-family: 'Fraunces', serif; color: var(--cream); margin-bottom: 0.9rem; }
-    .project-card ul { list-style: none; padding: 0; }
+
     .project-card ul li {
-        padding-left: 1.4rem; position: relative; font-size: 0.875rem;
-        color: rgba(247,243,237,0.6); margin-bottom: 0.5rem;
-    }
-    .project-card ul li::before {
-        content: ''; position: absolute; left: 0; top: 0.58rem;
-        width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
-    }
-    .project-result {
-        display: inline-block; margin-top: 1rem; background: rgba(201,168,76,0.1);
-        border: 1px solid rgba(201,168,76,0.2); border-radius: 8px;
-        padding: 0.65rem 1rem; font-size: 0.82rem; font-weight: 600; color: var(--gold);
+        color: #e0e0e0; /* Gris très clair, presque blanc */
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.4;
     }
 </style>
 
 <section id="pro" class="pro-section">
     <div class="pro-container">
-        <div class="section-header">
-            <span class="section-tag" style="padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">EXPERTISE PRO</span>
-            <h2>Solutions Pédagogiques</h2>
-            <p>Accompagnement stratégique et production multimédia pour vos formations.</p>
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="font-family: 'Fraunces', serif; font-size: 2.8rem; color: #f7f3ed;">Solutions Pédagogiques</h2>
+            <p style="color: #c9a84c; font-weight: 500;">Expertise Pro & Production Multimédia</p>
         </div>
 
         <table class="pro-table">
             <thead>
                 <tr>
                     <th>Domaine</th>
-                    <th>Expertise</th>
+                    <th>Votre Solution Expert</th>
                 </tr>
             </thead>
             <tbody>
@@ -573,38 +600,36 @@ Chaque enfant apprend à travers une histoire qui lui ressemble.
             </tbody>
         </table>
 
-        <div class="projects-grid">
+        <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
             <div class="project-card">
-                <div class="project-number">01</div>
+                <div style="font-size: 4rem; position: absolute; top: -10px; right: 10px; opacity: 0.1; color: #c9a84c; font-weight: 900;">01</div>
                 <h3>Audit & Stratégie</h3>
                 <ul>
                     <li>Analyse des besoins de formation</li>
                     <li>Architecture de parcours hybrides</li>
                     <li>Optimisation des processus LMS</li>
                 </ul>
-                <div class="project-result">Efficacité pédagogique</div>
             </div>
 
             <div class="project-card">
-                <div class="project-number">02</div>
+                <div style="font-size: 4rem; position: absolute; top: -10px; right: 10px; opacity: 0.1; color: #c9a84c; font-weight: 900;">02</div>
                 <h3>Ingénierie de Contenu</h3>
                 <ul>
                     <li>Conception de supports experts</li>
                     <li>Création de guides formateurs</li>
                     <li>Design de livrets d'apprentissage</li>
                 </ul>
-                <div class="project-result">+50 formations conçues</div>
             </div>
 
-            <div class="project-card">
-                <div class="project-number">03</div>
-                <h3>Vidéo & Multimédia</h3>
+            <div class="project-card" style="border: 2px solid #c9a84c;">
+                <div style="font-size: 4rem; position: absolute; top: -10px; right: 10px; opacity: 0.1; color: #c9a84c; font-weight: 900;">03</div>
+                <h3 style="color: #c9a84c;">Vidéo & Multimédia</h3>
                 <ul>
                     <li>Tournage de capsules et interviews</li>
                     <li>Montage dynamique (Adobe Premiere)</li>
                     <li>Photographie et packshots produits</li>
                 </ul>
-                <div class="project-result">Qualité Studio Professionnel</div>
+                <div style="margin-top: 15px; color: #c9a84c; font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Exclusivité EduConcret</div>
             </div>
         </div>
     </div>
