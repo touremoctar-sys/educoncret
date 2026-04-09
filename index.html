@@ -498,168 +498,117 @@ Chaque enfant apprend à travers une histoire qui lui ressemble.
         }
 
         /* ─── PRO SECTION ─── */
-        .pro-section { background: var(--ink); color: var(--cream); }
-        .pro-section .section-header h2 { color: var(--cream); }
-        .pro-section .section-header p { color: rgba(247,243,237,0.55); opacity: 1; }
+       <style>
+    .pro-section { background: var(--ink); color: var(--cream); padding: 80px 0; }
+    .pro-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .pro-section .section-header { text-align: center; margin-bottom: 3rem; }
+    .pro-section .section-header h2 { color: var(--cream); font-family: 'Fraunces', serif; font-size: 2.5rem; }
+    .pro-section .section-header p { color: rgba(247,243,237,0.55); margin-top: 1rem; }
 
-        .pro-section .section-tag {
-            background: rgba(201,168,76,0.15);
-            color: var(--gold);
-        }
+    .pro-table {
+        width: 100%; border-collapse: separate; border-spacing: 0;
+        background: rgba(247,243,237,0.04); border: 1px solid rgba(201,168,76,0.15);
+        border-radius: 18px; overflow: hidden; margin-bottom: 3rem;
+    }
+    .pro-table thead { background: rgba(201,168,76,0.12); }
+    .pro-table th { padding: 1rem 1.5rem; text-align: left; color: var(--gold); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .pro-table td { padding: 1.1rem 1.5rem; border-bottom: 1px solid rgba(247,243,237,0.07); font-size: 0.875rem; color: rgba(247,243,237,0.75); }
+    .pro-table td:first-child { font-weight: 600; color: var(--cream); }
 
-        .pro-intro {
-            text-align: center;
-            max-width: 660px;
-            margin: 0 auto 3rem;
-            font-size: 1.05rem;
-            color: rgba(247,243,237,0.65);
-        }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+    .project-card {
+        background: rgba(247,243,237,0.04); border: 1px solid rgba(201,168,76,0.12);
+        border-radius: 18px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease;
+    }
+    .project-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
+    .project-number {
+        position: absolute; top: -8px; right: 20px; font-size: 4.5rem; font-weight: 900;
+        color: rgba(201,168,76,0.08); font-family: 'Fraunces', serif;
+    }
+    .project-card h3 { font-family: 'Fraunces', serif; color: var(--cream); margin-bottom: 0.9rem; }
+    .project-card ul { list-style: none; padding: 0; }
+    .project-card ul li {
+        padding-left: 1.4rem; position: relative; font-size: 0.875rem;
+        color: rgba(247,243,237,0.6); margin-bottom: 0.5rem;
+    }
+    .project-card ul li::before {
+        content: ''; position: absolute; left: 0; top: 0.58rem;
+        width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
+    }
+    .project-result {
+        display: inline-block; margin-top: 1rem; background: rgba(201,168,76,0.1);
+        border: 1px solid rgba(201,168,76,0.2); border-radius: 8px;
+        padding: 0.65rem 1rem; font-size: 0.82rem; font-weight: 600; color: var(--gold);
+    }
+</style>
 
-        .pro-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: rgba(247,243,237,0.04);
-            border: 1px solid rgba(201,168,76,0.15);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            margin-bottom: 3rem;
-        }
+<section id="pro" class="pro-section">
+    <div class="pro-container">
+        <div class="section-header">
+            <span class="section-tag" style="padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">EXPERTISE PRO</span>
+            <h2>Solutions Pédagogiques</h2>
+            <p>Accompagnement stratégique et production multimédia pour vos formations.</p>
+        </div>
 
-        .pro-table thead { background: rgba(201,168,76,0.12); }
+        <table class="pro-table">
+            <thead>
+                <tr>
+                    <th>Domaine</th>
+                    <th>Expertise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ingénierie de formation</td>
+                    <td>Parcours complets, référentiels de compétences et accompagnement Qualiopi.</td>
+                </tr>
+                <tr>
+                    <td>Digital Learning</td>
+                    <td>Modules e-learning interactifs et scénarisation pédagogique immersive.</td>
+                </tr>
+                <tr>
+                    <td>Production Vidéo</td>
+                    <td>Captation, montage sur Adobe Premiere et post-production pédagogique.</td>
+                </tr>
+            </tbody>
+        </table>
 
-        .pro-table th {
-            padding: 1rem 1.5rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.82rem;
-            color: var(--gold);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <h3>Audit & Stratégie</h3>
+                <ul>
+                    <li>Analyse des besoins de formation</li>
+                    <li>Architecture de parcours hybrides</li>
+                    <li>Optimisation des processus LMS</li>
+                </ul>
+                <div class="project-result">Efficacité pédagogique</div>
+            </div>
 
-        .pro-table td {
-            padding: 1.1rem 1.5rem;
-            border-bottom: 1px solid rgba(247,243,237,0.07);
-            font-size: 0.875rem;
-            color: rgba(247,243,237,0.75);
-        }
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <h3>Ingénierie de Contenu</h3>
+                <ul>
+                    <li>Conception de supports experts</li>
+                    <li>Création de guides formateurs</li>
+                    <li>Design de livrets d'apprentissage</li>
+                </ul>
+                <div class="project-result">+50 formations conçues</div>
+            </div>
 
-        .pro-table tr:last-child td { border-bottom: none; }
-        .pro-table tbody tr:hover td { background: rgba(247,243,237,0.03); }
-        .pro-table td:first-child { font-weight: 600; color: var(--cream); }
-
-        h3.section-sub {
-            font-family: 'Fraunces', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--cream);
-        }
-
-        .projects-grid { display: grid; gap: 1.25rem; margin-bottom: 3rem; }
-
-        .project-card {
-            background: rgba(247,243,237,0.04);
-            border: 1px solid rgba(201,168,76,0.12);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: rgba(201,168,76,0.3);
-            background: rgba(201,168,76,0.04);
-        }
-
-        .project-number {
-            position: absolute;
-            top: -8px; right: 20px;
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: rgba(201,168,76,0.08);
-            line-height: 1;
-            font-family: 'Fraunces', serif;
-        }
-
-        .project-card h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--cream);
-            margin-bottom: 0.9rem;
-            position: relative;
-        }
-
-        .project-card ul { list-style: none; margin-bottom: 1rem; position: relative; }
-
-        .project-card ul li {
-            padding-left: 1.4rem;
-            position: relative;
-            font-size: 0.875rem;
-            color: rgba(247,243,237,0.6);
-            margin-bottom: 0.3rem;
-        }
-
-        .project-card ul li::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0.58rem;
-            width: 5px; height: 5px;
-            background: var(--gold);
-            border-radius: 50%;
-        }
-
-        .project-result {
-            background: rgba(201,168,76,0.1);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: var(--radius);
-            padding: 0.65rem 1rem;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .dark-cta-box {
-            background: linear-gradient(135deg, rgba(247,243,237,0.06), rgba(201,168,76,0.06));
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: var(--radius-xl);
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .dark-cta-box h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.7rem;
-            margin-bottom: 0.75rem;
-            color: var(--cream);
-        }
-
-        .dark-cta-box > p {
-            color: rgba(247,243,237,0.55);
-            margin-bottom: 2rem;
-        }
-
-        .cta-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .cta-option {
-            background: rgba(247,243,237,0.05);
-            border: 1px solid rgba(247,243,237,0.1);
-            border-radius: var(--radius);
-            padding: 1.25rem;
-        }
-
-        .cta-option h4 { font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--cream); }
-        .cta-option p { font-size: 0.82rem; color: rgba(247,243,237,0.45); }
-
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <h3>Vidéo & Multimédia</h3>
+                <ul>
+                    <li>Tournage de capsules et interviews</li>
+                    <li>Montage dynamique (Adobe Premiere)</li>
+                    <li>Photographie et packshots produits</li>
+                </ul>
+                <div class="project-result">Qualité Studio Professionnel</div>
+            </div>
+        </div>
+    </div>
+</section>
         /* ─── ADULT SECTION ─── */
         .adult-section { background: var(--cream-2); }
 
