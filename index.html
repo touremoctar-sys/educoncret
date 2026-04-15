@@ -3,799 +3,759 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moctar Touré | Expert en Ingénierie Pédagogique — EduConcret</title>
-  <meta name="description" content="Ingénierie de formation, pilotage Qualiopi et création de solutions pédagogiques immersives pour centres de formation et particuliers.">
-  
+  <title>Moctar Touré | EduConcret — Ingénieur Pédagogique Expert</title>
+  <meta name="description" content="Moctar Touré — Ingénieur Pédagogique &amp; Directeur Pédagogique LOGIX FORMA. Formations sur mesure, accompagnement adultes, livres de maths personnalisés pour enfants. Paris.">
+  <meta name="keywords" content="ingénieur pédagogique, formateur, Qualiopi, formation adultes, livres maths enfants, solo-preneur, EduConcret">
+  <meta property="og:title" content="Moctar Touré | EduConcret — Ingénieur Pédagogique Expert">
+  <meta property="og:description" content="+10 ans d'expertise · +50 formations conçues · 3000+ apprenants impactés. Solutions pédagogiques sur mesure.">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
   <style>
     :root {
       --ink: #0e0c0a; --ink-2: #1c1a17; --ink-3: #2e2b26;
       --cream: #f7f3ed; --cream-2: #efe9df; --cream-3: #e5ddd0;
       --gold: #c9a84c; --gold-light: #e8c96a;
-      --terracotta: #c75a3a; --teal: #2a7b6e; --sky: #2e6fa8;
+      --terracotta: #c75a3a; --terracotta-light: #e07055;
+      --teal: #2a7b6e; --teal-light: #3a9d8e;
+      --lavender: #5c4d8a; --lavender-light: #7b68b0;
+      --sky: #2e6fa8; --sky-light: #4a8fc0;
       --white: #ffffff;
       --shadow: 0 4px 24px rgba(14,12,10,0.10);
       --shadow-lg: 0 12px 48px rgba(14,12,10,0.15);
-      --radius-lg: 18px; --radius-xl: 28px;
+      --radius: 10px; --radius-lg: 18px; --radius-xl: 28px;
     }
-
-    /* --- ANIMATIONS --- */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pageFlip { from { transform: rotateY(-30deg); opacity: 0; } to { transform: rotateY(0deg); opacity: 1; } }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+    }
 
-    #scrollProgress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--gold); z-index: 2000; transition: width 0.1s; }
-    body::before { content: ""; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(14,12,10,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.15); }
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(14,12,10,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.15); transition: all 0.3s ease; }
     .nav-inner { max-width: 1260px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
     .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--cream); font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.3rem; }
-    .nav-brand-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
-    .nav-links { display: flex; align-items: center; gap: 0.5rem; list-style: none; }
-    .nav-links a { color: rgba(247,243,237,0.6); text-decoration: none; padding: 0.45rem 0.9rem; font-size: 0.85rem; transition: 0.3s; }
-    .nav-links a:hover { color: var(--cream); }
-    .nav-cta { background: var(--gold) !important; color: var(--ink) !important; font-weight: 600 !important; border-radius: 6px; }
+    .nav-brand-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
+    .nav-links a { color: rgba(247,243,237,0.6); text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 6px; font-size: 0.875rem; transition: all 0.2s ease; }
+    .nav-links a:hover { color: var(--cream); background: rgba(247,243,237,0.08); }
+    .nav-cta { background: var(--gold) !important; color: var(--ink) !important; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { width: 22px; height: 1.5px; background: var(--cream); border-radius: 2px; transition: all 0.3s ease; }
+    .nav-links-mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--ink-2); flex-direction: column; padding: 1rem; gap: 0.35rem; border-bottom: 1px solid rgba(201,168,76,0.1); z-index: 999; }
+    .nav-links-mobile.open { display: flex; }
+    .nav-links-mobile a { display: block; color: rgba(247,243,237,0.7); text-decoration: none; padding: 0.65rem 1rem; border-radius: 6px; font-size: 0.95rem; }
+    .nav-links-mobile a:hover { background: rgba(201,168,76,0.1); color: var(--gold); }
 
-    .hero { min-height: 100vh; background: var(--ink); display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
-    .hero-bg-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; animation: fadeInUp 1s ease-out; }
-    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem; }
-    .hero h1 em { color: var(--gold); font-style: italic; }
-    .hero-tagline { font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(247,243,237,0.7); margin-bottom: 2.5rem; }
+    /* HERO */
+    .hero { min-height: 100vh; background: var(--ink); display: flex; align-items: center; justify-content: center; text-align: center; padding: 9rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero-bg-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px); background-size: 80px 80px; }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--gold); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; color: var(--cream); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 0.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-tagline { font-family: 'Fraunces', serif; font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-style: italic; color: rgba(247,243,237,0.5); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards; }
+    .hero-sub { color: rgba(247,243,237,0.4); font-size: 0.9rem; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
+    .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; }
+    .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(247,243,237,0.3); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; animation: scrollBounce 2s ease-in-out infinite; }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); }
+    @keyframes scrollBounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* SECTIONS */
     section { padding: 6rem 2rem; }
     .section-container { max-width: 1180px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1rem; }
+    .section-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+    .section-header h2 { font-family: 'Fraunces', serif; font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.03em; line-height: 1.15; }
+    .section-header p { font-size: 1.05rem; color: var(--ink-3); max-width: 560px; margin: 0 auto; opacity: 0.7; }
 
-    .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.8rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.9rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.25s ease; cursor: pointer; border: none; font-family: inherit; }
     .btn-gold { background: var(--gold); color: var(--ink); }
-    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,168,76,0.3); animation: pulse 2s infinite; }
-    .btn-outline { border: 1px solid rgba(247,243,237,0.3); color: var(--cream); }
-    .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+    .btn-terra { background: var(--terracotta); color: white; }
+    .btn-terra:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(199,90,58,0.35); }
+    .btn-teal { background: var(--teal); color: white; }
+    .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,123,110,0.35); }
+    .btn-lav { background: var(--lavender); color: white; }
+    .btn-lav:hover { background: var(--lavender-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,77,138,0.35); }
+    .btn-sky { background: var(--sky); color: white; }
+    .btn-sky:hover { background: var(--sky-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,111,168,0.35); }
+    .btn-outline-ink { background: transparent; border: 1.5px solid var(--ink-3); color: var(--ink); }
+    .btn-outline-ink:hover { background: var(--ink); color: var(--cream); }
+    .btn-outline-cream { background: transparent; border: 1.5px solid rgba(247,243,237,0.3); color: var(--cream); }
+    .btn-outline-cream:hover { background: rgba(247,243,237,0.1); }
+    .btn-sm { padding: 0.6rem 1.35rem; font-size: 0.85rem; }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .project-card { background: var(--white); padding: 2.5rem; border-radius: 15px; border: 1px solid var(--cream-3); box-shadow: var(--shadow); transition: 0.3s; }
-    .project-card:hover { transform: translateY(-5px); border-color: var(--gold); }
-    .project-card h3 { color: var(--ink); margin-bottom: 1rem; font-family: 'Fraunces', serif; }
-    .project-result { display: inline-block; background: rgba(42,123,110,0.1); color: var(--teal); padding: 0.3rem 0.8rem; border-radius: 5px; font-size: 0.8rem; margin-top: 1rem; font-weight: 700; }
-
-    /* --- FLIPBOOK STYLES --- */
-    .book-container { max-width: 500px; margin: 0 auto; position: relative; }
-    .book-wrapper { width: 100%; height: 600px; position: relative; perspective: 1500px; margin: 0 auto; }
-    .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: white; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none; overflow: hidden; border: 1px solid var(--cream-3); }
-    .page.active { display: block; animation: pageFlip 0.5s ease; }
-    .page-content { height: 100%; padding: 1.5rem; display: flex; flex-direction: column; overflow-y: auto; }
-    .page-content::-webkit-scrollbar { width: 4px; }
-    .page-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-    
-    .book-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2rem; }
-    .nav-btn { background: var(--ink); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
-    .nav-btn:hover { background: var(--gold); color: var(--ink); transform: scale(1.1); }
-    #pageIndicator { font-weight: 700; font-size: 0.8rem; color: var(--ink); text-transform: uppercase; min-width: 100px; text-align: center; }
-
-    /* --- PAGE TYPOGRAPHY --- */
-    .page-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink-2); margin-bottom: 0.8rem; border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; }
-    .page-subtitle { font-family: 'Fraunces', serif; font-size: 0.95rem; color: var(--terracotta); margin: 0.5rem 0; }
-    .page-text { font-size: 0.85rem; line-height: 1.6; margin: 0.5rem 0; }
-    .page-text strong { color: var(--ink-2); }
-    .page-text em { color: var(--sky); font-style: italic; }
-    
-    .math-box { background: #f8f4e9; border-left: 4px solid var(--gold); padding: 0.8rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
-    .math-formula { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; text-align: center; color: var(--teal); margin: 0.5rem 0; }
-    .fraction { display: inline-flex; flex-direction: column; align-items: center; font-size: 1.1rem; font-weight: 700; }
-    .fraction .num { border-bottom: 2px solid var(--ink); padding: 0 4px; }
-    .fraction .den { padding: 0 4px; }
-    
-    .quiz-option { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0; font-size: 0.8rem; }
-    .quiz-option input { accent-color: var(--gold); }
-    
-    .visual-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; width: 200px; margin: 1rem auto; }
-    .visual-cell { aspect-ratio: 1; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
-    .visual-cell.filled { background: var(--gold); color: var(--ink); font-weight: 700; }
-    
-    .warning-box { background: #fff5f5; border: 2px dashed red; padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; }
-    .warning-box strong { color: red; }
-    
-    .success-box { background: #f5fbf5; border: 2px solid var(--teal); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; }
-    
-    .comparison-table { width: 100%; font-size: 0.75rem; border-collapse: collapse; margin: 0.8rem 0; }
-    .comparison-table th, .comparison-table td { border: 1px solid var(--cream-3); padding: 0.4rem; text-align: left; }
-    .comparison-table th { background: var(--cream-2); font-family: 'Fraunces', serif; }
-    
-    .page-footer { margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--cream-3); font-size: 0.7rem; color: var(--ink-3); text-align: center; }
-    
-    .cover-page { background: linear-gradient(135deg, var(--ink) 0%, #1a1814 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
-    .cover-title { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 0.5rem; }
-    .cover-subtitle { color: var(--gold); font-size: 1rem; margin-bottom: 1.5rem; }
-    .cover-badge { background: var(--gold); color: var(--ink); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-bottom: 1rem; }
-    
-    .final-page { background: var(--ink); color: white; text-align: center; justify-content: center; }
-    .final-price { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: var(--gold); margin: 1rem 0; }
-    
-    .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
 
-    footer { background: var(--ink); color: rgba(247,243,237,0.5); padding: 6rem 2rem; border-top: 1px solid rgba(201,168,76,0.2); }
+    /* CONTACT SECTION */
+    .contact-section { background: var(--cream-2); }
+    .contact-section .section-tag { background: rgba(42,123,110,0.1); color: var(--teal); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .contact-card { background: var(--white); border: 1px solid var(--cream-3); border-radius: var(--radius-xl); padding: 2.5rem; transition: all 0.3s ease; }
+    .contact-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .contact-card h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .contact-card > p { font-size: 0.88rem; color: var(--ink-3); margin-bottom: 1.5rem; opacity: 0.8; }
+    .contact-card form { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-card label { font-size: 0.82rem; font-weight: 600; color: var(--ink-3); }
+    .contact-card input, .contact-card textarea, .contact-card select {
+      padding: 0.75rem 1rem; border: 1.5px solid var(--cream-3); border-radius: var(--radius);
+      font-family: inherit; font-size: 0.9rem; color: var(--ink); background: var(--cream);
+      transition: border-color 0.2s; width: 100%;
+    }
+    .contact-card input:focus, .contact-card textarea:focus, .contact-card select:focus {
+      outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,123,110,0.1);
+    }
+    .contact-card textarea { resize: vertical; min-height: 120px; }
+    .contact-card .btn { margin-top: 0.5rem; }
+    .form-success { display: none; text-align: center; padding: 2rem; }
+    .form-success.show { display: block; }
+    .form-success .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h4 { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--teal); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.9rem; color: var(--ink-3); }
 
+    /* RDV SECTION */
+    .rdv-section { background: var(--ink); color: var(--cream); }
+    .rdv-section .section-header h2 { color: var(--cream); }
+    .rdv-section .section-header p { color: rgba(247,243,237,0.5); opacity: 1; }
+    .rdv-section .section-tag { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .rdv-wrapper { background: var(--white); border-radius: var(--radius-xl); overflow: hidden; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow-lg); }
+    .rdv-header { background: var(--gold); padding: 2rem; text-align: center; }
+    .rdv-header h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--ink); margin-bottom: 0.3rem; }
+    .rdv-header p { font-size: 0.88rem; color: var(--ink-3); opacity: 0.7; }
+    .rdv-body { padding: 1.5rem; min-height: 600px; }
+    .rdv-alternatives { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .rdv-alt-card { background: rgba(247,243,237,0.05); border: 1px solid rgba(247,243,237,0.1); border-radius: var(--radius-lg); padding: 1.75rem; text-align: center; transition: all 0.3s ease; }
+    .rdv-alt-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+    .rdv-alt-card .icon { font-size: 2rem; margin-bottom: 0.85rem; }
+    .rdv-alt-card h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--cream); margin-bottom: 0.35rem; }
+    .rdv-alt-card p { font-size: 0.82rem; color: rgba(247,243,237,0.5); }
+    .rdv-alt-card a { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+    .rdv-alt-card a:hover { text-decoration: underline; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.35rem; }
+    .testimonial-card { background: var(--white); border: 1px solid var(--cream-3); border-radius: var(--radius-lg); padding: 1.75rem; position: relative; }
+    .testimonial-card::before { content: '"'; font-family: 'Fraunces', serif; font-size: 4rem; color: var(--sky); opacity: 0.18; position: absolute; top: 0.3rem; left: 1.25rem; }
+    .testimonial-card p { font-size: 0.9rem; color: var(--ink-3); line-height: 1.8; margin-bottom: 0.85rem; position: relative; }
+    .testimonial-author { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+
+    /* FOOTER */
+    footer { background: var(--ink-2); color: rgba(247,243,237,0.4); padding: 4rem 2rem 3rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-brand { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--cream); margin-bottom: 0.3rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .footer-links a { color: rgba(247,243,237,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cream); }
+    .footer-copy { font-size: 0.75rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(247,243,237,0.07); }
+
+    /* BACK TO TOP */
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--ink); color: var(--cream); border: 1px solid rgba(201,168,76,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: var(--shadow-lg); z-index: 999; }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .back-to-top:hover { transform: translateY(-3px); background: var(--ink-2); color: var(--gold); }
+
+    /* SCROLL PROGRESS */
+    .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--terracotta)); z-index: 2000; transition: width 0.1s linear; }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      section { padding: 4rem 1rem; }
-      .book-wrapper { height: 500px; }
-      .page-content { padding: 1rem; }
-      .visual-grid { width: 150px; }
+      .nav-links { display: none !important; }
+      .hamburger { display: flex !important; }
+      .hero h1 { font-size: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      section { padding: 4rem 1.5rem; }
+      .hero-scroll { display: none; }
+      .rdv-alt-card { padding: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .section-header h2 { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
-
-  <div id="scrollProgress"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#accueil" class="nav-brand"><div class="nav-brand-dot"></div> EduConcret</a>
-      <ul class="nav-links">
-        <li><a href="#espace-pro">Solutions Pro</a></li>
-        <li><a href="#particuliers">Accompagnement</a></li>
-        <li><a href="#demo-livre">Démonstration</a></li>
-        <li><a href="https://educoncret.net/contact.vcf" class="nav-cta">Enregistrer Contact</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#espace-pro">Pro</a></li>
+        <li><a href="#espace-famille">Famille</a></li>
+        <li><a href="#a-propos">À propos</a></li>
+        <li><a href="#nous-ecrire">Nous écrire</a></li>
+        <li><a href="#rdv" class="nav-cta">Prendre RDV</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+  <ul class="nav-links-mobile" id="navMobile">
+    <li><a href="#accueil" onclick="closeMenu()">Accueil</a></li>
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#espace-pro" onclick="closeMenu()">Espace Pro</a></li>
+    <li><a href="#espace-famille" onclick="closeMenu()">Espace Famille</a></li>
+    <li><a href="#a-propos" onclick="closeMenu()">À propos</a></li>
+    <li><a href="#nous-ecrire" onclick="closeMenu()">✉️ Nous écrire</a></li>
+    <li><a href="#rdv" onclick="closeMenu()">📅 Prendre RDV</a></li>
+  </ul>
 
+  <!-- HERO -->
   <section class="hero" id="accueil">
     <div class="hero-bg-lines"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Ingénierie Pédagogique d'Excellence</div>
+      <div class="hero-eyebrow">Ingénieur Pédagogique · Directeur Pédagogique LOGIX FORMA</div>
       <h1>L'apprentissage au service de <em>votre</em> performance.</h1>
-      <p class="hero-tagline">
-        Conception de parcours certifiants pour entreprises, mentorat pour futurs formateurs 
-        et méthodes narratives immersives pour une mémorisation maximale.
-      </p>
-      
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="#espace-pro" class="btn btn-gold">Audit & Solutions Pro →</a>
-        <a href="#particuliers" class="btn btn-outline">Accompagnement Individuel →</a>
+      <p class="hero-tagline">Je transforme les savoirs complexes en expériences d'apprentissage concrètes et mémorables.</p>
+      <p class="hero-sub">+10 ans d'expertise · +50 formations conçues · 3000+ apprenants impactés · Certifié Qualiopi</p>
+      <div class="hero-actions">
+        <a href="#espace-pro" class="btn btn-gold">Espace Professionnel →</a>
+        <a href="#espace-famille" class="btn btn-outline-cream">Livres de Maths →</a>
+        <a href="#rdv" class="btn btn-outline-cream">📅 Prendre RDV</a>
       </div>
     </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll</span></div>
   </section>
 
-  <section id="espace-pro">
+  <!-- STATS BAR -->
+  <div style="background:var(--gold);padding:1rem 2rem;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">+50</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">Formations conçues</div></div>
+      <div style="width:1px;height:36px;background:rgba(14,12,10,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">3 000+</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">Apprenants impactés</div></div>
+      <div style="width:1px;height:36px;background:rgba(14,12,10,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">10 ans</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">D'expertise terrain</div></div>
+      <div style="width:1px;height:36px;background:rgba(14,12,10,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">✓</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">Certifié Qualiopi</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" style="background:var(--ink);padding:6rem 2rem;">
     <div class="section-container">
-      <div class="section-header fade-in">
-        <div class="section-tag" style="background:rgba(201,168,76,0.1); color:var(--gold);">B2B & Centres de formation</div>
-        <h2>Ingénierie & Pilotage Pédagogique</h2>
-        <p>Sécurisez votre conformité Qualiopi et scalez vos programmes.</p>
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">Ce que je fais</div>
+        <h2 style="color:var(--cream);">Mes domaines d'expertise</h2>
+        <p style="color:rgba(247,243,237,0.5);opacity:1;">Des solutions conçues pour chaque contexte, chaque public.</p>
       </div>
-
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <div style="font-size: 2.2rem; margin-bottom: 1rem;">🛡️</div>
-          <h3>Mise en conformité Qualiopi</h3>
-          <p>Audit flash de vos indicateurs et accompagnement à la mise en place de preuves solides pour vos audits de surveillance.</p>
-          <div class="project-result">Zéro Non-Conformité</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;">
+        <div class="fade-in" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-xl);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">📚</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Livres de Maths Personnalisés</h3>
+          <ul style="list-style:none;margin-bottom:1rem;">
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Du CP à la 3e, programmes complets</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Apprentissage par immersion narrative</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Personnalisé au prénom et aux goûts</li>
+          </ul>
+          <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);color:var(--gold);border-radius:var(--radius);padding:0.65rem 1rem;font-size:0.8rem;font-weight:600;">Comprendre les maths en s'amusant</div>
         </div>
-        <div class="project-card fade-in">
-          <div style="font-size: 2.2rem; margin-bottom: 1rem;">🎨</div>
-          <h3>Digitalisation & Storyboard</h3>
-          <p>Scénarisation de vos savoirs experts en parcours e-learning interactifs pour augmenter l'engagement de vos apprenants.</p>
-          <div class="project-result">Engagement +40%</div>
+        <div class="fade-in fade-in-delay-1" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-xl);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">👨‍💼</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Formations Professionnelles</h3>
+          <ul style="list-style:none;margin-bottom:1rem;">
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Conception adaptée aux besoins réels</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Présentiel, distanciel et hybride</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Accompagnement montée en compétences</li>
+          </ul>
+          <div style="background:rgba(199,90,58,0.12);border:1px solid rgba(199,90,58,0.25);color:var(--terracotta-light);border-radius:var(--radius);padding:0.65rem 1rem;font-size:0.8rem;font-weight:600;">Compétences concrètes et utilisables</div>
+        </div>
+        <div class="fade-in fade-in-delay-2" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-xl);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🔍</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Conseil & Audit Pédagogique</h3>
+          <ul style="list-style:none;margin-bottom:1rem;">
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Analyse des besoins et structuration</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Amélioration de dispositifs existants</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Accompagnement des formateurs</li>
+          </ul>
+          <div style="background:rgba(42,123,110,0.12);border:1px solid rgba(42,123,110,0.25);color:var(--teal-light);border-radius:var(--radius);padding:0.65rem 1rem;font-size:0.8rem;font-weight:600;">Qualité et efficacité des formations</div>
+        </div>
+        <div class="fade-in fade-in-delay-3" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-xl);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🏢</div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Direction Pédagogique</h3>
+          <ul style="list-style:none;margin-bottom:1rem;">
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Structuration d'organisme de formation</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Pilotage pédagogique et qualité</li>
+            <li style="padding:0.3rem 0;font-size:0.875rem;color:rgba(247,243,237,0.65);position:relative;padding-left:1.2rem;">Mise en place de formations FOAD</li>
+          </ul>
+          <div style="background:rgba(92,77,138,0.12);border:1px solid rgba(92,77,138,0.25);color:var(--lavender-light);border-radius:var(--radius);padding:0.65rem 1rem;font-size:0.8rem;font-weight:600;">Direction chez LOGIX FORMA</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="particuliers" style="background:var(--cream-2);">
+  <!-- TESTIMONIALS -->
+  <section style="background:var(--cream);padding:6rem 2rem;">
     <div class="section-container">
-      <div class="section-header fade-in">
-        <div class="section-tag" style="background:rgba(199,90,58,0.1); color:var(--terracotta);">Mentorats Particuliers</div>
-        <h2>Accompagnement sur mesure</h2>
-        <p>Propulsez votre projet pédagogique ou optimisez vos capacités d'apprentissage.</p>
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">⭐ Témoignages</div>
+        <h2>Ce que disent mes clients</h2>
+        <p>Des résultats concrets, pas des promesses vides.</p>
       </div>
-
-      <div class="projects-grid">
-        <div class="project-card fade-in" style="border-left: 5px solid var(--terracotta);">
-          <h3>Lancer sa propre Formation</h3>
-          <p>De l'idée au programme : je vous aide à structurer votre expertise en une offre de formation vendable et efficace.</p>
-          <div class="project-result" style="color:var(--terracotta); background:rgba(199,90,58,0.1);">Mentorat Individualisé</div>
-        </div>
-        <div class="project-card fade-in" style="border-left: 5px solid var(--terracotta);">
-          <h3>Apprendre à Apprendre</h3>
-          <p>Coaching pour cadres et étudiants : maîtriser les outils de pensée critique et de mémorisation basés sur les neurosciences.</p>
-          <div class="project-result" style="color:var(--terracotta); background:rgba(199,90,58,0.1);">Efficience Cognitive</div>
-        </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in"><p>"Moctar a complètement restructuré notre offre de formation. En 3 mois, nous étions prêts pour l'audit Qualiopi. Un gain de temps considérable."</p><div class="testimonial-author">— Sophie M., Directrice d'organisme de formation</div></div>
+        <div class="testimonial-card fade-in fade-in-delay-1"><p>"L'Expédition Solo-Preneur m'a permis de lancer mon activité en un mois. Sans Moctar, je serais encore en train de regarder des tutos YouTube."</p><div class="testimonial-author">— Karim B., Consultant en stratégie</div></div>
+        <div class="testimonial-card fade-in fade-in-delay-2"><p>"Mon fils détestait les maths. Avec le livre personnalisé, il a lu 40 pages en deux jours. Il a enfin compris les fractions. Merci infiniment."</p><div class="testimonial-author">— Claire D., Maman de Lucas (CE2)</div></div>
       </div>
     </div>
   </section>
 
-  <section id="demo-livre">
+  <!-- ESPACE PRO -->
+  <section id="espace-pro" style="background:var(--ink-2);padding:6rem 2rem;color:var(--cream);">
     <div class="section-container">
-      <div class="section-header fade-in">
-        <div class="section-tag" style="background:rgba(46,111,168,0.1); color:var(--sky);">Preuve par l'image</div>
-        <h2>Maîtriser les fractions en 14 pages</h2>
-        <p>Lisez un extrait de "Léo et la Forge Stellaire" et découvrez la méthode EDUCONCRET.</p>
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">💼 Espace Professionnel</div>
+        <h2 style="color:var(--cream);">Ingénierie de Formation & Pilotage Pédagogique</h2>
+        <p style="color:rgba(247,243,237,0.5);opacity:1;">Vous avez besoin de solidité, de conformité et d'efficacité.</p>
       </div>
-
-      <div class="book-container fade-in">
-        <div class="book-wrapper" id="book">
-          
-          <!-- PAGE 1 - COUVERTURE -->
-          <div class="page active" id="p1">
-            <div class="page-content cover-page">
-              <div class="cover-badge">Un livre dont tu es le héros</div>
-              <h1 class="cover-title">⚡ LÉO ET LA FORGE STELLAIRE</h1>
-              <h3 class="cover-subtitle">Mission : Le secret des fractions</h3>
-              <p class="page-text" style="margin-top:1.5rem; max-width:300px;">
-                Le soleil va s'éteindre.<br>
-                La planète entière plongera dans le noir.<br><br>
-                Pour sauver la lumière, tu devras <strong>résoudre des fractions</strong>.
-              </p>
-              <div style="margin-top:2rem; font-size:0.75rem; opacity:0.9;">
-                À chaque page, une méthode.<br>À chaque défi, un quiz.
-              </div>
-              <div class="page-footer">Dès 8 ans • Maths concrètes • Aventure interactive</div>
-            </div>
-          </div>
-
-          <!-- PAGE 2 - COMPARAISON -->
-          <div class="page" id="p2">
-            <div class="page-content">
-              <h4 class="page-title">📚 Pourquoi ce livre est différent</h4>
-              
-              <div style="margin:1rem 0;">
-                <p class="page-subtitle">Manuel classique :</p>
-                <div class="math-box">
-                  <p class="page-text"><em>"Une fraction est le quotient d'un nombre entier par un nombre entier non nul."</em></p>
-                </div>
-                <p class="page-text" style="color:var(--terracotta); font-weight:600;">❌ Toi : "… quoi ?" → Tu restes bloqué.</p>
-              </div>
-              
-              <div style="margin:1rem 0;">
-                <p class="page-subtitle">Méthode EDUCONCRET :</p>
-                <div class="success-box">
-                  <p class="page-text"><em>"Léo a un cristal brisé en 5 morceaux identiques. Il en ramasse 2. Quelle fraction du cristal tient-il dans sa main ?"</em></p>
-                </div>
-                <p class="page-text" style="color:var(--teal); font-weight:600;">✅ Toi : "Ah ! 2 morceaux sur 5 → 2/5 !" → Tu comprends.</p>
-              </div>
-              
-              <table class="comparison-table">
-                <tr><th>Manuel classique</th><th>Livre EDUCONCRET</th></tr>
-                <tr><td>Définition abstraite</td><td>Situation concrète</td></tr>
-                <tr><td>Formule brute</td><td>Dessin + histoire</td></tr>
-                <tr><td>L'élève subit</td><td>L'élève est héros</td></tr>
-                <tr><td>Erreur = échec</td><td>Erreur = piège à comprendre</td></tr>
-              </table>
-              
-              <div class="page-footer">Tourne la page. Le cristal t'attend.</div>
-            </div>
-          </div>
-
-          <!-- PAGE 3 - SOMMAIRE -->
-          <div class="page" id="p3">
-            <div class="page-content">
-              <h4 class="page-title">🗺️ Ta carte de mission</h4>
-              <ul style="font-size:0.8rem; line-height:2; margin:1rem 0; padding-left:1.2rem;">
-                <li><strong>1. Le problème</strong> – Cristal en 5 morceaux → comprendre la fraction</li>
-                <li><strong>2. Méthode visuelle</strong> – Dessiner un rectangle → 2/5</li>
-                <li><strong>3. La règle</strong> – Numérateur / Dénominateur</li>
-                <li><strong>4. Le piège</strong> – Parts inégales = pas de fraction</li>
-                <li><strong>5. Quiz rapide</strong> – 4 questions de vérification</li>
-                <li><strong>6. Problème résolu</strong> – La clé qui brille : 3/4</li>
-                <li><strong>7. Exercices</strong> – 3 cristaux à résoudre</li>
-                <li><strong>8. Problème #2</strong> – La forge en danger</li>
-                <li><strong>9. Quiz final</strong> – 5 questions + validation</li>
-                <li><strong>10. Mémo</strong> – Ce qu'il faut retenir</li>
-              </ul>
-              <div class="math-box" style="margin-top:1rem;">
-                <p class="page-text" style="margin:0;"><strong>Objectif :</strong> À la fin de cette aventure, tu sauras lire, écrire et utiliser les fractions comme un pro !</p>
-              </div>
-              <div class="page-footer">Page 3 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 4 - LE PROBLÈME -->
-          <div class="page" id="p4">
-            <div class="page-content">
-              <h4 class="page-title">1. Le Cristal en Morceaux</h4>
-              <p class="page-text">Léo s'agenouille devant le <strong>Cristal d'Unité</strong>.</p>
-              <p class="page-text">Il compte les morceaux : <strong>1 – 2 – 3 – 4 – 5</strong>.</p>
-              
-              <div style="text-align:center; margin:1.5rem 0;">
-                <div class="visual-grid">
-                  <div class="visual-cell filled">1</div>
-                  <div class="visual-cell filled">2</div>
-                  <div class="visual-cell">3</div>
-                  <div class="visual-cell">4</div>
-                  <div class="visual-cell">5</div>
-                </div>
-                <p class="page-text" style="font-size:0.75rem; margin-top:0.5rem;">5 morceaux identiques</p>
-              </div>
-              
-              <p class="page-text">Il en ramasse <strong>2</strong>.</p>
-              
-              <div class="math-box">
-                <p class="page-text" style="margin:0;"><strong>Le problème mathématique :</strong></p>
-                <p class="page-text" style="margin:0.3rem 0;">• Cristal entier = 5 parts égales</p>
-                <p class="page-text" style="margin:0.3rem 0;">• Parts ramassées = 2</p>
-                <p class="page-text" style="margin:0.3rem 0; font-weight:700;">• Question : quelle fraction ?</p>
-              </div>
-              
-              <p class="page-text" style="font-style:italic; color:var(--sky);">Léo ne sait pas encore. Il va apprendre.</p>
-              <div class="page-footer">Page 4 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 5 - BESOIN DE COMPRENDRE -->
-          <div class="page" id="p5">
-            <div class="page-content">
-              <h4 class="page-title">2. Le Robot aux Yeux Rouges</h4>
-              <p class="page-text">Un robot s'allume. Ses yeux clignotent.</p>
-              
-              <div class="math-box" style="border-left-color:var(--terracotta); background:#fff5f5;">
-                <p class="page-text" style="margin:0; font-weight:600;">« Humain. Tu as 2 morceaux sur 5. »<br>
-                « Écris la fraction ou la forge explosera. »</p>
-              </div>
-              
-              <p class="page-text" style="margin-top:1rem;">Léo ne connaît pas ce mot : <strong style="color:var(--gold);">fraction</strong>.</p>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0;"><strong>Mais il a une méthode :</strong><br>
-                <em>« Je vais dessiner pour comprendre. »</em></p>
-              </div>
-              
-              <div style="text-align:center; margin:1.5rem 0; padding:1rem; background:var(--cream-2); border-radius:10px;">
-                <p class="page-text" style="margin:0; font-weight:600;">💡 Astuce Léo :</p>
-                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">Quand tu ne comprends pas un mot maths,<br>dessine la situation !</p>
-              </div>
-              
-              <div class="page-footer">Page 5 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 6 - MÉTHODE VISUELLE -->
-          <div class="page" id="p6">
-            <div class="page-content">
-              <h4 class="page-title">3. La Méthode Visuelle</h4>
-              <p class="page-text">Léo dessine un rectangle pour représenter le cristal.</p>
-              
-              <div style="text-align:center; margin:1rem 0;">
-                <p class="page-text" style="font-size:0.75rem; margin-bottom:0.3rem;"><strong>Étape 1 :</strong> Le cristal entier</p>
-                <div style="display:flex; border:2px solid var(--ink); width:200px; height:40px; margin:0 auto;">
-                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
-                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
-                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
-                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
-                  <div style="flex:1;"></div>
-                </div>
-              </div>
-              
-              <div style="text-align:center; margin:1rem 0;">
-                <p class="page-text" style="font-size:0.75rem; margin-bottom:0.3rem;"><strong>Étape 2-3 :</strong> 2 parts sur 5 coloriées</p>
-                <div class="visual-grid">
-                  <div class="visual-cell filled">✓</div>
-                  <div class="visual-cell filled">✓</div>
-                  <div class="visual-cell"></div>
-                  <div class="visual-cell"></div>
-                  <div class="visual-cell"></div>
-                </div>
-              </div>
-              
-              <div class="math-box">
-                <p class="page-text" style="margin:0;"><strong>Étape 4 :</strong> Il lit le résultat</p>
-                <p class="math-formula">
-                  <span class="fraction"><span class="num">2</span><span class="den">5</span></span>
-                </p>
-                <p class="page-text" style="margin:0.5rem 0 0 0; text-align:center; font-size:0.8rem;">2 parts sur 5 = <strong>2/5</strong></p>
-              </div>
-              
-              <div class="page-footer">Page 6 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 7 - LA RÈGLE -->
-          <div class="page" id="p7">
-            <div class="page-content">
-              <h4 class="page-title">4. La Règle des Fractions</h4>
-              
-              <div class="math-box" style="text-align:center; padding:1rem;">
-                <p class="math-formula" style="font-size:1.5rem;">
-                  <span class="fraction"><span class="num">2</span><span class="den">5</span></span>
-                </p>
-              </div>
-              
-              <div style="margin:1rem 0;">
-                <p class="page-subtitle">🔻 Dénominateur (en bas)</p>
-                <p class="page-text">= nombre total de parts <strong>égales</strong></p>
-                <p class="page-text" style="color:var(--gold); font-weight:700;">Ici : 5</p>
-                <p class="page-text" style="font-size:0.75rem; font-style:italic;">Astuce : "Dé-nombrer" = compter le total</p>
-              </div>
-              
-              <div style="margin:1rem 0;">
-                <p class="page-subtitle">🔺 Numérateur (en haut)</p>
-                <p class="page-text">= nombre de parts choisies</p>
-                <p class="page-text" style="color:var(--gold); font-weight:700;">Ici : 2</p>
-                <p class="page-text" style="font-size:0.75rem; font-style:italic;">Astuce : "Numéroter" = compter ce qu'on prend</p>
-              </div>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0;"><strong>Formule à retenir :</strong></p>
-                <p class="math-formula" style="font-size:1rem; margin:0.3rem 0;">
-                  <span class="fraction"><span class="num">numérateur</span><span class="den">dénominateur</span></span> = fraction
-                </p>
-              </div>
-              
-              <div class="page-footer">Page 7 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 8 - LE PIÈGE -->
-          <div class="page" id="p8">
-            <div class="page-content">
-              <h4 class="page-title" style="color:var(--terracotta);">5. ⚠️ Le Piège des Parts Inégales</h4>
-              
-              <p class="page-text">Léo voit un autre cristal brisé en <strong>2 morceaux</strong>.</p>
-              
-              <div style="text-align:center; margin:1rem 0; padding:1rem; background:#fff5f5; border-radius:10px;">
-                <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:0.5rem;">
-                  <div style="width:30px; height:30px; background:var(--gold); border:2px solid var(--ink); border-radius:4px;"></div>
-                  <span style="font-size:1.5rem;">≠</span>
-                  <div style="width:80px; height:30px; background:var(--gold); border:2px solid var(--ink); border-radius:4px;"></div>
-                </div>
-                <p class="page-text" style="font-size:0.75rem; margin:0;">Un petit morceau ≠ un gros morceau</p>
-              </div>
-              
-              <p class="page-text">Il veut écrire : <strong>1/2</strong></p>
-              
-              <div class="warning-box">
-                <p class="page-text" style="margin:0; font-weight:700;">🚨 LE ROBOT HURLE : ERREUR !</p>
-              </div>
-              
-              <div class="math-box">
-                <p class="page-text" style="margin:0;"><strong>Pourquoi ?</strong></p>
-                <p class="page-text" style="margin:0.3rem 0;">Parce que les 2 parts ne sont <strong>pas égales</strong>.</p>
-              </div>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0;"><strong>Règle absolue :</strong><br>
-                <em>On ne peut écrire une fraction que si toutes les parts sont identiques.</em></p>
-              </div>
-              
-              <p class="page-text" style="font-size:0.8rem;">✅ Pizza coupée en 2 parts égales → 1/2<br>
-              ❌ Cristal coupé en 2 parts inégales → PAS de fraction</p>
-              
-              <div class="page-footer">Page 8 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 9 - QUIZ RAPIDE -->
-          <div class="page" id="p9">
-            <div class="page-content">
-              <h4 class="page-title">6. 🧠 Quiz Rapide</h4>
-              <p class="page-text" style="font-size:0.8rem; margin-bottom:1rem;">Vérifie ta compréhension. Coche la bonne réponse.</p>
-              
-              <div style="margin:0.8rem 0;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">1. Que représente le dénominateur ?</p>
-                <label class="quiz-option"><input type="radio" name="q1"> Le nombre de parts choisies</label>
-                <label class="quiz-option"><input type="radio" name="q1" checked> Le nombre total de parts égales ✅</label>
-              </div>
-              
-              <div style="margin:0.8rem 0;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">2. Dans 3/8, quel est le numérateur ?</p>
-                <label class="quiz-option"><input type="radio" name="q2"> 8</label>
-                <label class="quiz-option"><input type="radio" name="q2" checked> 3 ✅</label>
-              </div>
-              
-              <div style="margin:0.8rem 0;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">3. Pizza en 4 parts égales. Je prends 1 part. Fraction ?</p>
-                <label class="quiz-option"><input type="radio" name="q3"> 4/1</label>
-                <label class="quiz-option"><input type="radio" name="q3" checked> 1/4 ✅</label>
-              </div>
-              
-              <div style="margin:0.8rem 0;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">4. Peut-on écrire 1/2 si les parts ne sont pas égales ?</p>
-                <label class="quiz-option"><input type="radio" name="q4"> Oui</label>
-                <label class="quiz-option"><input type="radio" name="q4" checked> Non ✅</label>
-              </div>
-              
-              <div class="math-box" style="margin-top:1rem; text-align:center;">
-                <p class="page-text" style="margin:0; font-size:0.8rem;">👉 Tourne la page pour voir les corrections !</p>
-              </div>
-              
-              <div class="page-footer">Page 9 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 10 - CORRECTION + PROBLÈME RÉSOLU -->
-          <div class="page" id="p10">
-            <div class="page-content">
-              <h4 class="page-title" style="color:var(--teal);">7. ✅ Correction + Problème Résolu</h4>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0; font-weight:600;">Réponses du quiz :</p>
-                <p class="page-text" style="margin:0.3rem 0;">1️⃣ Nombre total de parts égales</p>
-                <p class="page-text" style="margin:0.1rem 0;">2️⃣ 3</p>
-                <p class="page-text" style="margin:0.1rem 0;">3️⃣ 1/4</p>
-                <p class="page-text" style="margin:0.1rem 0;">4️⃣ Non</p>
-              </div>
-              
-              <hr style="border:0; border-top:1px dashed var(--cream-3); margin:1rem 0;">
-              
-              <p class="page-subtitle">🔑 PROBLÈME RÉSOLU N°1 : La clé qui brille</p>
-              <p class="page-text">Une porte a un cercle coupé en <strong>4 parts égales</strong>.<br><strong>3 parts</strong> brillent.</p>
-              
-              <div class="math-box">
-                <p class="page-text" style="margin:0;"><strong>Méthode pas à pas :</strong></p>
-                <p class="page-text" style="margin:0.3rem 0;">1️⃣ Total des parts = 4 → dénominateur = 4</p>
-                <p class="page-text" style="margin:0.1rem 0;">2️⃣ Parts qui brillent = 3 → numérateur = 3</p>
-                <p class="page-text" style="margin:0.1rem 0; font-weight:700;">3️⃣ Fraction = <span class="fraction"><span class="num">3</span><span class="den">4</span></span></p>
-              </div>
-              
-              <div style="text-align:center; margin:1rem 0; padding:0.8rem; background:var(--cream-2); border-radius:10px;">
-                <p class="page-text" style="margin:0; font-weight:700; color:var(--gold);">✨ La porte s'ouvre !</p>
-              </div>
-              
-              <div class="page-footer">Page 10 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 11 - EXERCICES PROGRESSIFS -->
-          <div class="page" id="p11">
-            <div class="page-content">
-              <h4 class="page-title">8. 🧩 Trois Cristaux à Résoudre</h4>
-              <p class="page-text" style="font-size:0.8rem;">Résous sur une feuille. Correction page 12.</p>
-              
-              <div style="margin:1rem 0; padding:0.8rem; border:1px solid var(--cream-3); border-radius:8px;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🔷 Cristal n°1</p>
-                <div class="visual-grid" style="width:150px; margin:0.5rem auto;">
-                  <div class="visual-cell filled"></div>
-                  <div class="visual-cell filled"></div>
-                  <div class="visual-cell filled"></div>
-                  <div class="visual-cell"></div>
-                  <div class="visual-cell"></div>
-                </div>
-                <p class="page-text">Rectangle en <strong>5 parts</strong>, <strong>3 vertes</strong></p>
-                <p class="page-text" style="font-weight:700;">Fraction : <span class="fraction"><span class="num">___</span><span class="den">___</span></span></p>
-              </div>
-              
-              <div style="margin:1rem 0; padding:0.8rem; border:1px solid var(--cream-3); border-radius:8px;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🔵 Cristal n°2</p>
-                <p class="page-text">Cercle en <strong>8 parts égales</strong>, <strong>6 bleues</strong></p>
-                <p class="page-text" style="font-weight:700;">Fraction : <span class="fraction"><span class="num">___</span><span class="den">___</span></span></p>
-              </div>
-              
-              <div style="margin:1rem 0; padding:0.8rem; border:1px solid var(--cream-3); border-radius:8px;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🔴 Cristal n°3</p>
-                <p class="page-text">Barre en <strong>3 parts égales</strong>, <strong>1 rouge</strong></p>
-                <p class="page-text" style="font-weight:700;">Fraction : <span class="fraction"><span class="num">___</span><span class="den">___</span></span></p>
-              </div>
-              
-              <div class="math-box" style="text-align:center;">
-                <p class="page-text" style="margin:0; font-size:0.8rem;">💡 Astuce : Compte d'abord le total (en bas), puis ce qui est colorié (en haut) !</p>
-              </div>
-              
-              <div class="page-footer">Page 11 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 12 - PROBLÈME RÉSOLU N°2 -->
-          <div class="page" id="p12">
-            <div class="page-content">
-              <h4 class="page-title">9. 🔥 Problème Résolu N°2</h4>
-              <p class="page-subtitle">La forge en danger : partage d'énergie</p>
-              
-              <div class="math-box">
-                <p class="page-text" style="margin:0;"><strong>Énoncé :</strong><br>
-                La forge a <strong>12 unités d'énergie</strong> à répartir équitablement entre <strong>4 moteurs</strong>.<br>
-                Quelle fraction de l'énergie totale reçoit un moteur ?</p>
-              </div>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0;"><strong>Résolution pas à pas :</strong></p>
-                <p class="page-text" style="margin:0.3rem 0;">1️⃣ Total = 12 unités</p>
-                <p class="page-text" style="margin:0.1rem 0;">2️⃣ 4 moteurs → chaque part = 12 ÷ 4 = <strong>3 unités</strong></p>
-                <p class="page-text" style="margin:0.1rem 0;">3️⃣ Fraction pour 1 moteur = 1 part sur 4 = <span class="fraction"><span class="num">1</span><span class="den">4</span></span></p>
-              </div>
-              
-              <div style="text-align:center; margin:1rem 0;">
-                <p class="page-text" style="font-size:0.8rem;"><strong>Vérification :</strong></p>
-                <p class="math-formula" style="font-size:1rem;">4 × <span class="fraction"><span class="num">1</span><span class="den">4</span></span> = <span class="fraction"><span class="num">4</span><span class="den">4</span></span> = 1 ✅</p>
-              </div>
-              
-              <div style="text-align:center; padding:0.8rem; background:var(--cream-2); border-radius:10px;">
-                <p class="page-text" style="margin:0; font-weight:700; color:var(--gold);">🎯 Réponse : 1/4</p>
-              </div>
-              
-              <div class="page-footer">Page 12 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 13 - CORRECTION EXERCICES -->
-          <div class="page" id="p13">
-            <div class="page-content">
-              <h4 class="page-title" style="color:var(--teal);">10. ✅ Correction des Cristaux</h4>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0; font-weight:600;">🔷 Cristal n°1 : <span class="fraction"><span class="num">3</span><span class="den">5</span></span></p>
-                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">3 parts vertes sur 5 au total</p>
-              </div>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0; font-weight:600;">🔵 Cristal n°2 : <span class="fraction"><span class="num">6</span><span class="den">8</span></span></p>
-                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">6 parts bleues sur 8 au total</p>
-              </div>
-              
-              <div class="success-box">
-                <p class="page-text" style="margin:0; font-weight:600;">🔴 Cristal n°3 : <span class="fraction"><span class="num">1</span><span class="den">3</span></span></p>
-                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">1 part rouge sur 3 au total</p>
-              </div>
-              
-              <div style="text-align:center; margin:1.5rem 0; padding:1rem; background:linear-gradient(135deg, var(--cream-2), var(--gold-light)); border-radius:12px;">
-                <p class="page-text" style="margin:0; font-size:1.1rem; font-weight:700;">🎉 Si tu as tout bon → BRAVO !</p>
-                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">Si tu as une erreur → Relis la règle page 7</p>
-              </div>
-              
-              <div class="page-footer">Page 13 / 14</div>
-            </div>
-          </div>
-
-          <!-- PAGE 14 - FINAL + APPEL À L'ACHAT -->
-          <div class="page" id="p14">
-            <div class="page-content final-page">
-              <h3 class="cover-title" style="color:var(--gold); margin-bottom:0.5rem;">🏆 MISSION RÉUSSIE</h3>
-              <p class="page-text" style="opacity:0.9; margin-bottom:1.5rem;">Tu viens de vivre un extrait de la méthode <strong>EDUCONCRET</strong>.</p>
-              
-              <div class="math-box" style="background:rgba(201,168,76,0.2); border-left-color:var(--gold); text-align:center;">
-                <p class="page-text" style="margin:0; font-weight:600;">📋 Ce qu'il faut retenir :</p>
-                <p class="math-formula" style="font-size:1.2rem; margin:0.5rem 0;">
-                  <span class="fraction"><span class="num">numérateur (parts choisies)</span><span class="den">dénominateur (parts totales)</span></span>
-                </p>
-                <p class="page-text" style="margin:0.5rem 0 0 0; font-size:0.8rem;">⚠️ Règle d'or : Les parts doivent être <strong>égales</strong> !</p>
-              </div>
-              
-              <div style="margin:1.5rem 0; text-align:left;">
-                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🌍 Fractions dans la vie :</p>
-                <p class="page-text" style="font-size:0.8rem; line-height:1.8;">
-                  🍕 Pizza : 2 parts sur 8 → 2/8<br>
-                  ⏰ Un quart d'heure = 1/4 d'heure<br>
-                  🍼 Bouteille : 3/4 pleine<br>
-                  🥄 Recette : 1/2 cuillère
-                </p>
-              </div>
-              
-              <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:1.5rem 0;">
-              
-              <p class="page-text" style="font-size:0.85rem; margin-bottom:0.8rem;">Dans le livre complet :</p>
-              <ul style="font-size:0.75rem; text-align:left; margin:0 0 1rem 1rem; opacity:0.9;">
-                <li>10 chapitres comme celui-ci</li>
-                <li>Personnalisé avec le prénom de ton enfant</li>
-                <li>50 exercices + corrigés</li>
-                <li>Diplôme de Maître de l'Unité</li>
-              </ul>
-              
-              <div class="final-price">49 €</div>
-              
-              <a href="#contact" class="btn btn-gold btn-sm" style="width:100%; justify-content:center; margin-top:0.5rem;">
-                🛒 COMMANDER MON LIVRE PERSONNALISÉ →
-              </a>
-              
-              <p class="page-footer" style="border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.7); margin-top:1.5rem;">
-                EduConcret • Maths concrètes • Aventure interactive
-              </p>
-            </div>
-          </div>
-
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+        <div class="fade-in" style="background:#1a1714;border:1px solid rgba(201,168,76,0.3);border-radius:18px;padding:2.5rem;position:relative;">
+          <div style="position:absolute;top:-10px;right:15px;font-size:4.5rem;font-weight:900;color:rgba(201,168,76,0.1);font-family:'Fraunces',serif;">01</div>
+          <h3 style="color:#fff;font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:1.5rem;">Ingénierie de Formation</h3>
+          <ul style="list-style:none;"><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Analyse du besoin et création de référentiels</li><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Découpage en blocs modulaires</li><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Scénarisation de modules engageants</li></ul>
+          <div style="background:rgba(201,168,76,0.15);border:1px solid #c9a84c;color:#e8c96a;padding:0.65rem 1rem;font-weight:700;border-radius:8px;font-size:0.85rem;">Conformité Qualiopi renforcée</div>
         </div>
-
-        <div class="book-controls">
-          <button onclick="prevPage()" class="nav-btn" aria-label="Page précédente">←</button>
-          <div id="pageIndicator">Page 1 / 14</div>
-          <button onclick="nextPage()" class="nav-btn" aria-label="Page suivante">→</button>
+        <div class="fade-in fade-in-delay-1" style="background:#1a1714;border:1px solid rgba(201,168,76,0.3);border-radius:18px;padding:2.5rem;position:relative;">
+          <div style="position:absolute;top:-10px;right:15px;font-size:4.5rem;font-weight:900;color:rgba(201,168,76,0.1);font-family:'Fraunces',serif;">02</div>
+          <h3 style="color:#fff;font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:1.5rem;">Digitalisation & FOAD</h3>
+          <ul style="list-style:none;"><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Transformation de contenus papier en e-learning</li><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Vidéos et quiz interactifs</li><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Intégration sur LMS Moodle</li></ul>
+          <div style="background:rgba(201,168,76,0.15);border:1px solid #c9a84c;color:#e8c96a;padding:0.65rem 1rem;font-weight:700;border-radius:8px;font-size:0.85rem;">Accessible à 300+ apprenants/an</div>
         </div>
-        
-        <p style="text-align:center; font-size:0.75rem; color:var(--ink-3); margin-top:1rem;">
-          💡 Astuce : Utilise les flèches ← → de ton clavier pour naviguer
-        </p>
+        <div class="fade-in fade-in-delay-2" style="background:#1a1714;border:1px solid rgba(201,168,76,0.3);border-radius:18px;padding:2.5rem;position:relative;">
+          <div style="position:absolute;top:-10px;right:15px;font-size:4.5rem;font-weight:900;color:rgba(201,168,76,0.1);font-family:'Fraunces',serif;">03</div>
+          <h3 style="color:#fff;font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:1.5rem;">Coordination & Qualité</h3>
+          <ul style="list-style:none;"><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Harmonisation des pratiques pédagogiques</li><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Systèmes de veille automatisés</li><li style="color:rgba(247,243,237,0.7);font-size:0.9rem;margin-bottom:0.5rem;padding-left:1rem;position:relative;">Préparation aux audits Qualiopi</li></ul>
+          <div style="background:rgba(201,168,76,0.15);border:1px solid #c9a84c;color:#e8c96a;padding:0.65rem 1rem;font-weight:700;border-radius:8px;font-size:0.85rem;">Délais de production -30%</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:3rem;" class="fade-in">
+        <a href="#rdv" class="btn btn-gold">Travaillons ensemble →</a>
       </div>
     </div>
   </section>
 
-  <footer id="contact">
+  <!-- ESPACE FAMILLE -->
+  <section id="espace-famille" style="background:var(--cream-2);padding:6rem 2rem;">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(46,111,168,0.1);color:var(--sky);">👨‍👩‍👧 Espace Famille</div>
+        <h2>Livres de Mathématiques Personnalisés</h2>
+        <p>Du CP à la 3e. Méthode narrative EduConcret. Votre enfant est le héros de son apprentissage.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2rem;">
+        <div class="fade-in" style="background:var(--white);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='var(--shadow)'">
+          <div style="height:220px;background:linear-gradient(135deg,#fef9e6,#f5e6c8);display:flex;align-items:center;justify-content:center;padding:1.5rem;">
+            <img src="https://i.postimg.cc/pLVx8z2j/Chat-GPT-Image-8-avr-2026-23-06-48.png" alt="Kawaii et Compagnie CM1" style="max-width:100%;max-height:100%;object-fit:contain;">
+          </div>
+          <div style="padding:1.5rem;text-align:center;">
+            <div style="display:inline-block;background:var(--sky);color:white;font-size:0.65rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:20px;margin-bottom:0.8rem;">CM1 · 9-10 ans</div>
+            <h4 style="font-family:'Fraunces',serif;font-size:1.2rem;margin-bottom:0.3rem;">Kawaii et Compagnie</h4>
+            <p style="color:var(--ink-3);font-size:0.8rem;margin-bottom:0.8rem;">Boutique japonaise · Programme complet</p>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--sky);">59€</div>
+            <a href="#nous-ecrire" class="btn btn-sky btn-sm" style="margin-top:0.8rem;width:100%;justify-content:center;">📖 Commander</a>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-1" style="background:var(--white);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='var(--shadow)'">
+          <div style="height:220px;background:linear-gradient(135deg,#e8f0fe,#cce0ff);display:flex;align-items:center;justify-content:center;padding:1.5rem;">
+            <img src="https://i.postimg.cc/dVSMyfNK/Chat-GPT-Image-8-avr-2026-23-08-07.png" alt="Eliza in New York 6e" style="max-width:100%;max-height:100%;object-fit:contain;">
+          </div>
+          <div style="padding:1.5rem;text-align:center;">
+            <div style="display:inline-block;background:var(--sky);color:white;font-size:0.65rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:20px;margin-bottom:0.8rem;">6e · 11-12 ans</div>
+            <h4 style="font-family:'Fraunces',serif;font-size:1.2rem;margin-bottom:0.3rem;">Eliza in New York</h4>
+            <p style="color:var(--ink-3);font-size:0.8rem;margin-bottom:0.8rem;">Voyage urbain · Programme complet</p>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--sky);">59€</div>
+            <a href="#nous-ecrire" class="btn btn-sky btn-sm" style="margin-top:0.8rem;width:100%;justify-content:center;">📖 Commander</a>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-2" style="background:var(--white);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='var(--shadow)'">
+          <div style="height:220px;background:linear-gradient(135deg,#e8f5e8,#c8e6c8);display:flex;align-items:center;justify-content:center;padding:1.5rem;">
+            <img src="https://i.postimg.cc/HL7N7k7Q/Chat-GPT-Image-8-avr-2026-23-09-02.png" alt="Barça Foot et Math 4e" style="max-width:100%;max-height:100%;object-fit:contain;">
+          </div>
+          <div style="padding:1.5rem;text-align:center;">
+            <div style="display:inline-block;background:var(--sky);color:white;font-size:0.65rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:20px;margin-bottom:0.8rem;">4e · 13-14 ans</div>
+            <h4 style="font-family:'Fraunces',serif;font-size:1.2rem;margin-bottom:0.3rem;">Barça Foot et Math</h4>
+            <p style="color:var(--ink-3);font-size:0.8rem;margin-bottom:0.8rem;">Football · Programme complet</p>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--sky);">59€</div>
+            <a href="#nous-ecrire" class="btn btn-sky btn-sm" style="margin-top:0.8rem;width:100%;justify-content:center;">📖 Commander</a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:3rem;" class="fade-in">
+        <h3 style="font-family:'Fraunces',serif;margin-bottom:0.5rem;">💰 Offres famille</h3>
+        <p style="color:var(--ink-3);margin-bottom:1.5rem;">1 livre = 59€ · Pack 2 livres = 109€ · Suivi annuel (3 livres) = 179€</p>
+        <a href="#nous-ecrire" class="btn btn-sky">Je demande mon livre personnalisé →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="about-section" id="a-propos" style="background:var(--ink);color:var(--cream);padding:6rem 2rem;">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(247,243,237,0.08);color:rgba(247,243,237,0.6);">👨‍🏫 L'Expert</div>
+        <h2 style="color:var(--cream);">Moctar Touré</h2>
+        <p style="color:rgba(247,243,237,0.5);opacity:1;">Ingénieur Pédagogique · Directeur Pédagogique · Auteur</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem;" class="fade-in">
+        <div>
+          <h3 style="font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--cream);margin-bottom:0.9rem;">Une carrière dédiée à l'apprentissage concret</h3>
+          <p style="color:rgba(247,243,237,0.65);margin-bottom:1.25rem;line-height:1.85;font-size:0.93rem;">Depuis plus de <strong style="color:var(--cream);">10 ans</strong>, je résous le fossé entre la théorie et la pratique. J'ai conçu et piloté <strong style="color:var(--cream);">plus de 50 formations</strong> pour des organismes publics et privés. J'ai créé une méthode unique de <strong style="color:var(--cream);">narration mathématique</strong> qui réconcilie les enfants avec les chiffres.</p>
+          <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-xl);padding:2.5rem;text-align:center;margin-top:2rem;">
+            <blockquote style="font-family:'Fraunces',serif;font-size:1.5rem;font-style:italic;color:var(--gold);margin-bottom:1.35rem;">"On ne comprend vraiment que ce que l'on vit."</blockquote>
+            <p style="color:rgba(247,243,237,0.55);max-width:580px;margin:0 auto;line-height:1.85;font-size:0.93rem;">Tout ce que je crée est construit autour d'une <strong style="color:var(--cream);">progression narrative</strong> et d'une <strong style="color:var(--cream);">mise en action immédiate</strong>.</p>
+          </div>
+        </div>
+        <div style="background:rgba(247,243,237,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-xl);padding:2.25rem;">
+          <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:1.35rem;">Chiffres clés</h3>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">📊</div><div><div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--cream);letter-spacing:-0.03em;">+50</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Formations conçues et déployées</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">👥</div><div><div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--cream);letter-spacing:-0.03em;">3 000+</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Apprenants accompagnés</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">🏆</div><div><div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--cream);letter-spacing:-0.03em;">+22%</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Satisfaction apprenants</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">✅</div><div><div style="font-size:0.86rem;font-weight:600;color:var(--cream);">Qualiopi</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Audits réussis, conformité garantie</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ✉️ NOUS ÉCRIRE — SECTION COMPLÈTE              -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section id="nous-ecrire" style="background:var(--white);padding:6rem 2rem;">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(42,123,110,0.1);color:var(--teal);">✉️ Nous écrire</div>
+        <h2>Envoyez-moi un message</h2>
+        <p>Le premier échange est gratuit. Réponse sous 24h ouvrées.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1000px;margin:0 auto;">
+        <!-- FORMULAIRE -->
+        <div class="contact-card fade-in" style="background:var(--cream);border:2px solid var(--cream-3);">
+          <h3 style="color:var(--ink);">📝 Formulaire de contact</h3>
+          <p style="color:var(--ink-3);margin-bottom:1.5rem;">Remplissez ce formulaire et je vous répondrai rapidement.</p>
+          <form id="contactForm" action="https://formspree.io/f/xldgvkjq" method="POST">
+            <div>
+              <label for="nom">Nom complet *</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom et prénom" required>
+            </div>
+            <div>
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+            </div>
+            <div>
+              <label for="telephone">Téléphone (optionnel)</label>
+              <input type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX">
+            </div>
+            <div>
+              <label for="sujet">Sujet *</label>
+              <select id="sujet" name="sujet" required>
+                <option value="" disabled selected>Choisissez un sujet</option>
+                <option value="Livres de maths personnalisés">📚 Livres de maths personnalisés</option>
+                <option value="Formation professionnelle">💼 Formation professionnelle</option>
+                <option value="Audit / Conseil Qualiopi">🔍 Audit / Conseil Qualiopi</option>
+                <option value="Direction pédagogique">🏢 Direction pédagogique</option>
+                <option value="Passeport 48H">🎫 Passeport 48H</option>
+                <option value="Expédition Solo-Preneur">🚀 Expédition Solo-Preneur</option>
+                <option value="Partenariat">🤝 Partenariat</option>
+                <option value="Autre">💬 Autre</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Votre message *</label>
+              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet ou votre besoin..." required></textarea>
+            </div>
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_subject" value="Nouveau contact via educoncret.net">
+            <button type="submit" class="btn btn-teal" style="width:100%;justify-content:center;">
+              Envoyer le message →
+            </button>
+          </form>
+          <div id="formSuccess" class="form-success">
+            <div class="icon">✅</div>
+            <h4>Message envoyé avec succès !</h4>
+            <p>Je vous répondrai sous 24h ouvrées.<br>Merci pour votre confiance.</p>
+          </div>
+        </div>
+
+        <!-- INFOS DIRECTES -->
+        <div class="fade-in fade-in-delay-1" style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div style="background:var(--ink);border-radius:var(--radius-xl);padding:2.5rem;color:var(--cream);">
+            <h3 style="font-family:'Fraunces',serif;font-size:1.2rem;color:var(--cream);margin-bottom:1.5rem;">📬 Contact direct</h3>
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div style="display:flex;gap:1rem;align-items:flex-start;">
+                <div style="font-size:1.5rem;">📧</div>
+                <div>
+                  <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">Email</div>
+                  <a href="mailto:contact@educoncret.net" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:1rem;">contact@educoncret.net</a>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start;">
+                <div style="font-size:1.5rem;">📞</div>
+                <div>
+                  <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">Téléphone</div>
+                  <a href="tel:+33764070161" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:1rem;">+33 7 64 07 01 61</a>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start;">
+                <div style="font-size:1.5rem;">📍</div>
+                <div>
+                  <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">Localisation</div>
+                  <div style="font-weight:600;color:var(--cream);">Paris, France</div>
+                  <div style="font-size:0.82rem;color:rgba(247,243,237,0.5);">Interventions à distance partout en France</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start;">
+                <div style="font-size:1.5rem;">💼</div>
+                <div>
+                  <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">LinkedIn</div>
+                  <a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:600;">Moctar Touré</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--cream);border:1px solid var(--cream-3);border-radius:var(--radius-xl);padding:2rem;">
+            <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:0.8rem;">⏰ Horaires de réponse</h3>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.88rem;color:var(--ink-3);">
+              <div style="display:flex;justify-content:space-between;"><span>Lundi – Vendredi</span><strong style="color:var(--ink);">9h00 – 18h00</strong></div>
+              <div style="display:flex;justify-content:space-between;"><span>Samedi</span><strong style="color:var(--ink);">Sur rendez-vous</strong></div>
+              <div style="display:flex;justify-content:space-between;"><span>Dimanche</span><strong style="color:var(--ink-3);opacity:0.5;">Fermé</strong></div>
+            </div>
+            <div style="margin-top:1rem;padding:0.8rem;background:rgba(42,123,110,0.08);border-radius:var(--radius);font-size:0.82rem;color:var(--teal);font-weight:600;">
+              ✅ Réponse garantie sous 24h ouvrées
+            </div>
+          </div>
+
+          <div style="background:var(--terracotta);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center;">
+            <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:0.5rem;">📱 WhatsApp Direct</h3>
+            <p style="font-size:0.85rem;opacity:0.8;margin-bottom:1rem;">Pour les demandes rapides et les échanges en direct</p>
+            <a href="https://wa.me/33764070161" target="_blank" class="btn" style="background:white;color:var(--terracotta);font-weight:700;width:100%;justify-content:center;">💬 Envoyer un message WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- 📅 PRISE DE RENDEZ-VOUS — SECTION COMPLÈTE     -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section id="rdv" class="rdv-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">📅 Prise de rendez-vous</div>
+        <h2 style="color:var(--cream);">Réservez votre créneau</h2>
+        <p style="color:rgba(247,243,237,0.5);">Le premier échange de 30 minutes est gratuit. Choisissez un créneau dans mon agenda.</p>
+      </div>
+
+      <!-- CALENDLY -->
+      <div class="rdv-wrapper fade-in">
+        <div class="rdv-header">
+          <h3>📆 Appel Découverte Offert — 30 minutes</h3>
+          <p>On échange sur votre projet, vos besoins et comment je peux vous aider.</p>
+        </div>
+        <div class="rdv-body">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/contact-educoncret/30min" style="min-width:320px;height:700px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+      </div>
+
+      <!-- ALTERNATIVES -->
+      <div class="rdv-alternatives fade-in">
+        <div class="rdv-alt-card">
+          <div class="icon">📧</div>
+          <h4>Par Email</h4>
+          <p>Écrivez-moi directement et je vous propose plusieurs créneaux.</p>
+          <a href="mailto:contact@educoncret.net">contact@educoncret.net</a>
+        </div>
+        <div class="rdv-alt-card">
+          <div class="icon">📞</div>
+          <h4>Par Téléphone</h4>
+          <p>Appelez-moi directement pour un échange immédiat.</p>
+          <a href="tel:+33764070161">07 64 07 01 61</a>
+        </div>
+        <div class="rdv-alt-card">
+          <div class="icon">💬</div>
+          <h4>WhatsApp</h4>
+          <p>Envoyez un message vocal ou texte pour convenir d'un RDV.</p>
+          <a href="https://wa.me/33764070161" target="_blank">Message WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CTA FINAL -->
+      <div style="text-align:center;margin-top:4rem;" class="fade-in">
+        <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-xl);padding:2.5rem;max-width:700px;margin:0 auto;">
+          <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;color:var(--gold);margin-bottom:0.75rem;">Quel que soit votre besoin...</h3>
+          <p style="color:rgba(247,243,237,0.6);font-size:0.95rem;line-height:1.7;">
+            Formation professionnelle, livre de maths, audit Qualiopi, accompagnement solo-preneur —<br>
+            <strong style="color:var(--cream);">le premier échange est toujours gratuit et sans engagement.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
     <div class="footer-inner">
-      <div class="fade-in" style="background: rgba(247,243,237,0.05); border: 1px solid var(--gold); border-radius: 20px; padding: 2.5rem; max-width: 450px; margin: 0 auto 3rem;">
-        <h4 style="font-family:'Fraunces',serif; color:var(--gold);">Ma Carte de Visite</h4>
-        <p style="font-size:0.8rem; margin-bottom:1.5rem;">Scannez pour enregistrer mon contact</p>
-        <div style="background: white; padding: 10px; display: inline-block; border-radius: 12px; margin-bottom: 1.5rem;">
+      <div class="fade-in" style="background:rgba(247,243,237,0.05);border:1px solid var(--gold);border-radius:20px;padding:2rem;max-width:400px;margin:0 auto 3rem;text-align:center;">
+        <h4 style="font-family:'Fraunces',serif;color:var(--gold);margin-bottom:0.5rem;">Ma Carte de Visite</h4>
+        <p style="font-size:0.8rem;color:rgba(247,243,237,0.6);margin-bottom:1.5rem;">Scannez pour m'ajouter à vos contacts</p>
+        <div style="background:white;padding:10px;display:inline-block;border-radius:12px;margin-bottom:1.5rem;">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://educoncret.net/contact.vcf" alt="QR Code Moctar Touré">
         </div>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <a href="https://educoncret.net/contact.vcf" class="btn btn-gold" style="width:100%; justify-content:center;">Enregistrer Contact</a>
-          <a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Profil LinkedIn</a>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="https://educoncret.net/contact.vcf" class="btn btn-gold btn-sm" style="width:100%;justify-content:center;">Enregistrer le Contact</a>
+          <a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" class="btn btn-outline-cream btn-sm" style="width:100%;justify-content:center;">LinkedIn</a>
         </div>
       </div>
 
-      <div style="font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--cream);">EduConcret</div>
-      <p style="font-size: 0.9rem; margin-top: 10px;">Moctar Touré — Ingénieur Pédagogique & Directeur Pédagogique LOGIX FORMA</p>
-      <p style="font-size: 0.8rem; margin-top: 5px;">📧 contact@educoncret.net | 📞 07 64 07 01 61</p>
+      <div class="footer-brand">EduConcret</div>
+      <p style="font-size:1rem;color:var(--cream);margin-bottom:0.5rem;font-family:'Fraunces',serif;font-style:italic;">Apprendre en vivant.</p>
+      <p style="font-size:0.82rem;color:rgba(247,243,237,0.4);margin-bottom:1.5rem;">Moctar Touré — Ingénieur Pédagogique · Directeur Pédagogique LOGIX FORMA</p>
+      <div class="footer-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#espace-pro">Espace Pro</a>
+        <a href="#espace-famille">Espace Famille</a>
+        <a href="#a-propos">À Propos</a>
+        <a href="#nous-ecrire">✉️ Nous écrire</a>
+        <a href="#rdv">📅 Prendre RDV</a>
+      </div>
+      <div style="margin:1.5rem 0;">
+        <p style="color:rgba(247,243,237,0.3);font-size:0.8rem;">
+          <a href="mailto:contact@educoncret.net" style="color:rgba(247,243,237,0.4);text-decoration:none;">contact@educoncret.net</a>
+          &nbsp; | &nbsp;
+          <a href="tel:+33764070161" style="color:rgba(247,243,237,0.4);text-decoration:none;">07 64 07 01 61</a>
+          &nbsp; | &nbsp;
+          Paris, France
+        </p>
+      </div>
+      <div class="footer-copy">
+        © 2025 Moctar Touré | EduConcret | Tous droits réservés<br>
+        <span style="font-size:0.7rem;opacity:0.5;">Site conçu pour refléter l'excellence pédagogique</span>
+      </div>
     </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
   <script>
-    // --- FLIPBOOK LOGIC ---
-    let curPage = 1;
-    const maxPages = 14;
-    
-    function updatePage() {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('p' + curPage).classList.add('active');
-      document.getElementById('pageIndicator').innerText = `Page ${curPage} / ${maxPages}`;
-      
-      // Scroll to top of book when changing page
-      const bookWrapper = document.getElementById('book');
-      if(bookWrapper) bookWrapper.scrollTop = 0;
-    }
-    
-    function nextPage() { 
-      if (curPage < maxPages) {
-        curPage++;
-        updatePage();
-      }
-    }
-    
-    function prevPage() { 
-      if (curPage > 1) {
-        curPage--;
-        updatePage();
-      }
-    }
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowRight') nextPage();
-      if (e.key === 'ArrowLeft') prevPage();
+    // SCROLL PROGRESS
+    const scrollProgress = document.getElementById('scrollProgress');
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress.style.width = (docHeight > 0 ? (scrollTop / docHeight * 100) : 0) + '%';
+      if (scrollTop > 500) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
     });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // --- PROGRESS BAR ---
-    window.onscroll = function() {
-      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      let scrolled = (winScroll / height) * 100;
-      document.getElementById("scrollProgress").style.width = scrolled + "%";
-    };
+    // HAMBURGER MENU
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    function closeMenu() { navMobile.classList.remove('open'); }
+    navMobile.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
-    // --- FADE IN OBSERVER ---
+    // SCROLL REVEAL
     const fadeEls = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => { 
-        if (e.isIntersecting) { 
-          e.target.classList.add('visible'); 
-        } 
-      });
-    }, { threshold: 0.2 });
-    fadeEls.forEach(el => fadeObserver.observe(el));
-    
-    // --- AUTO-PLAY DEMO (optional) ---
-    // Uncomment to auto-advance pages every 8 seconds for demo purposes
-    /*
-    let demoInterval;
-    function startDemo() {
-      demoInterval = setInterval(() => {
-        if(curPage < maxPages) nextPage();
-        else {
-          clearInterval(demoInterval);
-          curPage = 1;
-          updatePage();
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          fadeObserver.unobserve(e.target);
         }
-      }, 8000);
-    }
-    // startDemo();
-    */
-  </script>
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => fadeObserver.observe(el));
 
+    // ANCHOR OFFSET
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetStr = this.getAttribute('href');
+        if (targetStr.startsWith('#')) {
+          const target = document.querySelector(targetStr);
+          if (target) {
+            e.preventDefault();
+            const offset = 80;
+            window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // CONTACT FORM
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '⏳ Envoi en cours...';
+        submitBtn.disabled = true;
+
+        try {
+          const response = await fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            contactForm.style.display = 'none';
+            document.getElementById('formSuccess').classList.add('show');
+          } else {
+            submitBtn.innerHTML = '❌ Erreur. Réessayez.';
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }, 3000);
+          }
+        } catch (err) {
+          submitBtn.innerHTML = '❌ Erreur réseau.';
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }, 3000);
+        }
+      });
+    }
+
+    // ACTIVE NAV LINK ON SCROLL
+    const sections = document.querySelectorAll('section[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a, .nav-links-mobile a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinksAll.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
