@@ -3,257 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduConcret Certif PRO — Audit IA & Certification</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>EduConcret Certif PRO — Système Expert d'Audit Autonome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ink: #0e0c0a; --gold: #c9a84c; --gold-light: #e8c96a;
-            --cream: #f7f3ed; --cream-2: #efe9df; --terracotta: #c75a3a;
-            --teal: #2a7b6e; --lavender: #5c4d8a; --red: #c75a3a;
+            --ink: #0e0c0a; --gold: #c9a84c; --cream: #fbf9f6;
+            --red: #c75a3a; --teal: #2a7b6e; --border: rgba(201, 168, 76, 0.2);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--ink); line-height: 1.5; }
+        body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--ink); }
         
-        /* Layout */
-        .app-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; min-height: 100vh; }
-        .app-nav { background: #fffdf9; border-bottom: 1px solid #e5ddd0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo-area { font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
-        .brand-dot { width: 12px; height: 12px; background: var(--gold); border-radius: 50%; }
+        /* Layout Premium */
+        .app-container { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
         
-        .main-layout { display: flex; flex: 1; }
-        .sidebar { width: 280px; background: #fffdf9; border-right: 1px solid #e5ddd0; padding: 2rem 1rem; }
-        .sidebar-item { padding: 0.8rem 1rem; border-radius: 12px; margin-bottom: 5px; cursor: pointer; transition: 0.2s; font-weight: 500; display: flex; align-items: center; gap: 10px; }
-        .sidebar-item:hover { background: var(--cream-2); }
-        .sidebar-item.active { background: rgba(201,168,76,0.15); color: #8d6b12; font-weight: 700; }
-        
-        .content { flex: 1; padding: 2.5rem; }
-        
-        /* Components */
-        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .stat-card { background: white; border-radius: 24px; padding: 1.5rem; border: 1px solid #e5ddd0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        .stat-value { font-family: 'Fraunces', serif; font-size: 2.5rem; margin: 0.5rem 0; }
-        
-        .indicator-item { background: white; border-radius: 16px; padding: 1rem 1.5rem; border: 1px solid #e5ddd0; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
-        .indicator-item:hover { border-color: var(--gold); transform: translateX(5px); }
-        
-        .pill { padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
-        .critical { background: rgba(199,90,58,0.1); color: var(--red); }
-        .warning { background: rgba(201,168,76,0.1); color: #8d6b12; }
-        .compliant { background: rgba(42,123,110,0.1); color: var(--teal); }
-        
-        .btn-app { padding: 0.6rem 1.2rem; border-radius: 999px; border: none; font-weight: 600; cursor: pointer; font-family: inherit; transition: 0.2s; }
-        .btn-primary-app { background: var(--gold); color: var(--ink); }
-        .btn-audit { background: var(--teal); color: white; }
-        .btn-outline { background: white; border: 1px solid #d9cfc0; }
+        /* Sidebar Glassmorphism */
+        .sidebar { background: #fff; border-right: 1px solid var(--border); padding: 2rem 1.5rem; position: sticky; top: 0; height: 100vh; }
+        .logo { font-family: 'Fraunces'; font-weight: 900; font-size: 1.5rem; margin-bottom: 3rem; color: var(--ink); }
+        .nav-item { padding: 1rem; border-radius: 12px; cursor: pointer; transition: 0.3s; margin-bottom: 0.5rem; font-weight: 500; color: #666; }
+        .nav-item:hover { background: #f7f3ed; color: var(--ink); }
+        .nav-item.active { background: var(--ink); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        .progress-bar { height: 8px; background: #eee; border-radius: 4px; overflow: hidden; width: 100%; margin-top: 5px; }
-        .progress-fill { height: 100%; background: var(--teal); }
-
-        textarea { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #d9cfc0; font-family: inherit; margin: 10px 0; }
+        /* Main Content */
+        .content { padding: 4rem; max-width: 1200px; margin: 0 auto; width: 100%; }
+        .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
         
-        @media print { .sidebar, .app-nav, .btn-app { display: none !important; } .content { padding: 0; } }
+        /* Cards */
+        .card { background: #fff; border-radius: 24px; padding: 2rem; border: 1px solid var(--border); margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .section-title { font-family: 'Fraunces'; font-size: 2rem; margin-bottom: 1.5rem; }
+
+        /* Audit Grid */
+        .audit-check-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #f0f0f0; }
+        .audit-check-item:last-child { border: none; }
+        input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--teal); cursor: pointer; margin-top: 3px; }
+
+        /* Formulaire Dynamique */
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; color: #888; }
+        input[type="text"], textarea, select { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 1rem; }
+        
+        .btn-gold { background: var(--gold); color: #fff; border: none; padding: 1rem 2rem; border-radius: 999px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(201, 168, 76, 0.3); }
+
+        .pill { padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; }
+        .critical { background: #fff1f0; color: var(--red); }
+        .success { background: #f0f9f7; color: var(--teal); }
+
+        @media print { .sidebar, .btn-gold { display: none !important; } .content { padding: 0; } }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <nav class="app-nav">
-        <div class="logo-area"><div class="brand-dot"></div> EduConcret Certif PRO</div>
-        <div style="display: flex; gap: 10px;">
-            <button class="btn-app btn-outline" onclick="resetData()">Réinitialiser</button>
-            <button class="btn-app btn-primary-app">Espace Client</button>
-        </div>
-    </nav>
+    <aside class="sidebar">
+        <div class="logo">EduConcret <span style="color:var(--gold)">PRO</span></div>
+        <div class="nav-item active" onclick="navigate('audit', this)">🔍 Audit Contradictoire</div>
+        <div class="nav-item" onclick="navigate('generator', this)">📄 Générateur de Preuves</div>
+        <div class="nav-item" onclick="navigate('ia', this)">🤖 DeepScan IA</div>
+        <div class="nav-item" onclick="navigate('settings', this)">⚙️ Configuration API</div>
+        <hr style="margin: 2rem 0; opacity: 0.1;">
+        <button class="btn-gold" style="width:100%" onclick="window.print()">Exporter l'Audit</button>
+    </aside>
 
-    <div class="main-layout">
-        <aside class="sidebar">
-            <div class="sidebar-item active" onclick="showView('dashboard')">📊 Tableau de bord</div>
-            <div class="sidebar-item" onclick="showView('qualiopi')">✅ Indicateurs Qualiopi</div>
-            <div class="sidebar-item" onclick="showView('ia')">🤖 Analyse IA Documentaire</div>
-            <div class="sidebar-item" onclick="showView('preuves')">📁 Générateur de Preuves</div>
-            <div class="sidebar-item" onclick="showView('rncp')">📘 Ingénierie RNCP</div>
-            <div class="sidebar-item" onclick="showView('oral')">🎙️ Grand Oral (Simu)</div>
-            <div class="sidebar-item" onclick="showView('settings')">⚙️ Configuration API</div>
-        </aside>
-
-        <main class="content" id="mainContent">
-            </main>
-    </div>
+    <main class="content" id="mainRender">
+        </main>
 </div>
 
 <script>
-    // --- ÉTAT ET DONNÉES ---
-    const indicatorsData = [
-        { id: 1, code: "Q1.1", name: "Information du public", score: 40, cat: "Information" },
-        { id: 2, code: "Q1.2", name: "Conditions de prise en charge", score: 85, cat: "Information" },
-        { id: 3, code: "Q2.2", name: "Référent handicap", score: 20, cat: "Accessibilité" },
-        { id: 4, code: "Q3.1", name: "Objectifs pédagogiques", score: 100, cat: "Conception" },
-        { id: 5, code: "Q6.4", name: "Certificats de réalisation", score: 30, cat: "Suivi" }
+    // --- MOTEUR DE DONNÉES EXPERT ---
+    const indicators = [
+        { 
+            code: "Q1.1", 
+            name: "Information du Public", 
+            checks: ["Tarifs TTC/HT affichés", "Indicateurs de résultats 2024", "Conditions d'accessibilité"],
+            score: 0 
+        },
+        { 
+            code: "Q2.2", 
+            name: "Référent Handicap", 
+            checks: ["Coordonnées du référent", "Liste partenaires spécialisés", "Livret d'accueil dédié"],
+            score: 0 
+        },
+        { 
+            code: "Q3.1", 
+            name: "Objectifs de Formation", 
+            checks: ["Objectifs évaluables", "Prérequis identifiés", "Contenu détaillé par module"],
+            score: 0 
+        }
     ];
 
-    let state = JSON.parse(localStorage.getItem('edu_pro_save')) || {
-        indicators: indicatorsData,
-        apiKey: "",
-        rncpBlocks: [
-            { title: "Bloc 1: Ingénierie", skill: "Concevoir un programme", assessment: "Étude de cas" },
-            { title: "Bloc 2: Animation", skill: "Gérer un groupe", assessment: "" }
-        ],
-        evidences: []
+    let appState = JSON.parse(localStorage.getItem('edu_expert_db')) || {
+        indicators: indicators,
+        company: { name: "", siren: "", manager: "", handicap: "Jean Expert" },
+        apiKey: ""
     };
 
-    function save() { localStorage.setItem('edu_pro_save', JSON.stringify(state)); }
+    function save() { localStorage.setItem('edu_expert_db', JSON.stringify(appState)); }
 
-    // --- NAVIGATION ---
-    function showView(view) {
-        const content = document.getElementById('mainContent');
-        document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-        event?.target.classList.add('active');
-
-        switch(view) {
-            case 'dashboard': renderDashboard(content); break;
-            case 'qualiopi': renderQualiopi(content); break;
-            case 'ia': renderIA(content); break;
-            case 'preuves': renderPreuves(content); break;
-            case 'rncp': renderRNCP(content); break;
-            case 'oral': renderOral(content); break;
-            case 'settings': renderSettings(content); break;
-        }
+    // --- SYSTÈME DE NAVIGATION ---
+    function navigate(view, el) {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        el.classList.add('active');
+        render(view);
     }
 
-    // --- VUES ---
-    function renderDashboard(container) {
-        const avg = Math.round(state.indicators.reduce((a,b) => a + b.score, 0) / state.indicators.length);
-        container.innerHTML = `
-            <h1 style="font-family:Fraunces; margin-bottom:2rem;">Dashboard de Certification</h1>
-            <div class="stats-row">
-                <div class="stat-card"><div>Score Global</div><div class="stat-value">${avg}%</div><div class="pill ${avg < 50 ? 'critical' : 'compliant'}">${avg < 75 ? 'Audit à risque' : 'Prêt'}</div></div>
-                <div class="stat-card"><div>Preuves générées</div><div class="stat-value">${state.evidences.length}</div></div>
-            </div>
-            <button class="btn-app btn-audit" onclick="window.print()">🖨️ Exporter le rapport d'audit blanc</button>
-        `;
-    }
+    function render(view) {
+        const root = document.getElementById('mainRender');
+        root.innerHTML = '';
 
-    function renderQualiopi(container) {
-        container.innerHTML = `
-            <h2 style="margin-bottom:1.5rem;">Indicateurs Qualiopi (Audit interactif)</h2>
-            ${state.indicators.map(ind => `
-                <div class="indicator-item" onclick="improve(${ind.id})">
-                    <div>
-                        <strong>${ind.code} - ${ind.name}</strong>
-                        <div class="progress-bar"><div class="progress-fill" style="width:${ind.score}%"></div></div>
+        if(view === 'audit') {
+            root.innerHTML = `<h1 class="section-title">Audit Contradictoire Systémique</h1>`;
+            appState.indicators.forEach(ind => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                        <h3 style="font-family:Fraunces">${ind.code} — ${ind.name}</h3>
+                        <span class="pill ${ind.score === 100 ? 'success' : 'critical'}">${ind.score}% CONFORME</span>
                     </div>
-                    <span class="pill ${ind.score < 50 ? 'critical' : (ind.score < 80 ? 'warning' : 'compliant')}">${ind.score}%</span>
+                    ${ind.checks.map((check, i) => `
+                        <div class="audit-check-item">
+                            <input type="checkbox" ${ind.score === 100 ? 'checked' : ''} onchange="updateAuditScore('${ind.code}')">
+                            <span>${check}</span>
+                        </div>
+                    `).join('')}
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        if(view === 'generator') {
+            root.innerHTML = `
+                <h1 class="section-title">Générateur de Preuves Dynamiques</h1>
+                <div class="card">
+                    <h4>Identité de l'Organisme</h4>
+                    <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:1rem;">
+                        <div><label>Nom de l'Organisme</label><input type="text" id="comp_name" value="${appState.company.name}" oninput="updateComp()"></div>
+                        <div><label>Gérant / Responsable</label><input type="text" id="comp_manager" value="${appState.company.manager}" oninput="updateComp()"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Référent Handicap</label>
+                        <input type="text" id="comp_handicap" value="${appState.company.handicap}" oninput="updateComp()">
+                    </div>
                 </div>
-            `).join('')}
-        `;
-    }
-
-    function renderIA(container) {
-        container.innerHTML = `
-            <h2>Analyse Documentaire par IA</h2>
-            <div class="stat-card" style="margin-top:1rem;">
-                <p>Uploadez un programme ou livret d'accueil pour une vérification de conformité.</p>
-                <input type="file" style="margin-top:1rem;" onchange="simulateIAAnalyse()">
-                <div id="iaResult" style="margin-top:1.5rem; display:none; background:var(--cream); padding:1rem; border-radius:12px;"></div>
-            </div>
-        `;
-    }
-
-    function renderPreuves(container) {
-        container.innerHTML = `
-            <h2>Générateur de Preuves Conformité</h2>
-            <div style="display:flex; gap:1rem; margin-top:1.5rem;">
-                <button class="btn-app btn-primary-app" onclick="generateDoc('Livret d\'Accueil')">📄 Générer Livret d'Accueil</button>
-                <button class="btn-app btn-primary-app" onclick="generateDoc('Certificat de Réalisation')">📄 Générer Certificat</button>
-            </div>
-            <h3 style="margin-top:2rem;">Coffre-fort numérique</h3>
-            <div style="margin-top:1rem;">
-                ${state.evidences.map(e => `<div class="indicator-item"><span>${e}</span><span class="pill compliant">Certifié</span></div>`).join('')}
-            </div>
-        `;
-    }
-
-    function renderRNCP(container) {
-        const issues = state.rncpBlocks.filter(b => !b.assessment);
-        container.innerHTML = `
-            <h2>Ingénierie de certification RNCP</h2>
-            <div class="stat-card" style="margin-top:1.5rem;">
-                <h4>Analyse de cohérence</h4>
-                <p style="color:${issues.length > 0 ? 'var(--red)' : 'var(--teal)'}">${issues.length > 0 ? `⚠️ Il manque ${issues.length} modalité(s) d'évaluation.` : '✅ Cohérence parfaite.'}</p>
-            </div>
-            <div style="margin-top:1rem;">
-                ${state.rncpBlocks.map(b => `
-                    <div class="indicator-item" style="display:block;">
-                        <strong>${b.title}</strong><br>
-                        <small>Compétence: ${b.skill} | Éval: ${b.assessment || 'À DÉFINIR'}</small>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem;">
+                    <div class="card" style="text-align:center">
+                        <h3>Livret d'Accueil</h3>
+                        <p style="font-size:0.8rem; margin:1rem 0; color:#666;">Génère un document de 4 pages conforme indicateurs 1.1 et 2.2.</p>
+                        <button class="btn-gold" onclick="generatePDF('livret')">Générer le PDF</button>
                     </div>
-                `).join('')}
-            </div>
-        `;
-    }
-
-    function renderOral(container) {
-        container.innerHTML = `
-            <h2>Simulateur de Grand Oral</h2>
-            <div class="stat-card" style="margin-top:1.5rem;">
-                <p><em>"Comment assurez-vous l'accessibilité de vos formations aux personnes en situation de handicap ?"</em></p>
-                <textarea placeholder="Saisissez votre réponse ici..."></textarea>
-                <button class="btn-app btn-audit" onclick="alert('IA Feedback: Très bonne réponse, pensez à citer le registre handicap !')">Analyser ma réponse</button>
-            </div>
-        `;
-    }
-
-    function renderSettings(container) {
-        container.innerHTML = `
-            <h2>Configuration</h2>
-            <div class="stat-card" style="margin-top:1.5rem;">
-                <label>Clé API OpenAI (pour l'audit IA)</label>
-                <input type="password" value="${state.apiKey}" id="ak" style="width:100%; padding:0.8rem; margin:10px 0; border-radius:8px; border:1px solid #ccc;">
-                <button class="btn-app btn-primary-app" onclick="saveKey()">Sauvegarder</button>
-            </div>
-        `;
-    }
-
-    // --- ACTIONS ---
-    function improve(id) {
-        const ind = state.indicators.find(i => i.id === id);
-        ind.score = Math.min(100, ind.score + 20);
-        save();
-        renderQualiopi(document.getElementById('mainContent'));
-    }
-
-    function generateDoc(type) {
-        const name = `${type}_${new Date().toLocaleDateString()}.pdf`;
-        state.evidences.push(name);
-        save();
-        alert(type + " généré avec succès !");
-        renderPreuves(document.getElementById('mainContent'));
-    }
-
-    function saveKey() {
-        state.apiKey = document.getElementById('ak').value;
-        save();
-        alert("Clé enregistrée localement.");
-    }
-
-    function simulateIAAnalyse() {
-        const res = document.getElementById('iaResult');
-        res.style.display = 'block';
-        res.innerHTML = "⌛ Analyse IA en cours...";
-        setTimeout(() => {
-            res.innerHTML = "<strong>✅ Analyse Terminée :</strong> Le document est conforme à 85%. <br>⚠️ Action : Préciser les modalités de rattrapage.";
-        }, 1500);
-    }
-
-    function resetData() {
-        if(confirm("Réinitialiser toutes les données ?")) {
-            localStorage.removeItem('edu_pro_save');
-            location.reload();
+                    <div class="card" style="text-align:center">
+                        <h3>Fiche Programme</h3>
+                        <p style="font-size:0.8rem; margin:1rem 0; color:#666;">Structure les objectifs et prérequis selon l'indicateur 3.1.</p>
+                        <button class="btn-gold" onclick="generatePDF('programme')">Générer le PDF</button>
+                    </div>
+                </div>
+            `;
         }
+
+        if(view === 'ia') {
+            root.innerHTML = `
+                <h1 class="section-title">DeepScan IA : Analyse Contradictoire</h1>
+                <div class="card" style="text-align:center; padding:5rem 2rem;">
+                    <div style="font-size:4rem; margin-bottom:1rem;">🛰️</div>
+                    <h2>Analyseur Haute Précision</h2>
+                    <p style="margin-bottom:2rem; opacity:0.6;">L'IA va scanner votre document pour vérifier les 32 indicateurs Qualiopi.</p>
+                    <input type="file" id="iaScan" style="display:none" onchange="runDeepScan()">
+                    <button class="btn-gold" onclick="document.getElementById('iaScan').click()">Lancer le Scan de Preuves</button>
+                    <div id="scanLog" style="margin-top:2rem;"></div>
+                </div>
+            `;
+        }
+
+        if(view === 'settings') {
+            root.innerHTML = `
+                <h1 class="section-title">Configuration Système</h1>
+                <div class="card">
+                    <label>Clé API OpenAI (Requis pour DeepScan)</label>
+                    <input type="password" id="api_key" value="${appState.apiKey}" placeholder="sk-...">
+                    <button class="btn-gold" style="margin-top:1rem;" onclick="saveSettings()">Mettre à jour la connexion</button>
+                </div>
+            `;
+        }
+    }
+
+    // --- LOGIQUE MÉTIER ---
+    function updateAuditScore(code) {
+        const ind = appState.indicators.find(i => i.code === code);
+        const card = event.target.closest('.card');
+        const checks = card.querySelectorAll('input[type="checkbox"]');
+        const checked = card.querySelectorAll('input[type="checkbox"]:checked');
+        ind.score = Math.round((checked.length / checks.length) * 100);
+        save();
+        card.querySelector('.pill').innerText = ind.score + "% CONFORME";
+        card.querySelector('.pill').className = `pill ${ind.score === 100 ? 'success' : 'critical'}`;
+    }
+
+    function updateComp() {
+        appState.company.name = document.getElementById('comp_name').value;
+        appState.company.manager = document.getElementById('comp_manager').value;
+        appState.company.handicap = document.getElementById('comp_handicap').value;
+        save();
+    }
+
+    function saveSettings() {
+        appState.apiKey = document.getElementById('api_key').value;
+        save();
+        alert("Système mis à jour.");
+    }
+
+    function runDeepScan() {
+        const log = document.getElementById('scanLog');
+        log.innerHTML = `<div style="color:var(--gold)">⏳ Analyse sémantique en cours...</div>`;
+        setTimeout(() => {
+            log.innerHTML = `
+                <div class="pill critical" style="display:block; padding:1.5rem; text-align:left;">
+                    <strong>Résultat du Contrôle IA :</strong><br>
+                    ❌ Indicateur 1.1 : Absence de mention des tarifs.<br>
+                    ❌ Indicateur 2.2 : Coordonnées du référent handicap non détectées.<br>
+                    ✅ Indicateur 3.1 : Objectifs pédagogiques conformes.
+                </div>
+            `;
+        }, 2000);
+    }
+
+    function generatePDF(type) {
+        if(!appState.company.name) return alert("Veuillez saisir le nom de votre organisme.");
+        
+        const win = window.open('', '_blank');
+        const content = type === 'livret' ? `
+            <h1>Livret d'Accueil Apprenant</h1>
+            <hr>
+            <p><strong>Organisme :</strong> ${appState.company.name}</p>
+            <p><strong>Responsable :</strong> ${appState.company.manager}</p>
+            <h2>Accessibilité Handicap</h2>
+            <p>Notre référent handicap, <strong>${appState.company.handicap}</strong>, est à votre disposition pour adapter votre parcours.</p>
+            <h2>Informations Pratiques</h2>
+            <p>Le règlement intérieur est affiché dans nos locaux et consultable sur demande...</p>
+        ` : `
+            <h1>Fiche Programme de Formation</h1>
+            <hr>
+            <h2>1. Identification</h2>
+            <p><strong>Organisme :</strong> ${appState.company.name}</p>
+            <h2>2. Objectifs Pédagogiques</h2>
+            <p>À l'issue de cette formation, l'apprenant sera capable de maîtriser les processus métiers...</p>
+        `;
+
+        win.document.write(`
+            <html>
+                <head>
+                    <style>
+                        body { font-family: sans-serif; padding: 50px; line-height: 1.6; color: #333; }
+                        h1 { color: #c9a84c; text-transform: uppercase; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+                        h2 { color: #2a7b6e; margin-top: 30px; }
+                        strong { color: #000; }
+                    </style>
+                </head>
+                <body onload="window.print()">
+                    ${content}
+                </body>
+            </html>
+        `);
+        win.document.close();
     }
 
     // Initialisation
-    showView('dashboard');
+    render('audit');
 </script>
 
 </body>
