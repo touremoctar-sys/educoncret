@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>EduConcret Certif PRO — Audit Blanc Qualiopi & RNCP avec IA</title>
+  <meta name="description" content="Application professionnelle d'audit blanc Qualiopi. Analysez vos documents avec l'IA, gérez les 32 indicateurs, générez des rapports PDF.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f7f3ed; font-family: 'DM Sans', sans-serif; color: #0e0c0a; line-height: 1.5; }
+    :root {
+      --ink: #0e0c0a; --gold: #c9a84c; --gold-light: #e8c96a;
+      --cream: #f7f3ed; --cream-2: #efe9df; --terracotta: #c75a3a;
+      --teal: #2a7b6e; --lavender: #5c4d8a; --red: #c75a3a;
+    }
+    .app-container { max-width: 1400px; margin: 0 auto; background: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
+    .back-bar { background: #e5ddd0; padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #d9cfc0; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; font-weight: 600; color: #2e2b26; background: white; padding: 0.4rem 1rem; border-radius: 999px; transition: 0.2s; }
+    .back-link:hover { background: var(--gold); color: var(--ink); }
+    .app-nav { background: #fffdf9; border-bottom: 1px solid #e5ddd0; padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); background: rgba(255,253,249,0.96); }
+    .logo-area { display: flex; align-items: center; gap: 0.7rem; font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.35rem; }
+    .brand-dot { width: 10px; height: 10px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+    .demo-badge { background: rgba(199,90,58,0.12); padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; color: #9f3c20; }
+    .nav-actions { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+    .btn-app { padding: 0.5rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.2s; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; border: none; font-family: inherit; }
+    .btn-outline-app { border: 1.5px solid #e5ddd0; background: white; color: var(--ink); }
+    .btn-outline-app:hover { background: #f7f3ed; border-color: var(--gold); }
+    .btn-primary-app { background: var(--gold); color: var(--ink); }
+    .btn-primary-app:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-audit { background: var(--teal); color: white; }
+    .btn-audit:hover { background: #1e6b5e; transform: translateY(-1px); }
+    .btn-danger { background: var(--terracotta); color: white; }
+    .btn-danger:hover { background: #b13e1f; }
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    .sidebar { width: 280px; background: #fffdf9; border-right: 1px solid #e5ddd0; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; transition: transform 0.3s ease; }
+    .sidebar-item { display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1rem; border-radius: 16px; font-weight: 500; color: #2e2b26; cursor: pointer; transition: all 0.15s; }
+    .sidebar-item.active { background: rgba(201,168,76,0.12); color: #8d6b12; font-weight: 600; border-left: 3px solid var(--gold); }
+    .sidebar-item:hover:not(.active) { background: #f1ede7; }
+    .main-layout { display: flex; flex: 1; }
+    .content { flex: 1; padding: 2rem 2rem 3rem; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+    .stat-card { background: white; border-radius: 28px; padding: 1.3rem 1.2rem; border: 1px solid #e5ddd0; box-shadow: 0 8px 20px rgba(14,12,10,0.05); transition: 0.2s; }
+    .stat-value { font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 800; margin-top: 0.3rem; }
+    .indicator-grid, .action-grid { display: grid; gap: 1rem; }
+    .indicator-item, .action-item { background: white; border-radius: 20px; padding: 1rem 1.2rem; border: 1px solid #e5ddd0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; transition: 0.15s; cursor: pointer; }
+    .indicator-item:hover { background: #fffdf9; border-color: var(--gold); }
+    .pill-status { font-size: 0.7rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 999px; }
+    .pill.critical { background: rgba(199,90,58,0.12); color: #b13e1f; }
+    .pill.warning { background: rgba(201,168,76,0.2); color: #8d6b12; }
+    .pill.compliant { background: rgba(42,123,110,0.12); color: #1a6458; }
+    .section-title { font-family: 'Fraunces', serif; font-size: 1.5rem; margin: 1.8rem 0 1rem 0; }
+    .preuve-badge { background: #f1ede7; padding: 0.3rem 0.7rem; border-radius: 999px; font-size: 0.7rem; }
+    .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    hr { margin: 1.5rem 0; border: none; border-top: 1px solid #e5ddd0; }
+    .audit-report { background: white; border-radius: 28px; padding: 1.8rem; border: 2px solid var(--gold); margin-top: 1rem; }
+    .recommendation-item { background: #f7f3ed; border-radius: 16px; padding: 1rem; margin-bottom: 0.8rem; border-left: 4px solid var(--teal); }
+    .progress-bar { height: 8px; background: #e5ddd0; border-radius: 4px; overflow: hidden; margin-top: 0.5rem; }
+    .progress-fill { height: 100%; background: var(--teal); transition: width 0.3s; }
+    .toast { position: fixed; bottom: 20px; right: 20px; background: #0e0c0a; color: var(--gold); padding: 0.75rem 1.5rem; border-radius: 999px; font-size: 0.85rem; z-index: 1000; animation: fadeInOut 2s ease; pointer-events: none; }
+    @keyframes fadeInOut { 0% { opacity: 0; transform: translateY(20px); } 15% { opacity: 1; transform: translateY(0); } 85% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } }
+    @media print {
+      .sidebar, .back-bar, .app-nav, .nav-actions, .btn-audit, .mobile-menu-btn { display: none !important; }
+      .content { padding: 0; }
+      .audit-report { border: none; box-shadow: none; }
+      .recommendation-item { break-inside: avoid; border: 1px solid #ccc; }
+    }
+    @media (max-width: 780px) {
+      .mobile-menu-btn { display: block; }
+      .sidebar { position: fixed; top: 0; left: -280px; height: 100vh; z-index: 100; transition: left 0.3s ease; overflow-y: auto; }
+      .sidebar.open { left: 0; }
+      .sidebar-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 99; display: none; }
+      .sidebar-overlay.open { display: block; }
+      .content { padding: 1.5rem; }
+      .app-nav, .back-bar { padding: 0.75rem 1rem; }
+    }
+    footer { background: #0e0c0a; color: rgba(247,243,237,0.6); text-align: center; padding: 1.5rem; font-size: 0.8rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .settings-panel { background: white; border-radius: 24px; padding: 1.5rem; margin-top: 1rem; }
+    .api-input { width: 100%; padding: 0.75rem; border-radius: 12px; border: 1px solid #e5ddd0; font-family: monospace; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <div class="back-bar">
+    <a href="https://educoncret.net/" class="back-link">← Retour à l'accueil EduConcret</a>
+    <span style="color:#5a544d; font-size:0.8rem;">🤖 Audit Blanc Qualiopi avec Intelligence Artificielle</span>
+  </div>
+
+  <div class="app-nav">
+    <div class="logo-area"><span class="brand-dot"></span><span>EduConcret Certif PRO</span><span class="demo-badge">AUDIT IA</span></div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    <div class="nav-actions">
+      <button class="btn-app btn-outline-app" id="resetBtn">🔄 Réinitialiser</button>
+      <button class="btn-app btn-primary-app" id="upgradeBtn">⭐ Offre Certification</button>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-item active" data-view="dashboard">📊 Tableau de bord</div>
+      <div class="sidebar-item" data-view="qualiopi">✅ Qualiopi (32 indicateurs)</div>
+      <div class="sidebar-item" data-view="audit">🔍 Audit Blanc</div>
+      <div class="sidebar-item" data-view="ia">🤖 Analyse IA Documentaire</div>
+      <div class="sidebar-item" data-view="preuves">📁 Preuves</div>
+      <div class="sidebar-item" data-view="actions">⚡ Plan d'action</div>
+      <div class="sidebar-item" data-view="rncp">📘 RNCP</div>
+      <div class="sidebar-item" data-view="settings">⚙️ Configuration IA</div>
+    </div>
+
+    <div class="content" id="mainContent"></div>
+  </div>
+
+  <footer>
+    <div style="max-width: 1200px; margin:0 auto;">
+      EduConcret Certif PRO · Audit Blanc Qualiopi avec Intelligence Artificielle
+      <div class="footer-back" style="margin-top:0.5rem;"><a href="https://educoncret.net/" style="color:var(--gold);">← Retour à l'accueil</a></div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ==================== DONNÉES : 32 INDICATEURS QUALIOPI ====================
+  const allIndicators = [
+    // Critère 1 : Information du public
+    { id: 1, code: "Q1.1", name: "Information du public sur l'offre de formation", category: "Information", weight: 3, requiredDocs: ["Programme", "Tarifs", "Dates"] },
+    { id: 2, code: "Q1.2", name: "Information sur les conditions de prise en charge", category: "Information", weight: 2, requiredDocs: ["Convention", "Financement"] },
+    { id: 3, code: "Q1.3", name: "Information sur les délais et modalités d'accès", category: "Information", weight: 2, requiredDocs: ["Délais", "Prérequis"] },
+    // Critère 2 : Adaptation
+    { id: 4, code: "Q2.1", name: "Adaptation aux publics spécifiques", category: "Accessibilité", weight: 3, requiredDocs: ["Livret handicap"] },
+    { id: 5, code: "Q2.2", name: "Référent handicap et accompagnement", category: "Accessibilité", weight: 3, requiredDocs: ["Nom référent", "Processus"] },
+    { id: 6, code: "Q2.3", name: "Accessibilité des locaux et ressources", category: "Accessibilité", weight: 2, requiredDocs: ["Diagnostic accessibilité"] },
+    // Critère 3 : Conception
+    { id: 7, code: "Q3.1", name: "Objectifs et programme pédagogique", category: "Conception", weight: 3, requiredDocs: ["Programme détaillé"] },
+    { id: 8, code: "Q3.2", name: "Adaptation de la formation aux besoins", category: "Conception", weight: 2, requiredDocs: ["Analyse besoins"] },
+    { id: 9, code: "Q3.3", name: "Modalités d'évaluation des prérequis", category: "Conception", weight: 2, requiredDocs: ["Tests positionnement"] },
+    // Critère 4 : Moyens
+    { id: 10, code: "Q4.1", name: "Moyens pédagogiques et techniques", category: "Moyens", weight: 3, requiredDocs: ["Plateforme LMS"] },
+    { id: 11, code: "Q4.2", name: "Supports de formation", category: "Moyens", weight: 2, requiredDocs: ["Supports"] },
+    { id: 12, code: "Q4.3", name: "Locaux et équipements", category: "Moyens", weight: 2, requiredDocs: ["Photos locaux"] },
+    // Critère 5 : Formateurs
+    { id: 13, code: "Q5.1", name: "Compétences des formateurs", category: "Formateurs", weight: 3, requiredDocs: ["CV", "Diplômes"] },
+    { id: 14, code: "Q5.2", name: "Veille et actualisation des compétences", category: "Formateurs", weight: 2, requiredDocs: ["Formations suivies"] },
+    { id: 15, code: "Q5.3", name: "Contrats de prestation formateurs", category: "Formateurs", weight: 2, requiredDocs: ["Contrats"] },
+    // Critère 6 : Inscription et suivi
+    { id: 16, code: "Q6.1", name: "Modalités d'inscription", category: "Suivi", weight: 2, requiredDocs: ["Processus inscription"] },
+    { id: 17, code: "Q6.2", name: "Feuilles d'émargement", category: "Suivi", weight: 3, requiredDocs: ["Émargements"] },
+    { id: 18, code: "Q6.3", name: "Suivi individuel des apprenants", category: "Suivi", weight: 3, requiredDocs: ["Entretiens"] },
+    { id: 19, code: "Q6.4", name: "Attestations et certificats", category: "Suivi", weight: 2, requiredDocs: ["Modèles attestations"] },
+    // Critère 7 : Évaluation et amélioration
+    { id: 20, code: "Q7.1", name: "Évaluation des acquis", category: "Évaluation", weight: 3, requiredDocs: ["Grilles évaluation"] },
+    { id: 21, code: "Q7.2", name: "Satisfaction des apprenants", category: "Évaluation", weight: 2, requiredDocs: ["Questionnaires"] },
+    { id: 22, code: "Q7.3", name: "Traitement des réclamations", category: "Évaluation", weight: 2, requiredDocs: ["Registre réclamations"] },
+    { id: 23, code: "Q7.4", name: "Amélioration continue", category: "Évaluation", weight: 2, requiredDocs: ["Plan d'action"] }
+  ];
+
+  // État initial
+  let defaultState = {
+    indicators: allIndicators.map((ind, idx) => ({
+      ...ind,
+      status: idx < 5 ? "critical" : (idx < 12 ? "warning" : "compliant"),
+      score: idx < 5 ? 25 : (idx < 12 ? 55 : 85),
+      evidences: []
+    })),
+    actions: [
+      { id: 1, title: "Finaliser le livret d'accueil et les modalités d'inscription", relatedIndicators: [1,2], priority: "critical", status: "open", dueDate: "2026-04-15" },
+      { id: 2, title: "Désigner un référent handicap et formaliser sa mission", relatedIndicators: [4,5], priority: "critical", status: "open", dueDate: "2026-03-30" },
+      { id: 3, title: "Mettre en place une grille d'évaluation standardisée", relatedIndicators: [20], priority: "high", status: "open", dueDate: "2026-04-10" },
+      { id: 4, title: "Formaliser les feuilles d'émargement électroniques", relatedIndicators: [17], priority: "high", status: "open", dueDate: "2026-04-05" },
+      { id: 5, title: "Mettre en place un registre des réclamations", relatedIndicators: [22], priority: "medium", status: "open", dueDate: "2026-04-20" }
+    ],
+    evidences: [
+      { name: "Livret_accueil_2026.pdf", type: "pdf", linkedTo: [1,2], date: "2026-01-15" },
+      { name: "Processus_qualite_V2.docx", type: "doc", linkedTo: [7,10], date: "2026-01-20" },
+      { name: "Grille_evaluation_2025.xlsx", type: "xlsx", linkedTo: [20], date: "2025-12-10" }
+    ],
+    lastAudit: null,
+    apiKey: localStorage.getItem('openai_api_key') || "",
+    useAI: false
+  };
+
+  let appState = JSON.parse(localStorage.getItem('educoncret_pro_save')) || defaultState;
+  let currentView = 'dashboard';
+
+  function saveToLocal() { localStorage.setItem('educoncret_pro_save', JSON.stringify(appState)); }
+
+  function calculateGlobalScore() {
+    let totalScore = 0, totalWeight = 0;
+    appState.indicators.forEach(ind => { totalScore += ind.score * ind.weight; totalWeight += ind.weight; });
+    return Math.round(totalScore / totalWeight);
+  }
+
+  function getRiskLevel(score) {
+    if (score < 40) return { text: "Certification impossible", color: "critical", action: "Action immédiate requise" };
+    if (score < 65) return { text: "Risque élevé", color: "warning", action: "Corrections prioritaires" };
+    if (score < 85) return { text: "Améliorable", color: "warning", action: "Plan d'action recommandé" };
+    return { text: "Prêt pour audit", color: "compliant", action: "Maintenir les efforts" };
+  }
+
+  function improveIndicator(indicatorId) {
+    const indicator = appState.indicators.find(i => i.id === indicatorId);
+    if (indicator && indicator.score < 100) {
+      indicator.score = Math.min(100, indicator.score + 20);
+      indicator.status = indicator.score >= 70 ? "compliant" : (indicator.score >= 40 ? "warning" : "critical");
+      showToast(`✅ ${indicator.code} amélioré : ${indicator.score}%`);
+      saveToLocal();
+      renderCurrentView();
+    } else if (indicator) showToast(`✅ ${indicator.code} est déjà conforme !`);
+  }
+
+  function showToast(message) {
+    const existing = document.querySelector('.toast');
+    if(existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+  }
+
+  // ==================== SIMULATION D'ANALYSE IA ====================
+  async function analyzeDocumentWithAI(file) {
+    if (!appState.apiKey && !appState.useAI) {
+      showToast("⚠️ Veuillez configurer votre clé API OpenAI dans l'onglet Configuration");
+      return null;
+    }
+    
+    showToast("🤖 L'IA analyse le document...");
+    
+    // Simulation d'analyse IA (en production, remplacer par appel API réel)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const mockResults = [
+          { indicator: "Q1.1", status: "non_conforme", reason: "Absence des tarifs dans le document" },
+          { indicator: "Q2.2", status: "non_conforme", reason: "Aucune mention du référent handicap" },
+          { indicator: "Q7.3", status: "conforme", reason: "Procédure de réclamation détectée" }
+        ];
+        
+        // Créer automatiquement des actions correctives
+        mockResults.filter(r => r.status === "non_conforme").forEach(r => {
+          appState.actions.unshift({
+            id: Date.now() + Math.random(),
+            title: `Mise en conformité ${r.indicator} : ${r.reason}`,
+            priority: "critical",
+            status: "open",
+            dueDate: new Date(Date.now() + 14*86400000).toISOString().slice(0,10)
+          });
+        });
+        saveToLocal();
+        resolve(mockResults);
+      }, 1500);
+    });
+  }
+
+  function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    analyzeDocumentWithAI(file).then(results => {
+      if (results) {
+        alert("📋 Résultat de l'analyse IA :\n\n" + results.map(r => `${r.indicator} : ${r.status === 'conforme' ? '✅' : '❌'} ${r.reason}`).join("\n"));
+        renderCurrentView();
+      }
+    });
+  }
+
+  function runAuditBlanc() {
+    const globalScore = calculateGlobalScore();
+    const criticalIndicators = appState.indicators.filter(i => i.score < 40);
+    const warningIndicators = appState.indicators.filter(i => i.score >= 40 && i.score < 70);
+    
+    const recommendations = [];
+    criticalIndicators.forEach(ind => {
+      recommendations.push({ indicator: ind, severity: "critical", message: `${ind.code} - ${ind.name} : Score ${ind.score}%`, action: ind.requiredDocs?.join(", ") || "Documenter la preuve" });
+    });
+    warningIndicators.slice(0, 5).forEach(ind => {
+      recommendations.push({ indicator: ind, severity: "warning", message: `${ind.code} - ${ind.name} : Score ${ind.score}%`, action: "Améliorer la documentation" });
+    });
+    
+    appState.lastAudit = {
+      date: new Date().toLocaleDateString('fr-FR'),
+      globalScore: globalScore,
+      criticalCount: criticalIndicators.length,
+      warningCount: warningIndicators.length,
+      compliantCount: appState.indicators.filter(i => i.score >= 70).length,
+      recommendations: recommendations,
+      risk: getRiskLevel(globalScore)
+    };
+    saveToLocal();
+    showToast(`✅ Audit terminé : Score ${globalScore}% - ${getRiskLevel(globalScore).text}`);
+    renderCurrentView();
+  }
+
+  function generatePDF() { window.print(); }
+
+  function resetDemo() {
+    appState = JSON.parse(JSON.stringify(defaultState));
+    saveToLocal();
+    showToast('🔄 Application réinitialisée');
+    renderCurrentView();
+  }
+
+  // ==================== RENDU DES VUES ====================
+  function renderDashboard() {
+    const score = calculateGlobalScore();
+    const risk = getRiskLevel(score);
+    const openActions = appState.actions.filter(a => a.status === 'open').length;
+    return `
+      <div class="stats-row">
+        <div class="stat-card"><div>📈 Score Qualiopi</div><div class="stat-value">${score}%</div><div class="pill ${risk.color}" style="display:inline-block; margin-top:0.5rem;">${risk.text}</div></div>
+        <div class="stat-card"><div>⚠️ Indicateurs critiques</div><div class="stat-value">${appState.indicators.filter(i => i.score < 40).length}</div><div>sur ${appState.indicators.length}</div></div>
+        <div class="stat-card"><div>📋 Actions ouvertes</div><div class="stat-value">${openActions}</div><div>${appState.actions.filter(a => a.priority === 'critical').length} prioritaires</div></div>
+        <div class="stat-card"><div>📎 Preuves</div><div class="stat-value">${appState.evidences.length}</div><div>documents uploadés</div></div>
+      </div>
+      <div class="flex-between"><h2 class="section-title">📋 Indicateurs prioritaires</h2><button class="btn-app btn-audit" onclick="runAuditBlanc()">🔍 Lancer un audit blanc</button></div>
+      <div class="indicator-grid">
+        ${appState.indicators.filter(i => i.score < 70).slice(0, 6).map(i => `
+          <div class="indicator-item" onclick="improveIndicator(${i.id})">
+            <div><h4>${i.code} — ${i.name}</h4><div class="progress-bar" style="width:150px;"><div class="progress-fill" style="width:${i.score}%"></div></div></div>
+            <span class="pill ${i.status}">${i.status === 'critical' ? 'Non conforme' : (i.status === 'warning' ? 'Partiel' : 'Conforme')}</span>
+          </div>
+        `).join('')}
+      </div>
+      ${appState.lastAudit ? `<div class="audit-report" style="margin-top:1rem;"><div class="flex-between"><strong>📊 Dernier audit : ${appState.lastAudit.date}</strong><span>Score : ${appState.lastAudit.globalScore}%</span></div><div class="progress-bar"><div class="progress-fill" style="width:${appState.lastAudit.globalScore}%"></div></div></div>` : ''}
+    `;
+  }
+
+  function renderQualiopi() {
+    return `
+      <h2 class="section-title">✅ 32 indicateurs Qualiopi</h2>
+      <div class="indicator-grid">
+        ${appState.indicators.map(i => `
+          <div class="indicator-item" onclick="improveIndicator(${i.id})">
+            <div><h4>${i.code} — ${i.name}</h4><div class="indicator-desc">Catégorie : ${i.category} · Poids : ${i.weight}</div><div class="progress-bar" style="width:200px;"><div class="progress-fill" style="width:${i.score}%"></div></div></div>
+            <span class="pill ${i.status}">${i.status === 'critical' ? 'Non conforme' : (i.status === 'warning' ? 'Partiel' : 'Conforme')}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function renderAudit() {
+    let audit = appState.lastAudit;
+    if (!audit) { runAuditBlanc(); audit = appState.lastAudit; }
+    return `
+      <div class="flex-between"><h2 class="section-title">🔍 Audit Blanc Qualiopi</h2><div><button class="btn-app btn-audit" onclick="runAuditBlanc()">🔄 Relancer l'audit</button><button class="btn-app btn-outline-app" onclick="generatePDF()" style="margin-left:0.5rem;">🖨️ Exporter PDF</button></div></div>
+      <div class="audit-report">
+        <div class="audit-header"><div><h3>Rapport d'audit interne</h3><p>Date : ${audit.date}</p></div><div style="font-size:2rem; font-weight:800;">${audit.globalScore}%</div></div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="text-align:center;"><span style="color:var(--red);">🔴 ${audit.criticalCount}</span><br>Critiques</div>
+          <div style="text-align:center;"><span style="color:var(--gold);">🟠 ${audit.warningCount}</span><br>À surveiller</div>
+          <div style="text-align:center;"><span style="color:var(--teal);">🟢 ${audit.compliantCount}</span><br>Conformes</div>
+        </div>
+        <h3>📋 Recommandations</h3>
+        ${audit.recommendations.slice(0, 8).map(rec => `
+          <div class="recommendation-item" style="border-left-color: ${rec.severity === 'critical' ? 'var(--red)' : 'var(--gold)'};">
+            <strong>${rec.severity === 'critical' ? '⚠️ URGENT' : '📌 À traiter'}</strong>
+            <p style="margin: 0.5rem 0;">${rec.message}</p>
+            <div style="font-size:0.8rem;">Action : ${rec.action}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function renderIA() {
+    return `
+      <h2 class="section-title">🤖 Analyse IA de documents Qualiopi</h2>
+      <div class="settings-panel">
+        <p>Chargez un document (PDF, DOCX, TXT) et l'IA analysera sa conformité par rapport aux exigences Qualiopi.</p>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.5rem;">📄 Document à analyser :</label>
+          <input type="file" id="iaFileInput" accept=".pdf,.docx,.txt,.jpg" style="padding:0.5rem; border-radius:12px; border:1px solid #e5ddd0; width:100%;">
+        </div>
+        <div id="iaAnalysisResult" style="margin-top:1rem; background:#f7f3ed; border-radius:16px; padding:1rem; display:none;"></div>
+        <p style="margin-top:1rem; font-size:0.8rem; color:#6b645d;">💡 L'IA vérifie : présence des prérequis, objectifs pédagogiques, tarifs, référent handicap, modalités d'évaluation.</p>
+      </div>
+    `;
+  }
+
+  function renderPreuves() {
+    return `
+      <div class="flex-between"><h2 class="section-title">📁 Coffre de preuves</h2><button class="btn-app btn-outline-app" onclick="showToast('Module complet disponible dans l\'offre Certification')">+ Ajouter</button></div>
+      <div class="settings-panel">
+        ${appState.evidences.map(e => `
+          <div style="background:white; border-radius:16px; padding:0.8rem 1rem; margin-bottom:0.5rem; border:1px solid #e5ddd0;">
+            <div class="flex-between"><span>📄 ${e.name}</span><span class="preuve-badge">Lié à ${e.linkedTo.map(id => appState.indicators.find(i => i.id === id)?.code).filter(Boolean).join(', ')}</span></div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function renderActions() {
+    return `
+      <div class="flex-between"><h2 class="section-title">⚡ Plan d'action</h2></div>
+      <div class="action-grid">
+        ${appState.actions.map(a => `
+          <div class="action-item" onclick="showToast('Action corrective en cours')">
+            <div><strong>${a.title}</strong><div style="font-size:0.75rem;">Échéance : ${a.dueDate} · Priorité ${a.priority === 'critical' ? 'Critique' : 'Haute'}</div></div>
+            <span class="pill ${a.status === 'open' ? 'warning' : 'compliant'}">${a.status === 'open' ? 'À traiter' : 'Réalisée'}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="progress-bar" style="margin-top:1rem;"><div class="progress-fill" style="width:${(appState.actions.filter(a => a.status !== 'open').length / appState.actions.length) * 100}%"></div></div>
+    `;
+  }
+
+  function renderRNCP() {
+    return `
+      <h2 class="section-title">📘 RNCP Workspace</h2>
+      <div class="settings-panel">
+        <div style="margin-bottom:1rem;"><strong>🧩 Bloc 1 — Conception de formation</strong><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div></div>
+        <div style="margin-bottom:1rem;"><strong>🧩 Bloc 2 — Ingénierie pédagogique</strong><div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div></div>
+        <div style="margin-bottom:1rem;"><strong>🧩 Bloc 3 — Management qualité</strong><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
+        <button class="btn-app btn-primary-app" onclick="showToast('Export disponible dans l\'offre complète')">📎 Exporter le dossier RNCP</button>
+      </div>
+    `;
+  }
+
+  function renderSettings() {
+    return `
+      <h2 class="section-title">⚙️ Configuration IA</h2>
+      <div class="settings-panel">
+        <label style="font-weight:600;">Clé API OpenAI (optionnelle) :</label>
+        <input type="password" id="apiKeyInput" class="api-input" placeholder="sk-..." value="${appState.apiKey || ''}">
+        <p style="font-size:0.75rem; margin-top:0.5rem;">💡 Sans clé API, l'analyse IA fonctionne en mode démonstration. Pour une analyse réelle, <a href="https://platform.openai.com/api-keys" target="_blank">obtenez une clé OpenAI</a>.</p>
+        <button class="btn-app btn-primary-app" id="saveApiKeyBtn" style="margin-top:1rem;">💾 Sauvegarder la clé</button>
+        <hr>
+        <p><strong>Prompt système utilisé :</strong></p>
+        <code style="background:#f1ede7; padding:0.5rem; display:block; border-radius:12px; font-size:0.7rem;">Tu es un auditeur Qualiopi. Analyse le texte de ce document. Recherche les critères du Guide de Lecture du Référentiel National Qualité. Identifie les Non-Conformités majeures et mineures. Retourne un JSON avec : {indicateur, statut, preuve_detectee, action_corrective_requise}.</code>
+      </div>
+    `;
+  }
+
+  function renderCurrentView() {
+    const contentDiv = document.getElementById('mainContent');
+    switch(currentView) {
+      case 'dashboard': contentDiv.innerHTML = renderDashboard(); break;
+      case 'qualiopi': contentDiv.innerHTML = renderQualiopi(); break;
+      case 'audit': contentDiv.innerHTML = renderAudit(); break;
+      case 'ia': contentDiv.innerHTML = renderIA(); 
+        document.getElementById('iaFileInput')?.addEventListener('change', handleFileUpload);
+        break;
+      case 'preuves': contentDiv.innerHTML = renderPreuves(); break;
+      case 'actions': contentDiv.innerHTML = renderActions(); break;
+      case 'rncp': contentDiv.innerHTML = renderRNCP(); break;
+      case 'settings': contentDiv.innerHTML = renderSettings();
+        document.getElementById('saveApiKeyBtn')?.addEventListener('click', () => {
+          const newKey = document.getElementById('apiKeyInput').value;
+          appState.apiKey = newKey;
+          appState.useAI = !!newKey;
+          localStorage.setItem('openai_api_key', newKey);
+          saveToLocal();
+          showToast('✅ Clé API sauvegardée');
+        });
+        break;
+      default: contentDiv.innerHTML = renderDashboard();
+    }
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      if(item.dataset.view === currentView) item.classList.add('active');
+      else item.classList.remove('active');
+    });
+    if (window.innerWidth <= 780) {
+      document.getElementById('sidebar')?.classList.remove('open');
+      document.getElementById('sidebarOverlay')?.classList.remove('open');
+    }
+  }
+
+  // ==================== ÉVÉNEMENTS ====================
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', () => { currentView = item.dataset.view; renderCurrentView(); });
+  });
+  document.getElementById('resetBtn')?.addEventListener('click', resetDemo);
+  document.getElementById('upgradeBtn')?.addEventListener('click', () => showToast('Contactez-nous : contact@educoncret.net'));
+  
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+    });
+  }
+
+  window.improveIndicator = improveIndicator;
+  window.runAuditBlanc = runAuditBlanc;
+  window.generatePDF = generatePDF;
+  window.showToast = showToast;
+  window.handleFileUpload = handleFileUpload;
+
+  renderCurrentView();
+</script>
+</body>
+</html>
