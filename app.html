@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduConcret Certif PRO | Excellence Audit & IA</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <style>
         :root {
             --ink: #0e0c0a; --gold: #c9a84c; --gold-light: #e8c96a;
@@ -16,7 +17,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--ink); overflow-x: hidden; }
 
-        /* Navigation */
+        /* Navigation Haute Performance */
         .app-nav {
             background: var(--glass); backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -27,7 +28,7 @@
         .logo-area { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; }
         .brand-dot { width: 14px; height: 14px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 15px rgba(201,168,76,0.4); }
 
-        /* Layout */
+        /* Layout & Sidebar */
         .main-layout { display: flex; min-height: 100vh; }
         .sidebar { 
             width: 280px; background: white; padding: 3rem 1.5rem; 
@@ -45,13 +46,19 @@
 
         .content { flex: 1; padding: 4rem; max-width: 1200px; }
 
-        /* Stats & Dashboard */
+        /* Stats & Dashboard Premium */
         .stats-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 4rem; }
-        .stat-card-main { background: var(--ink); color: white; border-radius: 32px; padding: 2.5rem; position: relative; overflow: hidden; }
-        .stat-card { background: white; border-radius: 32px; padding: 2rem; border: 1px solid rgba(0,0,0,0.03); box-shadow: var(--shadow-premium); }
-        .stat-value { font-family: 'Fraunces'; font-size: 3rem; font-weight: 900; margin: 0.5rem 0; }
+        .stat-card-main { 
+            background: var(--ink); color: white; border-radius: 32px; padding: 2.5rem; 
+            position: relative; overflow: hidden; box-shadow: var(--shadow-premium);
+        }
+        .stat-card { 
+            background: white; border-radius: 32px; padding: 2rem; 
+            border: 1px solid rgba(0,0,0,0.03); box-shadow: var(--shadow-premium); 
+        }
+        .stat-value { font-family: 'Fraunces'; font-size: 3.5rem; font-weight: 900; margin: 0.5rem 0; }
 
-        /* Indicators */
+        /* Indicateurs & Check-lists */
         .indicator-card {
             background: white; border-radius: 24px; padding: 1.5rem; margin-bottom: 1rem;
             border: 1px solid rgba(0,0,0,0.03); transition: 0.3s; cursor: pointer;
@@ -59,23 +66,48 @@
         .indicator-card:hover { border-color: var(--gold); transform: scale(1.01); }
 
         .check-list { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0; display: none; }
-        .check-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 0.9rem; }
+        .check-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
+        input[type="checkbox"] { accent-color: var(--teal); width: 18px; height: 18px; }
 
         .pill { padding: 6px 16px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
         .pill-red { background: #fff1f0; color: var(--red); }
         .pill-green { background: #f0f9f7; color: var(--teal); }
 
+        /* IA Scan UX */
+        .scan-container { 
+            border: 2px dashed var(--gold); border-radius: 32px; padding: 5rem; 
+            text-align: center; background: white; cursor: pointer; position: relative;
+            transition: 0.3s;
+        }
+        .scan-container:hover { background: #fdfdfd; border-style: solid; }
+        .scan-line { 
+            width: 100%; height: 3px; background: var(--gold); 
+            position: absolute; left: 0; top: 0;
+            box-shadow: 0 0 15px var(--gold);
+            animation: scanning 2.5s infinite ease-in-out; display: none; 
+        }
+        @keyframes scanning { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
+
+        /* Formulaires */
+        .input-premium {
+            width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd;
+            font-family: inherit; margin-bottom: 10px;
+        }
+
         /* Buttons */
-        .btn-premium { background: var(--gold); color: var(--ink); padding: 0.8rem 2rem; border-radius: 999px; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; }
+        .btn-premium { 
+            background: var(--gold); color: var(--ink); padding: 0.8rem 2rem; 
+            border-radius: 999px; font-weight: 700; border: none; cursor: pointer; 
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
+        }
         .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,168,76,0.3); }
 
-        /* IA Scan */
-        .scan-container { border: 2px dashed var(--gold); border-radius: 32px; padding: 4rem; text-align: center; background: white; cursor: pointer; }
-        .scan-line { width: 100%; height: 2px; background: var(--gold); position: relative; animation: scanning 2s infinite; display: none; }
-        @keyframes scanning { 0%, 100% { top: 0; } 50% { top: 100px; } }
-
         /* Toast */
-        .toast { position: fixed; bottom: 40px; right: 40px; background: var(--ink); color: white; padding: 1rem 2rem; border-radius: 20px; z-index: 2000; animation: slideIn 0.5s ease-out; }
+        .toast { 
+            position: fixed; bottom: 40px; right: 40px; background: var(--ink); 
+            color: white; padding: 1rem 2rem; border-radius: 20px; z-index: 2000; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: slideIn 0.5s ease-out; 
+        }
         @keyframes slideIn { from { transform: translateY(100px); } to { transform: translateY(0); } }
 
         @media print { .sidebar, .app-nav, .btn-premium { display: none !important; } .content { padding: 0; } }
@@ -85,14 +117,14 @@
 
 <nav class="app-nav">
     <div class="logo-area"><div class="brand-dot"></div> EduConcret Certif PRO</div>
-    <button class="btn-premium" onclick="showToast('⭐ Accès Illimité activé pour la démo')">ACTIVER LA LICENCE</button>
+    <button class="btn-premium" onclick="showToast('⭐ Offre illimitée : Contactez-nous pour activer')">Activer la Licence</button>
 </nav>
 
 <div class="main-layout">
     <aside class="sidebar">
         <div class="sidebar-item active" onclick="switchTab('dashboard', this)">📊 Dashboard Global</div>
         <div class="sidebar-item" onclick="switchTab('qualiopi', this)">✅ Audit Qualiopi</div>
-        <div class="sidebar-item" onclick="switchTab('ia', this)">🤖 IA DeepScan™</div>
+        <div class="sidebar-item" onclick="switchTab('ia', this)">🤖 DeepScan™ IA</div>
         <div class="sidebar-item" onclick="switchTab('docs', this)">📁 Générateur de Preuves</div>
         <div class="sidebar-item" onclick="switchTab('settings', this)">⚙️ Configuration</div>
     </aside>
@@ -108,9 +140,9 @@
         warnings: 4,
         company: { name: "EduConcret Academy", manager: "Jean Expert", handicap: "Sophie Qualité" },
         indicators: [
-            { id: 1, code: 'Q1.1', title: 'Diffusion de l\'Offre', val: 40, status: 'red', points: ["Tarifs affichés TTC", "Délais d'accès mentionnés", "Indicateurs de résultats"] },
-            { id: 2, code: 'Q2.2', title: 'Référent Handicap', val: 15, status: 'red', points: ["Nom du référent identifié", "Protocole d'accueil PMR", "Partenaires spécialisés"] },
-            { id: 3, code: 'Q3.1', title: 'Objectifs Pédagogiques', val: 95, status: 'green', points: ["Objectifs opérationnels", "Prérequis identifiés"] }
+            { id: 1, code: 'Q1.1', title: 'Diffusion de l\'Offre', val: 40, status: 'red', points: ["Tarifs affichés TTC", "Délais d'accès mentionnés", "Indicateurs de résultats publics"] },
+            { id: 2, code: 'Q2.2', title: 'Parcours Handicap', val: 15, status: 'red', points: ["Nom du référent identifié", "Protocole d'accueil spécifique", "Partenaires AGEFIPH/FIPHFP"] },
+            { id: 3, code: 'Q3.1', title: 'Ingénierie Pédagogique', val: 95, status: 'green', points: ["Objectifs opérationnels", "Prérequis identifiés", "Modalités d'évaluation"] }
         ]
     };
 
@@ -122,39 +154,46 @@
         setTimeout(() => t.remove(), 3000);
     }
 
+    // --- RENDUS DES VUES ---
     function renderDashboard() {
         return `
-            <h1 style="font-family:Fraunces; font-size:2.5rem; margin-bottom:2.5rem;">Pilotage de Certification</h1>
+            <h1 style="font-family:Fraunces; font-size:2.8rem; margin-bottom:2.5rem;">Pilotage de Certification</h1>
             <div class="stats-row">
                 <div class="stat-card-main">
-                    <span style="text-transform:uppercase; font-size:0.7rem; letter-spacing:2px; color:var(--gold);">Fiabilité du Dossier</span>
-                    <div class="stat-value" style="font-size:4rem;">${state.score}%</div>
-                    <p style="opacity:0.7;">${state.score < 75 ? '⚠️ Risque de non-conformité majeure détecté.' : '✅ Dossier prêt pour l\'audit.'}</p>
+                    <span style="text-transform:uppercase; font-size:0.75rem; letter-spacing:2px; color:var(--gold); font-weight:800;">Indice de Conformité</span>
+                    <div class="stat-value" style="font-size:4.5rem;">${state.score}%</div>
+                    <p style="opacity:0.8; font-weight:500;">${state.score < 75 ? '⚠️ Risque de non-conformité majeure.' : '✅ Dossier solide pour audit.'}</p>
                 </div>
                 <div class="stat-card">
-                    <span style="opacity:0.6; font-weight:700;">Preuves</span>
+                    <span style="opacity:0.6; font-weight:700;">Preuves Scannées</span>
                     <div class="stat-value">${state.docs}</div>
-                    <span style="color:var(--teal); font-weight:800;">Conforme</span>
+                    <span style="color:var(--teal); font-weight:800;">Validées</span>
                 </div>
                 <div class="stat-card">
-                    <span style="opacity:0.6; font-weight:700;">Alertes IA</span>
+                    <span style="opacity:0.6; font-weight:700;">Anomalies IA</span>
                     <div class="stat-value" style="color:var(--red)">${state.warnings}</div>
                     <span style="font-weight:700;">Critiques</span>
                 </div>
             </div>
             
-            <h2 style="font-family:Fraunces; margin-bottom:1.5rem;">Indicateurs Prioritaires</h2>
+            <h2 style="font-family:Fraunces; margin-bottom:1.5rem;">Indicateurs Prioritaires (Mode Audit)</h2>
             ${state.indicators.map(i => `
                 <div class="indicator-card" onclick="toggleCheck('${i.code}')">
                     <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
                         <div>
                             <strong><span style="color:var(--gold)">${i.code}</span> — ${i.title}</strong>
-                            <div style="font-size:0.8rem; opacity:0.5;">Analyse IA : ${i.val < 50 ? 'Éléments manquants' : 'Cohérence validée'}</div>
+                            <div style="font-size:0.8rem; opacity:0.5;">Diagnostic : ${i.val < 50 ? 'Preuves manquantes' : 'Partiellement conforme'}</div>
                         </div>
                         <span class="pill ${i.val > 70 ? 'pill-green' : 'pill-red'}">${i.val}%</span>
                     </div>
                     <div class="check-list" id="check-${i.code}">
-                        ${i.points.map(p => `<div class="check-item"><input type="checkbox" onchange="boost('${i.code}')"> ${p}</div>`).join('')}
+                        <p style="font-size:0.8rem; font-weight:700; margin-bottom:10px; color:var(--teal);">Check-list de l'Auditeur :</p>
+                        ${i.points.map(p => `
+                            <div class="check-item">
+                                <input type="checkbox" onchange="manualValidate('${i.code}')" ${i.val === 100 ? 'checked' : ''}> 
+                                <span>${p}</span>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
             `).join('')}
@@ -163,17 +202,22 @@
 
     function renderIA() {
         return `
-            <h2 style="font-family:Fraunces; font-size:2.2rem; margin-bottom:1.5rem;">DeepScan™ IA Deep Learning</h2>
-            <div class="scan-container" onclick="startScan()">
+            <h2 style="font-family:Fraunces; font-size:2.5rem; margin-bottom:1.5rem;">DeepScan™ IA Contradictoire</h2>
+            <p style="margin-bottom:2rem; opacity:0.7; max-width:600px;">Uploadez vos preuves. L'IA compare sémantiquement vos documents avec les exigences du Référentiel National Qualité (RNQ).</p>
+            <div class="scan-container" onclick="triggerScan()">
                 <div id="scan-ui">
-                    <div style="font-size:4rem; margin-bottom:1.5rem;">📄</div>
-                    <h3>Déposez vos documents de preuve</h3>
-                    <p style="opacity:0.5; margin-top:1rem;">L'IA va scanner le texte pour valider les 32 indicateurs.</p>
+                    <div style="font-size:5rem; margin-bottom:1.5rem;">🛰️</div>
+                    <h3 style="font-family:Fraunces;">Analyseur de Conformité</h3>
+                    <p style="opacity:0.5; margin-top:1rem;">Cliquez pour simuler le scan d'un programme de formation</p>
                 </div>
                 <div class="scan-line" id="line"></div>
-                <div id="scan-report" style="display:none; text-align:left; margin-top:2rem; background:var(--cream); padding:2rem; border-radius:20px;">
-                    <h4 style="color:var(--red);">🚩 Non-Conformités Détectées :</h4>
-                    <p style="margin-top:1rem; font-size:0.9rem;"><strong>Q1.1 :</strong> Manque les mentions légales sur les tarifs TTC.<br><strong>Q2.2 :</strong> Le contact du référent handicap n'est pas spécifié.</p>
+                <div id="scan-report" style="display:none; text-align:left; margin-top:2rem; background:var(--cream); padding:2rem; border-radius:20px; border-left:5px solid var(--red);">
+                    <h4 style="color:var(--red); font-family:Fraunces;">🚩 Rapport de l'Auditeur Virtuel :</h4>
+                    <p style="margin-top:1.5rem; font-size:0.95rem; line-height:1.6;">
+                        <strong>Anomalie Détectée (Indicateur 1.1) :</strong> Le document ne mentionne pas les délais d'accès à la formation.<br>
+                        <strong>Anomalie Détectée (Indicateur 2.2) :</strong> Aucune mention du référent handicap et de ses coordonnées n'a été trouvée dans le texte.
+                    </p>
+                    <button class="btn-premium" style="margin-top:1.5rem; width:100%;" onclick="switchTab('docs', null)">Corriger via le Générateur</button>
                 </div>
             </div>
         `;
@@ -181,81 +225,103 @@
 
     function renderDocs() {
         return `
-            <h2 style="font-family:Fraunces; font-size:2.2rem; margin-bottom:2rem;">Générateur de Preuves Dynamiques</h2>
-            <div class="stat-card" style="margin-bottom:2rem;">
-                <h4 style="margin-bottom:1rem;">Identité de l'Organisme</h4>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                    <input type="text" placeholder="Nom Organisme" value="${state.company.name}" id="cName" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
-                    <input type="text" placeholder="Référent Handicap" value="${state.company.handicap}" id="cHandi" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
+            <h2 style="font-family:Fraunces; font-size:2.5rem; margin-bottom:2rem;">Générateur de Preuves Automatisé</h2>
+            <div class="stat-card" style="margin-bottom:2rem; border:2px solid var(--gold);">
+                <h4 style="font-family:Fraunces; margin-bottom:1.5rem;">Données de l'Organisme</h4>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                    <div>
+                        <label style="font-size:0.7rem; font-weight:800; opacity:0.5;">NOM DE L'ORGANISME</label>
+                        <input type="text" class="input-premium" value="${state.company.name}" id="cName">
+                    </div>
+                    <div>
+                        <label style="font-size:0.7rem; font-weight:800; opacity:0.5;">RÉFÉRENT HANDICAP</label>
+                        <input type="text" class="input-premium" value="${state.company.handicap}" id="cHandi">
+                    </div>
                 </div>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
-                <div class="indicator-card" onclick="genDoc('livret')">
-                    <strong>📄 Livret d'Accueil</strong>
-                    <p style="font-size:0.8rem; opacity:0.6;">Conforme Q1.1 et Q2.2</p>
+                <div class="indicator-card" onclick="generateDocument('livret')">
+                    <div style="font-size:2rem; margin-bottom:1rem;">📄</div>
+                    <strong>Générer le Livret d'Accueil</strong>
+                    <p style="font-size:0.8rem; opacity:0.6; margin-top:5px;">Inclus : Mentions handicap, Règlement, Moyens techniques.</p>
                 </div>
-                <div class="indicator-card" onclick="genDoc('certificat')">
-                    <strong>📄 Certificat de Réalisation</strong>
-                    <p style="font-size:0.8rem; opacity:0.6;">Conforme Q6.4</p>
+                <div class="indicator-card" onclick="generateDocument('certificat')">
+                    <div style="font-size:2rem; margin-bottom:1rem;">📜</div>
+                    <strong>Générer Certificat de Réalisation</strong>
+                    <p style="font-size:0.8rem; opacity:0.6; margin-top:5px;">Conforme aux exigences de la DGEFP.</p>
                 </div>
             </div>
         `;
     }
 
-    // --- Logic ---
+    // --- LOGIQUE FONCTIONNELLE ---
+    function switchTab(tab, el) {
+        if(el) {
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
+        }
+        renderView(tab);
+    }
+
     function toggleCheck(code) {
         const el = document.getElementById(`check-${code}`);
         el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
 
-    function boost(code) {
+    function manualValidate(code) {
         const ind = state.indicators.find(i => i.code === code);
-        ind.val = Math.min(100, ind.val + 15);
+        ind.val = Math.min(100, ind.val + 20);
         state.score = Math.min(100, state.score + 2);
-        showToast(`Mise en conformité de ${code} enregistrée.`);
-        render('dashboard');
+        showToast(`Indicateur ${code} mis à jour.`);
+        renderView('dashboard');
     }
 
-    function startScan() {
-        document.getElementById('scan-ui').style.opacity = '0.3';
+    function triggerScan() {
+        document.getElementById('scan-ui').style.opacity = '0.2';
         document.getElementById('line').style.display = 'block';
         setTimeout(() => {
             document.getElementById('line').style.display = 'none';
             document.getElementById('scan-report').style.display = 'block';
-            showToast("⚠️ Analyse terminée : Anomalies détectées.");
+            showToast("DeepScan™ a identifié 2 failles critiques.");
         }, 2500);
     }
 
-    function genDoc(type) {
-        const n = document.getElementById('cName').value;
-        const h = document.getElementById('cHandi').value;
+    function generateDocument(type) {
+        const name = document.getElementById('cName').value;
+        const referent = document.getElementById('cHandi').value;
         const win = window.open('', '_blank');
-        win.document.write(`<html><body style="font-family:sans-serif; padding:50px;">
-            <h1 style="color:#c9a84c;">${type === 'livret' ? "LIVRET D'ACCUEIL" : "CERTIFICAT DE RÉALISATION"}</h1>
-            <p>Organisme : <strong>${n}</strong></p>
-            <p>Référent Handicap : <strong>${h}</strong></p>
-            <p style="margin-top:50px; font-size:0.8rem;">Document généré par EduConcret Certif PRO - Conforme Qualiopi V9</p>
-            <script>window.print();<\/script>
-        </body></html>`);
+        win.document.write(`
+            <html>
+            <body style="font-family:sans-serif; padding:60px; color:#333; line-height:1.6;">
+                <h1 style="color:#c9a84c; border-bottom:2px solid #eee; padding-bottom:10px;">${type === 'livret' ? "LIVRET D'ACCUEIL" : "CERTIFICAT DE RÉALISATION"}</h1>
+                <p>Organisme : <strong>${name}</strong></p>
+                <p>Référent Handicap : <strong>${referent}</strong></p>
+                <h2 style="color:#2a7b6e; margin-top:40px;">Conformité Qualiopi</h2>
+                <p>Ce document est généré automatiquement selon les exigences du critère 1 et 2 du Référentiel National Qualité.</p>
+                <footer style="margin-top:100px; font-size:0.8rem; opacity:0.5;">Généré par EduConcret Certif PRO — Système Expert</footer>
+                <script>window.print();<\/script>
+            </body>
+            </html>
+        `);
         win.document.close();
-        showToast("Document généré avec succès.");
+        showToast("Document de preuve généré.");
     }
 
-    function switchTab(tab, el) {
-        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-        el.classList.add('active');
-        render(tab);
-    }
-
-    function render(tab) {
+    function renderView(view) {
         const container = document.getElementById('view-container');
-        if(tab === 'dashboard') container.innerHTML = renderDashboard();
-        else if(tab === 'ia') container.innerHTML = renderIA();
-        else if(tab === 'docs') container.innerHTML = renderDocs();
-        else container.innerHTML = `<h1 style="font-family:Fraunces;">Module ${tab.toUpperCase()}</h1><p style="margin-top:2rem; opacity:0.5;">Bientôt disponible dans votre espace client.</p>`;
+        if(view === 'dashboard') container.innerHTML = renderDashboard();
+        else if(view === 'ia') container.innerHTML = renderIA();
+        else if(view === 'docs') container.innerHTML = renderDocs();
+        else container.innerHTML = `
+            <h1 style="font-family:Fraunces;">Module ${view.toUpperCase()}</h1>
+            <div class="stat-card" style="margin-top:2rem; text-align:center; padding:5rem;">
+                <p>Ce module nécessite une <strong>Licence Premium</strong> active.</p>
+                <button class="btn-premium" style="margin-top:2rem;">Débloquer maintenant</button>
+            </div>`;
     }
 
-    render('dashboard');
+    // Lancement
+    renderView('dashboard');
 </script>
 </body>
 </html>
