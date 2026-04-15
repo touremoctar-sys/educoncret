@@ -24,6 +24,7 @@
     /* --- ANIMATIONS --- */
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes pageFlip { from { transform: rotateY(-30deg); opacity: 0; } to { transform: rotateY(0deg); opacity: 1; } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -55,8 +56,9 @@
 
     .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.8rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
     .btn-gold { background: var(--gold); color: var(--ink); }
-    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,168,76,0.3); }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,168,76,0.3); animation: pulse 2s infinite; }
     .btn-outline { border: 1px solid rgba(247,243,237,0.3); color: var(--cream); }
+    .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
 
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .project-card { background: var(--white); padding: 2.5rem; border-radius: 15px; border: 1px solid var(--cream-3); box-shadow: var(--shadow); transition: 0.3s; }
@@ -65,16 +67,58 @@
     .project-result { display: inline-block; background: rgba(42,123,110,0.1); color: var(--teal); padding: 0.3rem 0.8rem; border-radius: 5px; font-size: 0.8rem; margin-top: 1rem; font-weight: 700; }
 
     /* --- FLIPBOOK STYLES --- */
-    .book-container { max-width: 450px; margin: 0 auto; position: relative; }
-    .book-wrapper { width: 100%; height: 550px; position: relative; perspective: 1500px; }
-    .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: white; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none; overflow: hidden; }
-    .page.active { display: block; animation: pageFlip 0.6s ease; }
-    .page-content { height: 100%; border: 1px solid #ddd; display: flex; flex-direction: column; }
+    .book-container { max-width: 500px; margin: 0 auto; position: relative; }
+    .book-wrapper { width: 100%; height: 600px; position: relative; perspective: 1500px; margin: 0 auto; }
+    .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: white; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none; overflow: hidden; border: 1px solid var(--cream-3); }
+    .page.active { display: block; animation: pageFlip 0.5s ease; }
+    .page-content { height: 100%; padding: 1.5rem; display: flex; flex-direction: column; overflow-y: auto; }
+    .page-content::-webkit-scrollbar { width: 4px; }
+    .page-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    
     .book-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2rem; }
-    .nav-btn { background: var(--ink); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s; }
-    .nav-btn:hover { background: var(--gold); color: var(--ink); }
-    #pageIndicator { font-weight: 700; font-size: 0.8rem; color: var(--ink); text-transform: uppercase; }
+    .nav-btn { background: var(--ink); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+    .nav-btn:hover { background: var(--gold); color: var(--ink); transform: scale(1.1); }
+    #pageIndicator { font-weight: 700; font-size: 0.8rem; color: var(--ink); text-transform: uppercase; min-width: 100px; text-align: center; }
 
+    /* --- PAGE TYPOGRAPHY --- */
+    .page-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink-2); margin-bottom: 0.8rem; border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; }
+    .page-subtitle { font-family: 'Fraunces', serif; font-size: 0.95rem; color: var(--terracotta); margin: 0.5rem 0; }
+    .page-text { font-size: 0.85rem; line-height: 1.6; margin: 0.5rem 0; }
+    .page-text strong { color: var(--ink-2); }
+    .page-text em { color: var(--sky); font-style: italic; }
+    
+    .math-box { background: #f8f4e9; border-left: 4px solid var(--gold); padding: 0.8rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; }
+    .math-formula { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; text-align: center; color: var(--teal); margin: 0.5rem 0; }
+    .fraction { display: inline-flex; flex-direction: column; align-items: center; font-size: 1.1rem; font-weight: 700; }
+    .fraction .num { border-bottom: 2px solid var(--ink); padding: 0 4px; }
+    .fraction .den { padding: 0 4px; }
+    
+    .quiz-option { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0; font-size: 0.8rem; }
+    .quiz-option input { accent-color: var(--gold); }
+    
+    .visual-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; width: 200px; margin: 1rem auto; }
+    .visual-cell { aspect-ratio: 1; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+    .visual-cell.filled { background: var(--gold); color: var(--ink); font-weight: 700; }
+    
+    .warning-box { background: #fff5f5; border: 2px dashed red; padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; }
+    .warning-box strong { color: red; }
+    
+    .success-box { background: #f5fbf5; border: 2px solid var(--teal); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; }
+    
+    .comparison-table { width: 100%; font-size: 0.75rem; border-collapse: collapse; margin: 0.8rem 0; }
+    .comparison-table th, .comparison-table td { border: 1px solid var(--cream-3); padding: 0.4rem; text-align: left; }
+    .comparison-table th { background: var(--cream-2); font-family: 'Fraunces', serif; }
+    
+    .page-footer { margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--cream-3); font-size: 0.7rem; color: var(--ink-3); text-align: center; }
+    
+    .cover-page { background: linear-gradient(135deg, var(--ink) 0%, #1a1814 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
+    .cover-title { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .cover-subtitle { color: var(--gold); font-size: 1rem; margin-bottom: 1.5rem; }
+    .cover-badge { background: var(--gold); color: var(--ink); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-bottom: 1rem; }
+    
+    .final-page { background: var(--ink); color: white; text-align: center; justify-content: center; }
+    .final-price { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: var(--gold); margin: 1rem 0; }
+    
     .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -83,6 +127,9 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       section { padding: 4rem 1rem; }
+      .book-wrapper { height: 500px; }
+      .page-content { padding: 1rem; }
+      .visual-grid { width: 150px; }
     }
   </style>
 </head>
@@ -178,140 +225,482 @@
       <div class="book-container fade-in">
         <div class="book-wrapper" id="book">
           
+          <!-- PAGE 1 - COUVERTURE -->
           <div class="page active" id="p1">
-            <div class="page-content" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.postimg.cc/KzpmvzX3/Chat-GPT-Image-8-avr-2026-15-17-23.png'); background-size: cover; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;">
-              <h1 style="font-family:'Fraunces', serif; font-size: 1.8rem;">LÉO ET LA FORGE STELLAIRE</h1>
-              <h3 style="color: var(--gold); font-size: 0.9rem; margin-top: 10px;">Le secret des fractions</h3>
-              <p style="font-size: 0.7rem; margin-top: 2rem; border-top: 1px solid white; padding-top: 10px;">Dès 8 ans. Méthode Interactive.</p>
+            <div class="page-content cover-page">
+              <div class="cover-badge">Un livre dont tu es le héros</div>
+              <h1 class="cover-title">⚡ LÉO ET LA FORGE STELLAIRE</h1>
+              <h3 class="cover-subtitle">Mission : Le secret des fractions</h3>
+              <p class="page-text" style="margin-top:1.5rem; max-width:300px;">
+                Le soleil va s'éteindre.<br>
+                La planète entière plongera dans le noir.<br><br>
+                Pour sauver la lumière, tu devras <strong>résoudre des fractions</strong>.
+              </p>
+              <div style="margin-top:2rem; font-size:0.75rem; opacity:0.9;">
+                À chaque page, une méthode.<br>À chaque défi, un quiz.
+              </div>
+              <div class="page-footer">Dès 8 ans • Maths concrètes • Aventure interactive</div>
             </div>
           </div>
 
+          <!-- PAGE 2 - COMPARAISON -->
           <div class="page" id="p2">
-            <div class="page-content" style="padding: 1.5rem; background: white;">
-              <h4 style="font-family:'Fraunces', serif; color: var(--terracotta);">Pourquoi ce livre ?</h4>
-              <p style="font-size: 0.8rem; margin-top: 10px;"><strong>Manuel classique :</strong> "Une fraction est le quotient d’un nombre entier..." <br>❌ <em>L'élève décroche.</em></p>
-              <div style="margin-top: 1rem; padding: 10px; background: #f0f7f6; border-radius: 8px;">
-                <p style="font-size: 0.8rem;"><strong>Méthode EDUCONCRET :</strong> "Léo a un cristal cassé en 5 parts égales..." <br>✅ <em>L'élève comprend enfin.</em></p>
+            <div class="page-content">
+              <h4 class="page-title">📚 Pourquoi ce livre est différent</h4>
+              
+              <div style="margin:1rem 0;">
+                <p class="page-subtitle">Manuel classique :</p>
+                <div class="math-box">
+                  <p class="page-text"><em>"Une fraction est le quotient d'un nombre entier par un nombre entier non nul."</em></p>
+                </div>
+                <p class="page-text" style="color:var(--terracotta); font-weight:600;">❌ Toi : "… quoi ?" → Tu restes bloqué.</p>
               </div>
+              
+              <div style="margin:1rem 0;">
+                <p class="page-subtitle">Méthode EDUCONCRET :</p>
+                <div class="success-box">
+                  <p class="page-text"><em>"Léo a un cristal brisé en 5 morceaux identiques. Il en ramasse 2. Quelle fraction du cristal tient-il dans sa main ?"</em></p>
+                </div>
+                <p class="page-text" style="color:var(--teal); font-weight:600;">✅ Toi : "Ah ! 2 morceaux sur 5 → 2/5 !" → Tu comprends.</p>
+              </div>
+              
+              <table class="comparison-table">
+                <tr><th>Manuel classique</th><th>Livre EDUCONCRET</th></tr>
+                <tr><td>Définition abstraite</td><td>Situation concrète</td></tr>
+                <tr><td>Formule brute</td><td>Dessin + histoire</td></tr>
+                <tr><td>L'élève subit</td><td>L'élève est héros</td></tr>
+                <tr><td>Erreur = échec</td><td>Erreur = piège à comprendre</td></tr>
+              </table>
+              
+              <div class="page-footer">Tourne la page. Le cristal t'attend.</div>
             </div>
           </div>
 
+          <!-- PAGE 3 - SOMMAIRE -->
           <div class="page" id="p3">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">Sommaire</h4>
-              <ul style="font-size: 0.75rem; margin-top: 1rem; line-height: 1.8;">
-                <li>1. Le problème (P.4)</li>
-                <li>2. Méthode visuelle (P.5)</li>
-                <li>3. La règle des fractions (P.6)</li>
-                <li>4. Le piège des parts (P.7)</li>
-                <li>5. Quiz & Défis (P.8-13)</li>
+            <div class="page-content">
+              <h4 class="page-title">🗺️ Ta carte de mission</h4>
+              <ul style="font-size:0.8rem; line-height:2; margin:1rem 0; padding-left:1.2rem;">
+                <li><strong>1. Le problème</strong> – Cristal en 5 morceaux → comprendre la fraction</li>
+                <li><strong>2. Méthode visuelle</strong> – Dessiner un rectangle → 2/5</li>
+                <li><strong>3. La règle</strong> – Numérateur / Dénominateur</li>
+                <li><strong>4. Le piège</strong> – Parts inégales = pas de fraction</li>
+                <li><strong>5. Quiz rapide</strong> – 4 questions de vérification</li>
+                <li><strong>6. Problème résolu</strong> – La clé qui brille : 3/4</li>
+                <li><strong>7. Exercices</strong> – 3 cristaux à résoudre</li>
+                <li><strong>8. Problème #2</strong> – La forge en danger</li>
+                <li><strong>9. Quiz final</strong> – 5 questions + validation</li>
+                <li><strong>10. Mémo</strong> – Ce qu'il faut retenir</li>
               </ul>
-            </div>
-          </div>
-
-          <div class="page" id="p4">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">1. Le Problème</h4>
-              <p style="font-size: 0.85rem; margin-top: 10px;">Le Cristal d'Unité est brisé en <strong>5 morceaux identiques</strong>.</p>
-              <p style="font-size: 0.85rem;">Léo en ramasse <strong>2</strong>.</p>
-              <p style="font-size: 0.85rem; font-weight: 700; margin-top: 10px; color: var(--gold);">Question : Comment écrire cela mathématiquement ?</p>
-            </div>
-          </div>
-
-          <div class="page" id="p5">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">2. Méthode Visuelle</h4>
-              <div style="display: flex; border: 1.5px solid black; width: 180px; margin: 1rem auto;">
-                <div style="width: 36px; height: 36px; background: var(--gold); border-right: 1px solid black;"></div>
-                <div style="width: 36px; height: 36px; background: var(--gold); border-right: 1px solid black;"></div>
-                <div style="width: 36px; height: 36px; border-right: 1px solid black;"></div>
-                <div style="width: 36px; height: 36px; border-right: 1px solid black;"></div>
-                <div style="width: 36px; height: 36px;"></div>
+              <div class="math-box" style="margin-top:1rem;">
+                <p class="page-text" style="margin:0;"><strong>Objectif :</strong> À la fin de cette aventure, tu sauras lire, écrire et utiliser les fractions comme un pro !</p>
               </div>
-              <p style="font-size: 0.8rem; text-align: center;">2 parts coloriées sur 5 au total.</p>
-              <p style="font-weight: 900; text-align: center; font-size: 1.2rem; color: var(--teal);">2 / 5</p>
+              <div class="page-footer">Page 3 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 4 - LE PROBLÈME -->
+          <div class="page" id="p4">
+            <div class="page-content">
+              <h4 class="page-title">1. Le Cristal en Morceaux</h4>
+              <p class="page-text">Léo s'agenouille devant le <strong>Cristal d'Unité</strong>.</p>
+              <p class="page-text">Il compte les morceaux : <strong>1 – 2 – 3 – 4 – 5</strong>.</p>
+              
+              <div style="text-align:center; margin:1.5rem 0;">
+                <div class="visual-grid">
+                  <div class="visual-cell filled">1</div>
+                  <div class="visual-cell filled">2</div>
+                  <div class="visual-cell">3</div>
+                  <div class="visual-cell">4</div>
+                  <div class="visual-cell">5</div>
+                </div>
+                <p class="page-text" style="font-size:0.75rem; margin-top:0.5rem;">5 morceaux identiques</p>
+              </div>
+              
+              <p class="page-text">Il en ramasse <strong>2</strong>.</p>
+              
+              <div class="math-box">
+                <p class="page-text" style="margin:0;"><strong>Le problème mathématique :</strong></p>
+                <p class="page-text" style="margin:0.3rem 0;">• Cristal entier = 5 parts égales</p>
+                <p class="page-text" style="margin:0.3rem 0;">• Parts ramassées = 2</p>
+                <p class="page-text" style="margin:0.3rem 0; font-weight:700;">• Question : quelle fraction ?</p>
+              </div>
+              
+              <p class="page-text" style="font-style:italic; color:var(--sky);">Léo ne sait pas encore. Il va apprendre.</p>
+              <div class="page-footer">Page 4 / 14</div>
+            </div>
+          </div>
+
+          <!-- PAGE 5 - BESOIN DE COMPRENDRE -->
+          <div class="page" id="p5">
+            <div class="page-content">
+              <h4 class="page-title">2. Le Robot aux Yeux Rouges</h4>
+              <p class="page-text">Un robot s'allume. Ses yeux clignotent.</p>
+              
+              <div class="math-box" style="border-left-color:var(--terracotta); background:#fff5f5;">
+                <p class="page-text" style="margin:0; font-weight:600;">« Humain. Tu as 2 morceaux sur 5. »<br>
+                « Écris la fraction ou la forge explosera. »</p>
+              </div>
+              
+              <p class="page-text" style="margin-top:1rem;">Léo ne connaît pas ce mot : <strong style="color:var(--gold);">fraction</strong>.</p>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0;"><strong>Mais il a une méthode :</strong><br>
+                <em>« Je vais dessiner pour comprendre. »</em></p>
+              </div>
+              
+              <div style="text-align:center; margin:1.5rem 0; padding:1rem; background:var(--cream-2); border-radius:10px;">
+                <p class="page-text" style="margin:0; font-weight:600;">💡 Astuce Léo :</p>
+                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">Quand tu ne comprends pas un mot maths,<br>dessine la situation !</p>
+              </div>
+              
+              <div class="page-footer">Page 5 / 14</div>
+            </div>
+          </div>
+
+          <!-- PAGE 6 - MÉTHODE VISUELLE -->
           <div class="page" id="p6">
-            <div class="page-content" style="padding: 1.5rem; background: #fffdf5;">
-              <h4 style="font-family:'Fraunces', serif;">3. La Règle</h4>
-              <p style="font-size: 0.8rem;"><strong>Numérateur (Haut) :</strong> Combien on en prend.</p>
-              <p style="font-size: 0.8rem; margin-top: 10px;"><strong>Dénominateur (Bas) :</strong> Combien de parts au total.</p>
+            <div class="page-content">
+              <h4 class="page-title">3. La Méthode Visuelle</h4>
+              <p class="page-text">Léo dessine un rectangle pour représenter le cristal.</p>
+              
+              <div style="text-align:center; margin:1rem 0;">
+                <p class="page-text" style="font-size:0.75rem; margin-bottom:0.3rem;"><strong>Étape 1 :</strong> Le cristal entier</p>
+                <div style="display:flex; border:2px solid var(--ink); width:200px; height:40px; margin:0 auto;">
+                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
+                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
+                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
+                  <div style="flex:1; border-right:1px solid var(--ink);"></div>
+                  <div style="flex:1;"></div>
+                </div>
+              </div>
+              
+              <div style="text-align:center; margin:1rem 0;">
+                <p class="page-text" style="font-size:0.75rem; margin-bottom:0.3rem;"><strong>Étape 2-3 :</strong> 2 parts sur 5 coloriées</p>
+                <div class="visual-grid">
+                  <div class="visual-cell filled">✓</div>
+                  <div class="visual-cell filled">✓</div>
+                  <div class="visual-cell"></div>
+                  <div class="visual-cell"></div>
+                  <div class="visual-cell"></div>
+                </div>
+              </div>
+              
+              <div class="math-box">
+                <p class="page-text" style="margin:0;"><strong>Étape 4 :</strong> Il lit le résultat</p>
+                <p class="math-formula">
+                  <span class="fraction"><span class="num">2</span><span class="den">5</span></span>
+                </p>
+                <p class="page-text" style="margin:0.5rem 0 0 0; text-align:center; font-size:0.8rem;">2 parts sur 5 = <strong>2/5</strong></p>
+              </div>
+              
+              <div class="page-footer">Page 6 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 7 - LA RÈGLE -->
           <div class="page" id="p7">
-            <div class="page-content" style="padding: 1.5rem; background: #fff5f5;">
-              <h4 style="font-family:'Fraunces', serif; color: red;">4. Le Piège !</h4>
-              <p style="font-size: 0.8rem;">Si je coupe un cristal en deux morceaux de tailles différentes...</p>
-              <p style="font-weight: 700; color: red; margin-top: 10px;">CE N'EST PAS UNE FRACTION.</p>
-              <p style="font-size: 0.75rem;">Les parts doivent être <strong>égales</strong>.</p>
+            <div class="page-content">
+              <h4 class="page-title">4. La Règle des Fractions</h4>
+              
+              <div class="math-box" style="text-align:center; padding:1rem;">
+                <p class="math-formula" style="font-size:1.5rem;">
+                  <span class="fraction"><span class="num">2</span><span class="den">5</span></span>
+                </p>
+              </div>
+              
+              <div style="margin:1rem 0;">
+                <p class="page-subtitle">🔻 Dénominateur (en bas)</p>
+                <p class="page-text">= nombre total de parts <strong>égales</strong></p>
+                <p class="page-text" style="color:var(--gold); font-weight:700;">Ici : 5</p>
+                <p class="page-text" style="font-size:0.75rem; font-style:italic;">Astuce : "Dé-nombrer" = compter le total</p>
+              </div>
+              
+              <div style="margin:1rem 0;">
+                <p class="page-subtitle">🔺 Numérateur (en haut)</p>
+                <p class="page-text">= nombre de parts choisies</p>
+                <p class="page-text" style="color:var(--gold); font-weight:700;">Ici : 2</p>
+                <p class="page-text" style="font-size:0.75rem; font-style:italic;">Astuce : "Numéroter" = compter ce qu'on prend</p>
+              </div>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0;"><strong>Formule à retenir :</strong></p>
+                <p class="math-formula" style="font-size:1rem; margin:0.3rem 0;">
+                  <span class="fraction"><span class="num">numérateur</span><span class="den">dénominateur</span></span> = fraction
+                </p>
+              </div>
+              
+              <div class="page-footer">Page 7 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 8 - LE PIÈGE -->
           <div class="page" id="p8">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">5. Quiz rapide</h4>
-              <p style="font-size: 0.8rem;">Dans la fraction 3/4, quel est le dénominateur ?</p>
-              <p style="font-size: 0.8rem; margin-top: 10px;">A) 3 <br> B) 4</p>
+            <div class="page-content">
+              <h4 class="page-title" style="color:var(--terracotta);">5. ⚠️ Le Piège des Parts Inégales</h4>
+              
+              <p class="page-text">Léo voit un autre cristal brisé en <strong>2 morceaux</strong>.</p>
+              
+              <div style="text-align:center; margin:1rem 0; padding:1rem; background:#fff5f5; border-radius:10px;">
+                <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:0.5rem;">
+                  <div style="width:30px; height:30px; background:var(--gold); border:2px solid var(--ink); border-radius:4px;"></div>
+                  <span style="font-size:1.5rem;">≠</span>
+                  <div style="width:80px; height:30px; background:var(--gold); border:2px solid var(--ink); border-radius:4px;"></div>
+                </div>
+                <p class="page-text" style="font-size:0.75rem; margin:0;">Un petit morceau ≠ un gros morceau</p>
+              </div>
+              
+              <p class="page-text">Il veut écrire : <strong>1/2</strong></p>
+              
+              <div class="warning-box">
+                <p class="page-text" style="margin:0; font-weight:700;">🚨 LE ROBOT HURLE : ERREUR !</p>
+              </div>
+              
+              <div class="math-box">
+                <p class="page-text" style="margin:0;"><strong>Pourquoi ?</strong></p>
+                <p class="page-text" style="margin:0.3rem 0;">Parce que les 2 parts ne sont <strong>pas égales</strong>.</p>
+              </div>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0;"><strong>Règle absolue :</strong><br>
+                <em>On ne peut écrire une fraction que si toutes les parts sont identiques.</em></p>
+              </div>
+              
+              <p class="page-text" style="font-size:0.8rem;">✅ Pizza coupée en 2 parts égales → 1/2<br>
+              ❌ Cristal coupé en 2 parts inégales → PAS de fraction</p>
+              
+              <div class="page-footer">Page 8 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 9 - QUIZ RAPIDE -->
           <div class="page" id="p9">
-            <div class="page-content" style="padding: 1.5rem; background: #f5fbf5;">
-              <h4 style="font-family:'Fraunces', serif; color: green;">Correction</h4>
-              <p style="font-size: 0.85rem;">La réponse est <strong>B) 4</strong>.</p>
-              <p style="font-size: 0.8rem;">Car le 4 est en bas, il indique le partage total.</p>
+            <div class="page-content">
+              <h4 class="page-title">6. 🧠 Quiz Rapide</h4>
+              <p class="page-text" style="font-size:0.8rem; margin-bottom:1rem;">Vérifie ta compréhension. Coche la bonne réponse.</p>
+              
+              <div style="margin:0.8rem 0;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">1. Que représente le dénominateur ?</p>
+                <label class="quiz-option"><input type="radio" name="q1"> Le nombre de parts choisies</label>
+                <label class="quiz-option"><input type="radio" name="q1" checked> Le nombre total de parts égales ✅</label>
+              </div>
+              
+              <div style="margin:0.8rem 0;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">2. Dans 3/8, quel est le numérateur ?</p>
+                <label class="quiz-option"><input type="radio" name="q2"> 8</label>
+                <label class="quiz-option"><input type="radio" name="q2" checked> 3 ✅</label>
+              </div>
+              
+              <div style="margin:0.8rem 0;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">3. Pizza en 4 parts égales. Je prends 1 part. Fraction ?</p>
+                <label class="quiz-option"><input type="radio" name="q3"> 4/1</label>
+                <label class="quiz-option"><input type="radio" name="q3" checked> 1/4 ✅</label>
+              </div>
+              
+              <div style="margin:0.8rem 0;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.3rem;">4. Peut-on écrire 1/2 si les parts ne sont pas égales ?</p>
+                <label class="quiz-option"><input type="radio" name="q4"> Oui</label>
+                <label class="quiz-option"><input type="radio" name="q4" checked> Non ✅</label>
+              </div>
+              
+              <div class="math-box" style="margin-top:1rem; text-align:center;">
+                <p class="page-text" style="margin:0; font-size:0.8rem;">👉 Tourne la page pour voir les corrections !</p>
+              </div>
+              
+              <div class="page-footer">Page 9 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 10 - CORRECTION + PROBLÈME RÉSOLU -->
           <div class="page" id="p10">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">6. Exercices</h4>
-              <p style="font-size: 0.8rem;">Cercle coupé en 8 parts. 6 sont bleues. Fraction ?</p>
-              <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px;">___ / ___</p>
+            <div class="page-content">
+              <h4 class="page-title" style="color:var(--teal);">7. ✅ Correction + Problème Résolu</h4>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0; font-weight:600;">Réponses du quiz :</p>
+                <p class="page-text" style="margin:0.3rem 0;">1️⃣ Nombre total de parts égales</p>
+                <p class="page-text" style="margin:0.1rem 0;">2️⃣ 3</p>
+                <p class="page-text" style="margin:0.1rem 0;">3️⃣ 1/4</p>
+                <p class="page-text" style="margin:0.1rem 0;">4️⃣ Non</p>
+              </div>
+              
+              <hr style="border:0; border-top:1px dashed var(--cream-3); margin:1rem 0;">
+              
+              <p class="page-subtitle">🔑 PROBLÈME RÉSOLU N°1 : La clé qui brille</p>
+              <p class="page-text">Une porte a un cercle coupé en <strong>4 parts égales</strong>.<br><strong>3 parts</strong> brillent.</p>
+              
+              <div class="math-box">
+                <p class="page-text" style="margin:0;"><strong>Méthode pas à pas :</strong></p>
+                <p class="page-text" style="margin:0.3rem 0;">1️⃣ Total des parts = 4 → dénominateur = 4</p>
+                <p class="page-text" style="margin:0.1rem 0;">2️⃣ Parts qui brillent = 3 → numérateur = 3</p>
+                <p class="page-text" style="margin:0.1rem 0; font-weight:700;">3️⃣ Fraction = <span class="fraction"><span class="num">3</span><span class="den">4</span></span></p>
+              </div>
+              
+              <div style="text-align:center; margin:1rem 0; padding:0.8rem; background:var(--cream-2); border-radius:10px;">
+                <p class="page-text" style="margin:0; font-weight:700; color:var(--gold);">✨ La porte s'ouvre !</p>
+              </div>
+              
+              <div class="page-footer">Page 10 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 11 - EXERCICES PROGRESSIFS -->
           <div class="page" id="p11">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">7. Problème</h4>
-              <p style="font-size: 0.8rem;">Léo a 12 cristaux. Il doit en donner 1/4 au robot. Combien de cristaux donne-t-il ?</p>
+            <div class="page-content">
+              <h4 class="page-title">8. 🧩 Trois Cristaux à Résoudre</h4>
+              <p class="page-text" style="font-size:0.8rem;">Résous sur une feuille. Correction page 12.</p>
+              
+              <div style="margin:1rem 0; padding:0.8rem; border:1px solid var(--cream-3); border-radius:8px;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🔷 Cristal n°1</p>
+                <div class="visual-grid" style="width:150px; margin:0.5rem auto;">
+                  <div class="visual-cell filled"></div>
+                  <div class="visual-cell filled"></div>
+                  <div class="visual-cell filled"></div>
+                  <div class="visual-cell"></div>
+                  <div class="visual-cell"></div>
+                </div>
+                <p class="page-text">Rectangle en <strong>5 parts</strong>, <strong>3 vertes</strong></p>
+                <p class="page-text" style="font-weight:700;">Fraction : <span class="fraction"><span class="num">___</span><span class="den">___</span></span></p>
+              </div>
+              
+              <div style="margin:1rem 0; padding:0.8rem; border:1px solid var(--cream-3); border-radius:8px;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🔵 Cristal n°2</p>
+                <p class="page-text">Cercle en <strong>8 parts égales</strong>, <strong>6 bleues</strong></p>
+                <p class="page-text" style="font-weight:700;">Fraction : <span class="fraction"><span class="num">___</span><span class="den">___</span></span></p>
+              </div>
+              
+              <div style="margin:1rem 0; padding:0.8rem; border:1px solid var(--cream-3); border-radius:8px;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🔴 Cristal n°3</p>
+                <p class="page-text">Barre en <strong>3 parts égales</strong>, <strong>1 rouge</strong></p>
+                <p class="page-text" style="font-weight:700;">Fraction : <span class="fraction"><span class="num">___</span><span class="den">___</span></span></p>
+              </div>
+              
+              <div class="math-box" style="text-align:center;">
+                <p class="page-text" style="margin:0; font-size:0.8rem;">💡 Astuce : Compte d'abord le total (en bas), puis ce qui est colorié (en haut) !</p>
+              </div>
+              
+              <div class="page-footer">Page 11 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 12 - PROBLÈME RÉSOLU N°2 -->
           <div class="page" id="p12">
-            <div class="page-content" style="padding: 1.5rem; background: #f5fbf5;">
-              <h4 style="font-family:'Fraunces', serif; color: green;">Correction Pro</h4>
-              <p style="font-size: 0.8rem;">12 divisé par 4 parts = 3 cristaux.</p>
-              <p style="font-size: 0.85rem; font-weight: 700;">Réponse : 3</p>
+            <div class="page-content">
+              <h4 class="page-title">9. 🔥 Problème Résolu N°2</h4>
+              <p class="page-subtitle">La forge en danger : partage d'énergie</p>
+              
+              <div class="math-box">
+                <p class="page-text" style="margin:0;"><strong>Énoncé :</strong><br>
+                La forge a <strong>12 unités d'énergie</strong> à répartir équitablement entre <strong>4 moteurs</strong>.<br>
+                Quelle fraction de l'énergie totale reçoit un moteur ?</p>
+              </div>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0;"><strong>Résolution pas à pas :</strong></p>
+                <p class="page-text" style="margin:0.3rem 0;">1️⃣ Total = 12 unités</p>
+                <p class="page-text" style="margin:0.1rem 0;">2️⃣ 4 moteurs → chaque part = 12 ÷ 4 = <strong>3 unités</strong></p>
+                <p class="page-text" style="margin:0.1rem 0;">3️⃣ Fraction pour 1 moteur = 1 part sur 4 = <span class="fraction"><span class="num">1</span><span class="den">4</span></span></p>
+              </div>
+              
+              <div style="text-align:center; margin:1rem 0;">
+                <p class="page-text" style="font-size:0.8rem;"><strong>Vérification :</strong></p>
+                <p class="math-formula" style="font-size:1rem;">4 × <span class="fraction"><span class="num">1</span><span class="den">4</span></span> = <span class="fraction"><span class="num">4</span><span class="den">4</span></span> = 1 ✅</p>
+              </div>
+              
+              <div style="text-align:center; padding:0.8rem; background:var(--cream-2); border-radius:10px;">
+                <p class="page-text" style="margin:0; font-weight:700; color:var(--gold);">🎯 Réponse : 1/4</p>
+              </div>
+              
+              <div class="page-footer">Page 12 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 13 - CORRECTION EXERCICES -->
           <div class="page" id="p13">
-            <div class="page-content" style="padding: 1.5rem;">
-              <h4 style="font-family:'Fraunces', serif;">8. Quiz Final</h4>
-              <p style="font-size: 0.8rem;">Une tablette de 6 carrés. J'en mange 2. Fraction mangée ?</p>
+            <div class="page-content">
+              <h4 class="page-title" style="color:var(--teal);">10. ✅ Correction des Cristaux</h4>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0; font-weight:600;">🔷 Cristal n°1 : <span class="fraction"><span class="num">3</span><span class="den">5</span></span></p>
+                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">3 parts vertes sur 5 au total</p>
+              </div>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0; font-weight:600;">🔵 Cristal n°2 : <span class="fraction"><span class="num">6</span><span class="den">8</span></span></p>
+                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">6 parts bleues sur 8 au total</p>
+              </div>
+              
+              <div class="success-box">
+                <p class="page-text" style="margin:0; font-weight:600;">🔴 Cristal n°3 : <span class="fraction"><span class="num">1</span><span class="den">3</span></span></p>
+                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">1 part rouge sur 3 au total</p>
+              </div>
+              
+              <div style="text-align:center; margin:1.5rem 0; padding:1rem; background:linear-gradient(135deg, var(--cream-2), var(--gold-light)); border-radius:12px;">
+                <p class="page-text" style="margin:0; font-size:1.1rem; font-weight:700;">🎉 Si tu as tout bon → BRAVO !</p>
+                <p class="page-text" style="margin:0.3rem 0; font-size:0.8rem;">Si tu as une erreur → Relis la règle page 7</p>
+              </div>
+              
+              <div class="page-footer">Page 13 / 14</div>
             </div>
           </div>
 
+          <!-- PAGE 14 - FINAL + APPEL À L'ACHAT -->
           <div class="page" id="p14">
-            <div class="page-content" style="padding: 1.5rem; background: var(--ink); color: white; text-align: center; justify-content: center;">
-              <h3 style="font-family:'Fraunces', serif; color: var(--gold);">MISSION RÉUSSIE</h3>
-              <p style="font-size: 0.8rem; margin: 10px 0;">Votre enfant peut comprendre les maths aussi vite.</p>
-              <div style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">49 €</div>
-              <a href="#contact" class="btn btn-gold btn-sm" style="font-size: 0.8rem; width: 100%; justify-content: center;">COMMANDER LE LIVRE →</a>
+            <div class="page-content final-page">
+              <h3 class="cover-title" style="color:var(--gold); margin-bottom:0.5rem;">🏆 MISSION RÉUSSIE</h3>
+              <p class="page-text" style="opacity:0.9; margin-bottom:1.5rem;">Tu viens de vivre un extrait de la méthode <strong>EDUCONCRET</strong>.</p>
+              
+              <div class="math-box" style="background:rgba(201,168,76,0.2); border-left-color:var(--gold); text-align:center;">
+                <p class="page-text" style="margin:0; font-weight:600;">📋 Ce qu'il faut retenir :</p>
+                <p class="math-formula" style="font-size:1.2rem; margin:0.5rem 0;">
+                  <span class="fraction"><span class="num">numérateur (parts choisies)</span><span class="den">dénominateur (parts totales)</span></span>
+                </p>
+                <p class="page-text" style="margin:0.5rem 0 0 0; font-size:0.8rem;">⚠️ Règle d'or : Les parts doivent être <strong>égales</strong> !</p>
+              </div>
+              
+              <div style="margin:1.5rem 0; text-align:left;">
+                <p class="page-text" style="font-weight:600; margin-bottom:0.5rem;">🌍 Fractions dans la vie :</p>
+                <p class="page-text" style="font-size:0.8rem; line-height:1.8;">
+                  🍕 Pizza : 2 parts sur 8 → 2/8<br>
+                  ⏰ Un quart d'heure = 1/4 d'heure<br>
+                  🍼 Bouteille : 3/4 pleine<br>
+                  🥄 Recette : 1/2 cuillère
+                </p>
+              </div>
+              
+              <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:1.5rem 0;">
+              
+              <p class="page-text" style="font-size:0.85rem; margin-bottom:0.8rem;">Dans le livre complet :</p>
+              <ul style="font-size:0.75rem; text-align:left; margin:0 0 1rem 1rem; opacity:0.9;">
+                <li>10 chapitres comme celui-ci</li>
+                <li>Personnalisé avec le prénom de ton enfant</li>
+                <li>50 exercices + corrigés</li>
+                <li>Diplôme de Maître de l'Unité</li>
+              </ul>
+              
+              <div class="final-price">49 €</div>
+              
+              <a href="#contact" class="btn btn-gold btn-sm" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                🛒 COMMANDER MON LIVRE PERSONNALISÉ →
+              </a>
+              
+              <p class="page-footer" style="border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.7); margin-top:1.5rem;">
+                EduConcret • Maths concrètes • Aventure interactive
+              </p>
             </div>
           </div>
 
         </div>
 
         <div class="book-controls">
-          <button onclick="prevPage()" class="nav-btn">←</button>
+          <button onclick="prevPage()" class="nav-btn" aria-label="Page précédente">←</button>
           <div id="pageIndicator">Page 1 / 14</div>
-          <button onclick="nextPage()" class="nav-btn">→</button>
+          <button onclick="nextPage()" class="nav-btn" aria-label="Page suivante">→</button>
         </div>
+        
+        <p style="text-align:center; font-size:0.75rem; color:var(--ink-3); margin-top:1rem;">
+          💡 Astuce : Utilise les flèches ← → de ton clavier pour naviguer
+        </p>
       </div>
     </div>
   </section>
@@ -340,13 +729,36 @@
     // --- FLIPBOOK LOGIC ---
     let curPage = 1;
     const maxPages = 14;
+    
     function updatePage() {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('p' + curPage).classList.add('active');
       document.getElementById('pageIndicator').innerText = `Page ${curPage} / ${maxPages}`;
+      
+      // Scroll to top of book when changing page
+      const bookWrapper = document.getElementById('book');
+      if(bookWrapper) bookWrapper.scrollTop = 0;
     }
-    function nextPage() { curPage < maxPages ? curPage++ : curPage = 1; updatePage(); }
-    function prevPage() { if (curPage > 1) curPage--; updatePage(); }
+    
+    function nextPage() { 
+      if (curPage < maxPages) {
+        curPage++;
+        updatePage();
+      }
+    }
+    
+    function prevPage() { 
+      if (curPage > 1) {
+        curPage--;
+        updatePage();
+      }
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight') nextPage();
+      if (e.key === 'ArrowLeft') prevPage();
+    });
 
     // --- PROGRESS BAR ---
     window.onscroll = function() {
@@ -359,9 +771,30 @@
     // --- FADE IN OBSERVER ---
     const fadeEls = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+      entries.forEach(e => { 
+        if (e.isIntersecting) { 
+          e.target.classList.add('visible'); 
+        } 
+      });
     }, { threshold: 0.2 });
     fadeEls.forEach(el => fadeObserver.observe(el));
+    
+    // --- AUTO-PLAY DEMO (optional) ---
+    // Uncomment to auto-advance pages every 8 seconds for demo purposes
+    /*
+    let demoInterval;
+    function startDemo() {
+      demoInterval = setInterval(() => {
+        if(curPage < maxPages) nextPage();
+        else {
+          clearInterval(demoInterval);
+          curPage = 1;
+          updatePage();
+        }
+      }, 8000);
+    }
+    // startDemo();
+    */
   </script>
 
 </body>
