@@ -353,6 +353,24 @@
     .footer-links a:hover {
       text-decoration: underline;
     }
+
+    .progress-bar {
+      height: 8px;
+      background: #e5ddd0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--teal);
+      transition: width 0.3s;
+    }
+    .indicator-desc {
+      font-size: 0.75rem;
+      color: #6b645d;
+      margin-top: 0.2rem;
+    }
   </style>
 </head>
 <body>
@@ -361,7 +379,7 @@
   <div class="official-banner">
     <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
       <span class="official-badge">🏛️ Site officiel</span>
-      <span>Retour à l'espace principal EduConcert</span>
+      <span>Découvrez l'application de démonstration</span>
     </div>
     <a href="https://educoncret.net/" id="officialSiteLink">
       🌐 www.educoncret.net →
@@ -371,14 +389,14 @@
   <div class="app-nav">
     <div class="logo-area">
       <span class="brand-dot"></span>
-      <span>EduConcert Certif</span>
+      <span>EduConcret Certif</span>
       <span class="demo-badge">DÉMO</span>
     </div>
     <div class="nav-actions">
       <span style="font-size:0.8rem; color:#5a544d;">Version de démonstration</span>
       <a href="#" class="btn-app btn-outline-app" id="helpBtn">Aide</a>
       <a href="https://educoncret.net/" class="btn-app btn-site">🏠 Site officiel</a>
-      <a href="#" class="btn-app btn-primary-app" id="upgradeBtn">⭐ Offre complète</a>
+      <a href="app.html" class="btn-app btn-primary-app" id="upgradeBtn">⭐ Accéder à l'offre complète</a>
     </div>
   </div>
 
@@ -399,14 +417,15 @@
 
   <footer>
     <div style="max-width: 1200px; margin: 0 auto;">
-      <p>EduConcert Certif · Application de démonstration · Données fictives</p>
+      <p>EduConcret Certif · Application de démonstration · Données fictives</p>
       <div class="footer-links">
-        <a href="https://educoncret.net/">🏠 Accueil EduConcert</a>
+        <a href="https://educoncret.net/">🏠 Accueil EduConcret</a>
         <a href="https://educoncret.net/#fonctionnalites">Fonctionnalités</a>
         <a href="https://educoncret.net/#offres">Offres</a>
         <a href="https://educoncret.net/#faq">FAQ</a>
+        <a href="app.html">⭐ Version complète</a>
       </div>
-      <p style="margin-top: 0.8rem; font-size: 0.7rem;">© 2026 EduConcert — Application de démonstration pour audit Qualiopi & RNCP</p>
+      <p style="margin-top: 0.8rem; font-size: 0.7rem;">© 2026 EduConcret — Application de démonstration pour audit Qualiopi & RNCP</p>
     </div>
   </footer>
 </div>
@@ -434,9 +453,9 @@
     ],
     preuves: ["📄 Livret_accueil_2026.pdf", "📊 Tableau_suivi_entretiens.xlsx", "📌 Attestation_RH_handicap.pdf", "🔗 Lien_drive_grilles_evaluation", "📑 CV_formateurs_2026.pdf"],
     rncpBlocs: [
-      { name: "Bloc 1 : Conception et pilotage de projets", progress: "70%", status: "En cours" },
-      { name: "Bloc 2 : Ingénierie pédagogique", progress: "45%", status: "À renforcer" },
-      { name: "Bloc 3 : Management de la qualité", progress: "85%", status: "Avancé" }
+      { name: "Bloc 1 : Conception et pilotage de projets", progress: "70", status: "En cours" },
+      { name: "Bloc 2 : Ingénierie pédagogique", progress: "45", status: "À renforcer" },
+      { name: "Bloc 3 : Management de la qualité", progress: "85", status: "Avancé" }
     ]
   };
 
@@ -531,7 +550,10 @@
         <div class="indicator-item" style="opacity:0.7;"><div><h4>Q5.2 — Veille et actualisation des compétences</h4><div class="indicator-desc">Disponible dans l'offre complète</div></div><span class="pill-status orange">Démo</span></div>
         <div class="indicator-item" style="opacity:0.7;"><div><h4>Q7.3 — Traitement des réclamations</h4><div class="indicator-desc">Disponible dans l'offre complète</div></div><span class="pill-status orange">Démo</span></div>
       </div>
-      <div style="margin-top:1rem; background:#eae2d7; border-radius:20px; padding:1rem;"><strong>💡 Démo interactive :</strong> cliquez sur un indicateur pour le marquer comme conforme !</div>
+      <div style="margin-top:1rem; background:#eae2d7; border-radius:20px; padding:1rem;">
+        <strong>💡 Démo interactive :</strong> cliquez sur un indicateur pour le marquer comme conforme !
+        <div style="margin-top:0.5rem; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Passez à l'offre complète</a> pour accéder aux 32 indicateurs Qualiopi.</div>
+      </div>
     `;
   }
 
@@ -551,6 +573,7 @@
           <li>🟠 Mettre en place les feuilles d'émargement électroniques</li>
         </ul>
         <button class="btn-app btn-primary-app" style="margin-top:1.5rem;" onclick="showToast('Audit blanc relancé — nouvelles recommandations générées.')">🔄 Relancer l'audit blanc</button>
+        <div style="margin-top:1rem; text-align:center; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : audit blanc automatique avec IA et 32 indicateurs</div>
       </div>
     `;
   }
@@ -562,7 +585,10 @@
         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
           ${appState.preuves.map(p => `<div style="background:white; border-radius:16px; padding:0.8rem 1rem; border:1px solid #e5ddd0; display:flex; justify-content:space-between;"><span>${p}</span><span class="preuve-badge" style="cursor:pointer;" onclick="showToast('Document lié aux indicateurs')">🔗 Lié à 2 indicateurs</span></div>`).join('')}
         </div>
-        <div style="margin-top:1.5rem; background:#f7f3ed; border-radius:16px; padding:1rem;"><strong>💡 Stockage externe :</strong> Liez vos dossiers Google Drive, Dropbox ou OneDrive. Les métadonnées restent dans l'application.</div>
+        <div style="margin-top:1.5rem; background:#f7f3ed; border-radius:16px; padding:1rem;">
+          <strong>💡 Stockage externe :</strong> Liez vos dossiers Google Drive, Dropbox ou OneDrive.
+          <div style="margin-top:0.5rem; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : stockage cloud avec Supabase</div>
+        </div>
       </div>
     `;
   }
@@ -579,6 +605,7 @@
         `).join('')}
         ${appState.actions.length === 0 ? '<div style="background:#e5ddd0; border-radius:20px; padding:2rem; text-align:center;">🎉 Bravo ! Toutes les actions sont résolues.</div>' : ''}
       </div>
+      <div style="margin-top:1rem; text-align:center; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : génération automatique d'actions par l'IA</div>
     `;
   }
 
@@ -587,16 +614,17 @@
       <h2 class="section-title">📘 RNCP Workspace — Certification RNCP 38764</h2>
       <div class="workspace-block">
         ${appState.rncpBlocs.map(b => `
-          <div class="rncp-bloc" onclick="showToast('Bloc ${b.name} — Progression ${b.progress}')">
+          <div class="rncp-bloc" onclick="showToast('Bloc ${b.name} — Progression ${b.progress}%')">
             <strong>🧩 ${b.name}</strong>
-            <div style="font-size:0.85rem; margin-top:0.3rem;">Progression : ${b.progress} · ${b.status}</div>
-            <div class="progress-bar" style="margin-top:0.5rem;"><div class="progress-fill" style="width:${b.progress.replace('%','')}%"></div></div>
+            <div style="font-size:0.85rem; margin-top:0.3rem;">Progression : ${b.progress}% · ${b.status}</div>
+            <div class="progress-bar" style="margin-top:0.5rem;"><div class="progress-fill" style="width:${b.progress}%"></div></div>
           </div>
         `).join('')}
         <div style="margin-top:1rem; background:#f7f3ed; border-radius:20px; padding:0.8rem; font-size:0.85rem;">
           📌 Vue d’ensemble : 3 blocs sur 4 structurés. Synthèse IA disponible avec clé API (optionnelle).
         </div>
         <button class="btn-app btn-primary-app" style="margin-top:1rem;" onclick="showToast('Export RNCP généré (simulation)')">📎 Exporter le dossier RNCP</button>
+        <div style="margin-top:1rem; text-align:center; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : export PDF et suivi avancé</div>
       </div>
     `;
   }
@@ -627,7 +655,8 @@
   });
 
   document.getElementById('helpBtn')?.addEventListener('click', () => showToast('Application de démonstration — Interface interactive pour tester la logique Qualiopi'));
-  document.getElementById('upgradeBtn')?.addEventListener('click', () => showToast('Contactez-nous pour l\'offre Certification : contact@educoncret.net'));
+  
+  // Le bouton "Offre complète" redirige déjà vers app.html via le href
 
   // Exposer les fonctions globalement
   window.ameliorerIndicateur = ameliorerIndicateur;
