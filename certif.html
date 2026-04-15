@@ -1,1030 +1,560 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduConcret Certif — Préparez votre audit Qualiopi et votre dossier RNCP</title>
-  <meta name="description" content="Préparez votre audit Qualiopi, centralisez vos preuves, pilotez vos actions correctives et structurez votre dossier RNCP avec une application claire, rapide et concrète." />
-  <meta name="theme-color" content="#0e0c0a" />
-  <meta property="og:title" content="EduConcret Certif — Préparez votre audit Qualiopi et votre dossier RNCP" />
-  <meta property="og:description" content="Centralisez vos preuves, visualisez vos écarts, pilotez vos actions et structurez votre dossier RNCP dans une interface simple et efficace." />
-  <meta property="og:type" content="website" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>EduConcret Certif — Application de démonstration | Audit Qualiopi & RNCP</title>
+  <meta name="description" content="Démonstration de l'application EduConcret Certif : tableau de bord Qualiopi, preuves, actions correctives, workspace RNCP. Interface simple et opérationnelle.">
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f3ed;
+      font-family: 'DM Sans', sans-serif;
+      color: #0e0c0a;
+      line-height: 1.5;
+    }
+
+    /* Variables */
     :root {
       --ink: #0e0c0a;
       --ink-2: #1c1a17;
-      --ink-3: #2e2b26;
       --cream: #f7f3ed;
       --cream-2: #efe9df;
-      --cream-3: #e5ddd0;
       --gold: #c9a84c;
       --gold-light: #e8c96a;
       --terracotta: #c75a3a;
       --teal: #2a7b6e;
       --lavender: #5c4d8a;
-      --white: #ffffff;
-      --shadow: 0 8px 30px rgba(14, 12, 10, 0.08);
-      --shadow-lg: 0 20px 50px rgba(14, 12, 10, 0.14);
-      --radius: 18px;
-      --radius-xl: 30px;
-      --container: 1180px;
+      --radius-card: 24px;
+      --shadow-sm: 0 8px 20px rgba(14,12,10,0.05);
+      --shadow-md: 0 12px 28px rgba(14,12,10,0.08);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'DM Sans', sans-serif;
-      color: var(--ink);
+    .app-container {
+      max-width: 1400px;
+      margin: 0 auto;
       background: var(--cream);
-      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Fraunces', serif;
-      letter-spacing: -0.03em;
-      margin: 0;
-    }
-
-    a { color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(var(--container), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      padding: 0.95rem 1.45rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.22s ease;
-      border: 1.5px solid transparent;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--ink);
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(201, 168, 76, 0.34);
-    }
-
-    .btn-dark {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
-    .btn-dark:hover {
-      background: var(--ink-2);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border-color: rgba(247,243,237,0.28);
-      color: var(--cream);
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .btn-light-outline {
-      border-color: var(--ink-3);
-      color: var(--ink);
-      background: transparent;
-    }
-
-    .btn-light-outline:hover {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .section {
-      padding: 6rem 0;
-    }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin: 1rem 0 0.75rem;
-    }
-
-    .section-head p {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #5a544d;
-      font-size: 1rem;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(18px);
-      background: rgba(14,12,10,0.94);
-      border-bottom: 1px solid rgba(201,168,76,0.12);
-    }
-
-    .nav-inner {
-      min-height: 74px;
+    /* Navigation app */
+    .app-nav {
+      background: #fffdf9;
+      border-bottom: 1px solid #e5ddd0;
+      padding: 0.9rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(255,253,249,0.96);
     }
 
-    .brand {
+    .logo-area {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--cream);
-      font-weight: 800;
+      gap: 0.7rem;
       font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
+      font-weight: 800;
+      font-size: 1.35rem;
     }
-
     .brand-dot {
       width: 10px;
       height: 10px;
+      background: var(--gold);
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 6px rgba(201,168,76,0.14);
+      box-shadow: 0 0 0 4px rgba(201,168,76,0.2);
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: rgba(247,243,237,0.7);
-      text-decoration: none;
-      font-size: 0.92rem;
-      padding: 0.65rem 0.9rem;
-      border-radius: 10px;
-    }
-
-    .nav-links a:hover {
-      background: rgba(247,243,237,0.08);
-      color: var(--cream);
-    }
-
-    .nav-cta {
-      background: var(--gold);
-      color: var(--ink) !important;
-      font-weight: 700;
-    }
-
-    .hero {
-      background:
-        radial-gradient(circle at top right, rgba(201,168,76,0.14), transparent 30%),
-        linear-gradient(180deg, #0e0c0a 0%, #171411 100%);
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 72px 72px;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2rem;
-      align-items: center;
-      padding: 4rem 0 5rem;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(2.8rem, 6vw, 5.7rem);
-      line-height: 0.98;
-      margin: 1rem 0;
-    }
-
-    .hero-copy h1 em {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .hero-copy p {
-      max-width: 700px;
-      color: rgba(247,243,237,0.74);
-      font-size: 1.02rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin: 2rem 0 1.5rem;
-    }
-
-    .hero-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1rem;
-    }
-
-    .hero-points span {
-      padding: 0.55rem 0.9rem;
+    .demo-badge {
+      background: rgba(199,90,58,0.12);
+      padding: 0.3rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(247,243,237,0.14);
-      background: rgba(247,243,237,0.05);
-      font-size: 0.85rem;
-      color: rgba(247,243,237,0.82);
-    }
-
-    .hero-card {
-      background: rgba(247,243,237,0.06);
-      border: 1px solid rgba(201,168,76,0.18);
-      border-radius: 32px;
-      padding: 1.35rem;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .app-shot {
-      background: linear-gradient(180deg, #fffdf9 0%, #f8f3eb 100%);
-      border: 1px solid rgba(201,168,76,0.22);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-
-    .app-shot-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.2rem;
-      border-bottom: 1px solid var(--cream-3);
-      background: white;
-    }
-
-    .shot-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      font-weight: 800;
-      font-family: 'Fraunces', serif;
-    }
-
-    .shot-grid {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      min-height: 460px;
-    }
-
-    .shot-sidebar {
-      background: #11100d;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .shot-sidebar div {
-      padding: 0.85rem 0.9rem;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.72);
-      font-size: 0.92rem;
-    }
-
-    .shot-sidebar .active {
-      background: var(--gold);
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    .shot-main {
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .shot-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
-    }
-
-    .metric {
-      background: white;
-      border: 1px solid var(--cream-3);
-      border-radius: 20px;
-      padding: 1rem;
-    }
-
-    .metric strong {
-      display: block;
-      font-family: 'Fraunces', serif;
-      font-size: 2rem;
-      margin-top: 0.3rem;
-    }
-
-    .shot-list {
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .shot-item {
-      background: white;
-      border: 1px solid var(--cream-3);
-      border-radius: 20px;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 0.45rem 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .pill.gold { background: rgba(201,168,76,0.18); color: #8d6b12; }
-    .pill.red { background: rgba(199,90,58,0.14); color: #9f3c20; }
-    .pill.green { background: rgba(42,123,110,0.14); color: #1a6458; }
-    .pill.lav { background: rgba(92,77,138,0.13); color: #49397b; }
-
-    .stats {
-      background: var(--gold);
-      color: var(--ink);
-      padding: 1.2rem 0;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      text-align: center;
-    }
-
-    .stats-grid strong {
-      display: block;
-      font-family: 'Fraunces', serif;
-      font-size: 2rem;
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-
-    .cards-3,
-    .cards-4,
-    .pricing-grid,
-    .feature-grid {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    .cards-3 { grid-template-columns: repeat(3, 1fr); }
-    .cards-4 { grid-template-columns: repeat(4, 1fr); }
-    .feature-grid { grid-template-columns: repeat(3, 1fr); }
-    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
-
-    .card {
-      background: white;
-      border: 1px solid var(--cream-3);
-      border-radius: var(--radius-xl);
-      padding: 1.8rem;
-      box-shadow: var(--shadow);
-    }
-
-    .card.dark {
-      background: #171411;
-      color: var(--cream);
-      border-color: rgba(201,168,76,0.18);
-    }
-
-    .card h3 {
-      font-size: 1.45rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .card p,
-    .card li {
-      color: #5b544d;
-      font-size: 0.96rem;
-    }
-
-    .card.dark p,
-    .card.dark li {
-      color: rgba(247,243,237,0.72);
-    }
-
-    .card ul {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0 0;
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .card li {
-      position: relative;
-      padding-left: 1.15rem;
-    }
-
-    .card li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--gold);
-      font-weight: 800;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .stack {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .mini-box {
-      background: #fffdf9;
-      border: 1px solid var(--cream-3);
-      border-radius: 22px;
-      padding: 1.2rem;
-    }
-
-    .mini-box h4 {
-      font-size: 1.05rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .pricing-card {
-      position: relative;
-    }
-
-    .pricing-card.highlight {
-      border-color: rgba(201,168,76,0.5);
-      box-shadow: 0 18px 40px rgba(201,168,76,0.15);
-    }
-
-    .pricing-tag {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
       font-size: 0.7rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #8d6b12;
-      background: rgba(201,168,76,0.18);
-      padding: 0.45rem 0.65rem;
+      color: #9f3c20;
+      letter-spacing: 0.03em;
+    }
+    .nav-actions {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-app {
+      padding: 0.5rem 1.2rem;
       border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-outline-app {
+      border: 1.5px solid #e5ddd0;
+      background: white;
+      color: var(--ink);
+    }
+    .btn-outline-app:hover {
+      background: #f7f3ed;
+      border-color: var(--gold);
+    }
+    .btn-primary-app {
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+    }
+    .btn-primary-app:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+    .btn-back {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: #8d6b12;
+    }
+    .btn-back:hover {
+      background: rgba(201,168,76,0.1);
     }
 
-    .price {
+    /* Layout principal */
+    .main-layout {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: #fffdf9;
+      border-right: 1px solid #e5ddd0;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.75rem 1rem;
+      border-radius: 16px;
+      font-weight: 500;
+      color: #2e2b26;
+      transition: all 0.15s;
+      cursor: default;
+    }
+    .sidebar-item.active {
+      background: rgba(201,168,76,0.12);
+      color: #8d6b12;
+      font-weight: 600;
+      border-left: 3px solid var(--gold);
+    }
+    .sidebar-item:not(.active):hover {
+      background: #f1ede7;
+    }
+
+    .content {
+      flex: 1;
+      padding: 2rem 2rem 3rem;
+    }
+
+    /* dashboard cards */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.3rem 1.2rem;
+      border: 1px solid #e5ddd0;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-value {
       font-family: 'Fraunces', serif;
-      font-size: 2.7rem;
-      line-height: 1;
-      margin: 1rem 0 0.45rem;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-top: 0.3rem;
     }
-
-    .faq {
+    .indicator-grid, .action-grid {
       display: grid;
       gap: 1rem;
-      max-width: 900px;
-      margin: 0 auto;
     }
-
-    details {
+    .indicator-item, .action-item {
       background: white;
-      border: 1px solid var(--cream-3);
       border-radius: 20px;
       padding: 1rem 1.2rem;
-      box-shadow: var(--shadow);
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 700;
-      list-style: none;
-    }
-
-    summary::-webkit-details-marker { display: none; }
-
-    details p {
-      margin: 0.85rem 0 0;
-      color: #5a544d;
-    }
-
-    .cta-band {
-      background: linear-gradient(135deg, #15120f 0%, #1f1b17 100%);
-      color: var(--cream);
-    }
-
-    .cta-box {
-      border: 1px solid rgba(201,168,76,0.18);
-      background: rgba(247,243,237,0.04);
-      border-radius: 32px;
-      padding: 2.4rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    footer {
-      background: var(--ink);
-      color: rgba(247,243,237,0.55);
-      padding: 3rem 0 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(201,168,76,0.1);
-    }
-
-    footer .links {
+      border: 1px solid #e5ddd0;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      margin: 1rem 0 1.25rem;
+      gap: 0.8rem;
     }
-
-    footer .links a {
-      text-decoration: none;
-      color: rgba(247,243,237,0.6);
-      font-size: 0.92rem;
+    .indicator-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
     }
-
-    footer .links a:hover {
-      color: var(--cream);
-    }
-
-    .note {
-      font-size: 0.85rem;
+    .indicator-desc {
+      font-size: 0.8rem;
       color: #6b645d;
     }
-
-    @media (max-width: 1080px) {
-      .hero-inner,
-      .split,
-      .cta-box { grid-template-columns: 1fr; }
-      .cards-4 { grid-template-columns: repeat(2, 1fr); }
-      .cards-3,
-      .feature-grid,
-      .pricing-grid { grid-template-columns: 1fr; }
-      .shot-grid { grid-template-columns: 1fr; }
-      .shot-sidebar { display: grid; grid-template-columns: repeat(3, 1fr); }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .pill-status {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: #efe9df;
     }
+    .pill.red { background: rgba(199,90,58,0.12); color: #b13e1f; }
+    .pill.green { background: rgba(42,123,110,0.12); color: #1a6458; }
+    .pill.orange { background: rgba(201,168,76,0.2); color: #8d6b12; }
 
-    @media (max-width: 760px) {
-      .nav-inner { flex-direction: column; align-items: flex-start; padding: 1rem 0; }
-      .nav-links { width: 100%; }
-      .nav-links a { padding-left: 0; }
-      .hero-inner { min-height: auto; padding: 4rem 0; }
-      .stats-grid,
-      .cards-4,
-      .shot-metrics { grid-template-columns: 1fr; }
-      .shot-sidebar { grid-template-columns: 1fr; }
-      .cta-box { padding: 1.6rem; }
-      .hero-copy h1 { font-size: 2.5rem; }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      margin: 1.8rem 0 1rem 0;
+    }
+    .preuve-badge {
+      background: #f1ede7;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-icon {
+      background: none;
+      border: 1px solid #e5ddd0;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: default;
+    }
+    hr {
+      margin: 1.5rem 0;
+      border: none;
+      border-top: 1px solid #e5ddd0;
+    }
+    .workspace-block {
+      background: #fffdf9;
+      border-radius: 28px;
+      padding: 1.5rem;
+      border: 1px solid #e5ddd0;
+      margin-top: 1rem;
+    }
+    .rncp-bloc {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--lavender);
+    }
+    .back-bar {
+      background: #e5ddd0;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #d9cfc0;
+      font-size: 0.85rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #2e2b26;
+      background: white;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      transition: 0.2s;
+    }
+    .back-link:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    @media (max-width: 780px) {
+      .sidebar { display: none; }
+      .content { padding: 1.5rem; }
+      .app-nav { padding: 0.8rem 1rem; }
+      .back-bar { padding: 0.75rem 1rem; }
+    }
+    footer {
+      background: #0e0c0a;
+      color: rgba(247,243,237,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .footer-back {
+      margin-top: 1rem;
+    }
+    .footer-back a {
+      color: var(--gold);
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top">
-        <span class="brand-dot"></span>
-        <span>EduConcret Certif</span>
-      </a>
-      <div class="nav-links">
-        <a href="#fonctionnalites">Fonctionnalités</a>
-        <a href="#difference">Pourquoi c’est plus simple</a>
-        <a href="#stack">Stockage & IA</a>
-        <a href="#offres">Accès</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://app.educoncret.net" class="nav-cta">Accéder à l’application</a>
-      </div>
+<div class="app-container">
+  <!-- Barre de retour vers l'index (visible depuis n'importe quelle ancre) -->
+  <div class="back-bar">
+    <a href="https://educoncret.net/" class="back-link" id="backToIndexBtn">
+      ← Retour à l'accueil EduConcret
+    </a>
+    <span style="color:#5a544d; font-size:0.8rem;">Vous êtes sur la démo de l'application</span>
+  </div>
+
+  <div class="app-nav">
+    <div class="logo-area">
+      <span class="brand-dot"></span>
+      <span>EduConcret Certif</span>
+      <span class="demo-badge">DÉMO</span>
     </div>
-  </nav>
+    <div class="nav-actions">
+      <span style="font-size:0.8rem; color:#5a544d;">Version de démonstration</span>
+      <a href="#" class="btn-app btn-outline-app" onclick="alert('Interface de démonstration — données fictives.')">Aide</a>
+      <a href="https://educoncret.net/" class="btn-app btn-back">🏠 Retour au site</a>
+      <a href="#" class="btn-app btn-primary-app" onclick="alert('Version démo gratuite. Passez à l’offre Certification pour accéder à toutes les fonctionnalités.')">Passer à l'offre complète</a>
+    </div>
+  </div>
 
-  <header class="hero" id="top">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow" style="background: rgba(201,168,76,0.12); color: var(--gold);">Application Qualiopi & RNCP</span>
-        <h1>Préparez <em>votre</em> audit et structurez <em>votre</em> dossier plus sereinement.</h1>
-        <p>
-          Avec EduConcret Certif, vous centralisez vos preuves, repérez vos écarts, pilotez vos actions correctives et organisez votre dossier RNCP dans une interface claire, rapide et concrète.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://app.educoncret.net">Accéder à l’application</a>
-          <a class="btn btn-outline" href="#offres">Choisir mon accès</a>
+  <div class="main-layout">
+    <div class="sidebar">
+      <div class="sidebar-item active">📊 Tableau de bord</div>
+      <div class="sidebar-item">✅ Qualiopi</div>
+      <div class="sidebar-item">🔍 Audit blanc</div>
+      <div class="sidebar-item">📁 Coffre de preuves</div>
+      <div class="sidebar-item">⚡ Plan d'action</div>
+      <div class="sidebar-item">📘 RNCP Workspace</div>
+    </div>
+
+    <div class="content">
+      <!-- Message démo -->
+      <div style="background: #eae2d7; border-radius: 40px; padding: 0.6rem 1rem; margin-bottom: 1.5rem; text-align: center; font-size: 0.85rem;">
+        🔍 <strong>Interface de démonstration</strong> — données simulées pour illustrer la logique. Tous les indicateurs sont fictifs.
+      </div>
+
+      <!-- Stats principales -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div>📈 Conformité globale</div>
+          <div class="stat-value">78%</div>
+          <div style="font-size:0.75rem;">+12% depuis 30j</div>
         </div>
-        <div class="hero-points">
-          <span>Vous voyez les priorités</span>
-          <span>Vous retrouvez vos preuves</span>
-          <span>Vous structurez vos actions</span>
-          <span>Vous préparez votre RNCP</span>
-          <span>Vous activez l’IA si besoin</span>
+        <div class="stat-card">
+          <div>📎 Preuves reliées</div>
+          <div class="stat-value">126</div>
+          <div style="font-size:0.75rem;">32 manquantes prioritaires</div>
+        </div>
+        <div class="stat-card">
+          <div>⚠️ Actions ouvertes</div>
+          <div class="stat-value">9</div>
+          <div style="font-size:0.75rem;">4 urgentes</div>
+        </div>
+        <div class="stat-card">
+          <div>✅ Audit blanc</div>
+          <div class="stat-value">68%</div>
+          <div style="font-size:0.75rem;">dernier audit : 12/02/2026</div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <div class="app-shot">
-          <div class="app-shot-top">
-            <div class="shot-logo">
-              <span class="brand-dot"></span>
-              <span>EduConcret Certif</span>
-            </div>
-            <span class="pill gold">Application</span>
+      <!-- Section Indicateurs Qualiopi prioritaires -->
+      <div class="flex-between">
+        <h2 class="section-title">📋 Indicateurs Qualiopi — écarts critiques</h2>
+        <span class="preuve-badge">Vue prioritaire</span>
+      </div>
+      <div class="indicator-grid">
+        <div class="indicator-item">
+          <div>
+            <h4>Q1.1 — Information du public sur l’offre de formation</h4>
+            <div class="indicator-desc">Accessibilité, délais, modalités d’inscription → documentation incomplète</div>
           </div>
-          <div class="shot-grid">
-            <div class="shot-sidebar">
-              <div class="active">Tableau de bord</div>
-              <div>Qualiopi</div>
-              <div>Audit blanc</div>
-              <div>Preuves</div>
-              <div>Plan d’action</div>
-              <div>RNCP</div>
-            </div>
-            <div class="shot-main">
-              <div class="shot-metrics">
-                <div class="metric">
-                  <small>Préparation</small>
-                  <strong>78%</strong>
-                </div>
-                <div class="metric">
-                  <small>Preuves liées</small>
-                  <strong>126</strong>
-                </div>
-                <div class="metric">
-                  <small>Points urgents</small>
-                  <strong>4</strong>
-                </div>
-              </div>
-              <div class="shot-list">
-                <div class="shot-item">
-                  <div>
-                    <strong>Q1.1 — Information du public</strong>
-                    <div class="note">Éléments d’accessibilité et délais à compléter</div>
-                  </div>
-                  <span class="pill red">À corriger</span>
-                </div>
-                <div class="shot-item">
-                  <div>
-                    <strong>Q3.1 — Suivi et accompagnement</strong>
-                    <div class="note">Processus documenté et preuves déjà rattachées</div>
-                  </div>
-                  <span class="pill green">Conforme</span>
-                </div>
-                <div class="shot-item">
-                  <div>
-                    <strong>RNCP — Bloc 2</strong>
-                    <div class="note">Modalité d’évaluation à finaliser</div>
-                  </div>
-                  <span class="pill lav">En cours</span>
-                </div>
-              </div>
-            </div>
+          <div class="pill-status red">À corriger</div>
+        </div>
+        <div class="indicator-item">
+          <div>
+            <h4>Q2.2 — Adaptation aux publics en situation de handicap</h4>
+            <div class="indicator-desc">Preuve manquante : référent handicap désigné + process</div>
           </div>
+          <div class="pill-status red">Preuve manquante</div>
+        </div>
+        <div class="indicator-item">
+          <div>
+            <h4>Q3.1 — Suivi individuel et accompagnement</h4>
+            <div class="indicator-desc">Processus formalisé mais absence de traçabilité des entretiens</div>
+          </div>
+          <div class="pill-status orange">En amélioration</div>
+        </div>
+        <div class="indicator-item">
+          <div>
+            <h4>Q4.3 — Évaluation des acquis par rapport aux objectifs</h4>
+            <div class="indicator-desc">Grille d’évaluation partiellement documentée</div>
+          </div>
+          <div class="pill-status green">Conforme sous réserve</div>
         </div>
       </div>
-    </div>
-  </header>
 
-  <section class="stats">
-    <div class="container stats-grid">
-      <div><strong>1</strong><span>vue claire de vos priorités</span></div>
-      <div><strong>0</strong><span>fonction inutile en V1</span></div>
-      <div><strong>100%</strong><span>centré sur vos actions</span></div>
-      <div><strong>∞</strong><span>évolutif selon vos besoins</span></div>
-    </div>
-  </section>
-
-  <section class="section" id="fonctionnalites">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow" style="background: rgba(42,123,110,0.10); color: var(--teal);">Fonctionnalités</span>
-        <h2>Vous pilotez votre conformité plus simplement.</h2>
-        <p>
-          Chaque écran vous montre ce qui manque, ce qui est risqué et ce que vous devez traiter en priorité. Vous gagnez du temps et vous gardez une vision claire.
-        </p>
+      <!-- Plan d'action rapide -->
+      <div class="flex-between" style="margin-top: 2rem;">
+        <h2 class="section-title">⚡ Plan d’action — correctives prioritaires</h2>
+        <a href="#" class="btn-icon" onclick="alert('Démo : actions correctives fictives')">+ Nouvelle action</a>
       </div>
-
-      <div class="feature-grid">
-        <article class="card">
-          <h3>Tableau de bord</h3>
-          <p>Vous visualisez immédiatement votre niveau de préparation, vos urgences et vos actions ouvertes.</p>
-          <ul>
-            <li>Vue synthétique immédiate</li>
-            <li>Écarts prioritaires visibles</li>
-            <li>Lecture simple par critère</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Qualiopi</h3>
-          <p>Vous suivez chaque indicateur avec un statut, un niveau de risque, des commentaires et des preuves liées.</p>
-          <ul>
-            <li>Lecture indicateur par indicateur</li>
-            <li>Recherche simple</li>
-            <li>Mise à jour rapide</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Audit blanc</h3>
-          <p>Vous identifiez vos faiblesses avant l’audit réel et vous préparez vos corrections avec méthode.</p>
-          <ul>
-            <li>Lecture opérationnelle</li>
-            <li>Preuves manquantes repérées</li>
-            <li>Préparation de la remédiation</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Coffre de preuves</h3>
-          <p>Vous rattachez vos documents aux bons indicateurs et vous retrouvez rapidement ce qui prouve quoi.</p>
-          <ul>
-            <li>Types de preuves organisés</li>
-            <li>Liaisons multi-indicateurs</li>
-            <li>Suivi de validité</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Plan d’action</h3>
-          <p>Vous transformez chaque écart en action corrective claire, priorisée et suivie dans le temps.</p>
-          <ul>
-            <li>Priorités lisibles</li>
-            <li>Responsables identifiés</li>
-            <li>Suivi des échéances</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>RNCP Workspace</h3>
-          <p>Vous structurez vos blocs, compétences, évaluations et éléments de dossier dans un espace cohérent.</p>
-          <ul>
-            <li>Blocs de compétences</li>
-            <li>Modalités d’évaluation</li>
-            <li>Vision d’ensemble</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="difference" style="background: var(--cream-2);">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow" style="background: rgba(199,90,58,0.10); color: var(--terracotta);">Positionnement</span>
-        <h2>Vous utilisez un outil plus clair que les solutions trop lourdes.</h2>
-        <p>
-          Beaucoup d’outils compliquent le travail avec trop de fonctions, trop d’écrans et trop de jargon. EduConcret Certif vous donne une lecture directe et utile.
-        </p>
-      </div>
-
-      <div class="cards-3">
-        <article class="card dark">
-          <h3>1. Vous comprenez l’écran immédiatement</h3>
-          <p>En quelques secondes, vous voyez vos urgences, vos écarts, vos preuves manquantes et les prochaines actions à lancer.</p>
-        </article>
-
-        <article class="card dark">
-          <h3>2. Vous lisez un langage métier simple</h3>
-          <p>L’interface parle clairement : à corriger, conforme, preuve manquante, prêt pour audit, action à lancer.</p>
-        </article>
-
-        <article class="card dark">
-          <h3>3. Vous reliez chaque exigence à des preuves concrètes</h3>
-          <p>Vous ne stockez pas simplement des fichiers. Vous construisez une démonstration lisible de votre conformité.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="stack">
-    <div class="container split">
-      <div>
-        <span class="eyebrow" style="background: rgba(92,77,138,0.10); color: var(--lavender);">Stockage & IA</span>
-        <h2 style="margin-top: 1rem; font-size: clamp(2rem, 4vw, 3rem);">Vous gardez la maîtrise de vos documents et de vos outils.</h2>
-        <p style="color: #5a544d; max-width: 650px; margin-top: 1rem;">
-          L’application peut s’appuyer sur votre stockage externe et sur une IA activée seulement si vous le souhaitez. Vous choisissez votre niveau d’équipement, sans alourdir votre organisation.
-        </p>
-      </div>
-
-      <div class="stack">
-        <div class="mini-box">
-          <h4>Votre stockage reste chez vous</h4>
-          <p>Vous pouvez relier l’application à Google Drive, Dropbox, OneDrive, un dossier partagé ou une base documentaire existante. L’application garde les métadonnées, vous gardez vos fichiers.</p>
+      <div class="action-grid">
+        <div class="action-item">
+          <div>
+            <strong>Rédiger la procédure d’information précontractuelle</strong>
+            <div style="font-size:0.75rem; color:#5a544d;">Responsable : DAF · Échéance : 15/04/2026 · Priorité Haute</div>
+          </div>
+          <span class="pill-status red">En retard</span>
         </div>
-        <div class="mini-box">
-          <h4>Vous activez l’IA seulement si vous en avez besoin</h4>
-          <p>Vous pouvez fonctionner sans IA, ou utiliser une clé API fournie par vous. Vous gardez ainsi le contrôle de l’usage et du coût.</p>
+        <div class="action-item">
+          <div>
+            <strong>Désigner un référent handicap et formaliser son rôle</strong>
+            <div style="font-size:0.75rem; color:#5a544d;">Responsable : Qualité · Échéance : 30/03/2026</div>
+          </div>
+          <span class="pill-status orange">En cours</span>
         </div>
-        <div class="mini-box">
-          <h4>Des usages IA vraiment utiles</h4>
-          <p>Résumé de preuves, reformulation d’actions correctives, synthèse de dossiers, aide à la structuration RNCP et vérification de cohérence documentaire.</p>
+        <div class="action-item">
+          <div>
+            <strong>Compléter le dossier de preuves pour l’indicateur Q3.2 (apprentissages)</strong>
+            <div style="font-size:0.75rem; color:#5a544d;">Responsable : Pédagogie · Échéance : 10/04/2026</div>
+          </div>
+          <span class="pill-status green">Planifiée</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section" style="background: var(--ink-2); color: var(--cream);">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow" style="background: rgba(201,168,76,0.14); color: var(--gold);">Parcours utilisateur</span>
-        <h2 style="color: var(--cream);">Vous avancez étape par étape, sans vous disperser.</h2>
-        <p style="color: rgba(247,243,237,0.65);">Une progression simple, logique et orientée résultat.</p>
+      <hr>
+
+      <!-- Coffre de preuves (extrait) -->
+      <div class="flex-between">
+        <h2 class="section-title">📁 Dernières preuves ajoutées</h2>
+        <span class="preuve-badge">4 fichiers liés</span>
       </div>
-
-      <div class="cards-4">
-        <article class="card dark">
-          <h3>1. Vous évaluez</h3>
-          <p>Vous mesurez rapidement votre niveau de préparation.</p>
-        </article>
-        <article class="card dark">
-          <h3>2. Vous reliez</h3>
-          <p>Vous associez les bonnes preuves aux bons indicateurs.</p>
-        </article>
-        <article class="card dark">
-          <h3>3. Vous corrigez</h3>
-          <p>Vous lancez les actions correctives dans le bon ordre.</p>
-        </article>
-        <article class="card dark">
-          <h3>4. Vous structurez</h3>
-          <p>Vous organisez votre travail RNCP avec une vue d’ensemble exploitable.</p>
-        </article>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem;">
+        <div class="preuve-badge" style="background:white; border:1px solid #e5ddd0;">📄 Livret_accueil_2026.pdf</div>
+        <div class="preuve-badge" style="background:white; border:1px solid #e5ddd0;">📊 Tableau_suivi_entretiens.xlsx</div>
+        <div class="preuve-badge" style="background:white; border:1px solid #e5ddd0;">📌 Attestation_RH_handicap.pdf</div>
+        <div class="preuve-badge" style="background:white; border:1px solid #e5ddd0;">🔗 Lien_drive_grilles_evaluation</div>
       </div>
-    </div>
-  </section>
+      <div class="note" style="font-size:0.8rem;">💡 En version complète : stockage externe (Drive, Dropbox) et métadonnées.</div>
 
-  <section class="section" id="offres">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow" style="background: rgba(42,123,110,0.10); color: var(--teal);">Accès à l’application</span>
-        <h2>Choisissez l’accès qui correspond à votre besoin.</h2>
-        <p>
-          Vous pouvez commencer avec une découverte, passer à un accès complet ou demander une configuration plus avancée selon votre organisation.
-        </p>
+      <hr>
+
+      <!-- RNCP Workspace -->
+      <div class="flex-between">
+        <h2 class="section-title">📘 RNCP Workspace — extrait</h2>
+        <span class="preuve-badge">Certification RNCP 38764</span>
       </div>
-
-      <div class="pricing-grid">
-        <article class="card pricing-card">
-          <h3>Découverte</h3>
-          <div class="price">Gratuit</div>
-          <p>Pour découvrir l’interface et comprendre la logique globale avant d’aller plus loin.</p>
-          <ul>
-            <li>Tableau de bord de démonstration</li>
-            <li>Vue Qualiopi partielle</li>
-            <li>Accès limité</li>
-          </ul>
-          <a class="btn btn-light-outline" href="https://app.educoncret.net">Voir la démo</a>
-        </article>
-
-        <article class="card pricing-card highlight">
-          <span class="pricing-tag">Recommandé</span>
-          <h3>Certification</h3>
-          <div class="price">Accès payant</div>
-          <p>Pour travailler réellement sur votre audit, vos preuves, vos actions correctives et votre structuration RNCP.</p>
-          <ul>
-            <li>Accès complet à l’application</li>
-            <li>Gestion des preuves et des actions</li>
-            <li>Espace RNCP complet</li>
-            <li>Exports et sauvegardes</li>
-          </ul>
-          <a class="btn btn-primary" href="https://app.educoncret.net">Accéder à l’application</a>
-        </article>
-
-        <article class="card pricing-card">
-          <h3>Sur mesure</h3>
-          <div class="price">Adapté à vous</div>
-          <p>Pour intégrer votre stockage externe, une IA optionnelle et une organisation documentaire spécifique.</p>
-          <ul>
-            <li>Stockage externe relié</li>
-            <li>IA activée selon votre choix</li>
-            <li>Organisation adaptée à votre structure</li>
-          </ul>
-          <a class="btn btn-light-outline" href="mailto:contact@educoncret.net?subject=EduConcret%20Certif%20-%20Demande%20sur%20mesure">Demander un échange</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section cta-band">
-    <div class="container">
-      <div class="cta-box">
-        <div>
-          <h2 style="font-size: clamp(2rem, 4vw, 3rem); color: var(--cream);">Vous passez de la dispersion à une organisation maîtrisée.</h2>
-          <p style="color: rgba(247,243,237,0.72); margin-top: 0.8rem; max-width: 720px;">
-            EduConcret Certif vous aide à voir clair, à prioriser ce qui compte et à avancer plus vite avec une méthode simple, lisible et opérationnelle.
-          </p>
+      <div class="workspace-block">
+        <div class="rncp-bloc">
+          <strong>🧩 Bloc de compétences 1 : Conception et pilotage de projets de formation</strong>
+          <div style="font-size:0.85rem;">Statut : structuré à 70% · Évaluations prévues : mise en situation professionnelle</div>
         </div>
-        <div>
-          <a class="btn btn-primary" href="https://app.educoncret.net">Accéder à l’application</a>
+        <div class="rncp-bloc">
+          <strong>🧩 Bloc de compétences 2 : Ingénierie pédagogique et évaluation</strong>
+          <div style="font-size:0.85rem;">Manque : grille d’évaluation détaillée. Action corrective liée : #ACT-04</div>
+        </div>
+        <div class="rncp-bloc">
+          <strong>🧩 Bloc de compétences 3 : Management de la qualité de formation</strong>
+          <div style="font-size:0.85rem;">Documents requis : processus qualité version 2.1 déposé</div>
+        </div>
+        <div style="margin-top: 1rem; background:#f7f3ed; border-radius: 20px; padding: 0.8rem; font-size:0.85rem;">
+          📌 Vue d’ensemble : 3 blocs sur 4 → alignement avec référentiel national. Synthèse IA disponible en version avec clé API.
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow" style="background: rgba(201,168,76,0.12); color: var(--gold);">FAQ</span>
-        <h2>Questions fréquentes</h2>
+      <!-- Audit blanc teaser -->
+      <div style="margin-top: 2rem; background: #f1ede7; border-radius: 24px; padding: 1rem 1.5rem;">
+        <div class="flex-between">
+          <div><strong>🔍 Audit blanc (simulation partielle)</strong><br><span style="font-size:0.8rem;">Dernier audit réalisé le 10/02/2026 : taux de préparation 68%</span></div>
+          <span class="btn-icon" onclick="alert('En version complète : génération d’un audit blanc complet, avec recommandations par indicateur.')">Lancer un audit blanc →</span>
+        </div>
+        <div style="margin-top: 0.7rem;">
+          <span style="font-size:0.75rem;">✔ Points forts : Indicateurs Q4.1, Q6.2 conformes · ❌ Points faibles : preuves manquantes (Q1.2, Q2.2, Q5.3)</span>
+        </div>
       </div>
 
-      <div class="faq">
-        <details>
-          <summary>L’application remplace-t-elle un audit ou une décision officielle ?</summary>
-          <p>Non. EduConcret Certif vous aide à préparer, structurer et piloter votre travail. L’application ne remplace ni l’audit réel, ni une décision officielle, ni l’analyse d’un certificateur.</p>
-        </details>
-
-        <details>
-          <summary>Pouvez-vous utiliser votre propre stockage documentaire ?</summary>
-          <p>Oui. Vous pouvez conserver vos documents dans votre propre environnement et utiliser l’application pour organiser les liens, les preuves et les métadonnées.</p>
-        </details>
-
-        <details>
-          <summary>L’IA est-elle obligatoire ?</summary>
-          <p>Non. Vous pouvez utiliser l’application sans IA. Vous pouvez aussi l’activer plus tard avec votre propre clé API si vous le souhaitez.</p>
-        </details>
-
-        <details>
-          <summary>Comment accéder à l’application de certification ?</summary>
-          <p>Le bouton “Accéder à l’application” vous redirige vers l’espace applicatif sur <strong>app.educoncret.net</strong>. Vous pouvez ensuite y connecter votre mode d’accès payant avec SumUp.</p>
-        </details>
+      <!-- Message final démo -->
+      <div style="margin-top: 2.5rem; padding: 1rem; text-align: center; border-top: 1px dashed #d9cfc0; font-size:0.85rem;">
+        🧪 <strong>Application de démonstration</strong> — interface opérationnelle, données fictives. Toutes les actions sont des illustrations. Pour accéder à l’application réelle, <a href="#" style="color:#c9a84c;" onclick="alert('Contacter EduConcret pour un accès complet : contact@educoncret.net')">contactez l’équipe</a>.
       </div>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <div class="container">
-      <h3 style="color: var(--cream); font-size: 1.7rem;">EduConcret Certif</h3>
-      <p style="margin-top: 0.5rem;">L’application qui vous aide à préparer plus clairement votre travail Qualiopi et RNCP.</p>
-      <div class="links">
-        <a href="#fonctionnalites">Fonctionnalités</a>
-        <a href="#difference">Pourquoi c’est plus simple</a>
-        <a href="#stack">Stockage & IA</a>
-        <a href="#offres">Accès</a>
-        <a href="https://educoncret.net">Retour au site principal</a>
-        <a href="https://app.educoncret.net">Accéder à l’application</a>
+    <div style="max-width: 1200px; margin:0 auto;">
+      EduConcret Certif · Démo Qualiopi & RNCP · Données fictives
+      <div class="footer-back">
+        <a href="https://educoncret.net/">← Retour à l'accueil EduConcret</a>
       </div>
-      <p style="font-size: 0.88rem; margin-top: 1.2rem;">© 2026 EduConcret — Tous droits réservés</p>
     </div>
   </footer>
+</div>
+
+<script>
+  // Petite simulation interactive pour que la démo donne un aperçu réaliste
+  console.log("Démo EduConcret Certif — interface de démonstration avec retour vers index");
+  
+  // Gestion des clics sur la sidebar
+  const items = document.querySelectorAll('.sidebar-item');
+  items.forEach(item => {
+    item.addEventListener('click', (e) => {
+      if(!item.classList.contains('active')) {
+        alert('Démo : interface partielle. Fonctionnalité accessible dans l\'offre Certification.');
+      } else {
+        alert('Tableau de bord de démonstration.');
+      }
+    });
+  });
+  
+  // S'assurer que le bouton retour fonctionne correctement et préserve les ancres
+  const backButtons = document.querySelectorAll('#backToIndexBtn, .btn-back, .footer-back a');
+  backButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // On laisse le comportement par défaut, mais on peut ajouter un log
+      console.log('Retour vers l’index principal');
+    });
+  });
+  
+  // Gestion des ancres : si l'utilisateur arrive avec #faq dans l'URL, on peut faire défiler
+  if(window.location.hash === '#faq') {
+    // petite simulation : on scroll vers la section FAQ de l'index ? 
+    // Ici on est dans la démo, on peut juste afficher un message
+    setTimeout(() => {
+      const faqElement = document.querySelector('.faq, .workspace-block');
+      if(faqElement) faqElement.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+</script>
 </body>
 </html>
