@@ -1,166 +1,628 @@
-<style>
-  .experience-grid-clean {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    align-items: stretch;
-    margin-top: 2rem;
-  }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moctar Touré — Ingénieur Pédagogique & Formateur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --white: #ffffff;
+      --cream: #f8f5f0;
+      --cream-3: #e8e3d9;
+      --ink: #1a1a1a;
+      --ink-3: #555555;
+      --gold: #c9a84c;
+      --sky: #2e6fa8;
+      --radius-xl: 16px;
+      --radius-lg: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-lg: 0 12px 30px rgba(0,0,0,0.1);
+      --font-serif: 'Fraunces', serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
 
-  .experience-card-clean {
-    background: var(--white);
-    border: 1px solid var(--cream-3);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow);
-    padding: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    transition: all 0.3s ease;
-  }
+    /* Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--ink); background: var(--cream); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
 
-  .experience-card-clean:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
+    /* Layout & Utilities */
+    .section-container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--ink); }
+    .section-header p { color: var(--ink-3); max-width: 680px; margin: 0 auto; }
+    .section-tag { display: inline-block; background: rgba(0,0,0,0.05); padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
-  .experience-card-clean h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
-    color: var(--ink);
-  }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
 
-  .experience-card-clean .period {
-    display: inline-block;
-    margin-bottom: 1rem;
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
+    /* Header / Nav (Placeholder fonctionnel) */
+    header { background: var(--white); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--cream-3); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem; }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
 
-  .experience-card-clean ul {
-    list-style: none;
-    display: grid;
-    gap: 0.55rem;
-    margin-bottom: 1rem;
-  }
+    /* Hero (Placeholder) */
+    .hero { padding: 5rem 1.5rem; text-align: center; background: linear-gradient(to bottom, var(--white), var(--cream)); }
+    .hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; line-height: 1.2; }
+    .hero p { font-size: 1.1rem; color: var(--ink-3); max-width: 720px; margin: 0 auto; }
 
-  .experience-card-clean li {
-    position: relative;
-    padding-left: 1rem;
-    color: var(--ink-3);
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
+    /* Portfolio Base Layout */
+    .portfolio-section { padding: 4rem 0; }
+    .portfolio-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .portfolio-panel { background: var(--white); padding: 1.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+    .portfolio-panel h3 { font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 1rem; color: var(--ink); }
+    .portfolio-panel h4 { font-weight: 600; margin: 1.2rem 0 0.6rem; color: var(--ink); }
+    .portfolio-panel ul { display: grid; gap: 0.6rem; margin-bottom: 0.5rem; }
+    .portfolio-panel li { position: relative; padding-left: 1.2rem; color: var(--ink-3); font-size: 0.92rem; }
+    .portfolio-panel li::before { content: "•"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+    .portfolio-panel p { color: var(--ink-3); font-size: 0.92rem; margin-bottom: 1rem; }
 
-  .experience-card-clean li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-weight: 700;
-  }
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin: 3rem 0; text-align: center; }
+    .metric-card { background: var(--white); padding: 1.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+    .metric-card strong { display: block; font-size: 1.8rem; font-family: var(--font-serif); color: var(--gold); margin-bottom: 0.2rem; }
+    .metric-card span { font-size: 0.85rem; color: var(--ink-3); }
 
-  .experience-card-clean .deliverable {
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid var(--cream-3);
-    font-size: 0.84rem;
-    color: var(--ink-3);
-  }
+    .offers-grid, .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin: 2rem 0 4rem; }
+    .offer-card, .benefit-card { background: var(--white); padding: 1.2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .offer-card h4, .benefit-card h4 { margin-bottom: 0.4rem; font-family: var(--font-serif); font-size: 1.05rem; }
+    .offer-card span, .benefit-card span { font-size: 0.88rem; color: var(--ink-3); }
 
-  .books-section {
-    margin-top: 4rem;
-  }
+    .portfolio-quote { text-align: center; font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; color: var(--ink); margin: 4rem 0; padding: 2rem 1rem; border-top: 1px solid var(--cream-3); border-bottom: 1px solid var(--cream-3); }
 
-  .books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+    /* ========================================= */
+    /* TON CSS AJOUTÉ EXACTEMENT COMME DEMANDÉ   */
+    /* ========================================= */
+    .experience-grid-clean {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
 
-  .book-card {
-    background: var(--white);
-    border: 1px solid var(--cream-3);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
+    .experience-card-clean {
+      background: var(--white);
+      border: 1px solid var(--cream-3);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: all 0.3s ease;
+    }
 
-  .book-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-  }
+    .experience-card-clean:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
 
-  .book-visual {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 800;
-    text-align: center;
-    line-height: 1.2;
-  }
+    .experience-card-clean h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.18rem;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
 
-  .book-cp { background: linear-gradient(135deg, #fff5d9, #f7e2a8); }
-  .book-ce1 { background: linear-gradient(135deg, #ffe8d9, #ffc8a8); }
-  .book-ce2 { background: linear-gradient(135deg, #e8f7e8, #bfe6bf); }
-  .book-cm1 { background: linear-gradient(135deg, #e8f0ff, #c9dcff); }
-  .book-cm2 { background: linear-gradient(135deg, #f2e8ff, #d9c6ff); }
-  .book-6e  { background: linear-gradient(135deg, #dff6ff, #b8e6f8); }
-  .book-5e  { background: linear-gradient(135deg, #fce8ef, #f5bfd0); }
-  .book-4e  { background: linear-gradient(135deg, #e7f7ef, #bce6d0); }
-  .book-3e  { background: linear-gradient(135deg, #fff0e0, #ffd2a6); }
+    .experience-card-clean .period {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
 
-  .book-content {
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    flex: 1;
-  }
+    .experience-card-clean ul {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+    }
 
-  .book-level {
-    display: inline-block;
-    align-self: flex-start;
-    background: var(--ink);
-    color: var(--cream);
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.3rem 0.7rem;
-    border-radius: 999px;
-  }
+    .experience-card-clean li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--ink-3);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
 
-  .book-content h4 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.05rem;
-    color: var(--ink);
-  }
+    .experience-card-clean li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
 
-  .book-content p {
-    font-size: 0.88rem;
-    color: var(--ink-3);
-    line-height: 1.6;
-  }
+    .experience-card-clean .deliverable {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--cream-3);
+      font-size: 0.84rem;
+      color: var(--ink-3);
+    }
 
-  .books-note {
-    margin-top: 1.5rem;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.18);
-    border-radius: var(--radius-lg);
-    padding: 1.2rem 1.4rem;
-    color: var(--ink-3);
-    font-size: 0.92rem;
-  }
-</style>
+    .books-section {
+      margin-top: 4rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .book-card {
+      background: var(--white);
+      border: 1px solid var(--cream-3);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .book-visual {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .book-cp  { background: linear-gradient(135deg, #fff5d9, #f7e2a8); }
+    .book-ce1 { background: linear-gradient(135deg, #ffe8d9, #ffc8a8); }
+    .book-ce2 { background: linear-gradient(135deg, #e8f7e8, #bfe6bf); }
+    .book-cm1 { background: linear-gradient(135deg, #e8f0ff, #c9dcff); }
+    .book-cm2 { background: linear-gradient(135deg, #f2e8ff, #d9c6ff); }
+    .book-6e  { background: linear-gradient(135deg, #dff6ff, #b8e6f8); }
+    .book-5e  { background: linear-gradient(135deg, #fce8ef, #f5bfd0); }
+    .book-4e  { background: linear-gradient(135deg, #e7f7ef, #bce6d0); }
+    .book-3e  { background: linear-gradient(135deg, #fff0e0, #ffd2a6); }
+
+    .book-content {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .book-level {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .book-content h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.02rem;
+      color: var(--ink);
+    }
+
+    .book-content p {
+      font-size: 0.88rem;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .books-note {
+      margin-top: 1.5rem;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.4rem;
+      color: var(--ink-3);
+      font-size: 0.92rem;
+    }
+    /* ========================================= */
+
+    /* Footer */
+    footer { background: var(--ink); color: var(--white); padding: 3rem 1.5rem; text-align: center; margin-top: 4rem; }
+    footer p { font-size: 0.9rem; opacity: 0.85; }
+    footer a { color: var(--gold); font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul { display: none; } /* Tu pourras ajouter un menu burger si besoin */
+      .hero h1 { font-size: 2.2rem; }
+      .section-header h2 { font-size: 1.8rem; }
+      .portfolio-columns { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">MOCTAR TOURÉ</a>
+      <nav>
+        <ul>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="section-container">
+      <h1>Ingénieur pédagogique · Formateur</h1>
+      <p>Conception de parcours, accompagnement individualisé et transformation des compétences en projets concrets.</p>
+    </div>
+  </section>
+
+  <!-- SECTION PORTFOLIO EXACTE COMME DEMANDÉE -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">📁 Portfolio</div>
+        <h2>MOCTAR TOURÉ — Portfolio</h2>
+        <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
+      </div>
+
+      <div class="portfolio-intro fade-in">
+        <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:0.6rem;">Positionnement</h3>
+        <p style="color:var(--ink-3);font-size:0.95rem;">
+          Je conçois et déploie des dispositifs d’apprentissage centrés sur l’individu, visant le développement des compétences,
+          la structuration de projets professionnels et l’autonomisation des apprenants. Mon approche repose sur une ingénierie
+          pédagogique rigoureuse, combinée à un accompagnement individualisé, permettant de transformer une intention en projet
+          concret et opérationnel.
+        </p>
+      </div>
+
+      <div class="portfolio-columns">
+        <div class="portfolio-panel fade-in">
+          <h3>🎯 Missions principales</h3>
+          <ul>
+            <li>Analyse des besoins des apprenants et des porteurs de projet</li>
+            <li>Conception de parcours pédagogiques personnalisés</li>
+            <li>Structuration de dispositifs d’accompagnement à visée professionnelle</li>
+            <li>Facilitation de l’émergence et du développement de projets</li>
+            <li>Suivi individualisé et évaluation des compétences</li>
+            <li>Accompagnement socio-éducatif vers l’autonomie et la prise de décision</li>
+          </ul>
+        </div>
+
+        <div class="portfolio-panel fade-in fade-in-delay-1">
+          <h3>👤 Accompagnement individuel</h3>
+          <h4>Gestion de projet pédagogique et entrepreneurial</h4>
+          <ul>
+            <li>Structuration complète d’un projet : idée, conception, mise en œuvre</li>
+            <li>Définition des objectifs, des étapes et des livrables</li>
+            <li>Organisation du travail et priorisation des actions</li>
+            <li>Mise en place d’outils de pilotage simples et efficaces</li>
+          </ul>
+          <h4>Création et facilitation de projets d’entreprise</h4>
+          <ul>
+            <li>Aide à la génération et clarification d’idées</li>
+            <li>Accompagnement à la transformation d’une idée en activité viable</li>
+            <li>Structuration de l’offre : produit, service ou formation</li>
+            <li>Construction de parcours entrepreneuriaux progressifs</li>
+            <li>Appui à la prise de décision et à la mise en action</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="portfolio-columns">
+        <div class="portfolio-panel fade-in">
+          <h3>🧑‍🎓 Orientation et construction de parcours</h3>
+          <h4>Publics concernés</h4>
+          <ul>
+            <li>Étudiants en réflexion d’orientation</li>
+            <li>Jeunes en recherche de voie professionnelle</li>
+            <li>Adultes en reconversion ou en transition</li>
+          </ul>
+          <h4>Objectifs</h4>
+          <ul>
+            <li>Clarification du projet personnel et professionnel</li>
+            <li>Identification des compétences et des centres d’intérêt</li>
+            <li>Exploration des métiers et des environnements professionnels</li>
+            <li>Construction d’un parcours cohérent et réaliste</li>
+          </ul>
+        </div>
+
+        <div class="portfolio-panel fade-in fade-in-delay-1">
+          <h3>🏢 Dispositifs pédagogiques proposés</h3>
+          <h4>Ingénierie de formation</h4>
+          <ul>
+            <li>Conception de parcours adaptés aux besoins des publics</li>
+            <li>Création de référentiels de compétences</li>
+            <li>Scénarisation pédagogique : modules, séquences et activités</li>
+            <li>Intégration de modalités hybrides : présentiel et distanciel</li>
+          </ul>
+          <h4>Digitalisation et FOAD</h4>
+          <ul>
+            <li>Transformation de contenus en dispositifs e-learning</li>
+            <li>Structuration de parcours accessibles à distance</li>
+            <li>Création d’activités interactives et d’évaluations formatives</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="portfolio-columns">
+        <div class="portfolio-panel fade-in">
+          <h3>🧠 Approche pédagogique</h3>
+          <h4>Psychopédagogie</h4>
+          <p>Prise en compte des facteurs motivationnels, émotionnels et cognitifs dans l’apprentissage.</p>
+          <h4>Andragogie</h4>
+          <p>Adaptation des méthodes aux publics adultes : autonomie, utilité immédiate, ancrage dans le réel.</p>
+          <h4>Ingénierie pédagogique</h4>
+          <p>Construction de parcours structurés, progressifs et orientés vers l’action.</p>
+          <h4>Accompagnement socio-éducatif</h4>
+          <p>Soutien à la construction de l’identité professionnelle et à l’insertion.</p>
+        </div>
+
+        <div class="portfolio-panel fade-in fade-in-delay-1">
+          <h3>💼 Ce que je propose</h3>
+          <ul>
+            <li>Accompagnement individuel : structurer un projet et passer à l’action</li>
+            <li>Création d’activité : transformer une idée en projet viable</li>
+            <li>Orientation : clarifier un parcours et choisir une direction</li>
+            <li>Ingénierie pédagogique : concevoir des formations efficaces</li>
+            <li>Dispositifs FOAD : digitaliser et diffuser les parcours</li>
+          </ul>
+          <h4>Ce positionnement apporte</h4>
+          <ul>
+            <li>Une logique de parcours plutôt qu’une logique de produit</li>
+            <li>Une lisibilité forte sur l’orientation, l’insertion et la création de projet</li>
+            <li>Un discours adapté aux organismes, centres de formation et structures d’accompagnement</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top:4rem;margin-bottom:2rem;">
+        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">🏢 Expériences professionnelles</div>
+        <h2 style="font-size:2.1rem;">Entreprises et structures accompagnées</h2>
+        <p>Une expérience fondée sur la conception, la structuration et le pilotage de dispositifs pédagogiques concrets.</p>
+      </div>
+
+      <div class="experience-grid-clean">
+        <article class="experience-card-clean fade-in">
+          <h3>LOGIX FORMA — Directeur pédagogique</h3>
+          <span class="period">2024 - Aujourd’hui</span>
+          <ul>
+            <li>Pilotage de la stratégie pédagogique de l’organisme</li>
+            <li>Conception et structuration de l’offre de formation</li>
+            <li>Création de référentiels de compétences et programmes certifiants</li>
+            <li>Animation pédagogique et accompagnement des formateurs</li>
+            <li>Mise en place des processus qualité et amélioration continue</li>
+          </ul>
+          <div class="deliverable"><strong>Livrables :</strong> référentiels, programmes, grilles d’évaluation, tableaux de bord pédagogiques.</div>
+        </article>
+
+        <article class="experience-card-clean fade-in fade-in-delay-1">
+          <h3>IAMTV — Concepteur pédagogique</h3>
+          <span class="period">2023 - 2024</span>
+          <ul>
+            <li>Création de formations aux métiers de l’audiovisuel</li>
+            <li>Structuration de modules tournage, montage et production</li>
+            <li>Transformation de compétences techniques en parcours progressifs</li>
+            <li>Scénarisation ancrée dans des cas réels</li>
+            <li>Accompagnement d’apprenants sur projets concrets</li>
+          </ul>
+          <div class="deliverable"><strong>Livrables :</strong> programmes, supports pédagogiques, scénarios de modules, exercices pratiques.</div>
+        </article>
+
+        <article class="experience-card-clean fade-in fade-in-delay-2">
+          <h3>JIMCAB — Concepteur de formation</h3>
+          <span class="period">2024</span>
+          <ul>
+            <li>Conception de modules pour chauffeurs de taxi</li>
+            <li>Structuration des compétences métier et réglementaires</li>
+            <li>Création de supports pratiques et fiches réflexes</li>
+            <li>Formation aux bonnes pratiques d’accueil et de sécurité</li>
+            <li>Mise en place d’un parcours d’intégration</li>
+          </ul>
+          <div class="deliverable"><strong>Livrables :</strong> modules, fiches réflexes, parcours d’intégration, supports pratiques.</div>
+        </article>
+
+        <article class="experience-card-clean fade-in">
+          <h3>CASON — Concepteur de formation</h3>
+          <span class="period">2025</span>
+          <ul>
+            <li>Création d’un programme à l’excellence opérationnelle</li>
+            <li>Conception de modules sur stress et relation client</li>
+            <li>Développement de supports e-learning mobiles</li>
+            <li>Mise en place d’évaluations terrain</li>
+            <li>Accompagnement au déploiement</li>
+          </ul>
+          <div class="deliverable"><strong>Livrables :</strong> programme, modules e-learning, grilles d’évaluation, supports mobiles.</div>
+        </article>
+
+        <article class="experience-card-clean fade-in fade-in-delay-1">
+          <h3>BOY PARIS EVENT — Ingénieur pédagogique freelance</h3>
+          <span class="period">2023 - 2024</span>
+          <ul>
+            <li>Conception de parcours de formation pour bénévoles et organisateurs</li>
+            <li>Structuration des compétences organisationnelles et logistiques</li>
+            <li>Création de supports opérationnels visuels</li>
+            <li>Mise en place de méthodes de coordination d’équipe</li>
+            <li>Animation d’ateliers et amélioration continue</li>
+          </ul>
+          <div class="deliverable"><strong>Livrables :</strong> parcours de formation, checklists, guides visuels, supports d’animation.</div>
+        </article>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card fade-in"><strong>+10 ans</strong><span>Expérience terrain</span></div>
+        <div class="metric-card fade-in fade-in-delay-1"><strong>+50</strong><span>Dispositifs pédagogiques conçus</span></div>
+        <div class="metric-card fade-in fade-in-delay-2"><strong>3 000+</strong><span>Apprenants accompagnés</span></div>
+        <div class="metric-card fade-in fade-in-delay-3"><strong>Suivi</strong><span>Parcours individualisés et contextualisés</span></div>
+      </div>
+
+      <div class="offers-grid">
+        <div class="offer-card fade-in"><h4>Accompagnement individuel</h4><span>Structurer un projet et passer à l’action</span></div>
+        <div class="offer-card fade-in fade-in-delay-1"><h4>Création d’activité</h4><span>Transformer une idée en projet viable</span></div>
+        <div class="offer-card fade-in fade-in-delay-2"><h4>Orientation</h4><span>Clarifier un parcours et choisir une direction</span></div>
+        <div class="offer-card fade-in fade-in-delay-3"><h4>Ingénierie pédagogique</h4><span>Concevoir des formations efficaces</span></div>
+        <div class="offer-card fade-in"><h4>FOAD</h4><span>Digitaliser et diffuser les parcours</span></div>
+        <div class="offer-card fade-in fade-in-delay-1"><h4>Accompagnement socio-éducatif</h4><span>Autonomie, insertion et projection</span></div>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card fade-in"><h4>Positionnement clair</h4><span>Orientation, insertion et création de projet</span></div>
+        <div class="benefit-card fade-in fade-in-delay-1"><h4>Expertises pédagogiques</h4><span>Psychopédagogie, andragogie, ingénierie</span></div>
+        <div class="benefit-card fade-in fade-in-delay-2"><h4>Approche individualisée</h4><span>Parcours ajustés aux besoins réels</span></div>
+        <div class="benefit-card fade-in fade-in-delay-3"><h4>Livrables concrets</h4><span>Référentiels, grilles, supports, tableaux de bord</span></div>
+      </div>
+
+      <div class="books-section">
+        <div class="section-header" style="margin-top:4rem;margin-bottom:2rem;">
+          <div class="section-tag" style="background:rgba(46,111,168,0.10);color:var(--sky);">📚 Romans pédagogiques mathématiques</div>
+          <h2 style="font-size:2.1rem;">Une collection du CP à la 3e</h2>
+          <p>Des romans pédagogiques optimisés pour faire aimer les mathématiques, renforcer l’autonomie et relier les notions scolaires à une histoire engageante.</p>
+        </div>
+
+        <div class="books-grid">
+          <article class="book-card fade-in">
+            <div class="book-visual book-cp">Maths en aventure<br>CP</div>
+            <div class="book-content">
+              <span class="book-level">CP</span>
+              <h4>Découvrir les nombres et les premiers calculs</h4>
+              <p>Un roman pédagogique pour entrer dans les mathématiques par le jeu, l’histoire et la manipulation mentale.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in fade-in-delay-1">
+            <div class="book-visual book-ce1">Mission calcul<br>CE1</div>
+            <div class="book-content">
+              <span class="book-level">CE1</span>
+              <h4>Calculer, comparer, résoudre</h4>
+              <p>Des aventures progressives pour automatiser les bases tout en gardant le plaisir d’apprendre.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in fade-in-delay-2">
+            <div class="book-visual book-ce2">Explorations<br>CE2</div>
+            <div class="book-content">
+              <span class="book-level">CE2</span>
+              <h4>Consolider les opérations et le raisonnement</h4>
+              <p>Une progression narrative pour installer des automatismes solides et développer la logique.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in fade-in-delay-3">
+            <div class="book-visual book-cm1">Kawaii &<br>Compagnie</div>
+            <div class="book-content">
+              <span class="book-level">CM1</span>
+              <h4>Gérer une boutique pour apprendre les maths</h4>
+              <p>Un roman immersif où l’enfant apprend en pilotant une boutique kawaii et en prenant des décisions concrètes.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in">
+            <div class="book-visual book-cm2">Défis &<br>mesures CM2</div>
+            <div class="book-content">
+              <span class="book-level">CM2</span>
+              <h4>Préparer l’entrée au collège</h4>
+              <p>Une transition progressive vers des raisonnements plus complexes, des mesures, des problèmes et de la géométrie.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in fade-in-delay-1">
+            <div class="book-visual book-6e">Eliza in<br>New York</div>
+            <div class="book-content">
+              <span class="book-level">6e</span>
+              <h4>Entrer au collège avec confiance</h4>
+              <p>Un roman pédagogique qui relie fractions, calculs, repérage et logique dans une aventure urbaine dynamique.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in fade-in-delay-2">
+            <div class="book-visual book-5e">Mission<br>5e</div>
+            <div class="book-content">
+              <span class="book-level">5e</span>
+              <h4>Structurer les méthodes et le raisonnement</h4>
+              <p>Une collection conçue pour rendre les notions de collège plus concrètes et plus accessibles.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in fade-in-delay-3">
+            <div class="book-visual book-4e">Barça Foot<br>et Math</div>
+            <div class="book-content">
+              <span class="book-level">4e</span>
+              <h4>Mathématiques, stratégie et univers football</h4>
+              <p>Un roman pédagogique optimisé pour donner du sens aux calculs, proportions, décimaux et raisonnements avancés.</p>
+            </div>
+          </article>
+
+          <article class="book-card fade-in">
+            <div class="book-visual book-3e">Objectif<br>Brevet 3e</div>
+            <div class="book-content">
+              <span class="book-level">3e</span>
+              <h4>Consolider, réviser et se projeter</h4>
+              <p>Un format narratif plus mature pour préparer les exigences de fin de collège avec méthode et confiance.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="books-note fade-in">
+          <strong>Collection personnalisable :</strong> chaque roman peut être adapté au prénom, à l’univers préféré de l’élève, à son niveau réel et à ses objectifs de progression.
+        </div>
+      </div>
+
+      <div class="portfolio-quote fade-in">“On ne comprend vraiment que ce que l’on met en pratique.”</div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="section-container">
+      <p>© <span id="year"></span> Moctar Touré. Tous droits réservés.</p>
+      <p style="margin-top:0.5rem;"><a href="mailto:contact@moctartoure.fr">contact@moctartoure.fr</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Animation au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Année automatique
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
