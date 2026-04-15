@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moctar Touré | Expert en Ingénierie Pédagogique — EduConcret</title>
-  <meta name="description" content="Expertise en ingénierie de formation, pilotage Qualiopi et création de solutions pédagogiques immersives pour centres de formation et particuliers.">
+  <meta name="description" content="Ingénierie de formation, pilotage Qualiopi et création de solutions pédagogiques immersives pour centres de formation et particuliers.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,78 +21,68 @@
       --radius-lg: 18px; --radius-xl: 28px;
     }
 
-    /* --- ANIMATIONS CORE --- */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes scaleIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    /* --- ANIMATIONS --- */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pageFlip { from { transform: rotateY(-30deg); opacity: 0; } to { transform: rotateY(0deg); opacity: 1; } }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.7; overflow-x: hidden; }
 
-    /* Barre de progression de lecture */
     #scrollProgress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--gold); z-index: 2000; transition: width 0.1s; }
-
-    /* Noise texture overlay */
     body::before { content: ""; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(14,12,10,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.15); transition: 0.3s; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(14,12,10,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.15); }
     .nav-inner { max-width: 1260px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
     .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--cream); font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.3rem; }
     .nav-brand-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
     .nav-links { display: flex; align-items: center; gap: 0.5rem; list-style: none; }
-    .nav-links a { color: rgba(247,243,237,0.6); text-decoration: none; padding: 0.45rem 0.9rem; font-size: 0.85rem; transition: 0.3s; position: relative; }
-    .nav-links a::after { content: ""; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--gold); transition: 0.3s; transform: translateX(-50%); }
-    .nav-links a:hover::after { width: 80%; }
+    .nav-links a { color: rgba(247,243,237,0.6); text-decoration: none; padding: 0.45rem 0.9rem; font-size: 0.85rem; transition: 0.3s; }
     .nav-links a:hover { color: var(--cream); }
     .nav-cta { background: var(--gold) !important; color: var(--ink) !important; font-weight: 600 !important; border-radius: 6px; }
 
-    /* Hero avec animation d'entrée */
     .hero { min-height: 100vh; background: var(--ink); display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+    .hero-bg-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
     .hero-content { position: relative; z-index: 2; max-width: 900px; animation: fadeInUp 1s ease-out; }
-    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem; }
     .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-tagline { font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(247,243,237,0.7); margin-bottom: 2.5rem; }
 
-    section { padding: 8rem 2rem; }
+    section { padding: 6rem 2rem; }
     .section-container { max-width: 1180px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1rem; }
+    .section-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1rem; }
 
-    .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; border: none; }
-    .btn:hover { transform: translateY(-5px) scale(1.02); }
-    .btn-gold { background: var(--gold); color: var(--ink); box-shadow: 0 10px 20px rgba(201,168,76,0.1); }
+    .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.8rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
+    .btn-gold { background: var(--gold); color: var(--ink); }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,168,76,0.3); }
     .btn-outline { border: 1px solid rgba(247,243,237,0.3); color: var(--cream); }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-    .project-card { background: var(--white); padding: 3rem; border-radius: 24px; border: 1px solid var(--cream-3); box-shadow: var(--shadow); transition: 0.4s; position: relative; overflow: hidden; }
-    .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
-    .project-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gold); transform: scaleX(0); transition: 0.4s; transform-origin: left; }
-    .project-card:hover::after { opacity: 1; }
-    .project-card:hover::before { transform: scaleX(1); }
-    
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .project-card { background: var(--white); padding: 2.5rem; border-radius: 15px; border: 1px solid var(--cream-3); box-shadow: var(--shadow); transition: 0.3s; }
+    .project-card:hover { transform: translateY(-5px); border-color: var(--gold); }
     .project-card h3 { color: var(--ink); margin-bottom: 1rem; font-family: 'Fraunces', serif; }
     .project-result { display: inline-block; background: rgba(42,123,110,0.1); color: var(--teal); padding: 0.3rem 0.8rem; border-radius: 5px; font-size: 0.8rem; margin-top: 1rem; font-weight: 700; }
 
-    /* Animation au scroll */
-    .fade-in { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+    /* --- FLIPBOOK STYLES --- */
+    .book-container { max-width: 450px; margin: 0 auto; position: relative; }
+    .book-wrapper { width: 100%; height: 550px; position: relative; perspective: 1500px; }
+    .page { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: white; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none; overflow: hidden; }
+    .page.active { display: block; animation: pageFlip 0.6s ease; }
+    .page-content { height: 100%; border: 1px solid #ddd; display: flex; flex-direction: column; }
+    .book-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+    .nav-btn { background: var(--ink); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+    .nav-btn:hover { background: var(--gold); color: var(--ink); }
+    #pageIndicator { font-weight: 700; font-size: 0.8rem; color: var(--ink); text-transform: uppercase; }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* Style Image Livres */
-    .book-img { width: 100%; border-radius: 12px; transition: 0.5s; }
-    .project-card:hover .book-img { transform: scale(1.05); }
-
     footer { background: var(--ink); color: rgba(247,243,237,0.5); padding: 6rem 2rem; border-top: 1px solid rgba(201,168,76,0.2); }
-    .footer-inner { max-width: 1180px; margin: 0 auto; text-align: center; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      section { padding: 4rem 1.5rem; }
+      section { padding: 4rem 1rem; }
     }
   </style>
 </head>
@@ -104,9 +94,9 @@
     <div class="nav-inner">
       <a href="#accueil" class="nav-brand"><div class="nav-brand-dot"></div> EduConcret</a>
       <ul class="nav-links">
-        <li><a href="#espace-pro">Expertise Pro</a></li>
+        <li><a href="#espace-pro">Solutions Pro</a></li>
         <li><a href="#particuliers">Accompagnement</a></li>
-        <li><a href="#espace-famille">Méthode Narrative</a></li>
+        <li><a href="#demo-livre">Démonstration</a></li>
         <li><a href="https://educoncret.net/contact.vcf" class="nav-cta">Enregistrer Contact</a></li>
       </ul>
     </div>
@@ -115,14 +105,15 @@
   <section class="hero" id="accueil">
     <div class="hero-bg-lines"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Ingénierie · Stratégie · Narration</div>
-      <h1>Donner du sens à <em>l'apprentissage</em>.</h1>
+      <div class="hero-eyebrow">Ingénierie Pédagogique d'Excellence</div>
+      <h1>L'apprentissage au service de <em>votre</em> performance.</h1>
       <p class="hero-tagline">
-        Audit Qualiopi pour les centres de formation, ingénierie de digitalisation et méthodes narratives immersives pour une mémorisation maximale.
+        Conception de parcours certifiants pour entreprises, mentorat pour futurs formateurs 
+        et méthodes narratives immersives pour une mémorisation maximale.
       </p>
       
-      <div style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
-        <a href="#espace-pro" class="btn btn-gold">Expertise Entreprises →</a>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="#espace-pro" class="btn btn-gold">Audit & Solutions Pro →</a>
         <a href="#particuliers" class="btn btn-outline">Accompagnement Individuel →</a>
       </div>
     </div>
@@ -131,22 +122,22 @@
   <section id="espace-pro">
     <div class="section-container">
       <div class="section-header fade-in">
-        <div class="section-tag" style="background:rgba(201,168,76,0.1); color:var(--gold);">B2B & Organismes</div>
-        <h2>Solutions pour Professionnels</h2>
-        <p>Sécurisez votre conformité Qualiopi et modernisez vos parcours.</p>
+        <div class="section-tag" style="background:rgba(201,168,76,0.1); color:var(--gold);">B2B & Centres de formation</div>
+        <h2>Ingénierie & Pilotage Pédagogique</h2>
+        <p>Sécurisez votre conformité Qualiopi et scalez vos programmes.</p>
       </div>
 
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <div style="font-size: 2.5rem; margin-bottom:1rem;">🛡️</div>
-          <h3>Audit Flash Qualiopi</h3>
-          <p>Un diagnostic précis de vos processus pour aborder vos audits de surveillance avec une totale sérénité.</p>
+          <div style="font-size: 2.2rem; margin-bottom: 1rem;">🛡️</div>
+          <h3>Mise en conformité Qualiopi</h3>
+          <p>Audit flash de vos indicateurs et accompagnement à la mise en place de preuves solides pour vos audits de surveillance.</p>
           <div class="project-result">Zéro Non-Conformité</div>
         </div>
         <div class="project-card fade-in">
-          <div style="font-size: 2.5rem; margin-bottom:1rem;">🎨</div>
-          <h3>Storyboard & Digitalisation</h3>
-          <p>Je scénarise vos contenus experts pour les transformer en modules e-learning interactifs et scalables.</p>
+          <div style="font-size: 2.2rem; margin-bottom: 1rem;">🎨</div>
+          <h3>Digitalisation & Storyboard</h3>
+          <p>Scénarisation de vos savoirs experts en parcours e-learning interactifs pour augmenter l'engagement de vos apprenants.</p>
           <div class="project-result">Engagement +40%</div>
         </div>
       </div>
@@ -156,48 +147,170 @@
   <section id="particuliers" style="background:var(--cream-2);">
     <div class="section-container">
       <div class="section-header fade-in">
-        <div class="section-tag" style="background:rgba(199,90,58,0.1); color:var(--terracotta);">B2C & Individuels</div>
-        <h2>Mentorat & Accompagnement</h2>
-        <p>Transformez votre savoir en activité ou optimisez vos capacités d'apprentissage.</p>
+        <div class="section-tag" style="background:rgba(199,90,58,0.1); color:var(--terracotta);">Mentorats Particuliers</div>
+        <h2>Accompagnement sur mesure</h2>
+        <p>Propulsez votre projet pédagogique ou optimisez vos capacités d'apprentissage.</p>
       </div>
 
       <div class="projects-grid">
-        <div class="project-card fade-in" style="border-bottom: 4px solid var(--terracotta);">
-          <h3>Lancer sa Formation</h3>
-          <p>Vous êtes expert ? Je vous accompagne de A à Z pour créer votre programme pédagogique et votre offre commerciale.</p>
-          <div class="project-result" style="color:var(--terracotta); background:rgba(199,90,58,0.1);">Mentorat Premium</div>
+        <div class="project-card fade-in" style="border-left: 5px solid var(--terracotta);">
+          <h3>Lancer sa propre Formation</h3>
+          <p>De l'idée au programme : je vous aide à structurer votre expertise en une offre de formation vendable et efficace.</p>
+          <div class="project-result" style="color:var(--terracotta); background:rgba(199,90,58,0.1);">Mentorat Individualisé</div>
         </div>
-        <div class="project-card fade-in" style="border-bottom: 4px solid var(--terracotta);">
+        <div class="project-card fade-in" style="border-left: 5px solid var(--terracotta);">
           <h3>Apprendre à Apprendre</h3>
-          <p>Étudiants ou cadres : apprenez à maîtriser les outils de pensée critique et de mémorisation rapide.</p>
+          <p>Coaching pour cadres et étudiants : maîtriser les outils de pensée critique et de mémorisation basés sur les neurosciences.</p>
           <div class="project-result" style="color:var(--terracotta); background:rgba(199,90,58,0.1);">Efficience Cognitive</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="espace-famille">
+  <section id="demo-livre">
     <div class="section-container">
       <div class="section-header fade-in">
-        <div class="section-tag" style="background:rgba(46,111,168,0.1); color:var(--sky);">Preuve technique</div>
-        <h2>La Narration Pédagogique</h2>
-        <p>Ma méthode "EduConcret" appliquée aux mathématiques du CP à la 3e.</p>
+        <div class="section-tag" style="background:rgba(46,111,168,0.1); color:var(--sky);">Preuve par l'image</div>
+        <h2>Maîtriser les fractions en 14 pages</h2>
+        <p>Lisez un extrait de "Léo et la Forge Stellaire" et découvrez la méthode EDUCONCRET.</p>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem;">
-        <div class="project-card fade-in" style="padding:1.5rem; text-align:center;">
-          <div style="overflow:hidden; border-radius:10px; margin-bottom:1.5rem;">
-            <img src="https://i.postimg.cc/pLVx8z2j/Chat-GPT-Image-8-avr-2026-23-06-48.png" class="book-img">
+      <div class="book-container fade-in">
+        <div class="book-wrapper" id="book">
+          
+          <div class="page active" id="p1">
+            <div class="page-content" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.postimg.cc/KzpmvzX3/Chat-GPT-Image-8-avr-2026-15-17-23.png'); background-size: cover; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;">
+              <h1 style="font-family:'Fraunces', serif; font-size: 1.8rem;">LÉO ET LA FORGE STELLAIRE</h1>
+              <h3 style="color: var(--gold); font-size: 0.9rem; margin-top: 10px;">Le secret des fractions</h3>
+              <p style="font-size: 0.7rem; margin-top: 2rem; border-top: 1px solid white; padding-top: 10px;">Dès 8 ans. Méthode Interactive.</p>
+            </div>
           </div>
-          <h3>Kawaii et Compagnie</h3>
-          <p style="font-size:0.85rem;">Apprendre la gestion et les chiffres via une aventure narrative immersive.</p>
+
+          <div class="page" id="p2">
+            <div class="page-content" style="padding: 1.5rem; background: white;">
+              <h4 style="font-family:'Fraunces', serif; color: var(--terracotta);">Pourquoi ce livre ?</h4>
+              <p style="font-size: 0.8rem; margin-top: 10px;"><strong>Manuel classique :</strong> "Une fraction est le quotient d’un nombre entier..." <br>❌ <em>L'élève décroche.</em></p>
+              <div style="margin-top: 1rem; padding: 10px; background: #f0f7f6; border-radius: 8px;">
+                <p style="font-size: 0.8rem;"><strong>Méthode EDUCONCRET :</strong> "Léo a un cristal cassé en 5 parts égales..." <br>✅ <em>L'élève comprend enfin.</em></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="page" id="p3">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">Sommaire</h4>
+              <ul style="font-size: 0.75rem; margin-top: 1rem; line-height: 1.8;">
+                <li>1. Le problème (P.4)</li>
+                <li>2. Méthode visuelle (P.5)</li>
+                <li>3. La règle des fractions (P.6)</li>
+                <li>4. Le piège des parts (P.7)</li>
+                <li>5. Quiz & Défis (P.8-13)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page" id="p4">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">1. Le Problème</h4>
+              <p style="font-size: 0.85rem; margin-top: 10px;">Le Cristal d'Unité est brisé en <strong>5 morceaux identiques</strong>.</p>
+              <p style="font-size: 0.85rem;">Léo en ramasse <strong>2</strong>.</p>
+              <p style="font-size: 0.85rem; font-weight: 700; margin-top: 10px; color: var(--gold);">Question : Comment écrire cela mathématiquement ?</p>
+            </div>
+          </div>
+
+          <div class="page" id="p5">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">2. Méthode Visuelle</h4>
+              <div style="display: flex; border: 1.5px solid black; width: 180px; margin: 1rem auto;">
+                <div style="width: 36px; height: 36px; background: var(--gold); border-right: 1px solid black;"></div>
+                <div style="width: 36px; height: 36px; background: var(--gold); border-right: 1px solid black;"></div>
+                <div style="width: 36px; height: 36px; border-right: 1px solid black;"></div>
+                <div style="width: 36px; height: 36px; border-right: 1px solid black;"></div>
+                <div style="width: 36px; height: 36px;"></div>
+              </div>
+              <p style="font-size: 0.8rem; text-align: center;">2 parts coloriées sur 5 au total.</p>
+              <p style="font-weight: 900; text-align: center; font-size: 1.2rem; color: var(--teal);">2 / 5</p>
+            </div>
+          </div>
+
+          <div class="page" id="p6">
+            <div class="page-content" style="padding: 1.5rem; background: #fffdf5;">
+              <h4 style="font-family:'Fraunces', serif;">3. La Règle</h4>
+              <p style="font-size: 0.8rem;"><strong>Numérateur (Haut) :</strong> Combien on en prend.</p>
+              <p style="font-size: 0.8rem; margin-top: 10px;"><strong>Dénominateur (Bas) :</strong> Combien de parts au total.</p>
+            </div>
+          </div>
+
+          <div class="page" id="p7">
+            <div class="page-content" style="padding: 1.5rem; background: #fff5f5;">
+              <h4 style="font-family:'Fraunces', serif; color: red;">4. Le Piège !</h4>
+              <p style="font-size: 0.8rem;">Si je coupe un cristal en deux morceaux de tailles différentes...</p>
+              <p style="font-weight: 700; color: red; margin-top: 10px;">CE N'EST PAS UNE FRACTION.</p>
+              <p style="font-size: 0.75rem;">Les parts doivent être <strong>égales</strong>.</p>
+            </div>
+          </div>
+
+          <div class="page" id="p8">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">5. Quiz rapide</h4>
+              <p style="font-size: 0.8rem;">Dans la fraction 3/4, quel est le dénominateur ?</p>
+              <p style="font-size: 0.8rem; margin-top: 10px;">A) 3 <br> B) 4</p>
+            </div>
+          </div>
+
+          <div class="page" id="p9">
+            <div class="page-content" style="padding: 1.5rem; background: #f5fbf5;">
+              <h4 style="font-family:'Fraunces', serif; color: green;">Correction</h4>
+              <p style="font-size: 0.85rem;">La réponse est <strong>B) 4</strong>.</p>
+              <p style="font-size: 0.8rem;">Car le 4 est en bas, il indique le partage total.</p>
+            </div>
+          </div>
+
+          <div class="page" id="p10">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">6. Exercices</h4>
+              <p style="font-size: 0.8rem;">Cercle coupé en 8 parts. 6 sont bleues. Fraction ?</p>
+              <p style="font-size: 0.8rem; font-weight: 700; margin-top: 10px;">___ / ___</p>
+            </div>
+          </div>
+
+          <div class="page" id="p11">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">7. Problème</h4>
+              <p style="font-size: 0.8rem;">Léo a 12 cristaux. Il doit en donner 1/4 au robot. Combien de cristaux donne-t-il ?</p>
+            </div>
+          </div>
+
+          <div class="page" id="p12">
+            <div class="page-content" style="padding: 1.5rem; background: #f5fbf5;">
+              <h4 style="font-family:'Fraunces', serif; color: green;">Correction Pro</h4>
+              <p style="font-size: 0.8rem;">12 divisé par 4 parts = 3 cristaux.</p>
+              <p style="font-size: 0.85rem; font-weight: 700;">Réponse : 3</p>
+            </div>
+          </div>
+
+          <div class="page" id="p13">
+            <div class="page-content" style="padding: 1.5rem;">
+              <h4 style="font-family:'Fraunces', serif;">8. Quiz Final</h4>
+              <p style="font-size: 0.8rem;">Une tablette de 6 carrés. J'en mange 2. Fraction mangée ?</p>
+            </div>
+          </div>
+
+          <div class="page" id="p14">
+            <div class="page-content" style="padding: 1.5rem; background: var(--ink); color: white; text-align: center; justify-content: center;">
+              <h3 style="font-family:'Fraunces', serif; color: var(--gold);">MISSION RÉUSSIE</h3>
+              <p style="font-size: 0.8rem; margin: 10px 0;">Votre enfant peut comprendre les maths aussi vite.</p>
+              <div style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">49 €</div>
+              <a href="#contact" class="btn btn-gold btn-sm" style="font-size: 0.8rem; width: 100%; justify-content: center;">COMMANDER LE LIVRE →</a>
+            </div>
+          </div>
+
         </div>
-        <div class="project-card fade-in" style="padding:1.5rem; text-align:center;">
-          <div style="overflow:hidden; border-radius:10px; margin-bottom:1.5rem;">
-            <img src="https://i.postimg.cc/dVSMyfNK/Chat-GPT-Image-8-avr-2026-23-08-07.png" class="book-img">
-          </div>
-          <h3>Eliza in New York</h3>
-          <p style="font-size:0.85rem;">La géométrie et les mesures à travers une exploration urbaine captivante.</p>
+
+        <div class="book-controls">
+          <button onclick="prevPage()" class="nav-btn">←</button>
+          <div id="pageIndicator">Page 1 / 14</div>
+          <button onclick="nextPage()" class="nav-btn">→</button>
         </div>
       </div>
     </div>
@@ -205,28 +318,37 @@
 
   <footer id="contact">
     <div class="footer-inner">
-      <div class="fade-in" style="background: rgba(247,243,237,0.05); border: 1px solid var(--gold); border-radius: 24px; padding: 3rem; max-width: 450px; margin: 0 auto 4rem; animation: scaleIn 1s;">
-        <h4 style="font-family:'Fraunces',serif; color:var(--gold); margin-bottom:0.5rem; font-size: 1.4rem;">Ma Carte de Visite</h4>
-        <p style="font-size:0.8rem; margin-bottom:2rem;">Scannez pour m'ajouter à vos contacts</p>
-        <div style="background: white; padding: 15px; display: inline-block; border-radius: 16px; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <div class="fade-in" style="background: rgba(247,243,237,0.05); border: 1px solid var(--gold); border-radius: 20px; padding: 2.5rem; max-width: 450px; margin: 0 auto 3rem;">
+        <h4 style="font-family:'Fraunces',serif; color:var(--gold);">Ma Carte de Visite</h4>
+        <p style="font-size:0.8rem; margin-bottom:1.5rem;">Scannez pour enregistrer mon contact</p>
+        <div style="background: white; padding: 10px; display: inline-block; border-radius: 12px; margin-bottom: 1.5rem;">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://educoncret.net/contact.vcf" alt="QR Code Moctar Touré">
         </div>
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <a href="https://educoncret.net/contact.vcf" class="btn btn-gold" style="width:100%; justify-content:center;">Enregistrer le Contact</a>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="https://educoncret.net/contact.vcf" class="btn btn-gold" style="width:100%; justify-content:center;">Enregistrer Contact</a>
           <a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Profil LinkedIn</a>
         </div>
       </div>
 
-      <div class="footer-brand" style="font-size: 1.8rem; margin-bottom: 1rem;">EduConcret</div>
-      <p style="font-weight: 600; color: var(--cream);">Moctar Touré</p>
-      <p style="font-size:0.9rem;">Ingénieur Pédagogique & Directeur Pédagogique LOGIX FORMA</p>
-      <p style="font-size:0.8rem; margin-top:15px; color: var(--gold);">📧 contact@educoncret.net | 📞 07 64 07 01 61</p>
-      <div style="margin-top: 3rem; font-size: 0.7rem; opacity: 0.3;">© 2026 Moctar Touré | Ingénierie Pédagogique d'Excellence</div>
+      <div style="font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--cream);">EduConcret</div>
+      <p style="font-size: 0.9rem; margin-top: 10px;">Moctar Touré — Ingénieur Pédagogique & Directeur Pédagogique LOGIX FORMA</p>
+      <p style="font-size: 0.8rem; margin-top: 5px;">📧 contact@educoncret.net | 📞 07 64 07 01 61</p>
     </div>
   </footer>
 
   <script>
-    // Barre de progression
+    // --- FLIPBOOK LOGIC ---
+    let curPage = 1;
+    const maxPages = 14;
+    function updatePage() {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('p' + curPage).classList.add('active');
+      document.getElementById('pageIndicator').innerText = `Page ${curPage} / ${maxPages}`;
+    }
+    function nextPage() { curPage < maxPages ? curPage++ : curPage = 1; updatePage(); }
+    function prevPage() { if (curPage > 1) curPage--; updatePage(); }
+
+    // --- PROGRESS BAR ---
     window.onscroll = function() {
       let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -234,14 +356,10 @@
       document.getElementById("scrollProgress").style.width = scrolled + "%";
     };
 
-    // Observer pour les animations au scroll
+    // --- FADE IN OBSERVER ---
     const fadeEls = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => { 
-        if (e.isIntersecting) { 
-          e.target.classList.add('visible'); 
-        } 
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
     }, { threshold: 0.2 });
     fadeEls.forEach(el => fadeObserver.observe(el));
   </script>
