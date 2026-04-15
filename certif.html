@@ -1,670 +1,277 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EduConcret Certif — Application de démonstration | Audit Qualiopi & RNCP</title>
-  <meta name="description" content="Démonstration de l'application EduConcret Certif : tableau de bord Qualiopi, preuves, actions correctives, workspace RNCP. Interface simple et opérationnelle.">
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConcret Certif PRO | Expert Audit Automatisé</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0e0c0a;
+            --gold: #c9a84c;
+            --gold-light: #e8c96a;
+            --cream: #fbf9f6;
+            --white: #ffffff;
+            --red: #c75a3a;
+            --teal: #2a7b6e;
+            --shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
 
-    body {
-      background: #f7f3ed;
-      font-family: 'DM Sans', sans-serif;
-      color: #0e0c0a;
-      line-height: 1.5;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--ink); overflow-x: hidden; }
 
-    :root {
-      --ink: #0e0c0a;
-      --ink-2: #1c1a17;
-      --cream: #f7f3ed;
-      --cream-2: #efe9df;
-      --gold: #c9a84c;
-      --gold-light: #e8c96a;
-      --terracotta: #c75a3a;
-      --teal: #2a7b6e;
-      --lavender: #5c4d8a;
-      --radius-card: 24px;
-      --shadow-sm: 0 8px 20px rgba(14,12,10,0.05);
-      --shadow-md: 0 12px 28px rgba(14,12,10,0.08);
-    }
+        /* HEADER PREMIUM */
+        .premium-nav {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px);
+            padding: 1rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0; z-index: 1000;
+        }
 
-    .app-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      background: var(--cream);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+        .logo { font-family: 'Fraunces'; font-weight: 900; font-size: 1.6rem; display: flex; align-items: center; gap: 12px; }
+        .logo span { color: var(--gold); }
 
-    /* Bandeau retour site officiel */
-    .official-banner {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 0.6rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-    }
-    .official-banner a {
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .official-banner a:hover {
-      color: var(--gold-light);
-      text-decoration: underline;
-    }
-    .official-badge {
-      background: rgba(201,168,76,0.15);
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
+        /* LAYOUT */
+        .main-container { display: grid; grid-template-columns: 300px 1fr; min-height: 100vh; }
 
-    /* Navigation app */
-    .app-nav {
-      background: #fffdf9;
-      border-bottom: 1px solid #e5ddd0;
-      padding: 0.9rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(255,253,249,0.96);
-    }
+        .sidebar {
+            background: var(--white);
+            padding: 3rem 1.5rem;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
 
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-family: 'Fraunces', serif;
-      font-weight: 800;
-      font-size: 1.35rem;
-    }
-    .brand-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(201,168,76,0.2);
-    }
-    .demo-badge {
-      background: rgba(199,90,58,0.12);
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #9f3c20;
-      letter-spacing: 0.03em;
-    }
-    .nav-actions {
-      display: flex;
-      gap: 0.8rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .btn-app {
-      padding: 0.5rem 1.2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: 0.2s;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: none;
-      font-family: inherit;
-    }
-    .btn-outline-app {
-      border: 1.5px solid #e5ddd0;
-      background: white;
-      color: var(--ink);
-    }
-    .btn-outline-app:hover {
-      background: #f7f3ed;
-      border-color: var(--gold);
-    }
-    .btn-primary-app {
-      background: var(--gold);
-      color: var(--ink);
-    }
-    .btn-primary-app:hover {
-      background: var(--gold-light);
-      transform: translateY(-1px);
-    }
-    .btn-site {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      color: #8d6b12;
-    }
-    .btn-site:hover {
-      background: rgba(201,168,76,0.1);
-    }
+        .menu-item {
+            padding: 1.2rem;
+            border-radius: 16px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: #666;
+        }
 
-    /* Layout principal */
-    .main-layout {
-      display: flex;
-      flex: 1;
-    }
+        .menu-item:hover { background: var(--cream); color: var(--ink); }
+        .menu-item.active { background: var(--ink); color: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-    .sidebar {
-      width: 260px;
-      background: #fffdf9;
-      border-right: 1px solid #e5ddd0;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+        /* CONTENT */
+        .content { padding: 4rem; max-width: 1200px; }
 
-    .sidebar-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.75rem 1rem;
-      border-radius: 16px;
-      font-weight: 500;
-      color: #2e2b26;
-      transition: all 0.15s;
-      cursor: pointer;
-    }
-    .sidebar-item.active {
-      background: rgba(201,168,76,0.12);
-      color: #8d6b12;
-      font-weight: 600;
-      border-left: 3px solid var(--gold);
-    }
-    .sidebar-item:not(.active):hover {
-      background: #f1ede7;
-    }
+        /* DASHBOARD CARDS */
+        .top-stats { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+        
+        .main-card {
+            background: var(--ink);
+            color: white;
+            padding: 3rem;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
 
-    .content {
-      flex: 1;
-      padding: 2rem 2rem 3rem;
-    }
+        .main-card h2 { font-family: 'Fraunces'; font-size: 2.5rem; margin-bottom: 1rem; }
+        .probability-tag { font-size: 0.8rem; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
 
-    /* dashboard cards */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .stat-card {
-      background: white;
-      border-radius: 28px;
-      padding: 1.3rem 1.2rem;
-      border: 1px solid #e5ddd0;
-      box-shadow: var(--shadow-sm);
-    }
-    .stat-value {
-      font-family: 'Fraunces', serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-top: 0.3rem;
-    }
-    .indicator-grid, .action-grid {
-      display: grid;
-      gap: 1rem;
-    }
-    .indicator-item, .action-item {
-      background: white;
-      border-radius: 20px;
-      padding: 1rem 1.2rem;
-      border: 1px solid #e5ddd0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-    .indicator-item:hover, .action-item:hover {
-      background: #fffdf9;
-      border-color: var(--gold);
-    }
-    .pill-status {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-    }
-    .pill.red { background: rgba(199,90,58,0.12); color: #b13e1f; }
-    .pill.green { background: rgba(42,123,110,0.12); color: #1a6458; }
-    .pill.orange { background: rgba(201,168,76,0.2); color: #8d6b12; }
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 30px;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
 
-    .section-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      margin: 1.8rem 0 1rem 0;
-    }
-    .preuve-badge {
-      background: #f1ede7;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-    }
-    .flex-between {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .btn-icon {
-      background: none;
-      border: 1px solid #e5ddd0;
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    hr {
-      margin: 1.5rem 0;
-      border: none;
-      border-top: 1px solid #e5ddd0;
-    }
-    .workspace-block {
-      background: #fffdf9;
-      border-radius: 28px;
-      padding: 1.5rem;
-      border: 1px solid #e5ddd0;
-      margin-top: 1rem;
-    }
-    .rncp-bloc {
-      background: white;
-      border-radius: 20px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--lavender);
-    }
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #0e0c0a;
-      color: var(--gold);
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      z-index: 1000;
-      animation: fadeInOut 2s ease;
-      pointer-events: none;
-    }
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: translateY(20px); }
-      15% { opacity: 1; transform: translateY(0); }
-      85% { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-10px); }
-    }
+        .stat-number { font-family: 'Fraunces'; font-size: 2.5rem; font-weight: 900; display: block; }
 
-    @media (max-width: 780px) {
-      .sidebar { display: none; }
-      .content { padding: 1.5rem; }
-      .app-nav, .official-banner { padding: 0.75rem 1rem; }
-    }
+        /* AUDIT INTERFACE */
+        .audit-list { display: grid; gap: 1rem; }
+        .indicator-card {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
 
-    footer {
-      background: #0e0c0a;
-      color: rgba(247,243,237,0.6);
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      border-top: 1px solid rgba(201,168,76,0.15);
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-    }
-    .footer-links a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
+        .indicator-card:hover { transform: scale(1.02); border-color: var(--gold); box-shadow: var(--shadow); }
 
-    .progress-bar {
-      height: 8px;
-      background: #e5ddd0;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 0.5rem;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--teal);
-      transition: width 0.3s;
-    }
-    .indicator-desc {
-      font-size: 0.75rem;
-      color: #6b645d;
-      margin-top: 0.2rem;
-    }
-  </style>
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            background: #f0f0f0;
+        }
+
+        .status-badge.critical { background: #fff1f0; color: var(--red); }
+        .status-badge.success { background: #f0f9f7; color: var(--teal); }
+
+        /* CTA BUTTON */
+        .btn-upgrade {
+            background: var(--gold);
+            color: var(--ink);
+            padding: 1rem 2rem;
+            border-radius: 99px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-upgrade:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,168,76,0.3); }
+
+        /* IA SCAN ANIMATION */
+        #ia-loader { display: none; margin-top: 2rem; }
+        .scan-line { width: 100%; height: 2px; background: var(--gold); position: relative; animation: scan 2s infinite; }
+        @keyframes scan { 0% { top: 0; } 50% { top: 50px; } 100% { top: 0; } }
+
+    </style>
 </head>
 <body>
-<div class="app-container">
-  <!-- BANDEAU OFFICIEL : retour vers le site principal -->
-  <div class="official-banner">
-    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-      <span class="official-badge">🏛️ Site officiel</span>
-      <span>Découvrez l'application de démonstration</span>
-    </div>
-    <a href="https://educoncret.net/" id="officialSiteLink">
-      🌐 www.educoncret.net →
-    </a>
-  </div>
 
-  <div class="app-nav">
-    <div class="logo-area">
-      <span class="brand-dot"></span>
-      <span>EduConcret Certif</span>
-      <span class="demo-badge">DÉMO</span>
-    </div>
-    <div class="nav-actions">
-      <span style="font-size:0.8rem; color:#5a544d;">Version de démonstration</span>
-      <a href="#" class="btn-app btn-outline-app" id="helpBtn">Aide</a>
-      <a href="https://educoncret.net/" class="btn-app btn-site">🏠 Site officiel</a>
-      <a href="app.html" class="btn-app btn-primary-app" id="upgradeBtn">⭐ Accéder à l'offre complète</a>
-    </div>
-  </div>
+<nav class="premium-nav">
+    <div class="logo">EduConcret <span>Certif PRO</span></div>
+    <a href="#" class="btn-upgrade" onclick="triggerSales()">ACTIVER LA LICENCE COMPLÈTE</a>
+</nav>
 
-  <div class="main-layout">
-    <div class="sidebar">
-      <div class="sidebar-item active" data-view="dashboard">📊 Tableau de bord</div>
-      <div class="sidebar-item" data-view="qualiopi">✅ Qualiopi</div>
-      <div class="sidebar-item" data-view="audit">🔍 Audit blanc</div>
-      <div class="sidebar-item" data-view="preuves">📁 Coffre de preuves</div>
-      <div class="sidebar-item" data-view="actions">⚡ Plan d'action</div>
-      <div class="sidebar-item" data-view="rncp">📘 RNCP Workspace</div>
-    </div>
+<div class="main-container">
+    <aside class="sidebar">
+        <div class="menu-item active" onclick="showView('dashboard')">📊 Pilotage Global</div>
+        <div class="menu-item" onclick="showView('audit')">🔍 Audit Contradictoire</div>
+        <div class="menu-item" onclick="showView('ia')">🤖 IA DeepScan™</div>
+        <div class="menu-item" onclick="showView('docs')">📁 Coffre de Preuves</div>
+        <div class="menu-item" onclick="showView('rncp')">📘 Workspace RNCP</div>
+    </aside>
 
-    <div class="content" id="mainContent">
-      <!-- Contenu dynamique -->
-    </div>
-  </div>
-
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <p>EduConcret Certif · Application de démonstration · Données fictives</p>
-      <div class="footer-links">
-        <a href="https://educoncret.net/">🏠 Accueil EduConcret</a>
-        <a href="https://educoncret.net/#fonctionnalites">Fonctionnalités</a>
-        <a href="https://educoncret.net/#offres">Offres</a>
-        <a href="https://educoncret.net/#faq">FAQ</a>
-        <a href="app.html">⭐ Version complète</a>
-      </div>
-      <p style="margin-top: 0.8rem; font-size: 0.7rem;">© 2026 EduConcret — Application de démonstration pour audit Qualiopi & RNCP</p>
-    </div>
-  </footer>
+    <main class="content" id="render-area">
+        </main>
 </div>
 
 <script>
-  // État de l'application (données simulées)
-  let appState = {
-    conformite: 78,
-    preuvesLiees: 126,
-    actionsOuvertes: 9,
-    auditBlanc: 68,
-    indicateurs: [
-      { id: 1, name: "Q1.1 — Information du public sur l'offre de formation", desc: "Accessibilité, délais, modalités d'inscription → documentation incomplète", status: "red", statusText: "À corriger" },
-      { id: 2, name: "Q2.2 — Adaptation aux publics en situation de handicap", desc: "Preuve manquante : référent handicap désigné + process", status: "red", statusText: "Preuve manquante" },
-      { id: 3, name: "Q3.1 — Suivi individuel et accompagnement", desc: "Processus formalisé mais absence de traçabilité des entretiens", status: "orange", statusText: "En amélioration" },
-      { id: 4, name: "Q4.3 — Évaluation des acquis par rapport aux objectifs", desc: "Grille d'évaluation partiellement documentée", status: "green", statusText: "Conforme sous réserve" },
-      { id: 5, name: "Q5.1 — Compétences des formateurs", desc: "CV et diplômes à centraliser", status: "orange", statusText: "À compléter" },
-      { id: 6, name: "Q6.2 — Feuilles d'émargement", desc: "Traçabilité des présences à renforcer", status: "red", statusText: "Non conforme" }
-    ],
-    actions: [
-      { id: 1, title: "Rédiger la procédure d'information précontractuelle", resp: "DAF", date: "15/04/2026", priority: "Haute", status: "red", statusText: "En retard" },
-      { id: 2, title: "Désigner un référent handicap et formaliser son rôle", resp: "Qualité", date: "30/03/2026", priority: "Haute", status: "orange", statusText: "En cours" },
-      { id: 3, title: "Compléter le dossier de preuves pour l'indicateur Q3.2", resp: "Pédagogie", date: "10/04/2026", priority: "Moyenne", status: "green", statusText: "Planifiée" },
-      { id: 4, title: "Mettre en place les feuilles d'émargement électroniques", resp: "Admin", date: "05/04/2026", priority: "Haute", status: "red", statusText: "Urgent" }
-    ],
-    preuves: ["📄 Livret_accueil_2026.pdf", "📊 Tableau_suivi_entretiens.xlsx", "📌 Attestation_RH_handicap.pdf", "🔗 Lien_drive_grilles_evaluation", "📑 CV_formateurs_2026.pdf"],
-    rncpBlocs: [
-      { name: "Bloc 1 : Conception et pilotage de projets", progress: "70", status: "En cours" },
-      { name: "Bloc 2 : Ingénierie pédagogique", progress: "45", status: "À renforcer" },
-      { name: "Bloc 3 : Management de la qualité", progress: "85", status: "Avancé" }
-    ]
-  };
+    const data = {
+        probabilite: 64,
+        manquants: 12,
+        docs: 84,
+        indicators: [
+            { id: 1, code: 'Q1.1', label: 'Diffusion de l\'Offre', status: 'critical', score: 20 },
+            { id: 2, code: 'Q2.2', label: 'Parcours Handicap', status: 'critical', score: 10 },
+            { id: 3, code: 'Q3.1', label: 'Objectifs Pédagogiques', status: 'success', score: 100 },
+            { id: 4, code: 'Q6.4', label: 'Preuves d\'Assiduité', status: 'critical', score: 45 }
+        ]
+    };
 
-  let currentView = 'dashboard';
+    function renderDashboard() {
+        return `
+            <div class="top-stats">
+                <div class="main-card">
+                    <span class="probability-tag">Fiabilité Audit Blanc</span>
+                    <h2>Probabilité de réussite : ${data.probabilite}%</h2>
+                    <p style="opacity: 0.7; margin-bottom: 2rem;">Votre dossier présente 4 non-conformités majeures détectées par l'IA.</p>
+                    <button class="btn-upgrade" style="background: white;" onclick="runAudit()">LANCER L'ANALYSE FINALE</button>
+                </div>
+                <div class="stat-box">
+                    <span style="font-size: 0.8rem; font-weight: 700; opacity: 0.5;">PREUVES</span>
+                    <span class="stat-number">${data.docs}</span>
+                    <small>+3 aujourd'hui</small>
+                </div>
+                <div class="stat-box">
+                    <span style="font-size: 0.8rem; font-weight: 700; opacity: 0.5;">MANQUANTS</span>
+                    <span class="stat-number" style="color:var(--red)">${data.manquants}</span>
+                    <small>Urgence Haute</small>
+                </div>
+            </div>
 
-  function showToast(message) {
-    const existing = document.querySelector('.toast');
-    if(existing) existing.remove();
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2500);
-  }
-
-  function ameliorerIndicateur(id) {
-    const idx = appState.indicateurs.findIndex(i => i.id === id);
-    if(idx !== -1 && appState.indicateurs[idx].status !== 'green') {
-      appState.indicateurs[idx].status = 'green';
-      appState.indicateurs[idx].statusText = 'Conforme ✅';
-      appState.conformite = Math.min(98, appState.conformite + 5);
-      showToast(`✨ Indicateur amélioré ! Conformité +5% (${appState.conformite}%)`);
-      renderCurrentView();
-    } else if(idx !== -1) {
-      showToast(`✅ Cet indicateur est déjà conforme !`);
+            <h3 style="font-family: Fraunces; font-size: 1.8rem; margin-bottom: 1.5rem;">Feuille de Route Prioritaire</h3>
+            <div class="audit-list">
+                ${data.indicators.map(i => `
+                    <div class="indicator-card" onclick="boost(${i.id})">
+                        <div>
+                            <span style="font-weight: 900; color: var(--gold);">${i.code}</span>
+                            <span style="margin-left: 15px; font-weight: 600;">${i.label}</span>
+                        </div>
+                        <div style="display: flex; align-items:center; gap: 20px;">
+                            <span class="status-badge ${i.status}">${i.score}%</span>
+                            <span style="font-size: 1.2rem;">→</span>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
     }
-  }
 
-  function resoudreAction(id) {
-    const idx = appState.actions.findIndex(a => a.id === id);
-    if(idx !== -1 && appState.actions[idx].status !== 'green') {
-      appState.actions.splice(idx, 1);
-      appState.actionsOuvertes = appState.actions.length;
-      appState.conformite = Math.min(98, appState.conformite + 3);
-      showToast(`✅ Action résolue ! Plus que ${appState.actionsOuvertes} actions ouvertes.`);
-      renderCurrentView();
+    function renderIA() {
+        return `
+            <h2 style="font-family: Fraunces; font-size: 2.5rem; margin-bottom: 1rem;">DeepScan™ AI</h2>
+            <p style="margin-bottom: 3rem; opacity: 0.6;">Glissez vos documents (PDF/DOCX) pour une vérification de conformité sémantique instantanée.</p>
+            <div style="border: 2px dashed var(--gold); border-radius: 40px; padding: 5rem; text-align: center; background: white;" onclick="simulateScan()">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📤</div>
+                <p><strong>Cliquez ou déposez vos preuves ici</strong></p>
+                <div id="ia-loader">
+                    <div class="scan-line"></div>
+                    <p style="margin-top: 1rem; font-weight: 700;">L'IA vérifie les 32 indicateurs...</p>
+                </div>
+                <div id="ia-report" style="display:none; margin-top: 2rem; text-align: left; background: var(--cream); padding: 2rem; border-radius: 20px;">
+                    <h4 style="color: var(--red);">Rapport de Non-Conformité :</h4>
+                    <ul style="margin-top: 1rem; font-size: 0.9rem;">
+                        <li>❌ Q1.1 : Manque les mentions légales des tarifs TTC.</li>
+                        <li>❌ Q2.2 : Le contact du référent handicap n'est pas identifié.</li>
+                    </ul>
+                </div>
+            </div>
+        `;
     }
-  }
 
-  function ajouterPreuve() {
-    const newPreuve = `📎 Preuve_${Date.now().toString().slice(-4)}.pdf`;
-    appState.preuves.unshift(newPreuve);
-    appState.preuvesLiees++;
-    showToast(`📁 Preuve ajoutée : ${newPreuve}`);
-    renderCurrentView();
-  }
-
-  // Rendu des différentes vues
-  function renderDashboard() {
-    return `
-      <div class="stats-row">
-        <div class="stat-card" onclick="showToast('Conformité globale : ${appState.conformite}%')"><div>📈 Conformité globale</div><div class="stat-value">${appState.conformite}%</div><div style="font-size:0.75rem;">+12% depuis 30j</div></div>
-        <div class="stat-card" onclick="showToast('${appState.preuvesLiees} preuves reliées')"><div>📎 Preuves reliées</div><div class="stat-value">${appState.preuvesLiees}</div><div style="font-size:0.75rem;">32 manquantes prioritaires</div></div>
-        <div class="stat-card" onclick="showToast('${appState.actionsOuvertes} actions ouvertes')"><div>⚠️ Actions ouvertes</div><div class="stat-value">${appState.actionsOuvertes}</div><div style="font-size:0.75rem;">4 urgentes</div></div>
-        <div class="stat-card" onclick="showToast('Dernier audit blanc : ${appState.auditBlanc}%')"><div>✅ Audit blanc</div><div class="stat-value">${appState.auditBlanc}%</div><div style="font-size:0.75rem;">dernier audit : 12/02/2026</div></div>
-      </div>
-      <div class="flex-between"><h2 class="section-title">📋 Indicateurs prioritaires</h2><span class="preuve-badge">Cliquez pour corriger</span></div>
-      <div class="indicator-grid">
-        ${appState.indicateurs.slice(0,6).map(i => `
-          <div class="indicator-item" onclick="ameliorerIndicateur(${i.id})">
-            <div><h4>${i.name}</h4><div class="indicator-desc">${i.desc}</div></div>
-            <span class="pill-status ${i.status}">${i.statusText}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div class="flex-between" style="margin-top: 2rem;"><h2 class="section-title">⚡ Actions urgentes</h2><span class="preuve-badge">Cliquez pour résoudre</span></div>
-      <div class="action-grid">
-        ${appState.actions.slice(0,3).map(a => `
-          <div class="action-item" onclick="resoudreAction(${a.id})">
-            <div><strong>${a.title}</strong><div style="font-size:0.75rem; color:#5a544d;">Responsable : ${a.resp} · Échéance : ${a.date}</div></div>
-            <span class="pill-status ${a.status}">${a.statusText}</span>
-          </div>
-        `).join('')}
-        ${appState.actions.length === 0 ? '<div style="background:#e5ddd0; border-radius:20px; padding:1rem; text-align:center;">🎉 Toutes les actions sont résolues !</div>' : ''}
-      </div>
-      <hr>
-      <div class="flex-between"><h2 class="section-title">📁 Dernières preuves</h2><button class="btn-icon" onclick="ajouterPreuve()">+ Ajouter une preuve</button></div>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">${appState.preuves.slice(0,5).map(p => `<div class="preuve-badge" style="background:white; border:1px solid #e5ddd0; cursor:pointer;" onclick="showToast('${p}')">${p}</div>`).join('')}</div>
-    `;
-  }
-
-  function renderQualiopi() {
-    return `
-      <h2 class="section-title">✅ Référentiel Qualiopi — tous les indicateurs</h2>
-      <div class="indicator-grid">
-        ${appState.indicateurs.map(i => `
-          <div class="indicator-item" onclick="ameliorerIndicateur(${i.id})">
-            <div><h4>${i.name}</h4><div class="indicator-desc">${i.desc}</div></div>
-            <span class="pill-status ${i.status}">${i.statusText}</span>
-          </div>
-        `).join('')}
-        <div class="indicator-item" style="opacity:0.7;"><div><h4>Q5.2 — Veille et actualisation des compétences</h4><div class="indicator-desc">Disponible dans l'offre complète</div></div><span class="pill-status orange">Démo</span></div>
-        <div class="indicator-item" style="opacity:0.7;"><div><h4>Q7.3 — Traitement des réclamations</h4><div class="indicator-desc">Disponible dans l'offre complète</div></div><span class="pill-status orange">Démo</span></div>
-      </div>
-      <div style="margin-top:1rem; background:#eae2d7; border-radius:20px; padding:1rem;">
-        <strong>💡 Démo interactive :</strong> cliquez sur un indicateur pour le marquer comme conforme !
-        <div style="margin-top:0.5rem; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Passez à l'offre complète</a> pour accéder aux 32 indicateurs Qualiopi.</div>
-      </div>
-    `;
-  }
-
-  function renderAudit() {
-    return `
-      <h2 class="section-title">🔍 Audit blanc — simulation</h2>
-      <div class="stats-row">
-        <div class="stat-card"><div>📊 Taux de préparation</div><div class="stat-value">${appState.auditBlanc}%</div></div>
-        <div class="stat-card"><div>⚠️ Points critiques</div><div class="stat-value">4</div><div>indicateurs non conformes</div></div>
-      </div>
-      <div style="background:white; border-radius:24px; padding:1.5rem; border:1px solid #e5ddd0;">
-        <h3>Recommandations principales</h3>
-        <ul style="margin-top:1rem; margin-left:1.5rem;">
-          <li>🔴 Finaliser la procédure d'information précontractuelle</li>
-          <li>🔴 Désigner un référent handicap et documenter son rôle</li>
-          <li>🟠 Renforcer la traçabilité des entretiens individuels</li>
-          <li>🟠 Mettre en place les feuilles d'émargement électroniques</li>
-        </ul>
-        <button class="btn-app btn-primary-app" style="margin-top:1.5rem;" onclick="showToast('Audit blanc relancé — nouvelles recommandations générées.')">🔄 Relancer l'audit blanc</button>
-        <div style="margin-top:1rem; text-align:center; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : audit blanc automatique avec IA et 32 indicateurs</div>
-      </div>
-    `;
-  }
-
-  function renderPreuves() {
-    return `
-      <div class="flex-between"><h2 class="section-title">📁 Coffre de preuves</h2><button class="btn-app btn-outline-app" onclick="ajouterPreuve()">+ Ajouter un document</button></div>
-      <div class="workspace-block">
-        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-          ${appState.preuves.map(p => `<div style="background:white; border-radius:16px; padding:0.8rem 1rem; border:1px solid #e5ddd0; display:flex; justify-content:space-between;"><span>${p}</span><span class="preuve-badge" style="cursor:pointer;" onclick="showToast('Document lié aux indicateurs')">🔗 Lié à 2 indicateurs</span></div>`).join('')}
-        </div>
-        <div style="margin-top:1.5rem; background:#f7f3ed; border-radius:16px; padding:1rem;">
-          <strong>💡 Stockage externe :</strong> Liez vos dossiers Google Drive, Dropbox ou OneDrive.
-          <div style="margin-top:0.5rem; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : stockage cloud avec Supabase</div>
-        </div>
-      </div>
-    `;
-  }
-
-  function renderActions() {
-    return `
-      <div class="flex-between"><h2 class="section-title">⚡ Plan d'action — correctives</h2><button class="btn-app btn-outline-app" onclick="showToast('Nouvelle action corrective (démo)')">+ Nouvelle action</button></div>
-      <div class="action-grid">
-        ${appState.actions.map(a => `
-          <div class="action-item" onclick="resoudreAction(${a.id})">
-            <div><strong>${a.title}</strong><div style="font-size:0.75rem;">Responsable : ${a.resp} · Échéance : ${a.date} · Priorité ${a.priority}</div></div>
-            <span class="pill-status ${a.status}">${a.statusText}</span>
-          </div>
-        `).join('')}
-        ${appState.actions.length === 0 ? '<div style="background:#e5ddd0; border-radius:20px; padding:2rem; text-align:center;">🎉 Bravo ! Toutes les actions sont résolues.</div>' : ''}
-      </div>
-      <div style="margin-top:1rem; text-align:center; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : génération automatique d'actions par l'IA</div>
-    `;
-  }
-
-  function renderRNCP() {
-    return `
-      <h2 class="section-title">📘 RNCP Workspace — Certification RNCP 38764</h2>
-      <div class="workspace-block">
-        ${appState.rncpBlocs.map(b => `
-          <div class="rncp-bloc" onclick="showToast('Bloc ${b.name} — Progression ${b.progress}%')">
-            <strong>🧩 ${b.name}</strong>
-            <div style="font-size:0.85rem; margin-top:0.3rem;">Progression : ${b.progress}% · ${b.status}</div>
-            <div class="progress-bar" style="margin-top:0.5rem;"><div class="progress-fill" style="width:${b.progress}%"></div></div>
-          </div>
-        `).join('')}
-        <div style="margin-top:1rem; background:#f7f3ed; border-radius:20px; padding:0.8rem; font-size:0.85rem;">
-          📌 Vue d’ensemble : 3 blocs sur 4 structurés. Synthèse IA disponible avec clé API (optionnelle).
-        </div>
-        <button class="btn-app btn-primary-app" style="margin-top:1rem;" onclick="showToast('Export RNCP généré (simulation)')">📎 Exporter le dossier RNCP</button>
-        <div style="margin-top:1rem; text-align:center; font-size:0.8rem;">⭐ <a href="app.html" style="color:var(--teal);">Version complète</a> : export PDF et suivi avancé</div>
-      </div>
-    `;
-  }
-
-  function renderCurrentView() {
-    const contentDiv = document.getElementById('mainContent');
-    switch(currentView) {
-      case 'dashboard': contentDiv.innerHTML = renderDashboard(); break;
-      case 'qualiopi': contentDiv.innerHTML = renderQualiopi(); break;
-      case 'audit': contentDiv.innerHTML = renderAudit(); break;
-      case 'preuves': contentDiv.innerHTML = renderPreuves(); break;
-      case 'actions': contentDiv.innerHTML = renderActions(); break;
-      case 'rncp': contentDiv.innerHTML = renderRNCP(); break;
-      default: contentDiv.innerHTML = renderDashboard();
+    function simulateScan() {
+        document.getElementById('ia-loader').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('ia-loader').style.display = 'none';
+            document.getElementById('ia-report').style.display = 'block';
+            alert("Alerte : 2 Non-conformités majeures identifiées !");
+        }, 2500);
     }
-    document.querySelectorAll('.sidebar-item').forEach(item => {
-      if(item.dataset.view === currentView) item.classList.add('active');
-      else item.classList.remove('active');
-    });
-  }
 
-  // Événements
-  document.querySelectorAll('.sidebar-item').forEach(item => {
-    item.addEventListener('click', () => {
-      currentView = item.dataset.view;
-      renderCurrentView();
-    });
-  });
+    function triggerSales() {
+        alert("Félicitations ! Vous allez être redirigé vers le formulaire d'activation de votre licence EduConcret Certif PRO.");
+    }
 
-  document.getElementById('helpBtn')?.addEventListener('click', () => showToast('Application de démonstration — Interface interactive pour tester la logique Qualiopi'));
-  
-  // Le bouton "Offre complète" redirige déjà vers app.html via le href
+    function showView(view) {
+        const area = document.getElementById('render-area');
+        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+        if(view === 'dashboard') area.innerHTML = renderDashboard();
+        if(view === 'ia') area.innerHTML = renderIA();
+        if(view === 'audit' || view === 'docs' || view === 'rncp') {
+            area.innerHTML = `<h2>Module ${view.toUpperCase()} réservé aux abonnés</h2><p style="margin-top: 2rem;">Veuillez activer votre licence pour débloquer ce module.</p>`;
+        }
+    }
 
-  // Exposer les fonctions globalement
-  window.ameliorerIndicateur = ameliorerIndicateur;
-  window.resoudreAction = resoudreAction;
-  window.ajouterPreuve = ajouterPreuve;
-  window.showToast = showToast;
+    function boost(id) {
+        const ind = data.indicators.find(i => i.id === id);
+        if(ind.score < 100) {
+            ind.score = 100;
+            ind.status = 'success';
+            data.probabilite += 5;
+            showView('dashboard');
+            alert(`L'indicateur ${ind.code} est désormais conforme ! Votre probabilité de réussite augmente.`);
+        }
+    }
 
-  renderCurrentView();
+    // Init
+    document.getElementById('render-area').innerHTML = renderDashboard();
 </script>
+
 </body>
 </html>
