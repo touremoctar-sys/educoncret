@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduConcret Certif — Application Qualiopi & RNCP</title>
+  <meta name="description" content="EduConcret Certif est une application simple pour préparer un audit Qualiopi, centraliser ses preuves, piloter ses actions correctives et structurer un dossier RNCP." />
+  <meta name="theme-color" content="#0e0c0a" />
+  <meta property="og:title" content="EduConcret Certif — Application Qualiopi & RNCP" />
+  <meta property="og:description" content="Préparez vos audits, centralisez vos preuves, structurez vos dossiers RNCP dans une interface claire, rapide et concrète." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e0c0a;
+      --ink-2: #1c1a17;
+      --ink-3: #2e2b26;
+      --cream: #f7f3ed;
+      --cream-2: #efe9df;
+      --cream-3: #e5ddd0;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --terracotta: #c75a3a;
+      --teal: #2a7b6e;
+      --lavender: #5c4d8a;
+      --white: #ffffff;
+      --shadow: 0 8px 30px rgba(14, 12, 10, 0.08);
+      --shadow-lg: 0 20px 50px rgba(14, 12, 10, 0.14);
+      --radius: 18px;
+      --radius-xl: 30px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 1.45rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.22s ease;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(201, 168, 76, 0.34);
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .btn-dark:hover {
+      background: var(--ink-2);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(247,243,237,0.28);
+      color: var(--cream);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-light-outline {
+      border-color: var(--ink-3);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-light-outline:hover {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 1rem 0 0.75rem;
+    }
+
+    .section-head p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #5a544d;
+      font-size: 1rem;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(14,12,10,0.94);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--cream);
+      font-weight: 800;
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,168,76,0.14);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: rgba(247,243,237,0.7);
+      text-decoration: none;
+      font-size: 0.92rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(247,243,237,0.08);
+      color: var(--cream);
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--ink) !important;
+      font-weight: 700;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(201,168,76,0.14), transparent 30%),
+        linear-gradient(180deg, #0e0c0a 0%, #171411 100%);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 4rem 0 5rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 6vw, 5.7rem);
+      line-height: 0.98;
+      margin: 1rem 0;
+    }
+
+    .hero-copy h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-copy p {
+      max-width: 700px;
+      color: rgba(247,243,237,0.74);
+      font-size: 1.02rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .hero-points span {
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(247,243,237,0.14);
+      background: rgba(247,243,237,0.05);
+      font-size: 0.85rem;
+      color: rgba(247,243,237,0.82);
+    }
+
+    .hero-card {
+      background: rgba(247,243,237,0.06);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 32px;
+      padding: 1.35rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .app-shot {
+      background: linear-gradient(180deg, #fffdf9 0%, #f8f3eb 100%);
+      border: 1px solid rgba(201,168,76,0.22);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .app-shot-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--cream-3);
+      background: white;
+    }
+
+    .shot-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 800;
+      font-family: 'Fraunces', serif;
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 460px;
+    }
+
+    .shot-sidebar {
+      background: #11100d;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .shot-sidebar div {
+      padding: 0.85rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.72);
+      font-size: 0.92rem;
+    }
+
+    .shot-sidebar .active {
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .shot-main {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .shot-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .metric {
+      background: white;
+      border: 1px solid var(--cream-3);
+      border-radius: 20px;
+      padding: 1rem;
+    }
+
+    .metric strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      margin-top: 0.3rem;
+    }
+
+    .shot-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .shot-item {
+      background: white;
+      border: 1px solid var(--cream-3);
+      border-radius: 20px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pill.gold { background: rgba(201,168,76,0.18); color: #8d6b12; }
+    .pill.red { background: rgba(199,90,58,0.14); color: #9f3c20; }
+    .pill.green { background: rgba(42,123,110,0.14); color: #1a6458; }
+    .pill.lav { background: rgba(92,77,138,0.13); color: #49397b; }
+
+    .stats {
+      background: var(--gold);
+      color: var(--ink);
+      padding: 1.2rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stats-grid strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .cards-3,
+    .cards-4,
+    .pricing-grid,
+    .feature-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-4 { grid-template-columns: repeat(4, 1fr); }
+    .feature-grid { grid-template-columns: repeat(3, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: white;
+      border: 1px solid var(--cream-3);
+      border-radius: var(--radius-xl);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card.dark {
+      background: #171411;
+      color: var(--cream);
+      border-color: rgba(201,168,76,0.18);
+    }
+
+    .card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p,
+    .card li {
+      color: #5b544d;
+      font-size: 0.96rem;
+    }
+
+    .card.dark p,
+    .card.dark li {
+      color: rgba(247,243,237,0.72);
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 1.15rem;
+    }
+
+    .card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mini-box {
+      background: #fffdf9;
+      border: 1px solid var(--cream-3);
+      border-radius: 22px;
+      padding: 1.2rem;
+    }
+
+    .mini-box h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .pricing-card {
+      position: relative;
+    }
+
+    .pricing-card.highlight {
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 18px 40px rgba(201,168,76,0.15);
+    }
+
+    .pricing-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8d6b12;
+      background: rgba(201,168,76,0.18);
+      padding: 0.45rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .price {
+      font-family: 'Fraunces', serif;
+      font-size: 2.7rem;
+      line-height: 1;
+      margin: 1rem 0 0.45rem;
+    }
+
+    .faq {
+      display: grid;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    details {
+      background: white;
+      border: 1px solid var(--cream-3);
+      border-radius: 20px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    details p {
+      margin: 0.85rem 0 0;
+      color: #5a544d;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, #15120f 0%, #1f1b17 100%);
+      color: var(--cream);
+    }
+
+    .cta-box {
+      border: 1px solid rgba(201,168,76,0.18);
+      background: rgba(247,243,237,0.04);
+      border-radius: 32px;
+      padding: 2.4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    footer {
+      background: var(--ink);
+      color: rgba(247,243,237,0.55);
+      padding: 3rem 0 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    footer .links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0 1.25rem;
+    }
+
+    footer .links a {
+      text-decoration: none;
+      color: rgba(247,243,237,0.6);
+      font-size: 0.92rem;
+    }
+
+    footer .links a:hover {
+      color: var(--cream);
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #6b645d;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner,
+      .split,
+      .cta-box { grid-template-columns: 1fr; }
+      .cards-4 { grid-template-columns: repeat(2, 1fr); }
+      .cards-3,
+      .feature-grid,
+      .pricing-grid { grid-template-columns: 1fr; }
+      .shot-grid { grid-template-columns: 1fr; }
+      .shot-sidebar { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner { flex-direction: column; align-items: flex-start; padding: 1rem 0; }
+      .nav-links { width: 100%; }
+      .nav-links a { padding-left: 0; }
+      .hero-inner { min-height: auto; padding: 4rem 0; }
+      .stats-grid,
+      .cards-4,
+      .shot-metrics { grid-template-columns: 1fr; }
+      .shot-sidebar { grid-template-columns: 1fr; }
+      .cta-box { padding: 1.6rem; }
+      .hero-copy h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-dot"></span>
+        <span>EduConcret Certif</span>
+      </a>
+      <div class="nav-links">
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#difference">Pourquoi c’est plus simple</a>
+        <a href="#stack">Stockage & IA</a>
+        <a href="#offres">Accès</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://app.educoncret.net" class="nav-cta">Accéder à l’application</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow" style="background: rgba(201,168,76,0.12); color: var(--gold);">Application Qualiopi & RNCP</span>
+        <h1>Préparez vos audits avec une application <em>claire</em>, rapide et concrète.</h1>
+        <p>
+          EduConcret Certif aide les organismes de formation, consultants et responsables pédagogiques à centraliser leurs preuves, piloter leurs écarts, structurer leurs actions correctives et organiser leurs projets RNCP sans usine à gaz.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://app.educoncret.net">Ouvrir l’application</a>
+          <a class="btn btn-outline" href="#offres">Voir les accès</a>
+        </div>
+        <div class="hero-points">
+          <span>Tableau de bord immédiat</span>
+          <span>Audit blanc</span>
+          <span>Coffre de preuves</span>
+          <span>RNCP Workspace</span>
+          <span>IA optionnelle</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="app-shot">
+          <div class="app-shot-top">
+            <div class="shot-logo">
+              <span class="brand-dot"></span>
+              <span>EduConcret Certif</span>
+            </div>
+            <span class="pill gold">Application</span>
+          </div>
+          <div class="shot-grid">
+            <div class="shot-sidebar">
+              <div class="active">Tableau de bord</div>
+              <div>Qualiopi</div>
+              <div>Audit blanc</div>
+              <div>Preuves</div>
+              <div>Plan d’action</div>
+              <div>RNCP</div>
+            </div>
+            <div class="shot-main">
+              <div class="shot-metrics">
+                <div class="metric">
+                  <small>Conformité</small>
+                  <strong>78%</strong>
+                </div>
+                <div class="metric">
+                  <small>Preuves</small>
+                  <strong>126</strong>
+                </div>
+                <div class="metric">
+                  <small>Urgences</small>
+                  <strong>4</strong>
+                </div>
+              </div>
+              <div class="shot-list">
+                <div class="shot-item">
+                  <div>
+                    <strong>Q1.1 — Information du public</strong>
+                    <div class="note">Accessibilité et délais à compléter</div>
+                  </div>
+                  <span class="pill red">À corriger</span>
+                </div>
+                <div class="shot-item">
+                  <div>
+                    <strong>Q3.1 — Suivi et accompagnement</strong>
+                    <div class="note">Processus documenté et preuves liées</div>
+                  </div>
+                  <span class="pill green">Conforme</span>
+                </div>
+                <div class="shot-item">
+                  <div>
+                    <strong>RNCP — Bloc 2</strong>
+                    <div class="note">Évaluation à formaliser</div>
+                  </div>
+                  <span class="pill lav">En cours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="container stats-grid">
+      <div><strong>1</strong><span>vue claire des priorités</span></div>
+      <div><strong>0</strong><span>fonction inutile en V1</span></div>
+      <div><strong>100%</strong><span>centré sur l’action</span></div>
+      <div><strong>∞</strong><span>évolutif avec stockage externe et IA</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="fonctionnalites">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="background: rgba(42,123,110,0.10); color: var(--teal);">Fonctionnalités</span>
+        <h2>Tout ce qu’il faut pour piloter, rien de plus.</h2>
+        <p>
+          Chaque écran doit te dire immédiatement ce qui manque, ce qui est risqué et ce qu’il faut faire ensuite. C’est la différence entre un outil administratif et un outil de pilotage.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Tableau de bord</h3>
+          <p>Une synthèse immédiate de la conformité, des preuves, des urgences et des actions ouvertes.</p>
+          <ul>
+            <li>Taux de préparation</li>
+            <li>Écarts prioritaires</li>
+            <li>Vision par critère</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Qualiopi</h3>
+          <p>Une fiche claire par indicateur avec statut, risque, commentaires, preuves liées et responsable.</p>
+          <ul>
+            <li>Vue critère par critère</li>
+            <li>Recherche simple</li>
+            <li>Mise à jour rapide</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Audit blanc</h3>
+          <p>Un audit interne structuré pour identifier les faiblesses avant l’audit réel.</p>
+          <ul>
+            <li>Lecture opérationnelle</li>
+            <li>Repérage des preuves manquantes</li>
+            <li>Préparation de la remédiation</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Coffre de preuves</h3>
+          <p>Un espace simple pour rattacher les documents aux indicateurs et retrouver l’essentiel sans perdre du temps.</p>
+          <ul>
+            <li>Types de preuves</li>
+            <li>Liaisons multi-indicateurs</li>
+            <li>Suivi de validité</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Plan d’action</h3>
+          <p>Chaque écart devient une action corrective concrète avec responsable, priorité et échéance.</p>
+          <ul>
+            <li>Priorisation claire</li>
+            <li>Lecture managériale</li>
+            <li>Suivi des retards</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>RNCP Workspace</h3>
+          <p>Un espace pour structurer les blocs, compétences, évaluations et logique globale d’un dossier RNCP.</p>
+          <ul>
+            <li>Blocs de compétences</li>
+            <li>Modalités d’évaluation</li>
+            <li>Vision d’ensemble</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="difference" style="background: var(--cream-2);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="background: rgba(199,90,58,0.10); color: var(--terracotta);">Positionnement</span>
+        <h2>Pourquoi EduConcret Certif est plus simple que ce qui existe déjà</h2>
+        <p>
+          Le problème des outils existants n’est pas le manque de fonctions. Le problème est la surcharge, le langage flou et l’absence de hiérarchie opérationnelle.
+        </p>
+      </div>
+
+      <div class="cards-3">
+        <article class="card dark">
+          <h3>1. Écran utile dès l’ouverture</h3>
+          <p>Tu vois immédiatement les urgences, les écarts, les preuves manquantes et les actions à lancer. L’application doit te faire gagner du temps dès les dix premières secondes.</p>
+        </article>
+
+        <article class="card dark">
+          <h3>2. Langage métier simple</h3>
+          <p>Pas de jargon inutile. L’interface parle le langage du terrain : à corriger, conforme, preuve manquante, prêt pour audit, action à lancer.</p>
+        </article>
+
+        <article class="card dark">
+          <h3>3. Logique orientée preuve</h3>
+          <p>Chaque indicateur doit être relié à des éléments concrets. L’objectif n’est pas de stocker des fichiers, mais de démontrer une conformité de manière lisible.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="container split">
+      <div>
+        <span class="eyebrow" style="background: rgba(92,77,138,0.10); color: var(--lavender);">Stockage & IA</span>
+        <h2 style="margin-top: 1rem; font-size: clamp(2rem, 4vw, 3rem);">Une application ouverte à un stockage gratuit et à une IA activée par le client</h2>
+        <p style="color: #5a544d; max-width: 650px; margin-top: 1rem;">
+          La vitrine peut renvoyer vers l’application et l’application peut ensuite s’appuyer sur des liens externes ou des connecteurs simples pour le stockage documentaire et pour l’IA. Tu gardes un cœur applicatif léger et tu laisses le client choisir son niveau d’équipement.
+        </p>
+      </div>
+
+      <div class="stack">
+        <div class="mini-box">
+          <h4>Stockage gratuit ou maîtrisé</h4>
+          <p>Tu peux relier l’application à des liens externes vers Google Drive, Dropbox, OneDrive, GitHub Releases, dossier partagé ou toute base documentaire du client. L’application garde les métadonnées, le client garde ses fichiers.</p>
+        </div>
+        <div class="mini-box">
+          <h4>IA gratuite ou payée par le client</h4>
+          <p>Tu peux proposer une IA optionnelle : soit un mode sans IA, soit un mode avec clé API fournie par le client. L’utilisateur active l’IA seulement s’il le souhaite et paie lui-même son usage.</p>
+        </div>
+        <div class="mini-box">
+          <h4>Cas d’usage IA les plus utiles</h4>
+          <p>Résumé de preuves, reformulation d’actions correctives, synthèse de dossiers, aide à la structuration RNCP, vérification de cohérence documentaire et préparation de notes d’audit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--ink-2); color: var(--cream);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="background: rgba(201,168,76,0.14); color: var(--gold);">Modules</span>
+        <h2 style="color: var(--cream);">Le parcours utilisateur idéal</h2>
+        <p style="color: rgba(247,243,237,0.65);">Une progression simple, logique et orientée résultat.</p>
+      </div>
+
+      <div class="cards-4">
+        <article class="card dark">
+          <h3>1. Évaluer</h3>
+          <p>Mesurer rapidement l’état de préparation de l’organisme.</p>
+        </article>
+        <article class="card dark">
+          <h3>2. Relier</h3>
+          <p>Associer les preuves utiles aux bons indicateurs.</p>
+        </article>
+        <article class="card dark">
+          <h3>3. Corriger</h3>
+          <p>Lancer les actions correctives avec une vraie hiérarchie des priorités.</p>
+        </article>
+        <article class="card dark">
+          <h3>4. Structurer</h3>
+          <p>Organiser les projets RNCP avec une vue d’ensemble exploitable.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="offres">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="background: rgba(42,123,110,0.10); color: var(--teal);">Accès à l’application</span>
+        <h2>Choisissez votre mode d’accès</h2>
+        <p>
+          Tu peux vendre l’accès via SumUp et ouvrir ensuite l’application. Le site vitrine sert à expliquer l’offre et l’application sert à travailler.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="card pricing-card">
+          <h3>Découverte</h3>
+          <div class="price">Gratuit</div>
+          <p>Pour tester l’interface et comprendre la logique globale.</p>
+          <ul>
+            <li>Tableau de bord de démonstration</li>
+            <li>Vue Qualiopi partielle</li>
+            <li>Accès limité</li>
+          </ul>
+          <a class="btn btn-light-outline" href="https://app.educoncret.net">Voir la démo</a>
+        </article>
+
+        <article class="card pricing-card highlight">
+          <span class="pricing-tag">Recommandé</span>
+          <h3>Certification</h3>
+          <div class="price">Accès payant</div>
+          <p>Pour les organismes de formation et consultants qui veulent travailler réellement dans l’application.</p>
+          <ul>
+            <li>Accès complet à l’application</li>
+            <li>Gestion des preuves et actions</li>
+            <li>RNCP Workspace</li>
+            <li>Exports et sauvegardes</li>
+          </ul>
+          <a class="btn btn-primary" href="https://app.educoncret.net">Accéder à l’application</a>
+        </article>
+
+        <article class="card pricing-card">
+          <h3>Client équipé</h3>
+          <div class="price">Sur mesure</div>
+          <p>Pour intégrer stockage externe, IA optionnelle et logique documentaire spécifique.</p>
+          <ul>
+            <li>Stockage externe relié</li>
+            <li>Clé IA fournie par le client</li>
+            <li>Organisation adaptée</li>
+          </ul>
+          <a class="btn btn-light-outline" href="mailto:contact@educoncret.net?subject=EduConcret%20Certif%20-%20Demande%20sur%20mesure">Demander un échange</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2 style="font-size: clamp(2rem, 4vw, 3rem); color: var(--cream);">Passez de la dispersion à la maîtrise.</h2>
+          <p style="color: rgba(247,243,237,0.72); margin-top: 0.8rem; max-width: 720px;">
+            EduConcret Certif a été pensé pour être plus simple, plus lisible et plus utile que les outils lourds du marché. Le bon outil n’est pas celui qui en montre le plus. C’est celui qui te fait avancer plus vite.
+          </p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="https://app.educoncret.net">Accéder à l’application</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="background: rgba(201,168,76,0.12); color: var(--gold);">FAQ</span>
+        <h2>Questions fréquentes</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>L’application remplace-t-elle un audit ou une décision officielle ?</summary>
+          <p>Non. EduConcret Certif aide à préparer, structurer et piloter. L’application ne remplace ni l’audit réel, ni une décision officielle, ni l’analyse d’un certificateur.</p>
+        </details>
+
+        <details>
+          <summary>Puis-je utiliser mon propre stockage documentaire ?</summary>
+          <p>Oui. L’application peut conserver les métadonnées et renvoyer vers des liens externes ou une organisation documentaire déjà en place chez le client.</p>
+        </details>
+
+        <details>
+          <summary>L’IA est-elle obligatoire ?</summary>
+          <p>Non. L’application peut fonctionner sans IA. Tu peux ensuite ajouter une IA optionnelle avec une clé API fournie et payée par le client.</p>
+        </details>
+
+        <details>
+          <summary>Comment accéder à l’application de certification ?</summary>
+          <p>Le bouton “Accéder à l’application” redirige vers l’espace applicatif sur <strong>app.educoncret.net</strong>. Tu peux ensuite y brancher ton système d’accès payant avec SumUp.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <h3 style="color: var(--cream); font-size: 1.7rem;">EduConcret Certif</h3>
+      <p style="margin-top: 0.5rem;">Application de préparation Qualiopi et de structuration RNCP.</p>
+      <div class="links">
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#difference">Pourquoi c’est plus simple</a>
+        <a href="#stack">Stockage & IA</a>
+        <a href="#offres">Accès</a>
+        <a href="https://educoncret.net">Retour au site principal</a>
+        <a href="https://app.educoncret.net">Accéder à l’application</a>
+      </div>
+      <p style="font-size: 0.88rem; margin-top: 1.2rem;">© 2026 EduConcret — Tous droits réservés</p>
+    </div>
+  </footer>
+</body>
+</html>
