@@ -1,931 +1,166 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Moctar Touré | Ingénierie pédagogique, orientation & accompagnement de projet</title>
-  <meta name="description" content="Moctar Touré — Ingénieur pédagogique, formateur et accompagnateur de parcours. Orientation, insertion, création d’activité, ingénierie de formation et dispositifs FOAD.">
-  <meta name="keywords" content="ingénieur pédagogique, orientation, insertion, accompagnement de projet, création d'entreprise, formateur, FOAD, accompagnement individualisé, EduConcret">
-  <meta property="og:title" content="Moctar Touré | Ingénierie pédagogique, orientation & accompagnement de projet">
-  <meta property="og:description" content="Orientation, insertion, création d’activité, ingénierie pédagogique et accompagnement individualisé.">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0e0c0a">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="EduConcret">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #0e0c0a; --ink-2: #1c1a17; --ink-3: #2e2b26;
-      --cream: #f7f3ed; --cream-2: #efe9df; --cream-3: #e5ddd0;
-      --gold: #c9a84c; --gold-light: #e8c96a;
-      --terracotta: #c75a3a; --terracotta-light: #e07055;
-      --teal: #2a7b6e; --teal-light: #3a9d8e;
-      --lavender: #5c4d8a; --lavender-light: #7b68b0;
-      --sky: #2e6fa8; --sky-light: #4a8fc0;
-      --white: #ffffff;
-      --shadow: 0 4px 24px rgba(14,12,10,0.10);
-      --shadow-lg: 0 12px 48px rgba(14,12,10,0.15);
-      --radius: 10px; --radius-lg: 18px; --radius-xl: 28px;
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.7; overflow-x: hidden; }
-    body::before {
-      content: ""; position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; opacity: 0.4;
-    }
+<style>
+  .experience-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+    margin-top: 2rem;
+  }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(14,12,10,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.15); transition: all 0.3s ease; }
-    .nav-inner { max-width: 1260px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
-    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--cream); font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.3rem; }
-    .nav-brand-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-    .nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
-    .nav-links a { color: rgba(247,243,237,0.6); text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 6px; font-size: 0.875rem; transition: all 0.2s ease; }
-    .nav-links a:hover, .nav-links a.active { color: var(--cream); background: rgba(247,243,237,0.08); }
-    .nav-cta { background: var(--gold) !important; color: var(--ink) !important; font-weight: 600 !important; }
-    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
-    .hamburger span { width: 22px; height: 1.5px; background: var(--cream); border-radius: 2px; transition: all 0.3s ease; }
-    .nav-links-mobile { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--ink-2); flex-direction: column; padding: 1rem; gap: 0.35rem; border-bottom: 1px solid rgba(201,168,76,0.1); z-index: 999; }
-    .nav-links-mobile.open { display: flex; }
-    .nav-links-mobile a { display: block; color: rgba(247,243,237,0.7); text-decoration: none; padding: 0.65rem 1rem; border-radius: 6px; font-size: 0.95rem; }
-    .nav-links-mobile a:hover, .nav-links-mobile a.active { background: rgba(201,168,76,0.1); color: var(--gold); }
+  .experience-card-clean {
+    background: var(--white);
+    border: 1px solid var(--cream-3);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    transition: all 0.3s ease;
+  }
 
-    .app-chip {
-      position: fixed; top: 84px; right: 18px; z-index: 998; background: rgba(14,12,10,0.92); color: var(--cream);
-      border: 1px solid rgba(201,168,76,0.22); border-radius: 999px; padding: 0.6rem 0.95rem; font-size: 0.82rem;
-      display: flex; align-items: center; gap: 0.65rem; box-shadow: var(--shadow-lg); backdrop-filter: blur(14px);
-    }
-    .app-chip button {
-      border: none; background: var(--gold); color: var(--ink); border-radius: 999px; padding: 0.45rem 0.8rem;
-      font-weight: 700; cursor: pointer; font-family: inherit; font-size: 0.78rem;
-    }
-    .app-chip.hidden { display: none; }
+  .experience-card-clean:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
 
-    .hero { min-height: 100vh; background: var(--ink); display: flex; align-items: center; justify-content: center; text-align: center; padding: 9rem 2rem 5rem; position: relative; overflow: hidden; }
-    .hero-bg-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px); background-size: 80px 80px; }
-    .hero-content { position: relative; z-index: 2; max-width: 920px; }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--gold); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
-    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 7vw, 5.3rem); font-weight: 900; color: var(--cream); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 0.7rem; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-tagline { font-family: 'Fraunces', serif; font-size: clamp(1.1rem, 2.2vw, 1.45rem); font-style: italic; color: rgba(247,243,237,0.55); margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards; }
-    .hero-sub { color: rgba(247,243,237,0.45); font-size: 0.96rem; margin-bottom: 2.5rem; max-width: 760px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
-    .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; }
-    .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(247,243,237,0.3); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; animation: scrollBounce 2s ease-in-out infinite; }
-    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); }
-    @keyframes scrollBounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes heartBeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.08); } 28% { transform: scale(1); } 42% { transform: scale(1.12); } 70% { transform: scale(1); } }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.16), 0 0 20px rgba(201,168,76,0.2); } 50% { box-shadow: 0 0 0 12px rgba(201,168,76,0), 0 0 34px rgba(201,168,76,0.36); } }
+  .experience-card-clean h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
 
-    section { padding: 6rem 2rem; }
-    .section-container { max-width: 1180px; margin: 0 auto; }
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
-    .section-header h2 { font-family: 'Fraunces', serif; font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.03em; line-height: 1.15; }
-    .section-header p { font-size: 1.05rem; color: var(--ink-3); max-width: 700px; margin: 0 auto; opacity: 0.78; }
+  .experience-card-clean .period {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
 
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.9rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.25s ease; cursor: pointer; border: none; font-family: inherit; }
-    .btn-gold { background: var(--gold); color: var(--ink); }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
-    .btn-terra { background: var(--terracotta); color: white; }
-    .btn-terra:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(199,90,58,0.35); }
-    .btn-teal { background: var(--teal); color: white; }
-    .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,123,110,0.35); }
-    .btn-sky { background: var(--sky); color: white; }
-    .btn-sky:hover { background: var(--sky-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,111,168,0.35); }
-    .btn-outline-cream { background: transparent; border: 1.5px solid rgba(247,243,237,0.3); color: var(--cream); }
-    .btn-outline-cream:hover { background: rgba(247,243,237,0.1); }
-    .btn-sm { padding: 0.6rem 1.35rem; font-size: 0.85rem; }
+  .experience-card-clean ul {
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+    margin-bottom: 1rem;
+  }
 
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .fade-in-delay-1 { transition-delay: 0.1s; }
-    .fade-in-delay-2 { transition-delay: 0.2s; }
-    .fade-in-delay-3 { transition-delay: 0.3s; }
+  .experience-card-clean li {
+    position: relative;
+    padding-left: 1rem;
+    color: var(--ink-3);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
 
-    .portfolio-section { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%); }
-    .portfolio-intro, .portfolio-panel, .metric-card, .offer-card, .benefit-card, .service-card, .support-card, .contact-card, .testimonial-card {
-      background: var(--white); border: 1px solid var(--cream-3); border-radius: var(--radius-xl); box-shadow: var(--shadow);
-    }
-    .portfolio-intro, .portfolio-panel, .contact-card { padding: 2rem; }
-    .service-grid, .support-grid, .portfolio-columns, .metrics-grid, .offers-grid, .benefits-grid, .testimonials-grid, .app-features-grid {
-      display: grid; gap: 1.5rem;
-    }
-    .service-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .service-card { padding: 2rem; transition: all .3s ease; }
-    .service-card:hover, .support-card:hover, .portfolio-panel:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .service-card h3, .support-card h3, .portfolio-panel h3 { font-family: 'Fraunces', serif; font-size: 1.18rem; margin-bottom: 0.8rem; }
-    .service-card ul, .support-card ul, .portfolio-panel ul { list-style: none; }
-    .service-card li, .support-card li, .portfolio-panel li { position: relative; padding-left: 1rem; margin-bottom: 0.5rem; color: var(--ink-3); font-size: 0.92rem; }
-    .service-card li::before, .support-card li::before, .portfolio-panel li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
-    .portfolio-columns { grid-template-columns: 1fr 1fr; margin-top: 1.5rem; }
-    .portfolio-panel h4 { font-family: 'Fraunces', serif; font-size: 1rem; margin: 1rem 0 0.35rem; }
-    .portfolio-panel p { color: var(--ink-3); font-size: 0.93rem; }
-    .metrics-grid, .offers-grid, .benefits-grid, .app-features-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 2rem; }
-    .metric-card, .offer-card, .benefit-card { padding: 1.4rem; }
-    .metric-card strong { display: block; font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--ink); }
-    .metric-card span, .offer-card span, .benefit-card span { display: block; font-size: 0.82rem; color: var(--ink-3); }
-    .offer-card h4, .benefit-card h4 { font-family: 'Fraunces', serif; font-size: 1rem; margin-bottom: 0.35rem; }
-    .portfolio-quote { margin-top: 2rem; text-align: center; font-family: 'Fraunces', serif; font-style: italic; font-size: 1.45rem; color: var(--gold); }
+  .experience-card-clean li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
 
-    .support-section { background: var(--cream-2); }
-    .support-grid { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
-    .support-card { padding: 2rem; transition: all .3s ease; }
+  .experience-card-clean .deliverable {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--cream-3);
+    font-size: 0.84rem;
+    color: var(--ink-3);
+  }
 
-    .app-section { background: var(--ink); color: var(--cream); }
-    .app-section .section-header h2 { color: var(--cream); }
-    .app-section .section-header p { color: rgba(247,243,237,0.6); opacity: 1; }
-    .app-feature-card { background: rgba(247,243,237,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: var(--radius-lg); padding: 1.6rem; }
-    .app-feature-card h4 { color: var(--cream); font-family: 'Fraunces', serif; margin-bottom: 0.45rem; }
-    .app-feature-card p { color: rgba(247,243,237,0.58); font-size: 0.88rem; }
-    .code-block {
-      margin-top: 2rem; background: #14110f; color: #f5efe5; border: 1px solid rgba(201,168,76,0.16); border-radius: var(--radius-lg);
-      padding: 1.25rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.6;
-    }
-    .code-block code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  .books-section {
+    margin-top: 4rem;
+  }
 
-    .contact-card form { display: flex; flex-direction: column; gap: 0.85rem; }
-    .contact-card label { font-size: 0.82rem; font-weight: 600; color: var(--ink-3); }
-    .contact-card input, .contact-card textarea, .contact-card select {
-      padding: 0.75rem 1rem; border: 1.5px solid var(--cream-3); border-radius: var(--radius);
-      font-family: inherit; font-size: 0.9rem; color: var(--ink); background: var(--cream); transition: border-color 0.2s; width: 100%;
-    }
-    .contact-card input:focus, .contact-card textarea:focus, .contact-card select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,123,110,0.1); }
-    .contact-card textarea { resize: vertical; min-height: 120px; }
-    .form-success { display: none; text-align: center; padding: 2rem; }
-    .form-success.show { display: block; }
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
 
-    .rdv-section { background: var(--ink); color: var(--cream); }
-    .rdv-section .section-header h2 { color: var(--cream); }
-    .rdv-section .section-header p { color: rgba(247,243,237,0.58); opacity: 1; }
-    .rdv-section .section-tag { background: rgba(201,168,76,0.15); color: var(--gold); }
-    .rdv-wrapper { background: var(--white); border-radius: var(--radius-xl); overflow: hidden; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow-lg); }
-    .rdv-header { background: var(--gold); padding: 2rem; text-align: center; }
-    .rdv-header h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--ink); margin-bottom: 0.3rem; }
-    .rdv-body { padding: 1.5rem; min-height: 600px; }
-    .rdv-alternatives { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
-    .rdv-alt-card { background: rgba(247,243,237,0.05); border: 1px solid rgba(247,243,237,0.1); border-radius: var(--radius-lg); padding: 1.75rem; text-align: center; transition: all 0.3s ease; }
-    .rdv-alt-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-    .rdv-alt-card h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: var(--cream); margin-bottom: 0.35rem; }
-    .rdv-alt-card p { font-size: 0.82rem; color: rgba(247,243,237,0.5); }
-    .rdv-alt-card a { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+  .book-card {
+    background: var(--white);
+    border: 1px solid var(--cream-3);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .digital-contact-card {
-      max-width: 450px; margin: 0 auto; background: rgba(14,12,10,0.96); border-radius: 30px; padding: 40px 30px;
-      text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; overflow: hidden;
-      border: 1px solid rgba(201,168,76,0.18); backdrop-filter: blur(16px);
-    }
-    .qr-wrapper {
-      background: white; padding: 15px; display: inline-block; border-radius: 20px; margin-bottom: 30px;
-      box-shadow: 0 0 20px rgba(201,168,76,0.2); animation: heartBeat 1.8s ease-in-out infinite, pulseGlow 1.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-    .qr-wrapper img { display: block; }
+  .book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
 
-    .testimonials-grid { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
-    .testimonial-card { padding: 1.75rem; position: relative; }
-    .testimonial-card::before { content: '"'; font-family: 'Fraunces', serif; font-size: 4rem; color: var(--sky); opacity: 0.18; position: absolute; top: 0.3rem; left: 1.25rem; }
-    .testimonial-card p { font-size: 0.9rem; color: var(--ink-3); line-height: 1.8; margin-bottom: 0.85rem; position: relative; }
-    .testimonial-author { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+  .book-visual {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.2;
+  }
 
-    footer { background: var(--ink-2); color: rgba(247,243,237,0.4); padding: 4rem 2rem 3rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
-    .footer-inner { max-width: 1180px; margin: 0 auto; }
-    .footer-brand { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--cream); margin-bottom: 0.3rem; }
-    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
-    .footer-links a { color: rgba(247,243,237,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--cream); }
-    .footer-copy { font-size: 0.75rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(247,243,237,0.07); }
+  .book-cp { background: linear-gradient(135deg, #fff5d9, #f7e2a8); }
+  .book-ce1 { background: linear-gradient(135deg, #ffe8d9, #ffc8a8); }
+  .book-ce2 { background: linear-gradient(135deg, #e8f7e8, #bfe6bf); }
+  .book-cm1 { background: linear-gradient(135deg, #e8f0ff, #c9dcff); }
+  .book-cm2 { background: linear-gradient(135deg, #f2e8ff, #d9c6ff); }
+  .book-6e  { background: linear-gradient(135deg, #dff6ff, #b8e6f8); }
+  .book-5e  { background: linear-gradient(135deg, #fce8ef, #f5bfd0); }
+  .book-4e  { background: linear-gradient(135deg, #e7f7ef, #bce6d0); }
+  .book-3e  { background: linear-gradient(135deg, #fff0e0, #ffd2a6); }
 
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--ink); color: var(--cream); border: 1px solid rgba(201,168,76,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: var(--shadow-lg); z-index: 999; }
-    .back-to-top.visible { opacity: 1; visibility: visible; }
-    .back-to-top:hover { transform: translateY(-3px); background: var(--ink-2); color: var(--gold); }
-    .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--terracotta)); z-index: 2000; transition: width 0.1s linear; }
+  .book-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
 
-    @media (max-width: 900px) {
-      .portfolio-columns { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr !important; }
-      .app-chip { top: auto; bottom: 92px; right: 14px; left: 14px; justify-content: space-between; border-radius: 18px; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none !important; }
-      .hamburger { display: flex !important; }
-      .hero h1 { font-size: 2.45rem; }
-      section { padding: 4rem 1.5rem; }
-      .hero-scroll { display: none; }
-      #nous-ecrire .section-container > div[style*='grid-template-columns:1fr 1fr'] { display: grid !important; grid-template-columns: 1fr !important; }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2rem; }
-      .section-header h2 { font-size: 1.75rem; }
-      .digital-contact-card { padding: 30px 20px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="app-chip hidden" id="installChip">
-    <span>📲 Installer l’application</span>
-    <button id="installBtn">Installer</button>
-  </div>
+  .book-level {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
 
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#accueil" class="nav-brand"><div class="nav-brand-dot"></div> EduConcret</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#app">Application</a></li>
-        <li><a href="#a-propos">À propos</a></li>
-        <li><a href="#nous-ecrire">Nous écrire</a></li>
-        <li><a href="#rdv" class="nav-cta">Prendre RDV</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <ul class="nav-links-mobile" id="navMobile">
-    <li><a href="#accueil" onclick="closeMenu()">Accueil</a></li>
-    <li><a href="#services" onclick="closeMenu()">Services</a></li>
-    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
-    <li><a href="#app" onclick="closeMenu()">Application</a></li>
-    <li><a href="#a-propos" onclick="closeMenu()">À propos</a></li>
-    <li><a href="#nous-ecrire" onclick="closeMenu()">✉️ Nous écrire</a></li>
-    <li><a href="#rdv" onclick="closeMenu()">📅 Prendre RDV</a></li>
-  </ul>
+  .book-content h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
 
-  <section class="hero" id="accueil">
-    <div class="hero-bg-lines"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">Ingénierie pédagogique · Orientation · Accompagnement de projet</div>
-      <h1>Des parcours conçus pour <em>agir</em>, choisir et construire.</h1>
-      <p class="hero-tagline">Je transforme les besoins d’apprentissage, d’orientation et de structuration de projet en dispositifs concrets, lisibles et opérationnels.</p>
-      <p class="hero-sub">Analyse des besoins · Parcours personnalisés · Suivi individualisé · Création d’activité · Insertion · FOAD · 3000+ apprenants accompagnés</p>
-      <div class="hero-actions">
-        <a href="#portfolio" class="btn btn-gold">Voir le portfolio →</a>
-        <a href="#app" class="btn btn-outline-cream">📲 Version application</a>
-        <a href="#rdv" class="btn btn-outline-cream">📅 Prendre RDV</a>
-      </div>
-    </div>
-    <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll</span></div>
-  </section>
+  .book-content p {
+    font-size: 0.88rem;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
 
-  <div style="background:var(--gold);padding:1rem 2rem;">
-    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;">
-      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">+50</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">Dispositifs conçus</div></div>
-      <div style="width:1px;height:36px;background:rgba(14,12,10,0.15);"></div>
-      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">3 000+</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">Apprenants accompagnés</div></div>
-      <div style="width:1px;height:36px;background:rgba(14,12,10,0.15);"></div>
-      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">10 ans</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">D’expérience terrain</div></div>
-      <div style="width:1px;height:36px;background:rgba(14,12,10,0.15);"></div>
-      <div style="text-align:center;"><div style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:900;color:var(--ink);">Sur mesure</div><div style="font-size:0.72rem;font-weight:600;color:rgba(14,12,10,0.65);text-transform:uppercase;letter-spacing:0.08em;">Parcours individualisés</div></div>
-    </div>
-  </div>
-
-  <section id="services" style="background:var(--ink);padding:6rem 2rem;">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">Domaines d’intervention</div>
-        <h2 style="color:var(--cream);">Ingénierie pédagogique, orientation et accompagnement de projet</h2>
-        <p style="color:rgba(247,243,237,0.58);opacity:1;">Une approche professionnelle centrée sur les compétences, la progression, la clarification du projet et la mise en action.</p>
-      </div>
-      <div class="service-grid">
-        <article class="service-card fade-in" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);">
-          <div style="font-size:2rem;margin-bottom:1rem;">🎓</div>
-          <h3 style="color:var(--cream);">Orientation et construction de parcours</h3>
-          <ul>
-            <li style="color:rgba(247,243,237,0.7);">Clarification du projet personnel et professionnel</li>
-            <li style="color:rgba(247,243,237,0.7);">Exploration des métiers et des environnements d’activité</li>
-            <li style="color:rgba(247,243,237,0.7);">Accompagnement des étudiants, jeunes et adultes en transition</li>
-          </ul>
-        </article>
-        <article class="service-card fade-in fade-in-delay-1" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);">
-          <div style="font-size:2rem;margin-bottom:1rem;">👤</div>
-          <h3 style="color:var(--cream);">Accompagnement individuel</h3>
-          <ul>
-            <li style="color:rgba(247,243,237,0.7);">Gestion de projet de la conception à la mise en œuvre</li>
-            <li style="color:rgba(247,243,237,0.7);">Suivi individualisé et ajustement du parcours</li>
-            <li style="color:rgba(247,243,237,0.7);">Valorisation des compétences et appui à la décision</li>
-          </ul>
-        </article>
-        <article class="service-card fade-in fade-in-delay-2" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);">
-          <div style="font-size:2rem;margin-bottom:1rem;">🚀</div>
-          <h3 style="color:var(--cream);">Création d’activité et ingénierie de dispositifs</h3>
-          <ul>
-            <li style="color:rgba(247,243,237,0.7);">Génération d’idées et structuration de projet</li>
-            <li style="color:rgba(247,243,237,0.7);">Construction de parcours entrepreneuriaux progressifs</li>
-            <li style="color:rgba(247,243,237,0.7);">Mise en place d’outils simples de pilotage</li>
-          </ul>
-        </article>
-        <article class="service-card fade-in fade-in-delay-3" style="background:rgba(247,243,237,0.04);border:1px solid rgba(201,168,76,0.15);">
-          <div style="font-size:2rem;margin-bottom:1rem;">🏢</div>
-          <h3 style="color:var(--cream);">Ingénierie de formation et FOAD</h3>
-          <ul>
-            <li style="color:rgba(247,243,237,0.7);">Analyse des besoins et création de référentiels</li>
-            <li style="color:rgba(247,243,237,0.7);">Scénarisation de parcours et activités pédagogiques</li>
-            <li style="color:rgba(247,243,237,0.7);">Digitalisation des contenus et suivi des acquis</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio" class="portfolio-section">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">📁 Portfolio</div>
-        <h2>MOCTAR TOURÉ — Portfolio</h2>
-        <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
-      </div>
-
-      <div class="portfolio-intro fade-in">
-        <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:0.6rem;">Positionnement</h3>
-        <p style="color:var(--ink-3);font-size:0.95rem;">Je conçois et déploie des dispositifs d’apprentissage centrés sur l’individu, visant le développement des compétences, la structuration de projets professionnels et l’autonomisation des apprenants. Mon approche repose sur une ingénierie pédagogique rigoureuse, combinée à un accompagnement individualisé, permettant de transformer une intention en projet concret et opérationnel.</p>
-      </div>
-
-      <div class="portfolio-columns">
-        <div class="portfolio-panel fade-in">
-          <h3>🎯 Missions principales</h3>
-          <ul>
-            <li>Analyse des besoins des apprenants et des porteurs de projet</li>
-            <li>Conception de parcours pédagogiques personnalisés</li>
-            <li>Structuration de dispositifs d’accompagnement à visée professionnelle</li>
-            <li>Facilitation de l’émergence et du développement de projets</li>
-            <li>Suivi individualisé et évaluation des compétences</li>
-            <li>Accompagnement socio-éducatif vers l’autonomie et la prise de décision</li>
-          </ul>
-        </div>
-        <div class="portfolio-panel fade-in fade-in-delay-1">
-          <h3>👤 Accompagnement individuel</h3>
-          <h4>Gestion de projet pédagogique et entrepreneurial</h4>
-          <ul>
-            <li>Structuration complète d’un projet : idée, conception, mise en œuvre</li>
-            <li>Définition des objectifs, des étapes et des livrables</li>
-            <li>Organisation du travail et priorisation des actions</li>
-            <li>Mise en place d’outils de pilotage simples et efficaces</li>
-          </ul>
-          <h4>Création et facilitation de projets d’entreprise</h4>
-          <ul>
-            <li>Aide à la génération et clarification d’idées</li>
-            <li>Accompagnement à la transformation d’une idée en activité viable</li>
-            <li>Structuration de l’offre : produit, service ou formation</li>
-            <li>Construction de parcours entrepreneuriaux progressifs</li>
-            <li>Appui à la prise de décision et à la mise en action</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="portfolio-columns">
-        <div class="portfolio-panel fade-in">
-          <h3>🧑‍🎓 Orientation et construction de parcours</h3>
-          <h4>Publics concernés</h4>
-          <ul>
-            <li>Étudiants en réflexion d’orientation</li>
-            <li>Jeunes en recherche de voie professionnelle</li>
-            <li>Adultes en reconversion ou en transition</li>
-          </ul>
-          <h4>Objectifs</h4>
-          <ul>
-            <li>Clarification du projet personnel et professionnel</li>
-            <li>Identification des compétences et des centres d’intérêt</li>
-            <li>Exploration des métiers et des environnements professionnels</li>
-            <li>Construction d’un parcours cohérent et réaliste</li>
-          </ul>
-        </div>
-        <div class="portfolio-panel fade-in fade-in-delay-1">
-          <h3>🏢 Dispositifs pédagogiques proposés</h3>
-          <h4>Ingénierie de formation</h4>
-          <ul>
-            <li>Conception de parcours adaptés aux besoins des publics</li>
-            <li>Création de référentiels de compétences</li>
-            <li>Scénarisation pédagogique : modules, séquences et activités</li>
-            <li>Intégration de modalités hybrides : présentiel et distanciel</li>
-          </ul>
-          <h4>Digitalisation et FOAD</h4>
-          <ul>
-            <li>Transformation de contenus en dispositifs e-learning</li>
-            <li>Structuration de parcours accessibles à distance</li>
-            <li>Création d’activités interactives et d’évaluations formatives</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="portfolio-columns">
-        <div class="portfolio-panel fade-in">
-          <h3>🧠 Approche pédagogique</h3>
-          <h4>Psychopédagogie</h4>
-          <p>Prise en compte des facteurs motivationnels, émotionnels et cognitifs dans l’apprentissage.</p>
-          <h4>Andragogie</h4>
-          <p>Adaptation des méthodes aux publics adultes : autonomie, utilité immédiate, ancrage dans le réel.</p>
-          <h4>Ingénierie pédagogique</h4>
-          <p>Construction de parcours structurés, progressifs et orientés vers l’action.</p>
-          <h4>Accompagnement socio-éducatif</h4>
-          <p>Soutien à la construction de l’identité professionnelle et à l’insertion.</p>
-        </div>
-        <div class="portfolio-panel fade-in fade-in-delay-1">
-          <h3>💼 Ce que je propose</h3>
-          <ul>
-            <li>Accompagnement individuel : structurer un projet et passer à l’action</li>
-            <li>Création d’activité : transformer une idée en projet viable</li>
-            <li>Orientation : clarifier un parcours et choisir une direction</li>
-            <li>Ingénierie pédagogique : concevoir des formations efficaces</li>
-            <li>Dispositifs FOAD : digitaliser et diffuser les parcours</li>
-          </ul>
-          <h4>Ce positionnement apporte</h4>
-          <ul>
-            <li>Une logique de parcours plutôt qu’une logique de produit</li>
-            <li>Une lisibilité forte sur l’orientation, l’insertion et la création de projet</li>
-            <li>Un discours adapté aux organismes, centres de formation et structures d’accompagnement</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="section-header" style="margin-top:4rem;margin-bottom:2rem;">
-        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">🏢 Expériences professionnelles</div>
-        <h2 style="font-size:2.1rem;">Entreprises et structures accompagnées</h2>
-        <p>Une expérience construite sur des missions concrètes de conception, structuration, accompagnement et pilotage pédagogique.</p>
-      </div>
-
-      <div class="service-grid">
-        <article class="support-card fade-in">
-          <h3>LOGIX FORMA — Directeur pédagogique</h3>
-          <p style="font-size:0.82rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;">2024 - Aujourd'hui</p>
-          <ul>
-            <li>Pilotage de la stratégie pédagogique de l’organisme</li>
-            <li>Conception et structuration de l’offre de formation</li>
-            <li>Création de référentiels de compétences et programmes certifiants</li>
-            <li>Accompagnement des formateurs et animation d’ateliers pédagogiques</li>
-            <li>Mise en place des processus qualité et amélioration continue</li>
-            <li>Digitalisation des parcours FOAD et suivi des indicateurs pédagogiques</li>
-          </ul>
-          <p style="margin-top:0.9rem;font-size:0.84rem;color:var(--ink-3);"><strong>Livrables :</strong> référentiels de compétences, programmes, grilles d’évaluation, tableaux de bord pédagogiques.</p>
-        </article>
-
-        <article class="support-card fade-in fade-in-delay-1">
-          <h3>IAMTV — Concepteur pédagogique</h3>
-          <p style="font-size:0.82rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;">2023 - 2024</p>
-          <ul>
-            <li>Création complète de formations aux métiers de l’audiovisuel</li>
-            <li>Structuration de modules : tournage, montage, production, post-production</li>
-            <li>Transformation de compétences techniques en parcours progressifs</li>
-            <li>Scénarisation basée sur la pratique et les cas réels</li>
-            <li>Création de supports vidéo pédagogiques et d’exercices</li>
-            <li>Accompagnement d’apprenants sur des projets concrets</li>
-          </ul>
-          <p style="margin-top:0.9rem;font-size:0.84rem;color:var(--ink-3);"><strong>Livrables :</strong> programmes de formation, supports pédagogiques, scénarios de modules, exercices pratiques.</p>
-        </article>
-
-        <article class="support-card fade-in fade-in-delay-2">
-          <h3>JIMCAB — Concepteur de formation</h3>
-          <p style="font-size:0.82rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;">2024</p>
-          <ul>
-            <li>Conception de modules de formation pour chauffeurs de taxi</li>
-            <li>Structuration des compétences métier : relation client, gestion des courses, réglementation</li>
-            <li>Création de supports pratiques : fiches réflexes et vidéos courtes</li>
-            <li>Formation aux bonnes pratiques d’accueil et de sécurité</li>
-            <li>Mise en place d’un parcours d’intégration pour nouveaux conducteurs</li>
-          </ul>
-          <p style="margin-top:0.9rem;font-size:0.84rem;color:var(--ink-3);"><strong>Livrables :</strong> modules de formation, fiches réflexes, parcours d’intégration, supports pratiques.</p>
-        </article>
-
-        <article class="support-card fade-in">
-          <h3>CASON — Concepteur de formation</h3>
-          <p style="font-size:0.82rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;">2025</p>
-          <ul>
-            <li>Création d’un programme de formation à l’excellence opérationnelle</li>
-            <li>Conception de modules sur la gestion du stress et la relation client difficile</li>
-            <li>Développement de supports e-learning accessibles sur mobile</li>
-            <li>Mise en place d’évaluations des compétences terrain</li>
-            <li>Accompagnement au déploiement auprès des équipes</li>
-          </ul>
-          <p style="margin-top:0.9rem;font-size:0.84rem;color:var(--ink-3);"><strong>Livrables :</strong> programme de formation, modules e-learning, grilles d’évaluation, supports mobiles.</p>
-        </article>
-
-        <article class="support-card fade-in fade-in-delay-1">
-          <h3>BOY PARIS EVENT — Ingénieur pédagogique freelance</h3>
-          <p style="font-size:0.82rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;">2023 - 2024</p>
-          <ul>
-            <li>Conception de parcours de formation pour bénévoles et organisateurs d’événements</li>
-            <li>Structuration des compétences organisationnelles et logistiques</li>
-            <li>Création de supports opérationnels : checklists et guides visuels</li>
-            <li>Mise en place de méthodes de coordination d’équipe et de gestion de crise</li>
-            <li>Animation d’ateliers de formation en présentiel</li>
-            <li>Évaluation des acquis et amélioration continue des dispositifs</li>
-          </ul>
-          <p style="margin-top:0.9rem;font-size:0.84rem;color:var(--ink-3);"><strong>Livrables :</strong> parcours de formation, checklists, guides visuels, supports d’animation.</p>
-        </article>
-      </div>
-
-      <div class="metrics-grid">
-        <div class="metric-card fade-in"><strong>+10 ans</strong><span>Expérience terrain</span></div>
-        <div class="metric-card fade-in fade-in-delay-1"><strong>+50</strong><span>Dispositifs pédagogiques conçus</span></div>
-        <div class="metric-card fade-in fade-in-delay-2"><strong>3 000+</strong><span>Apprenants accompagnés</span></div>
-        <div class="metric-card fade-in fade-in-delay-3"><strong>Suivi</strong><span>Parcours individualisés et contextualisés</span></div>
-      </div>
-
-      <div class="offers-grid">
-        <div class="offer-card fade-in"><h4>Accompagnement individuel</h4><span>Structurer un projet et passer à l’action</span></div>
-        <div class="offer-card fade-in fade-in-delay-1"><h4>Création d’activité</h4><span>Transformer une idée en projet viable</span></div>
-        <div class="offer-card fade-in fade-in-delay-2"><h4>Orientation</h4><span>Clarifier un parcours et choisir une direction</span></div>
-        <div class="offer-card fade-in fade-in-delay-3"><h4>Ingénierie pédagogique</h4><span>Concevoir des formations efficaces</span></div>
-        <div class="offer-card fade-in"><h4>FOAD</h4><span>Digitaliser et diffuser les parcours</span></div>
-        <div class="offer-card fade-in fade-in-delay-1"><h4>Accompagnement socio-éducatif</h4><span>Autonomie, insertion et projection</span></div>
-      </div>
-
-      <div class="benefits-grid">
-        <div class="benefit-card fade-in"><h4>Positionnement clair</h4><span>Orientation, insertion et création de projet</span></div>
-        <div class="benefit-card fade-in fade-in-delay-1"><h4>Expertises pédagogiques</h4><span>Psychopédagogie, andragogie, ingénierie</span></div>
-        <div class="benefit-card fade-in fade-in-delay-2"><h4>Approche individualisée</h4><span>Parcours ajustés aux besoins réels</span></div>
-        <div class="benefit-card fade-in fade-in-delay-3"><h4>Livrables concrets</h4><span>Référentiels, grilles, supports, tableaux de bord</span></div>
-      </div>
-
-      <div class="portfolio-quote fade-in">“On ne comprend vraiment que ce que l’on met en pratique.”</div>
-    </div>
-  </section>
-
-  <section id="support" class="support-section">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(46,111,168,0.1);color:var(--sky);">🧭 Parcours & accompagnement</div>
-        <h2>Orientation, insertion et création d’activité</h2>
-        <p>Des accompagnements individualisés pour clarifier un projet, structurer un parcours et passer à l’action.</p>
-      </div>
-      <div class="support-grid">
-        <article class="support-card fade-in">
-          <div style="font-size:2rem;margin-bottom:1rem;">🎓</div>
-          <div style="display:inline-block;background:var(--sky);color:white;font-size:0.65rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:20px;margin-bottom:0.8rem;">Étudiants · Jeunes</div>
-          <h3>Orientation et clarification de parcours</h3>
-          <p style="color:var(--ink-3);font-size:0.9rem;margin-bottom:1rem;">Identifier ses compétences, explorer les métiers, formaliser un parcours réaliste et construire un plan d’action.</p>
-          <a href="#nous-ecrire" class="btn btn-sky btn-sm" style="width:100%;justify-content:center;">Demander un accompagnement</a>
-        </article>
-        <article class="support-card fade-in fade-in-delay-1">
-          <div style="font-size:2rem;margin-bottom:1rem;">🚀</div>
-          <div style="display:inline-block;background:var(--sky);color:white;font-size:0.65rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:20px;margin-bottom:0.8rem;">Création d’activité</div>
-          <h3>Soutien à la création d’entreprise</h3>
-          <p style="color:var(--ink-3);font-size:0.9rem;margin-bottom:1rem;">Aide à la génération d’idées, structuration de projet, organisation des étapes, ingénierie de dispositifs et accompagnement au démarrage.</p>
-          <a href="#nous-ecrire" class="btn btn-sky btn-sm" style="width:100%;justify-content:center;">Structurer mon projet</a>
-        </article>
-        <article class="support-card fade-in fade-in-delay-2">
-          <div style="font-size:2rem;margin-bottom:1rem;">🛠️</div>
-          <div style="display:inline-block;background:var(--sky);color:white;font-size:0.65rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:20px;margin-bottom:0.8rem;">Accompagnement individuel</div>
-          <h3>Gestion de projet et suivi personnalisé</h3>
-          <p style="color:var(--ink-3);font-size:0.9rem;margin-bottom:1rem;">Définir des objectifs, poser des étapes, suivre la progression et développer l’autonomie dans la mise en œuvre du projet.</p>
-          <a href="#nous-ecrire" class="btn btn-sky btn-sm" style="width:100%;justify-content:center;">Être accompagné</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="app" class="app-section">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">📲 Version application</div>
-        <h2>Le site peut fonctionner comme une application web</h2>
-        <p>J’ai ajouté les lignes nécessaires pour préparer une expérience installable sur mobile et desktop, avec une base PWA propre.</p>
-      </div>
-
-      <div class="app-features-grid">
-        <div class="app-feature-card fade-in">
-          <h4>Manifest</h4>
-          <p>Le site déclare un fichier <code>manifest.webmanifest</code> pour définir le nom, les icônes, la couleur du thème et le mode d’affichage.</p>
-        </div>
-        <div class="app-feature-card fade-in fade-in-delay-1">
-          <h4>Installation</h4>
-          <p>Un bouton d’installation apparaît si le navigateur supporte l’installation de l’application web.</p>
-        </div>
-        <div class="app-feature-card fade-in fade-in-delay-2">
-          <h4>Icône d’écran d’accueil</h4>
-          <p>Le site est prêt pour iPhone et Android avec une icône d’application et des métadonnées mobiles.</p>
-        </div>
-        <div class="app-feature-card fade-in fade-in-delay-3">
-          <h4>Service Worker</h4>
-          <p>Le script enregistre un <code>service-worker.js</code> pour préparer le cache et améliorer l’expérience hors ligne.</p>
-        </div>
-      </div>
-
-      <div class="code-block fade-in">
-        <code>
-// À placer à la racine du site : /manifest.webmanifest<br>
-{<br>
-&nbsp;&nbsp;"name": "EduConcret — Moctar Touré",<br>
-&nbsp;&nbsp;"short_name": "EduConcret",<br>
-&nbsp;&nbsp;"start_url": "/",<br>
-&nbsp;&nbsp;"display": "standalone",<br>
-&nbsp;&nbsp;"background_color": "#f7f3ed",<br>
-&nbsp;&nbsp;"theme_color": "#0e0c0a",<br>
-&nbsp;&nbsp;"icons": [<br>
-&nbsp;&nbsp;&nbsp;&nbsp;{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },<br>
-&nbsp;&nbsp;&nbsp;&nbsp;{ "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }<br>
-&nbsp;&nbsp;]<br>
-}<br><br>
-
-// À placer à la racine du site : /service-worker.js<br>
-self.addEventListener('install', (event) =&gt; {<br>
-&nbsp;&nbsp;event.waitUntil(caches.open('educoncret-v1').then(cache =&gt; cache.addAll(['/'])));<br>
-});<br>
-self.addEventListener('fetch', (event) =&gt; {<br>
-&nbsp;&nbsp;event.respondWith(caches.match(event.request).then(response =&gt; response || fetch(event.request)));<br>
-});
-        </code>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:var(--cream);padding:6rem 2rem;">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">⭐ Témoignages</div>
-        <h2>Ce que disent mes interlocuteurs</h2>
-        <p>Des retours centrés sur la structuration, la clarté et la mise en action.</p>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card fade-in"><p>"Moctar a restructuré notre offre de formation avec une vraie logique de parcours. Nous avons gagné en lisibilité, en cohérence et en efficacité pédagogique."</p><div class="testimonial-author">— Sophie M., Directrice d'organisme de formation</div></div>
-        <div class="testimonial-card fade-in fade-in-delay-1"><p>"L’accompagnement m’a permis de passer d’une idée floue à un projet concret, avec des étapes claires, des livrables et une vraie progression."</p><div class="testimonial-author">— Karim B., porteur de projet</div></div>
-        <div class="testimonial-card fade-in fade-in-delay-2"><p>"J’ai enfin pu clarifier mon orientation, identifier mes compétences et comprendre vers quel parcours avancer."</p><div class="testimonial-author">— Sara L., étudiante accompagnée</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-section" id="a-propos" style="background:var(--ink);color:var(--cream);padding:6rem 2rem;">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(247,243,237,0.08);color:rgba(247,243,237,0.6);">👨‍🏫 Profil</div>
-        <h2 style="color:var(--cream);">Moctar Touré</h2>
-        <p style="color:rgba(247,243,237,0.5);opacity:1;">Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
-      </div>
-      <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem;">
-        <div>
-          <h3 style="font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--cream);margin-bottom:0.9rem;">Une approche centrée sur l’utilité pédagogique</h3>
-          <p style="color:rgba(247,243,237,0.65);margin-bottom:1.25rem;line-height:1.85;font-size:0.93rem;">Depuis plus de <strong style="color:var(--cream);">10 ans</strong>, je travaille sur le lien entre les besoins réels des publics, les objectifs de progression et la mise en pratique. J’accompagne la clarification des parcours, la structuration des projets et la conception de dispositifs pédagogiques directement mobilisables.</p>
-          <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-xl);padding:2.5rem;text-align:center;margin-top:2rem;">
-            <blockquote style="font-family:'Fraunces',serif;font-size:1.5rem;font-style:italic;color:var(--gold);margin-bottom:1.35rem;">"On ne comprend vraiment que ce que l’on met en pratique."</blockquote>
-            <p style="color:rgba(247,243,237,0.55);max-width:580px;margin:0 auto;line-height:1.85;font-size:0.93rem;">Tout ce que je construis repose sur l’analyse des besoins, la progression, l’accompagnement individualisé et l’action concrète.</p>
-          </div>
-        </div>
-        <div style="background:rgba(247,243,237,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-xl);padding:2.25rem;">
-          <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:1.35rem;">Points d’appui</h3>
-          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">📊</div><div><div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--cream);letter-spacing:-0.03em;">+50</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Dispositifs conçus et déployés</div></div></div>
-          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">👥</div><div><div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--cream);letter-spacing:-0.03em;">3 000+</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Apprenants accompagnés</div></div></div>
-          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">🧠</div><div><div style="font-size:0.86rem;font-weight:600;color:var(--cream);">Expertises</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Psychopédagogie, andragogie, FOAD, ingénierie</div></div></div>
-          <div style="display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.1rem;"><div style="width:34px;height:34px;background:rgba(247,243,237,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem;">✅</div><div><div style="font-size:0.86rem;font-weight:600;color:var(--cream);">Approche</div><div style="font-size:0.78rem;color:rgba(247,243,237,0.45);">Parcours personnalisés, suivi, mise en action</div></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="nous-ecrire" style="background:var(--white);padding:6rem 2rem;">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(42,123,110,0.1);color:var(--teal);">✉️ Nous écrire</div>
-        <h2>Parlons de votre besoin</h2>
-        <p>Premier échange gratuit pour clarifier votre projet, votre parcours ou votre dispositif pédagogique.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1000px;margin:0 auto;">
-        <div class="contact-card fade-in" style="background:var(--cream);border:2px solid var(--cream-3);">
-          <h3 style="color:var(--ink);">📝 Formulaire de contact</h3>
-          <p style="color:var(--ink-3);margin-bottom:1.5rem;">Décrivez votre besoin et je vous répondrai rapidement.</p>
-          <form id="contactForm" action="https://formspree.io/f/xldgvkjq" method="POST">
-            <div><label for="nom">Nom complet *</label><input type="text" id="nom" name="nom" placeholder="Votre nom et prénom" required></div>
-            <div><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="votre@email.com" required></div>
-            <div><label for="telephone">Téléphone (optionnel)</label><input type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX"></div>
-            <div>
-              <label for="sujet">Sujet *</label>
-              <select id="sujet" name="sujet" required>
-                <option value="" disabled selected>Choisissez un sujet</option>
-                <option value="Orientation et clarification de parcours">🎓 Orientation et clarification de parcours</option>
-                <option value="Création d’activité">🚀 Création d’activité</option>
-                <option value="Accompagnement individuel">👤 Accompagnement individuel</option>
-                <option value="Ingénierie pédagogique">🏢 Ingénierie pédagogique</option>
-                <option value="FOAD / e-learning">💻 FOAD / e-learning</option>
-                <option value="Partenariat">🤝 Partenariat</option>
-                <option value="Autre">💬 Autre</option>
-              </select>
-            </div>
-            <div><label for="message">Votre message *</label><textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet ou votre besoin..." required></textarea></div>
-            <input type="text" name="_gotcha" style="display:none">
-            <input type="hidden" name="_subject" value="Nouveau contact via educoncret.net">
-            <button type="submit" class="btn btn-teal" style="width:100%;justify-content:center;">Envoyer le message →</button>
-          </form>
-          <div id="formSuccess" class="form-success">
-            <div class="icon">✅</div>
-            <h4>Message envoyé avec succès !</h4>
-            <p>Je vous répondrai sous 24h ouvrées.<br>Merci pour votre confiance.</p>
-          </div>
-        </div>
-
-        <div class="fade-in fade-in-delay-1" style="display:flex;flex-direction:column;gap:1.5rem;">
-          <div style="background:var(--ink);border-radius:var(--radius-xl);padding:2.5rem;color:var(--cream);">
-            <h3 style="font-family:'Fraunces',serif;font-size:1.2rem;color:var(--cream);margin-bottom:1.5rem;">📬 Contact direct</h3>
-            <div style="display:flex;flex-direction:column;gap:1.25rem;">
-              <div style="display:flex;gap:1rem;align-items:flex-start;"><div style="font-size:1.5rem;">📧</div><div><div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">Email</div><a href="mailto:contact@educoncret.net" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:1rem;">contact@educoncret.net</a></div></div>
-              <div style="display:flex;gap:1rem;align-items:flex-start;"><div style="font-size:1.5rem;">📞</div><div><div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">Téléphone</div><a href="tel:+33764070161" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:1rem;">+33 7 64 07 01 61</a></div></div>
-              <div style="display:flex;gap:1rem;align-items:flex-start;"><div style="font-size:1.5rem;">📍</div><div><div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">Localisation</div><div style="font-weight:600;color:var(--cream);">Paris, France</div><div style="font-size:0.82rem;color:rgba(247,243,237,0.5);">Interventions à distance partout en France</div></div></div>
-              <div style="display:flex;gap:1rem;align-items:flex-start;"><div style="font-size:1.5rem;">💼</div><div><div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(247,243,237,0.4);margin-bottom:0.2rem;">LinkedIn</div><a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:600;">Moctar Touré</a></div></div>
-            </div>
-          </div>
-
-          <div style="background:var(--cream);border:1px solid var(--cream-3);border-radius:var(--radius-xl);padding:2rem;">
-            <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:0.8rem;">⏰ Horaires de réponse</h3>
-            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.88rem;color:var(--ink-3);">
-              <div style="display:flex;justify-content:space-between;"><span>Lundi – Vendredi</span><strong style="color:var(--ink);">9h00 – 18h00</strong></div>
-              <div style="display:flex;justify-content:space-between;"><span>Samedi</span><strong style="color:var(--ink);">Sur rendez-vous</strong></div>
-              <div style="display:flex;justify-content:space-between;"><span>Dimanche</span><strong style="color:var(--ink-3);opacity:0.5;">Fermé</strong></div>
-            </div>
-            <div style="margin-top:1rem;padding:0.8rem;background:rgba(42,123,110,0.08);border-radius:var(--radius);font-size:0.82rem;color:var(--teal);font-weight:600;">✅ Réponse garantie sous 24h ouvrées</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact-digital" style="padding: 60px 20px; background: var(--cream);">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag" style="background:rgba(201,168,76,0.12);color:var(--gold);">👤 Carte digitale</div>
-        <h2>Ma carte de visite numérique</h2>
-        <p>Scannez le QR Code pour enregistrer mes coordonnées directement dans votre téléphone.</p>
-      </div>
-      <div class="digital-contact-card fade-in">
-        <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: var(--gold); opacity: 0.1; border-radius: 50%;"></div>
-        <h3 style="font-family: 'Fraunces', serif; color: var(--gold); font-size: 1.6rem; margin-bottom: 10px;">Ma Carte Digitale</h3>
-        <p style="color: rgba(247,243,237,0.6); font-size: 0.9rem; margin-bottom: 30px;">Scannez pour enregistrer mes coordonnées directement dans votre répertoire.</p>
-        <div class="qr-wrapper"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://educoncret.net/contact.vcf" alt="QR Code Moctar Touré"></div>
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <a href="https://educoncret.net/contact.vcf" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--gold); color: var(--ink); text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#e8c96a';" onmouseout="this.style.transform='translateY(0)'; this.style.background='#c9a84c';"><span>👤 Enregistrer le Contact</span></a>
-          <a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--cream); border: 1px solid rgba(247,243,237,0.3); text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';"><span>🔗 Profil LinkedIn</span></a>
-        </div>
-        <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p style="color: var(--cream); font-size: 0.9rem; font-weight: 600; margin: 0;">Moctar Touré</p>
-          <p style="color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin: 5px 0 0 0;">Ingénierie pédagogique & accompagnement</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="rdv" class="rdv-section">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-tag">📅 Prise de rendez-vous</div>
-        <h2 style="color:var(--cream);">Réservez votre créneau</h2>
-        <p style="color:rgba(247,243,237,0.58);">Le premier échange de 30 minutes est gratuit. Choisissez un créneau dans mon agenda.</p>
-      </div>
-      <div class="rdv-wrapper fade-in">
-        <div class="rdv-header">
-          <h3>📆 Appel Découverte Offert — 30 minutes</h3>
-          <p>On échange sur votre projet, vos besoins et la forme d’accompagnement adaptée.</p>
-        </div>
-        <div class="rdv-body">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/contact-educoncret/30min" style="min-width:320px;height:700px;"></div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
-      </div>
-      <div class="rdv-alternatives fade-in">
-        <div class="rdv-alt-card"><div class="icon">📧</div><h4>Par Email</h4><p>Écrivez-moi directement et je vous propose plusieurs créneaux.</p><a href="mailto:contact@educoncret.net">contact@educoncret.net</a></div>
-        <div class="rdv-alt-card"><div class="icon">📞</div><h4>Par Téléphone</h4><p>Appelez-moi directement pour un échange immédiat.</p><a href="tel:+33764070161">07 64 07 01 61</a></div>
-        <div class="rdv-alt-card"><div class="icon">💬</div><h4>WhatsApp</h4><p>Envoyez un message vocal ou texte pour convenir d'un RDV.</p><a href="https://wa.me/33764070161" target="_blank">Message WhatsApp</a></div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">EduConcret</div>
-      <p style="font-size:1rem;color:var(--cream);margin-bottom:0.5rem;font-family:'Fraunces',serif;font-style:italic;">Apprendre, choisir, construire.</p>
-      <p style="font-size:0.82rem;color:rgba(247,243,237,0.4);margin-bottom:1.5rem;">Moctar Touré — Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
-      <div class="footer-links">
-        <a href="#accueil">Accueil</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#app">Application</a>
-        <a href="#a-propos">À propos</a>
-        <a href="#nous-ecrire">Nous écrire</a>
-        <a href="#rdv">Prendre RDV</a>
-      </div>
-      <div style="margin:1.5rem 0;">
-        <p style="color:rgba(247,243,237,0.3);font-size:0.8rem;">
-          <a href="mailto:contact@educoncret.net" style="color:rgba(247,243,237,0.4);text-decoration:none;">contact@educoncret.net</a>
-          &nbsp; | &nbsp;
-          <a href="tel:+33764070161" style="color:rgba(247,243,237,0.4);text-decoration:none;">07 64 07 01 61</a>
-          &nbsp; | &nbsp; Paris, France
-        </p>
-      </div>
-      <div class="footer-copy">© 2026 Moctar Touré | EduConcret | Tous droits réservés<br><span style="font-size:0.7rem;opacity:0.5;">Version site + base application web installable</span></div>
-    </div>
-  </footer>
-
-  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
-
-  <script>
-    const scrollProgress = document.getElementById('scrollProgress');
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      scrollProgress.style.width = (docHeight > 0 ? (scrollTop / docHeight * 100) : 0) + '%';
-      if (scrollTop > 500) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('navMobile');
-    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
-    function closeMenu() { navMobile.classList.remove('open'); }
-    navMobile.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          fadeObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    fadeEls.forEach(el => fadeObserver.observe(el));
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetStr = this.getAttribute('href');
-        if (targetStr.startsWith('#')) {
-          const target = document.querySelector(targetStr);
-          if (target) {
-            e.preventDefault();
-            const offset = 80;
-            window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
-          }
-        }
-      });
-    });
-
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '⏳ Envoi en cours...';
-        submitBtn.disabled = true;
-        try {
-          const response = await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-          if (response.ok) {
-            contactForm.style.display = 'none';
-            document.getElementById('formSuccess').classList.add('show');
-          } else {
-            submitBtn.innerHTML = '❌ Erreur. Réessayez.';
-            setTimeout(() => { submitBtn.innerHTML = originalText; submitBtn.disabled = false; }, 3000);
-          }
-        } catch (err) {
-          submitBtn.innerHTML = '❌ Erreur réseau.';
-          setTimeout(() => { submitBtn.innerHTML = originalText; submitBtn.disabled = false; }, 3000);
-        }
-      });
-    }
-
-    const sections = document.querySelectorAll('section[id]');
-    const navLinksAll = document.querySelectorAll('.nav-links a, .nav-links-mobile a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-      });
-      navLinksAll.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-      });
-    });
-
-    let deferredPrompt;
-    const installChip = document.getElementById('installChip');
-    const installBtn = document.getElementById('installBtn');
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installChip.classList.remove('hidden');
-    });
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installChip.classList.add('hidden');
-    });
-    window.addEventListener('appinstalled', () => installChip.classList.add('hidden'));
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
-      });
-    }
-  </script>
-</body>
-</html>
+  .books-note {
+    margin-top: 1.5rem;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.4rem;
+    color: var(--ink-3);
+    font-size: 0.92rem;
+  }
+</style>
