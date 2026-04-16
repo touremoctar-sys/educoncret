@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Moctar Touré | Ingénierie pédagogique, orientation & projets</title>
-  <meta name="description" content="Moctar Touré, ingénieur pédagogique, formateur et accompagnateur de parcours. Orientation, insertion, création d’activité, FOAD et ingénierie de formation.">
+  <title>Moctar Touré | EduConcret — Ingénierie pédagogique, romans pédagogiques et stimulation cognitive</title>
+  <meta name="description" content="Moctar Touré, ingénieur pédagogique. Audit Qualiopi light, modules pédagogiques, romans pédagogiques du CP à la 3e et ateliers de stimulation cognitive pour seniors.">
   <meta name="theme-color" content="#0e0c0a">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icons/icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&amp;family=Fraunces:ital,wght@0,600;0,800;0,900;1,700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:ital,wght@0,600;0,800;0,900;1,700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --ink: #0e0c0a;
       --ink-2: #1c1a17;
+      --ink-3: #2e2b26;
       --muted: #6e675f;
       --cream: #f7f3ed;
       --cream-2: #efe9df;
@@ -28,11 +29,15 @@
       --teal: #2a7b6e;
       --sky: #2e6fa8;
       --terra: #c75a3a;
-      --shadow: 0 16px 42px rgba(14, 12, 10, .1);
-      --shadow-lg: 0 24px 70px rgba(14, 12, 10, .16);
+      --success: #15803d;
+      --shadow: 0 16px 42px rgba(14, 12, 10, 0.1);
+      --shadow-lg: 0 24px 70px rgba(14, 12, 10, 0.16);
       --radius: 8px;
       --radius-lg: 18px;
+      --radius-xl: 28px;
       --max: 1180px;
+      --font-serif: "Fraunces", Georgia, serif;
+      --font-sans: "DM Sans", system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -40,7 +45,7 @@
     body {
       color: var(--ink);
       background: var(--cream);
-      font-family: "DM Sans", system-ui, sans-serif;
+      font-family: var(--font-sans);
       line-height: 1.7;
       overflow-x: hidden;
     }
@@ -51,11 +56,11 @@
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: .34;
+      opacity: 0.32;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
     }
 
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
     .progress {
@@ -65,14 +70,15 @@
       width: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--gold), var(--terra), var(--teal));
+      transition: width 0.15s ease;
     }
 
     .nav {
       position: fixed;
       inset: 0 0 auto 0;
       z-index: 1000;
-      background: rgba(14, 12, 10, .96);
-      border-bottom: 1px solid rgba(201, 168, 76, .16);
+      background: rgba(14, 12, 10, 0.96);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.16);
       backdrop-filter: blur(18px);
     }
 
@@ -92,8 +98,7 @@
       align-items: center;
       gap: 10px;
       color: var(--cream);
-      text-decoration: none;
-      font: 900 1.25rem "Fraunces", serif;
+      font: 900 1.25rem var(--font-serif);
       white-space: nowrap;
     }
 
@@ -103,7 +108,7 @@
       height: 9px;
       border-radius: 999px;
       background: var(--gold);
-      box-shadow: 0 0 20px rgba(201, 168, 76, .45);
+      box-shadow: 0 0 20px rgba(201, 168, 76, 0.45);
     }
 
     .nav-links {
@@ -115,18 +120,17 @@
 
     .nav-links a {
       display: block;
-      color: rgba(247, 243, 237, .66);
-      text-decoration: none;
-      font-size: .86rem;
-      padding: .46rem .76rem;
+      color: rgba(247, 243, 237, 0.66);
+      font-size: 0.86rem;
+      padding: 0.46rem 0.76rem;
       border-radius: var(--radius);
-      transition: background .2s, color .2s;
+      transition: background 0.2s, color 0.2s;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--cream);
-      background: rgba(247, 243, 237, .08);
+      background: rgba(247, 243, 237, 0.08);
     }
 
     .nav-links .cta {
@@ -139,11 +143,12 @@
       display: none;
       width: 42px;
       height: 42px;
-      border: 1px solid rgba(247, 243, 237, .18);
+      border: 1px solid rgba(247, 243, 237, 0.18);
       border-radius: var(--radius);
       background: transparent;
       color: var(--cream);
       font-size: 1.25rem;
+      cursor: pointer;
     }
 
     .install-chip {
@@ -155,10 +160,10 @@
       align-items: center;
       gap: 12px;
       padding: 10px 12px 10px 16px;
-      border: 1px solid rgba(201, 168, 76, .28);
+      border: 1px solid rgba(201, 168, 76, 0.28);
       border-radius: 999px;
       color: var(--cream);
-      background: rgba(14, 12, 10, .94);
+      background: rgba(14, 12, 10, 0.94);
       box-shadow: var(--shadow-lg);
       backdrop-filter: blur(14px);
     }
@@ -175,16 +180,16 @@
       color: var(--cream);
       text-align: center;
       background:
-        linear-gradient(rgba(201, 168, 76, .055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201, 168, 76, .055) 1px, transparent 1px),
-        radial-gradient(circle at 50% 18%, rgba(201, 168, 76, .14), transparent 32%),
+        linear-gradient(rgba(201, 168, 76, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, 0.055) 1px, transparent 1px),
+        radial-gradient(circle at 50% 18%, rgba(201, 168, 76, 0.14), transparent 32%),
         var(--ink);
       background-size: 80px 80px, 80px 80px, auto, auto;
     }
 
     .hero-inner {
-      width: min(940px, 100%);
-      animation: rise .8s ease both;
+      width: min(980px, 100%);
+      animation: rise 0.8s ease both;
     }
 
     .eyebrow {
@@ -193,9 +198,9 @@
       gap: 12px;
       margin-bottom: 28px;
       color: var(--gold-light);
-      font-size: .76rem;
+      font-size: 0.76rem;
       font-weight: 900;
-      letter-spacing: .14em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
@@ -205,35 +210,56 @@
       width: 34px;
       height: 1px;
       background: currentColor;
-      opacity: .45;
+      opacity: 0.45;
     }
 
     h1, h2, h3, h4 {
-      font-family: "Fraunces", Georgia, serif;
+      font-family: var(--font-serif);
       line-height: 1.08;
       letter-spacing: 0;
     }
 
     h1 {
       margin: 0 auto 22px;
-      font-size: clamp(2.55rem, 7vw, 5.25rem);
+      font-size: clamp(2.7rem, 7vw, 5.25rem);
       font-weight: 900;
+      max-width: 920px;
     }
 
     h1 em { color: var(--gold); font-style: italic; }
 
     .hero-lead {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 16px;
-      color: rgba(247, 243, 237, .72);
-      font: italic 700 clamp(1.05rem, 2.2vw, 1.42rem) "Fraunces", serif;
+      color: rgba(247, 243, 237, 0.72);
+      font: italic 700 clamp(1.05rem, 2.2vw, 1.42rem) var(--font-serif);
     }
 
     .hero-sub {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 34px;
-      color: rgba(247, 243, 237, .5);
-      font-size: .98rem;
+      color: rgba(247, 243, 237, 0.54);
+      font-size: 0.98rem;
+    }
+
+    .hero-proof {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 auto 28px;
+    }
+
+    .hero-proof span {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.48rem 0.82rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      background: rgba(247, 243, 237, 0.05);
+      color: rgba(247, 243, 237, 0.74);
+      font-size: 0.8rem;
+      font-weight: 700;
     }
 
     .actions {
@@ -249,13 +275,14 @@
       justify-content: center;
       gap: 8px;
       min-height: 44px;
-      padding: .8rem 1.35rem;
+      padding: 0.8rem 1.35rem;
       border: 0;
       border-radius: 999px;
-      font: 900 .92rem "DM Sans", sans-serif;
+      font: 900 0.92rem var(--font-sans);
       text-decoration: none;
-      transition: transform .2s, box-shadow .2s, background .2s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
@@ -263,12 +290,9 @@
     .btn-dark { background: var(--ink); color: var(--cream); }
     .btn-teal { background: var(--teal); color: var(--white); }
     .btn-sky { background: var(--sky); color: var(--white); }
-    .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(247, 243, 237, .32); }
+    .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(247, 243, 237, 0.32); }
 
-    .stats {
-      padding: 16px 24px;
-      background: var(--gold);
-    }
+    .stats { padding: 16px 24px; background: var(--gold); }
 
     .stats-inner {
       max-width: var(--max);
@@ -279,19 +303,15 @@
       text-align: center;
     }
 
-    .stat strong {
-      display: block;
-      font: 900 1.75rem "Fraunces", serif;
-      line-height: 1;
-    }
+    .stat strong { display: block; font: 900 1.75rem var(--font-serif); line-height: 1; }
 
     .stat span {
       display: block;
       margin-top: 5px;
-      color: rgba(14, 12, 10, .66);
-      font-size: .7rem;
+      color: rgba(14, 12, 10, 0.66);
+      font-size: 0.7rem;
       font-weight: 900;
-      letter-spacing: .08em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -300,35 +320,25 @@
     .soft { background: var(--cream-2); }
     .container { max-width: var(--max); margin: 0 auto; }
 
-    .section-head {
-      max-width: 760px;
-      margin: 0 auto 46px;
-      text-align: center;
-    }
+    .section-head { max-width: 760px; margin: 0 auto 46px; text-align: center; }
 
     .tag {
       display: inline-flex;
       margin-bottom: 14px;
-      padding: .32rem .88rem;
+      padding: 0.32rem 0.88rem;
       border-radius: 999px;
-      background: rgba(201, 168, 76, .14);
+      background: rgba(201, 168, 76, 0.14);
       color: #8a6b14;
-      font-size: .72rem;
+      font-size: 0.72rem;
       font-weight: 900;
-      letter-spacing: .1em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .dark .tag { color: var(--gold-light); background: rgba(201, 168, 76, .15); }
-
-    .section-head h2 {
-      margin-bottom: 12px;
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      font-weight: 900;
-    }
-
-    .section-head p { color: rgba(46, 43, 38, .76); }
-    .dark .section-head p { color: rgba(247, 243, 237, .6); }
+    .dark .tag { color: var(--gold-light); background: rgba(201, 168, 76, 0.15); }
+    .section-head h2 { margin-bottom: 12px; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; }
+    .section-head p { color: rgba(46, 43, 38, 0.76); }
+    .dark .section-head p { color: rgba(247, 243, 237, 0.6); }
 
     .grid { display: grid; gap: 22px; }
     .grid.two { grid-template-columns: repeat(2, 1fr); }
@@ -342,7 +352,7 @@
       border-radius: var(--radius-lg);
       padding: 28px;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-      transition: transform .25s, box-shadow .25s, border-color .25s;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
     }
 
     .card:hover {
@@ -353,92 +363,404 @@
 
     .dark .card {
       color: var(--cream);
-      background: rgba(247, 243, 237, .045);
-      border-color: rgba(201, 168, 76, .18);
+      background: rgba(247, 243, 237, 0.045);
+      border-color: rgba(201, 168, 76, 0.18);
     }
 
     .icon { font-size: 2rem; margin-bottom: 14px; }
     .card h3 { margin-bottom: 10px; font-size: 1.12rem; font-weight: 900; }
-    .card p, .card li { color: rgba(46, 43, 38, .78); font-size: .92rem; }
-    .dark .card p, .dark .card li { color: rgba(247, 243, 237, .7); }
+    .card p, .card li { color: rgba(46, 43, 38, 0.78); font-size: 0.92rem; }
+    .dark .card p, .dark .card li { color: rgba(247, 243, 237, 0.7); }
 
-    .list {
-      list-style: none;
+    .list { list-style: none; display: grid; gap: 8px; margin-top: 12px; }
+    .list li { position: relative; padding-left: 18px; }
+    .list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
+
+    .offers-intro {
       display: grid;
-      gap: 8px;
-      margin-top: 12px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 28px;
     }
 
-    .list li {
+    .offer-hero-card {
+      background: linear-gradient(135deg, #16120f, #0e0c0a);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .offer-hero-card h3 {
+      margin-bottom: 14px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--cream);
+    }
+
+    .offer-hero-card p { color: rgba(247, 243, 237, 0.72); }
+
+    .offer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .offer-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.42rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--gold-light);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .price-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .price-card:hover { transform: translateY(-4px); }
+
+    .price-card.highlight {
       position: relative;
-      padding-left: 18px;
+      border-color: var(--gold);
     }
 
-    .list li::before {
-      content: "→";
+    .price-card.highlight::after {
+      content: "Offre signature";
       position: absolute;
-      left: 0;
-      color: var(--gold);
+      top: -12px;
+      right: 20px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.65rem;
       font-weight: 900;
-    }
-
-    .experience-meta {
-      margin-bottom: 10px;
-      color: var(--gold);
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .08em;
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    .metric strong {
-      display: block;
-      font: 900 1.6rem "Fraunces", serif;
+    .price-card h4 { font-size: 1.12rem; margin-bottom: 0.8rem; color: var(--ink); }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed var(--line);
     }
 
-    .quote {
-      margin-top: 34px;
+    .price-row:last-child { border-bottom: none; }
+    .price-label { color: var(--muted); font-size: 0.9rem; }
+    .price-value { font-weight: 700; }
+    .price-edu { color: var(--success); font-weight: 900; font-size: 1.18rem; }
+
+    .savings-badge {
+      display: inline-block;
+      background: rgba(21, 128, 61, 0.12);
+      color: var(--success);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .comparison-table th {
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .comparison-table td:last-child { font-weight: 700; color: var(--success); }
+    .comparison-table tr:hover { background: rgba(201, 168, 76, 0.05); }
+
+    .pack-star {
+      margin-top: 2rem;
+      padding: 1.8rem;
       text-align: center;
-      color: var(--gold);
-      font: italic 800 1.45rem "Fraunces", serif;
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.18), rgba(232, 201, 106, 0.26));
     }
 
-    .app-card code {
-      padding: 2px 5px;
-      border-radius: 5px;
-      background: rgba(201, 168, 76, .13);
-      color: var(--gold-light);
+    .pack-star h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+    .pack-star .price {
+      font: 900 2.4rem var(--font-serif);
+      line-height: 1;
+      margin: 0.4rem 0;
     }
+
+    .pack-star .save {
+      display: inline-flex;
+      margin: 0.4rem 0 0.8rem;
+      padding: 0.22rem 0.72rem;
+      border-radius: 999px;
+      background: var(--terra);
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(21, 128, 61, 0.1);
+      color: var(--success);
+      padding: 0.42rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .product-gamme { margin-bottom: 2rem; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(46, 111, 168, 0.06);
+      padding: 1rem;
+      border-radius: 12px;
+    }
+
+    .info-box strong { color: var(--sky); }
+    .info-box-teal { background: rgba(42, 123, 110, 0.08); }
+    .info-box-teal strong { color: var(--teal); }
+    .info-box-success { background: rgba(21, 128, 61, 0.08); }
+    .info-box-success strong { color: var(--success); }
+    .info-box-gold { background: rgba(201, 168, 76, 0.1); }
+    .info-box-gold strong { color: #9a7411; }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .book-mini {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid var(--line);
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+    }
+
+    .book-mini:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .book-mini .level {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-mini h5 { font-size: 0.92rem; margin: 0.3rem 0; font-weight: 700; }
+    .book-price { color: var(--gold); font-weight: 900; font-size: 1.08rem; }
+
+    .cover-art {
+      position: relative;
+      min-height: 240px;
+      margin: -1rem -1rem 1rem;
+      padding: 1rem;
+      display: flex;
+      align-items: end;
+      border-bottom: 1px solid rgba(255,255,255,0.16);
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .cover-art::before,
+    .cover-art::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.28;
+    }
+
+    .cover-art::before {
+      width: 180px;
+      height: 180px;
+      top: -30px;
+      right: -20px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .cover-art::after {
+      width: 120px;
+      height: 120px;
+      bottom: 18px;
+      left: -30px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      text-align: left;
+    }
+
+    .cover-kids-1 { background: linear-gradient(135deg, #5577ff, #8dc6ff 58%, #ffe38b); }
+    .cover-kids-2 { background: linear-gradient(135deg, #ff7a7a, #ffb36b 55%, #ffe6a7); }
+    .cover-kids-3 { background: linear-gradient(135deg, #19a993, #72d5c7 58%, #e7fff8); }
+    .cover-kids-4 { background: linear-gradient(135deg, #8c67ff, #ce8eff 58%, #ffd6ef); }
+    .cover-kids-5 { background: linear-gradient(135deg, #203a78, #3f7ed8 55%, #9fd0ff); }
+    .cover-kids-6 { background: linear-gradient(135deg, #0f8b54, #66c07f 55%, #d6f5b2); }
+    .cover-senior-1 { background: linear-gradient(135deg, #3b7c7a, #7fc3bb 55%, #dff7ef); }
+    .cover-senior-2 { background: linear-gradient(135deg, #735f9f, #9f8dd0 55%, #ece5ff); }
+    .cover-senior-3 { background: linear-gradient(135deg, #bf7c32, #ebb16d 55%, #fff1cf); }
+
+    .cover-chip {
+      display: inline-flex;
+      margin-bottom: 0.55rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(14,12,10,0.18);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 900;
+      line-height: 1.02;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.22);
+    }
+
+    .cover-sub {
+      display: block;
+      margin-top: 0.35rem;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .offer-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.8rem;
+    }
+
+    .offer-box {
+      padding: 1.3rem;
+      border-radius: 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .offer-box h4 {
+      margin-bottom: 0.45rem;
+      font-size: 1.12rem;
+    }
+
+    .offer-box .price-big {
+      margin: 0.65rem 0 0.35rem;
+      font: 900 2rem var(--font-serif);
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .offer-box .price-note {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-list { list-style: none; font-size: 0.9rem; line-height: 1.8; }
+    .feature-list li { margin: 0.2rem 0; }
+
+    .metric strong { display: block; font: 900 1.6rem var(--font-serif); }
+    .experience-meta { margin-bottom: 10px; color: var(--gold); font-size: 0.72rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+    .quote { margin-top: 34px; text-align: center; color: var(--gold); font: italic 800 1.45rem var(--font-serif); }
 
     .contact-grid {
       max-width: 1040px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.08fr .92fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 24px;
     }
 
     form { display: grid; gap: 14px; }
-    label { display: block; margin-bottom: 6px; color: var(--muted); font-size: .8rem; font-weight: 900; }
+    label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 0.8rem; font-weight: 900; }
 
     input, select, textarea {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: .82rem .9rem;
+      padding: 0.82rem 0.9rem;
       background: var(--cream);
       color: var(--ink);
       font: inherit;
     }
 
     textarea { min-height: 130px; resize: vertical; }
-    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(42, 123, 110, .12); border-color: var(--teal); }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(42, 123, 110, 0.12); border-color: var(--teal); }
 
     .success {
       display: none;
       padding: 28px;
       border-radius: var(--radius-lg);
-      background: rgba(42, 123, 110, .09);
+      background: rgba(42, 123, 110, 0.09);
       color: var(--teal);
       text-align: center;
       font-weight: 900;
@@ -446,12 +768,7 @@
 
     .success.show { display: block; }
 
-    .contact-direct {
-      color: var(--cream);
-      background: var(--ink);
-      border-color: var(--ink);
-    }
-
+    .contact-direct { color: var(--cream); background: var(--ink); border-color: var(--ink); }
     .contact-direct a { color: var(--gold); text-decoration: none; font-weight: 900; }
 
     .digital-card {
@@ -459,8 +776,8 @@
       margin: 0 auto;
       color: var(--cream);
       text-align: center;
-      background: rgba(14, 12, 10, .96);
-      border: 1px solid rgba(201, 168, 76, .22);
+      background: rgba(14, 12, 10, 0.96);
+      border: 1px solid rgba(201, 168, 76, 0.22);
     }
 
     .qr {
@@ -470,11 +787,6 @@
       border-radius: 16px;
       background: var(--white);
       animation: pulse 2.1s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, .25); transform: scale(1); }
-      50% { box-shadow: 0 0 0 14px rgba(201, 168, 76, 0); transform: scale(1.025); }
     }
 
     .calendly-wrap {
@@ -502,16 +814,12 @@
 
     footer {
       padding: 48px 24px;
-      color: rgba(247, 243, 237, .45);
+      color: rgba(247, 243, 237, 0.45);
       text-align: center;
       background: var(--ink-2);
     }
 
-    footer strong {
-      display: block;
-      color: var(--cream);
-      font: 900 1.35rem "Fraunces", serif;
-    }
+    footer strong { display: block; color: var(--cream); font: 900 1.35rem var(--font-serif); }
 
     .footer-links {
       margin: 20px auto;
@@ -521,7 +829,7 @@
       gap: 18px;
     }
 
-    .footer-links a { color: rgba(247, 243, 237, .48); text-decoration: none; font-size: .86rem; }
+    .footer-links a { color: rgba(247, 243, 237, 0.48); font-size: 0.86rem; }
 
     .top {
       position: fixed;
@@ -532,24 +840,24 @@
       height: 44px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(201, 168, 76, .34);
+      border: 1px solid rgba(201, 168, 76, 0.34);
       border-radius: 50%;
       color: var(--cream);
       background: var(--ink);
       opacity: 0;
       visibility: hidden;
-      transition: opacity .2s, transform .2s, visibility .2s;
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
     }
 
     .top.visible { opacity: 1; visibility: visible; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.25); transform: scale(1); }
+      50% { box-shadow: 0 0 0 14px rgba(201, 168, 76, 0); transform: scale(1.025); }
+    }
 
     @keyframes rise {
       from { opacity: 0; transform: translateY(26px); }
@@ -557,7 +865,7 @@
     }
 
     @media (max-width: 980px) {
-      .grid.two, .grid.three, .grid.four, .contact-grid { grid-template-columns: 1fr; }
+      .grid.two, .grid.three, .grid.four, .contact-grid, .offers-intro { grid-template-columns: 1fr; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .nav-links {
         position: fixed;
@@ -567,10 +875,10 @@
         display: none;
         padding: 14px;
         background: var(--ink-2);
-        border-bottom: 1px solid rgba(201, 168, 76, .16);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.16);
       }
       .nav-links.open { display: grid; }
-      .nav-links a { text-align: center; padding: .72rem 1rem; }
+      .nav-links a { text-align: center; padding: 0.72rem 1rem; }
       .menu { display: grid; place-items: center; }
     }
 
@@ -579,7 +887,13 @@
       section { padding: 68px 18px; }
       .stats-inner { grid-template-columns: 1fr; }
       .eyebrow::before, .eyebrow::after { display: none; }
-      .install-chip { left: 14px; right: 14px; justify-content: space-between; border-radius: var(--radius-lg); }
+      .install-chip {
+        left: 14px;
+        right: 14px;
+        justify-content: space-between;
+        border-radius: var(--radius-lg);
+      }
+      .comparison-table { display: block; overflow-x: auto; }
     }
   </style>
 </head>
@@ -592,31 +906,38 @@
       <button class="menu" id="menu" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#accueil" class="active">Accueil</a></li>
+        <li><a href="#offres">Offres</a></li>
+        <li><a href="#produits">Collections</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#app">Application</a></li>
         <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact">Nous écrire</a></li>
-        <li><a class="cta" href="#rdv">Prendre RDV</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="cta" href="#rdv">RDV gratuit</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="install-chip" id="installChip">
-    <span>Installer l’application</span>
+    <span>Installer l'application</span>
     <button class="btn btn-gold" id="installButton" type="button">Installer</button>
   </div>
 
   <header class="hero" id="accueil">
     <div class="hero-inner">
-      <p class="eyebrow">Ingénierie pédagogique · Orientation · Accompagnement de projet</p>
-      <h1>Des parcours conçus pour <em>agir</em>, choisir et construire.</h1>
-      <p class="hero-lead">Je transforme les besoins d’apprentissage, d’orientation et de structuration de projet en dispositifs concrets, lisibles et opérationnels.</p>
-      <p class="hero-sub">Analyse des besoins · Parcours personnalisés · Suivi individualisé · Création d’activité · Insertion · FOAD · 3000+ apprenants accompagnés</p>
+      <p class="eyebrow">Ingénierie pédagogique · Enfance · Seniors · Qualiopi</p>
+      <h1>Des ressources conçues pour <em>transmettre, structurer et faire progresser</em>.</h1>
+      <p class="hero-lead">J’accompagne les structures, les familles et les professionnels avec des offres pédagogiques lisibles, des contenus utiles et des dispositifs concrets.</p>
+      <p class="hero-sub">Audit Qualiopi light · Modules pédagogiques · Romans pédagogiques du CP à la 3e · Stimulation cognitive pour seniors · Parcours sur mesure</p>
+      <div class="hero-proof">
+        <span>Audit Qualiopi light dès 350€ HT</span>
+        <span>Modules dès 500€ HT</span>
+        <span>Romans pédagogiques à 59€ TTC</span>
+        <span>Stimulation cognitive seniors à partir de 39€ TTC</span>
+      </div>
       <div class="actions">
-        <a class="btn btn-gold" href="#portfolio">Voir le portfolio</a>
-        <a class="btn btn-outline" href="#app">Version application</a>
-        <a class="btn btn-outline" href="#rdv">Prendre RDV</a>
+        <a class="btn btn-gold" href="#offres">Découvrir les offres</a>
+        <a class="btn btn-outline" href="#produits">Voir les collections</a>
+        <a class="btn btn-outline" href="#rdv">Réserver un échange</a>
       </div>
     </div>
   </header>
@@ -626,27 +947,425 @@
       <div class="stat"><strong>+50</strong><span>Dispositifs conçus</span></div>
       <div class="stat"><strong>3 000+</strong><span>Apprenants accompagnés</span></div>
       <div class="stat"><strong>10 ans</strong><span>Expérience terrain</span></div>
-      <div class="stat"><strong>Sur mesure</strong><span>Parcours individualisés</span></div>
+      <div class="stat"><strong>CP → 3e</strong><span>Progression couverte</span></div>
     </div>
   </div>
 
-  <section class="dark" id="services">
+  <section id="offres" class="dark">
     <div class="container">
       <div class="section-head reveal">
-        <span class="tag">Domaines d’intervention</span>
+        <span class="tag">Offres professionnelles</span>
+        <h2>Des prestations claires, utiles et prêtes à activer</h2>
+        <p>Chaque offre est pensée pour répondre vite à un besoin réel, avec des livrables compréhensibles, une exécution sérieuse et un niveau d’entrée accessible.</p>
+      </div>
+
+      <div class="offers-intro">
+        <article class="offer-hero-card reveal">
+          <h3>Des formats courts, solides et directement mobilisables</h3>
+          <p>Audit, structuration pédagogique, création de ressources, formation de formateurs ou accompagnement mensuel : EduConcret privilégie la clarté, la rapidité de décision et la qualité d’usage.</p>
+          <div class="offer-badges">
+            <span class="offer-badge">Audit Qualiopi light</span>
+            <span class="offer-badge">Modules pédagogiques</span>
+            <span class="offer-badge">Pack signature</span>
+            <span class="offer-badge">Paiement CB possible</span>
+          </div>
+        </article>
+
+        <article class="price-card highlight reveal">
+          <h4>Audit Qualiopi Light</h4>
+          <div class="price-row">
+            <span class="price-label">Tarif EduConcret</span>
+            <span class="price-edu">350€ HT</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Livrables</span>
+            <span class="price-value">Rapport + roadmap + templates</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Format</span>
+            <span class="price-value">Simple, ciblé, actionnable</span>
+          </div>
+          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+            Une entrée rapide pour les petites structures, indépendants, associations ou organismes qui veulent cadrer leurs priorités sans s’engager dans un audit lourd.
+          </p>
+          <a href="#rdv" class="btn btn-teal" style="width:100%; margin-top:1rem;">Réserver un audit</a>
+        </article>
+      </div>
+
+      <div class="grid three">
+        <article class="price-card reveal">
+          <h4>Module pédagogique</h4>
+          <div class="price-row">
+            <span class="price-label">Tarif</span>
+            <span class="price-edu">500€ HT</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Livrables</span>
+            <span class="price-value">Texte, quiz, PDF ou capsule vidéo</span>
+          </div>
+          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+            Une ressource claire, prête à intégrer dans un parcours ou à diffuser à vos publics.
+          </p>
+          <a href="#contact" class="btn btn-sky" style="width:100%; margin-top:1rem;">Demander un devis</a>
+        </article>
+
+        <article class="price-card reveal">
+          <h4>Parcours personnalisé</h4>
+          <div class="price-row">
+            <span class="price-label">Tarif</span>
+            <span class="price-edu">900–1800€ HT</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Livrables</span>
+            <span class="price-value">Audit, progression, PDF prêt à déployer</span>
+          </div>
+          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+            Pour les structures qui veulent une architecture pédagogique sur mesure, lisible et diffusable.
+          </p>
+          <a href="#contact" class="btn btn-dark" style="width:100%; margin-top:1rem;">Construire un parcours</a>
+        </article>
+
+        <article class="price-card reveal">
+          <h4>Formation de formateurs</h4>
+          <div class="price-row">
+            <span class="price-label">Tarif</span>
+            <span class="price-edu">400€ / 4h</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Format</span>
+            <span class="price-value">Visio ou présentiel</span>
+          </div>
+          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+            Un format court, centré sur la posture, les gestes utiles et l’outillage pédagogique.
+          </p>
+          <a href="#contact" class="btn btn-dark" style="width:100%; margin-top:1rem;">Réserver une session</a>
+        </article>
+      </div>
+
+      <div class="pack-star reveal">
+        <h3>Pack signature : Audit + Module</h3>
+        <div class="price">750€ HT</div>
+        <div class="save">Offre combinée</div>
+        <p>Une solution claire pour poser un diagnostic, structurer vos priorités et repartir avec une ressource pédagogique prête à l’emploi.</p>
+        <p style="margin-top:1rem;"><a href="#rdv" class="btn btn-dark">Demander le pack</a></p>
+      </div>
+
+      <div class="trust-badges reveal">
+        <span class="trust-badge">Livrables concrets</span>
+        <span class="trust-badge">Paiement CB possible</span>
+        <span class="trust-badge">Réponse rapide</span>
+        <span class="trust-badge">10 ans d’expérience terrain</span>
+      </div>
+
+      <table class="comparison-table reveal">
+        <thead>
+          <tr>
+            <th>Prestation</th>
+            <th>Usage</th>
+            <th>Livrables</th>
+            <th>Tarif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Audit Qualiopi Light</strong></td>
+            <td>Cadrer rapidement les priorités</td>
+            <td>Rapport, roadmap, templates</td>
+            <td>350€ HT</td>
+          </tr>
+          <tr>
+            <td><strong>Module pédagogique</strong></td>
+            <td>Produire une ressource diffusable</td>
+            <td>Texte, quiz, PDF ou vidéo</td>
+            <td>500€ HT</td>
+          </tr>
+          <tr>
+            <td><strong>Parcours personnalisé</strong></td>
+            <td>Structurer un dispositif complet</td>
+            <td>Audit, progression, livrable prêt</td>
+            <td>900–1800€ HT</td>
+          </tr>
+          <tr>
+            <td><strong>Formation de formateurs</strong></td>
+            <td>Renforcer la posture et les outils</td>
+            <td>Session de 4h</td>
+            <td>400€ HT</td>
+          </tr>
+          <tr>
+            <td><strong>Consulting veille</strong></td>
+            <td>Rester à jour en continu</td>
+            <td>Veille + synthèse mensuelle</td>
+            <td>250€/mois HT</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="produits" class="soft">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="tag">Collections</span>
+        <h2>Deux univers, une même exigence pédagogique</h2>
+        <p>Des romans pédagogiques pour les enfants du CP à la 3e, et des supports de stimulation cognitive pour les seniors, conçus pour être engageants, lisibles et réellement utiles.</p>
+      </div>
+
+      <article class="card reveal product-gamme" style="border-left:4px solid var(--sky);">
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+          <span style="font-size:2.5rem;">🧒</span>
+          <div>
+            <h3 style="margin:0; font-size:1.55rem;">Maîtriser les mathématiques du CP à la 3e grâce à des romans pédagogiques immersifs</h3>
+            <p style="margin:0.3rem 0 0; color:var(--muted); font-size:0.95rem;">
+              Des histoires structurées qui transforment les notions scolaires en situations concrètes, pour apprendre avec régularité, autonomie et compréhension.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <strong>Pour qui ?</strong>
+            <p style="font-size:0.9rem; margin-top:0.3rem;">Élèves du CP à la 3e, parents souhaitant accompagner efficacement, enseignants et accompagnants pédagogiques.</p>
+          </div>
+          <div class="info-box info-box-success">
+            <strong>Ce que l’enfant apprend</strong>
+            <p style="font-size:0.9rem; margin-top:0.3rem;">Comprendre les notions plutôt que les réciter, résoudre des problèmes concrets, développer autonomie et confiance.</p>
+          </div>
+          <div class="info-box info-box-gold">
+            <strong>Méthode</strong>
+            <p style="font-size:0.9rem; margin-top:0.3rem;">Lecture immersive, compréhension des notions et entraînement progressif pour installer des bases solides durablement.</p>
+          </div>
+        </div>
+
+        <div class="books-grid">
+          <article class="book-mini">
+            <div class="cover-art cover-kids-1">
+              <div class="cover-content">
+                <span class="cover-chip">CP</span>
+                <span class="cover-title">Maths en aventure</span>
+                <span class="cover-sub">Nombres, repères, premières stratégies</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--sky);">CP</span>
+            <h5>Maths en aventure</h5>
+            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Un premier rapport positif aux maths grâce à une narration accessible.</p>
+            <div class="book-price">59€</div>
+          </article>
+
+          <article class="book-mini">
+            <div class="cover-art cover-kids-2">
+              <div class="cover-content">
+                <span class="cover-chip">CE1</span>
+                <span class="cover-title">Mission Calcul</span>
+                <span class="cover-sub">Calcul, comparaison, résolution</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--sky);">CE1</span>
+            <h5>Mission Calcul</h5>
+            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Pour passer des mécanismes aux premières vraies stratégies.</p>
+            <div class="book-price">59€</div>
+          </article>
+
+          <article class="book-mini">
+            <div class="cover-art cover-kids-3">
+              <div class="cover-content">
+                <span class="cover-chip">CE2</span>
+                <span class="cover-title">Explorations</span>
+                <span class="cover-sub">Opérations, logique, autonomie</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--sky);">CE2</span>
+            <h5>Explorations</h5>
+            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Une progression qui relie raisonnement et plaisir de lire.</p>
+            <div class="book-price">59€</div>
+          </article>
+
+          <article class="book-mini">
+            <div class="cover-art cover-kids-4">
+              <div class="cover-content">
+                <span class="cover-chip">CM1</span>
+                <span class="cover-title">Kawaii & Compagnie</span>
+                <span class="cover-sub">Gestion concrète, situations réelles</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--sky);">CM1</span>
+            <h5>Kawaii & Compagnie</h5>
+            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Des maths reliées à un univers vivant et motivant.</p>
+            <div class="book-price">59€</div>
+          </article>
+
+          <article class="book-mini">
+            <div class="cover-art cover-kids-5">
+              <div class="cover-content">
+                <span class="cover-chip">6e</span>
+                <span class="cover-title">Eliza in New York</span>
+                <span class="cover-sub">Fractions, repérage, raisonnement</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--terra);">6e</span>
+            <h5>Eliza in New York</h5>
+            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Une entrée dans le collège pensée pour rassurer et structurer.</p>
+            <div class="book-price">59€</div>
+          </article>
+
+          <article class="book-mini">
+            <div class="cover-art cover-kids-6">
+              <div class="cover-content">
+                <span class="cover-chip">4e</span>
+                <span class="cover-title">Barça Foot Math</span>
+                <span class="cover-sub">Proportions, stratégie, logique avancée</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--terra);">4e</span>
+            <h5>Barça Foot Math</h5>
+            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Pour donner du sens aux notions plus complexes avec un univers fort.</p>
+            <div class="book-price">59€</div>
+          </article>
+        </div>
+
+        <div class="offer-stack">
+          <div class="offer-box">
+            <h4>Pack Progression Complète</h4>
+            <div class="price-big">199€ TTC</div>
+            <div class="price-note">Version papier</div>
+            <ul class="list" style="margin-top:0;">
+              <li>6 romans pédagogiques</li>
+              <li>Progression structurée et cohérente</li>
+              <li>Exercices intégrés + mise en situation</li>
+              <li>Adapté au travail autonome</li>
+            </ul>
+          </div>
+          <div class="offer-box">
+            <h4>Version numérique</h4>
+            <div class="price-big">99€ TTC</div>
+            <div class="price-note">PDF complet</div>
+            <ul class="list" style="margin-top:0;">
+              <li>Accès immédiat</li>
+              <li>Même contenu pédagogique</li>
+              <li>Utilisable sur tablette ou ordinateur</li>
+              <li>Idéal pour démarrer rapidement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:1.5rem; padding:1.2rem; background:rgba(46,111,168,0.08); border-radius:var(--radius);">
+          <p style="font-weight:700; margin-bottom:0.35rem;">Promesse pédagogique</p>
+          <p style="max-width:760px; margin:0 auto; font-size:0.92rem; color:var(--ink-3);">
+            Une méthode qui associe lecture immersive, compréhension des notions et entraînement progressif avec un objectif simple :
+            <strong style="color:var(--sky);">installer des bases solides en mathématiques durablement</strong>.
+          </p>
+          <p style="margin-top:0.9rem; font-size:0.82rem; color:var(--muted);">Satisfait ou remboursé 7 jours</p>
+          <div class="actions" style="margin-top:1rem;">
+            <a href="#contact" class="btn btn-sky">Recevoir le catalogue complet</a>
+            <a href="#rdv" class="btn btn-dark">Démarrer la progression</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal product-gamme" style="border-left:4px solid var(--teal);">
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+          <span style="font-size:2.5rem;">🧠</span>
+          <div>
+            <h3 style="margin:0; font-size:1.45rem;">Stimulation cognitive seniors</h3>
+            <p style="margin:0.3rem 0 0; color:var(--muted); font-size:0.95rem;">
+              Des supports conçus pour entretenir l’attention, la mémoire, la logique et le plaisir d’agir.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box info-box-teal">
+            <strong>Pour qui ?</strong>
+            <p style="font-size:0.9rem; margin-top:0.3rem;">Seniors actifs, familles, associations, résidences, CCAS, structures d’accompagnement.</p>
+          </div>
+          <div class="info-box info-box-success">
+            <strong>Promesse</strong>
+            <p style="font-size:0.9rem; margin-top:0.3rem;">Entretenir les fonctions cognitives dans un cadre digne, lisible et engageant.</p>
+          </div>
+          <div class="info-box info-box-gold">
+            <strong>Format</strong>
+            <p style="font-size:0.9rem; margin-top:0.3rem;">Situations concrètes, progression douce, consignes claires, grand confort de lecture.</p>
+          </div>
+        </div>
+
+        <div class="grid three" style="margin-top:1rem;">
+          <div class="book-mini" style="text-align:left;">
+            <div class="cover-art cover-senior-1">
+              <div class="cover-content">
+                <span class="cover-chip">Niveau 1</span>
+                <span class="cover-title">Les Maths du Quotidien</span>
+                <span class="cover-sub">Budget, courses, repères de vie courante</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--teal);">Niveau 1</span>
+            <h5>Les Maths du Quotidien</h5>
+            <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Budget, courses, recettes, repères simples et calcul de la vie courante.</p>
+            <div class="book-price">39€</div>
+          </div>
+          <div class="book-mini" style="text-align:left;">
+            <div class="cover-art cover-senior-2">
+              <div class="cover-content">
+                <span class="cover-chip">Niveau 2</span>
+                <span class="cover-title">Repérage & Organisation</span>
+                <span class="cover-sub">Mémoire spatiale et planification</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--teal);">Niveau 2</span>
+            <h5>Repérage & Organisation</h5>
+            <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Plans, horaires, trajets, mémoire spatiale et organisation du quotidien.</p>
+            <div class="book-price">39€</div>
+          </div>
+          <div class="book-mini" style="text-align:left;">
+            <div class="cover-art cover-senior-3">
+              <div class="cover-content">
+                <span class="cover-chip">Niveau 3</span>
+                <span class="cover-title">Défis & Mémoire</span>
+                <span class="cover-sub">Attention, logique et flexibilité cognitive</span>
+              </div>
+            </div>
+            <span class="level" style="background:var(--teal);">Niveau 3</span>
+            <h5>Défis & Mémoire</h5>
+            <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Suites logiques, attention, flexibilité cognitive et jeux de réflexion.</p>
+            <div class="book-price">39€</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(42,123,110,0.08); padding:1.2rem; border-radius:var(--radius); margin:1.5rem 0;">
+          <h4 style="margin-bottom:0.5rem; color:var(--teal);">Ce qui fait la différence</h4>
+          <ul class="feature-list">
+            <li>Grand format, contrastes soignés et lecture plus confortable</li>
+            <li>Consignes claires, rythme respecté et exercices contextualisés</li>
+            <li>Usage individuel, en duo ou en atelier collectif</li>
+            <li>Approche stimulante sans être infantilisante</li>
+          </ul>
+        </div>
+
+        <div style="text-align:center; margin-top:1.5rem; padding:1rem; background:rgba(42,123,110,0.08); border-radius:var(--radius);">
+          <p style="font-weight:700; margin-bottom:0.4rem;">Pack atelier collectif</p>
+          <p style="font:900 1.7rem var(--font-serif); color:var(--teal);">99€ TTC</p>
+          <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Trois niveaux + guide d’animation pour structures et professionnels.</p>
+          <a href="#contact" class="btn btn-teal">Demander le catalogue seniors</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="tag">Services</span>
         <h2>Ingénierie pédagogique, orientation et accompagnement de projet</h2>
         <p>Une approche professionnelle centrée sur les compétences, la progression, la clarification du projet et la mise en action.</p>
       </div>
       <div class="grid four">
         <article class="card reveal"><div class="icon">🎓</div><h3>Orientation</h3><ul class="list"><li>Clarification du projet personnel et professionnel.</li><li>Exploration des métiers et environnements.</li><li>Accompagnement des jeunes et adultes en transition.</li></ul></article>
         <article class="card reveal"><div class="icon">👤</div><h3>Accompagnement individuel</h3><ul class="list"><li>Gestion de projet de la conception à la mise en œuvre.</li><li>Suivi individualisé et ajustement du parcours.</li><li>Valorisation des compétences.</li></ul></article>
-        <article class="card reveal"><div class="icon">🚀</div><h3>Création d’activité</h3><ul class="list"><li>Génération d’idées et structuration.</li><li>Parcours entrepreneuriaux progressifs.</li><li>Outils simples de pilotage.</li></ul></article>
+        <article class="card reveal"><div class="icon">🚀</div><h3>Création d'activité</h3><ul class="list"><li>Génération d'idées et structuration.</li><li>Parcours entrepreneuriaux progressifs.</li><li>Outils simples de pilotage.</li></ul></article>
         <article class="card reveal"><div class="icon">🏢</div><h3>Formation et FOAD</h3><ul class="list"><li>Analyse des besoins et référentiels.</li><li>Scénarisation de parcours.</li><li>Digitalisation et suivi des acquis.</li></ul></article>
       </div>
     </div>
   </section>
 
-  <section id="portfolio">
+  <section id="portfolio" class="soft">
     <div class="container">
       <div class="section-head reveal">
         <span class="tag">Portfolio</span>
@@ -656,24 +1375,24 @@
 
       <article class="card reveal">
         <h3>Positionnement</h3>
-        <p>Je conçois et déploie des dispositifs d’apprentissage centrés sur l’individu, visant le développement des compétences, la structuration de projets professionnels et l’autonomisation des apprenants.</p>
+        <p>Je conçois et déploie des dispositifs d'apprentissage centrés sur l'individu, visant le développement des compétences, la structuration de projets professionnels et l'autonomisation des apprenants. Mon approche repose sur une ingénierie pédagogique rigoureuse, combinée à un accompagnement individualisé.</p>
       </article>
 
       <div class="grid two" style="margin-top:22px;">
-        <article class="card reveal"><h3>Missions principales</h3><ul class="list"><li>Analyse des besoins des apprenants et porteurs de projet.</li><li>Conception de parcours pédagogiques personnalisés.</li><li>Structuration de dispositifs d’accompagnement.</li><li>Suivi individualisé et évaluation des compétences.</li></ul></article>
-        <article class="card reveal"><h3>Approche pédagogique</h3><ul class="list"><li>Psychopédagogie : motivation, émotion et cognition.</li><li>Andragogie : autonomie et utilité immédiate.</li><li>Ingénierie : parcours progressifs orientés action.</li><li>Accompagnement socio-éducatif vers l’insertion.</li></ul></article>
+        <article class="card reveal"><h3>Missions principales</h3><ul class="list"><li>Analyse des besoins des apprenants et porteurs de projet.</li><li>Conception de parcours pédagogiques personnalisés.</li><li>Structuration de dispositifs d'accompagnement.</li><li>Suivi individualisé et évaluation des compétences.</li></ul></article>
+        <article class="card reveal"><h3>Approche pédagogique</h3><ul class="list"><li>Psychopédagogie : motivation, émotion et cognition.</li><li>Andragogie : autonomie et utilité immédiate.</li><li>Ingénierie : parcours progressifs orientés action.</li><li>Accompagnement socio-éducatif vers l'insertion.</li></ul></article>
       </div>
 
-      <div class="section-head reveal" style="margin-top:70px;margin-bottom:28px;">
+      <div class="section-head reveal" style="margin-top:70px; margin-bottom:28px;">
         <span class="tag">Expériences</span>
         <h2>Structures accompagnées</h2>
         <p>Des missions concrètes de conception, structuration, accompagnement et pilotage pédagogique.</p>
       </div>
 
       <div class="grid auto">
-        <article class="card reveal"><p class="experience-meta">2024 - aujourd’hui</p><h3>LOGIX FORMA</h3><ul class="list"><li>Pilotage de la stratégie pédagogique.</li><li>Référentiels, programmes et qualité.</li><li>Digitalisation FOAD et indicateurs.</li></ul></article>
-        <article class="card reveal"><p class="experience-meta">2023 - 2024</p><h3>IAMTV</h3><ul class="list"><li>Formations aux métiers de l’audiovisuel.</li><li>Scénarisation par la pratique.</li><li>Supports vidéo pédagogiques.</li></ul></article>
-        <article class="card reveal"><p class="experience-meta">2024</p><h3>JIMCAB</h3><ul class="list"><li>Modules pour chauffeurs de taxi.</li><li>Relation client et réglementation.</li><li>Parcours d’intégration.</li></ul></article>
+        <article class="card reveal"><p class="experience-meta">2024 - aujourd'hui</p><h3>LOGIX FORMA</h3><ul class="list"><li>Pilotage de la stratégie pédagogique.</li><li>Référentiels, programmes et qualité.</li><li>Digitalisation FOAD et indicateurs.</li></ul></article>
+        <article class="card reveal"><p class="experience-meta">2023 - 2024</p><h3>IAMTV</h3><ul class="list"><li>Formations aux métiers de l'audiovisuel.</li><li>Scénarisation par la pratique.</li><li>Supports vidéo pédagogiques.</li></ul></article>
+        <article class="card reveal"><p class="experience-meta">2024</p><h3>JIMCAB</h3><ul class="list"><li>Modules pour chauffeurs de taxi.</li><li>Relation client et réglementation.</li><li>Parcours d'intégration.</li></ul></article>
         <article class="card reveal"><p class="experience-meta">2025</p><h3>CASON</h3><ul class="list"><li>Excellence opérationnelle.</li><li>Gestion du stress et relation client.</li><li>Supports e-learning mobile.</li></ul></article>
         <article class="card reveal"><p class="experience-meta">2023 - 2024</p><h3>BOY PARIS EVENT</h3><ul class="list"><li>Parcours pour organisateurs et bénévoles.</li><li>Checklists, guides et ateliers.</li><li>Coordination et gestion de crise.</li></ul></article>
       </div>
@@ -685,38 +1404,7 @@
         <article class="card metric reveal"><strong>Suivi</strong><span>Parcours contextualisés</span></article>
       </div>
 
-      <p class="quote reveal">“On ne comprend vraiment que ce que l’on met en pratique.”</p>
-    </div>
-  </section>
-
-  <section class="soft" id="support">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Parcours & accompagnement</span>
-        <h2>Orientation, insertion et création d’activité</h2>
-        <p>Des accompagnements individualisés pour clarifier un projet, structurer un parcours et passer à l’action.</p>
-      </div>
-      <div class="grid three">
-        <article class="card reveal"><div class="icon">🎓</div><h3>Orientation</h3><p>Identifier ses compétences, explorer les métiers, formaliser un parcours réaliste et construire un plan d’action.</p><p style="margin-top:16px;"><a class="btn btn-sky" href="#contact">Demander un accompagnement</a></p></article>
-        <article class="card reveal"><div class="icon">🚀</div><h3>Création d’entreprise</h3><p>Aide à la génération d’idées, structuration de projet, organisation des étapes et accompagnement au démarrage.</p><p style="margin-top:16px;"><a class="btn btn-sky" href="#contact">Structurer mon projet</a></p></article>
-        <article class="card reveal"><div class="icon">🛠️</div><h3>Suivi personnalisé</h3><p>Définir des objectifs, poser des étapes, suivre la progression et développer l’autonomie dans la mise en œuvre.</p><p style="margin-top:16px;"><a class="btn btn-sky" href="#contact">Être accompagné</a></p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark" id="app">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Version application</span>
-        <h2>Une base PWA propre et installable</h2>
-        <p>Le site déclare un manifest, un service worker, une couleur de thème et un bouton d’installation quand le navigateur le permet.</p>
-      </div>
-      <div class="grid four">
-        <article class="card app-card reveal"><h3>Manifest</h3><p>Définit le nom, les icônes, la couleur et le mode <code>standalone</code>.</p></article>
-        <article class="card app-card reveal"><h3>Installation</h3><p>Le bouton apparaît via l’événement <code>beforeinstallprompt</code>.</p></article>
-        <article class="card app-card reveal"><h3>Cache</h3><p>Le service worker prépare le cache des fichiers essentiels.</p></article>
-        <article class="card app-card reveal"><h3>Mobile</h3><p>Meta tags pour iOS, Android et expérience plein écran.</p></article>
-      </div>
+      <p class="quote reveal">"On ne comprend vraiment que ce que l'on met en pratique."</p>
     </div>
   </section>
 
@@ -728,8 +1416,8 @@
         <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
       </div>
       <div class="grid two">
-        <article class="card reveal"><h3>Une approche centrée sur l’utilité pédagogique</h3><p>Depuis plus de 10 ans, je travaille sur le lien entre les besoins réels des publics, les objectifs de progression et la mise en pratique. J’accompagne la clarification des parcours, la structuration des projets et la conception de dispositifs directement mobilisables.</p></article>
-        <article class="card reveal"><h3>Points d’appui</h3><ul class="list"><li>+50 dispositifs conçus et déployés.</li><li>3 000+ apprenants accompagnés.</li><li>Psychopédagogie, andragogie, FOAD et ingénierie.</li><li>Parcours personnalisés, suivi et mise en action.</li></ul></article>
+        <article class="card reveal"><h3>Une approche centrée sur l'utilité pédagogique</h3><p>Depuis plus de 10 ans, je travaille sur le lien entre les besoins réels des publics, les objectifs de progression et la mise en pratique. J'accompagne la clarification des parcours, la structuration des projets et la conception de dispositifs directement mobilisables.</p></article>
+        <article class="card reveal"><h3>Points d'appui</h3><ul class="list"><li>+50 dispositifs conçus et déployés.</li><li>3 000+ apprenants accompagnés.</li><li>Psychopédagogie, andragogie, FOAD et ingénierie.</li><li>Parcours personnalisés, suivi et mise en action.</li></ul></article>
       </div>
     </div>
   </section>
@@ -737,24 +1425,30 @@
   <section id="contact">
     <div class="container">
       <div class="section-head reveal">
-        <span class="tag">Nous écrire</span>
+        <span class="tag">Contact</span>
         <h2>Parlons de votre besoin</h2>
         <p>Premier échange gratuit pour clarifier votre projet, votre parcours ou votre dispositif pédagogique.</p>
       </div>
       <div class="contact-grid">
         <article class="card reveal">
           <h3>Formulaire de contact</h3>
-          <p class="muted" style="margin:8px 0 18px;">Décrivez votre besoin et je vous répondrai rapidement.</p>
+          <p style="margin:8px 0 18px; color:var(--muted);">Décrivez votre besoin et je vous répondrai rapidement.</p>
           <form id="contactForm" action="https://formspree.io/f/xldgvkjq" method="POST">
             <div><label for="name">Nom complet</label><input id="name" name="nom" autocomplete="name" required></div>
             <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-            <div><label for="phone">Téléphone</label><input id="phone" name="telephone" type="tel" autocomplete="tel"></div>
+            <div><label for="phone">Téléphone</label><input id="phone" name="telephone" type="tel" autocomplete="tel" placeholder="06 24 61 44 51"></div>
             <div>
               <label for="subject">Sujet</label>
               <select id="subject" name="sujet" required>
                 <option value="" selected disabled>Choisissez un sujet</option>
+                <option>Audit Qualiopi light</option>
+                <option>Module pédagogique</option>
+                <option>Pack signature</option>
+                <option>Romans pédagogiques enfants</option>
+                <option>Stimulation cognitive seniors</option>
+                <option>Commande groupe / établissement</option>
                 <option>Orientation et clarification de parcours</option>
-                <option>Création d’activité</option>
+                <option>Création d'activité</option>
                 <option>Accompagnement individuel</option>
                 <option>Ingénierie pédagogique</option>
                 <option>FOAD / e-learning</option>
@@ -768,12 +1462,17 @@
           </form>
           <div class="success" id="success">Message envoyé. Je vous répondrai sous 24h ouvrées.</div>
         </article>
+
         <aside class="card contact-direct reveal">
           <h3>Contact direct</h3>
           <p style="margin-top:16px;">Email<br><a href="mailto:contact@educoncret.net">contact@educoncret.net</a></p>
-          <p style="margin-top:16px;">Téléphone<br><a href="tel:+33764070161">+33 7 64 07 01 61</a></p>
-          <p style="margin-top:16px;">LinkedIn<br><a href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" rel="noreferrer">Moctar Touré</a></p>
-          <p style="margin-top:16px;color:rgba(247,243,237,.58);">Paris · interventions à distance partout en France</p>
+          <p style="margin-top:16px;">Téléphone<br><a href="tel:+33624614451">06 24 61 44 51</a></p>
+          <p style="margin-top:16px;">WhatsApp<br><a href="https://wa.me/33624614451" target="_blank" rel="noreferrer">Message direct</a></p>
+          <p style="margin-top:16px; color:rgba(247,243,237,0.58);">Paris · interventions à distance partout en France</p>
+          <div style="margin-top:2rem; padding:1rem; background:rgba(201,168,76,0.1); border-radius:var(--radius);">
+            <p style="font-size:0.85rem; margin-bottom:0.5rem;"><strong>💳 Paiement simple</strong></p>
+            <p style="font-size:0.8rem;">CB possible via solution de paiement sécurisée.</p>
+          </div>
         </aside>
       </div>
     </div>
@@ -787,9 +1486,9 @@
         <p>Scannez le QR Code pour enregistrer mes coordonnées directement dans votre téléphone.</p>
       </div>
       <article class="card digital-card reveal">
-        <h3 style="color:var(--gold);font-size:1.55rem;">Ma Carte Digitale</h3>
-        <p style="color:rgba(247,243,237,.62);">Scannez pour enregistrer mes coordonnées.</p>
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&amp;data=https://educoncret.net/contact.vcf" alt="QR Code Moctar Touré"></div>
+        <h3 style="color:var(--gold); font-size:1.55rem;">Ma Carte Digitale</h3>
+        <p style="color:rgba(247,243,237,0.62);">Scannez pour enregistrer mes coordonnées.</p>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://educoncret.net/contact.vcf" alt="QR Code Moctar Touré"></div>
         <div class="actions">
           <a class="btn btn-gold" href="https://educoncret.net/contact.vcf">Enregistrer le contact</a>
           <a class="btn btn-outline" href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -808,33 +1507,38 @@
       <div class="calendly-wrap reveal">
         <div class="calendly-head">
           <h3>Appel découverte offert · 30 minutes</h3>
-          <p>On échange sur votre projet, vos besoins et la forme d’accompagnement adaptée.</p>
+          <p>On échange sur votre projet, vos besoins et la forme d'accompagnement adaptée.</p>
         </div>
         <iframe title="Calendly EduConcret" src="https://calendly.com/contact-educoncret/30min"></iframe>
       </div>
       <div class="grid three" style="margin-top:24px;">
         <article class="card reveal"><h3>Email</h3><p><a href="mailto:contact@educoncret.net">contact@educoncret.net</a></p></article>
-        <article class="card reveal"><h3>Téléphone</h3><p><a href="tel:+33764070161">07 64 07 01 61</a></p></article>
-        <article class="card reveal"><h3>WhatsApp</h3><p><a href="https://wa.me/33764070161" target="_blank" rel="noreferrer">Message WhatsApp</a></p></article>
+        <article class="card reveal"><h3>Téléphone</h3><p><a href="tel:+33624614451">06 24 61 44 51</a></p></article>
+        <article class="card reveal"><h3>WhatsApp</h3><p><a href="https://wa.me/33624614451" target="_blank" rel="noreferrer">Message WhatsApp</a></p></article>
       </div>
     </div>
   </section>
 
   <footer>
     <strong>EduConcret</strong>
-    <p style="font-family:'Fraunces',serif;font-style:italic;color:var(--cream);margin-top:5px;">Apprendre, choisir, construire.</p>
+    <p style="font-family:var(--font-serif); font-style:italic; color:var(--cream); margin-top:5px;">Apprendre, choisir, construire.</p>
     <p>Moctar Touré · Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
+    <p style="margin-top:1rem; font-size:0.85rem; color:rgba(247,243,237,0.6);">
+      LOGIX FORMA Montreuil · 06 24 61 44 51
+    </p>
     <div class="footer-links">
       <a href="#accueil">Accueil</a>
+      <a href="#offres">Offres</a>
+      <a href="#produits">Collections</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#app">Application</a>
-      <a href="#apropos">À propos</a>
       <a href="#contact">Nous écrire</a>
       <a href="#rdv">RDV</a>
     </div>
-    <p><a href="mailto:contact@educoncret.net">contact@educoncret.net</a> · <a href="tel:+33764070161">07 64 07 01 61</a> · Paris</p>
-    <p style="margin-top:18px;font-size:.78rem;">© 2026 Moctar Touré | EduConcret | Tous droits réservés</p>
+    <p style="margin-top:18px; font-size:0.78rem;">© 2026 Moctar Touré | EduConcret | Tous droits réservés</p>
+    <p style="font-size:0.75rem; color:rgba(247,243,237,0.3); margin-top:0.5rem;">
+      Tarifs HT sauf mention TTC · Réponse rapide · Collections éducatives et supports pédagogiques conçus pour un usage concret
+    </p>
   </footer>
 
   <button class="top" id="top" type="button" aria-label="Retour en haut">↑</button>
@@ -854,6 +1558,7 @@
       document.querySelectorAll("section[id], header[id]").forEach((section) => {
         if (window.scrollY >= section.offsetTop - 110) current = section.id;
       });
+
       document.querySelectorAll(".nav-links a").forEach((link) => {
         link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
       });
@@ -885,34 +1590,36 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: .08, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
 
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
     const form = document.getElementById("contactForm");
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const button = form.querySelector("button[type='submit']");
-      const original = button.textContent;
-      button.disabled = true;
-      button.textContent = "Envoi en cours...";
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" }
-        });
-        if (!response.ok) throw new Error("Form error");
-        form.style.display = "none";
-        document.getElementById("success").classList.add("show");
-      } catch {
-        button.textContent = "Erreur. Réessayez.";
-        setTimeout(() => {
-          button.disabled = false;
-          button.textContent = original;
-        }, 2400);
-      }
-    });
+    if (form) {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const button = form.querySelector("button[type='submit']");
+        const original = button.textContent;
+        button.disabled = true;
+        button.textContent = "Envoi en cours...";
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+          });
+          if (!response.ok) throw new Error("Form error");
+          form.style.display = "none";
+          document.getElementById("success").classList.add("show");
+        } catch {
+          button.textContent = "Erreur. Réessayez.";
+          setTimeout(() => {
+            button.disabled = false;
+            button.textContent = original;
+          }, 2400);
+        }
+      });
+    }
 
     let deferredPrompt;
     const installChip = document.getElementById("installChip");
