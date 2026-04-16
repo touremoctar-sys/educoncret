@@ -198,7 +198,6 @@
     .hero::after {
       content: "";
       position: absolute;
-      inset: auto;
       border-radius: 50%;
       filter: blur(24px);
       opacity: .22;
@@ -550,8 +549,23 @@
       font-weight: 700;
     }
 
-    .comparison-table td:last-child { font-weight: 700; color: var(--success); }
-    .comparison-table tr:hover { background: rgba(201, 168, 76, .05); }
+    .comparison-table td {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .comparison-table td strong {
+      color: var(--ink);
+    }
+
+    .comparison-table tr:hover td {
+      background: rgba(201, 168, 76, .05);
+    }
+
+    .comparison-table td:last-child {
+      font-weight: 700;
+      color: var(--success);
+    }
 
     .pack-star {
       margin-top: 2rem;
