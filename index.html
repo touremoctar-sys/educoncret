@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Moctar Touré | EduConcret — Ingénierie pédagogique, romans pédagogiques et stimulation cognitive</title>
-  <meta name="description" content="Moctar Touré, ingénieur pédagogique. Audit Qualiopi light, modules pédagogiques, romans pédagogiques du CP à la 3e et ateliers de stimulation cognitive pour seniors.">
-  <meta name="theme-color" content="#0e0c0a">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/icons/icon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:ital,wght@0,600;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  <meta name="description" content="Moctar Touré, ingénieur pédagogique. Audit Qualiopi light, modules pédagogiques, romans pédagogiques du CP à la 3e et ateliers de stimulation cognitive pour seniors." />
+  <meta name="theme-color" content="#0e0c0a" />
+
+  <meta property="og:title" content="Moctar Touré | EduConcret" />
+  <meta property="og:description" content="Ingénierie pédagogique, ressources éducatives et accompagnement de projets d’apprentissage." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://educoncret.net" />
+  <meta property="og:image" content="https://educoncret.net/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/icon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:ital,wght@0,600;0,800;0,900;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Google Analytics 4 -->
+  <!-- Remplace G-XXXXXXXXXX par ton vrai identifiant -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --ink: #0e0c0a;
-      --ink-2: #1c1a17;
-      --ink-3: #2e2b26;
-      --muted: #6e675f;
+      --ink-2: #171411;
+      --ink-3: #2a2621;
+      --muted: #5b554f;
       --cream: #f7f3ed;
       --cream-2: #efe9df;
-      --line: #e2d8ca;
+      --line: #ddd1c1;
       --white: #ffffff;
       --gold: #c9a84c;
       --gold-light: #e8c96a;
@@ -30,9 +50,9 @@
       --sky: #2e6fa8;
       --terra: #c75a3a;
       --success: #15803d;
-      --shadow: 0 16px 42px rgba(14, 12, 10, 0.10);
-      --shadow-lg: 0 24px 70px rgba(14, 12, 10, 0.16);
-      --radius: 8px;
+      --shadow: 0 12px 34px rgba(14, 12, 10, 0.10);
+      --shadow-lg: 0 22px 70px rgba(14, 12, 10, 0.16);
+      --radius: 10px;
       --radius-lg: 18px;
       --radius-xl: 28px;
       --max: 1180px;
@@ -56,12 +76,26 @@
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: .28;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+
+    .skip-link {
+      position: absolute;
+      left: 14px;
+      top: -48px;
+      z-index: 3000;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      font-weight: 800;
+    }
+
+    .skip-link:focus { top: 14px; }
 
     .progress {
       position: fixed;
@@ -77,7 +111,7 @@
       position: fixed;
       inset: 0 0 auto 0;
       z-index: 1000;
-      background: rgba(14, 12, 10, .96);
+      background: rgba(14, 12, 10, .95);
       border-bottom: 1px solid rgba(201, 168, 76, .16);
       backdrop-filter: blur(18px);
     }
@@ -108,8 +142,7 @@
       height: 9px;
       border-radius: 999px;
       background: var(--gold);
-      box-shadow: 0 0 20px rgba(201, 168, 76, .45);
-      animation: pulseDot 2.6s ease-in-out infinite;
+      box-shadow: 0 0 14px rgba(201, 168, 76, .40);
     }
 
     .nav-links {
@@ -121,7 +154,7 @@
 
     .nav-links a {
       display: block;
-      color: rgba(247, 243, 237, .66);
+      color: rgba(247, 243, 237, .70);
       font-size: .86rem;
       padding: .46rem .76rem;
       border-radius: var(--radius);
@@ -187,8 +220,8 @@
       color: var(--cream);
       text-align: center;
       background:
-        linear-gradient(rgba(201, 168, 76, .055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201, 168, 76, .055) 1px, transparent 1px),
+        linear-gradient(rgba(201, 168, 76, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, .05) 1px, transparent 1px),
         radial-gradient(circle at 50% 18%, rgba(201, 168, 76, .14), transparent 32%),
         var(--ink);
       background-size: 80px 80px, 80px 80px, auto, auto;
@@ -200,7 +233,7 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(24px);
-      opacity: .22;
+      opacity: .18;
       pointer-events: none;
     }
 
@@ -209,7 +242,7 @@
       height: 320px;
       top: 100px;
       left: -80px;
-      background: radial-gradient(circle, rgba(46,111,168,.9), transparent 70%);
+      background: radial-gradient(circle, rgba(46,111,168,.85), transparent 70%);
       animation: floatGlow 10s ease-in-out infinite;
     }
 
@@ -218,12 +251,12 @@
       height: 300px;
       right: -60px;
       bottom: 40px;
-      background: radial-gradient(circle, rgba(42,123,110,.8), transparent 70%);
+      background: radial-gradient(circle, rgba(42,123,110,.75), transparent 70%);
       animation: floatGlow 12s ease-in-out infinite reverse;
     }
 
     .hero-inner {
-      width: min(1000px, 100%);
+      width: min(1060px, 100%);
       position: relative;
       z-index: 1;
       animation: rise .8s ease both;
@@ -266,16 +299,16 @@
     h1 em { color: var(--gold); font-style: italic; }
 
     .hero-lead {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto 16px;
-      color: rgba(247, 243, 237, .74);
+      color: rgba(247, 243, 237, .78);
       font: italic 700 clamp(1.05rem, 2.2vw, 1.42rem) var(--font-serif);
     }
 
     .hero-sub {
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto 28px;
-      color: rgba(247, 243, 237, .56);
+      color: rgba(247, 243, 237, .60);
       font-size: .99rem;
     }
 
@@ -294,10 +327,9 @@
       border-radius: 999px;
       border: 1px solid rgba(201, 168, 76, .22);
       background: rgba(247, 243, 237, .05);
-      color: rgba(247, 243, 237, .76);
+      color: rgba(247, 243, 237, .82);
       font-size: .8rem;
       font-weight: 700;
-      animation: fadePulse 3.4s ease-in-out infinite;
     }
 
     .actions {
@@ -317,7 +349,7 @@
       border: 0;
       border-radius: 999px;
       font: 900 .92rem var(--font-sans);
-      transition: transform .2s, box-shadow .2s, background .2s;
+      transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -328,6 +360,10 @@
     .btn-teal { background: var(--teal); color: var(--white); }
     .btn-sky { background: var(--sky); color: var(--white); }
     .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(247, 243, 237, .32); }
+
+    .btn-teal:hover { background: #1f5d53; }
+    .btn-sky:hover { background: #245b8b; }
+    .btn-dark:hover { background: #000000; }
 
     .stats { padding: 16px 24px; background: var(--gold); }
 
@@ -340,11 +376,7 @@
       text-align: center;
     }
 
-    .stat {
-      padding: 4px 0;
-      animation: rise .7s ease both;
-    }
-
+    .stat { padding: 4px 0; }
     .stat strong { display: block; font: 900 1.75rem var(--font-serif); line-height: 1; }
     .stat span {
       display: block;
@@ -378,8 +410,8 @@
 
     .dark .tag { color: var(--gold-light); background: rgba(201, 168, 76, .15); }
     .section-head h2 { margin-bottom: 12px; font-size: clamp(1.95rem, 4vw, 3rem); font-weight: 900; }
-    .section-head p { color: rgba(46, 43, 38, .76); }
-    .dark .section-head p { color: rgba(247, 243, 237, .6); }
+    .section-head p { color: rgba(46, 43, 38, .78); }
+    .dark .section-head p { color: rgba(247, 243, 237, .66); }
 
     .grid { display: grid; gap: 22px; }
     .grid.two { grid-template-columns: repeat(2, 1fr); }
@@ -410,8 +442,8 @@
 
     .icon { font-size: 2rem; margin-bottom: 14px; }
     .card h3 { margin-bottom: 10px; font-size: 1.12rem; font-weight: 900; }
-    .card p, .card li { color: rgba(46, 43, 38, .78); font-size: .92rem; }
-    .dark .card p, .dark .card li { color: rgba(247, 243, 237, .7); }
+    .card p, .card li { color: rgba(46, 43, 38, .80); font-size: .92rem; }
+    .dark .card p, .dark .card li { color: rgba(247, 243, 237, .74); }
 
     .list { list-style: none; display: grid; gap: 8px; margin-top: 12px; }
     .list li { position: relative; padding-left: 18px; }
@@ -554,10 +586,6 @@
       color: var(--ink);
     }
 
-    .comparison-table td strong {
-      color: var(--ink);
-    }
-
     .comparison-table tr:hover td {
       background: rgba(201, 168, 76, .05);
     }
@@ -574,7 +602,6 @@
       border: 2px solid var(--gold);
       border-radius: var(--radius-lg);
       background: linear-gradient(135deg, rgba(201, 168, 76, .18), rgba(232, 201, 106, .26));
-      animation: softBob 4.5s ease-in-out infinite;
     }
 
     .pack-star h3 { margin-bottom: .5rem; font-size: 1.4rem; }
@@ -679,7 +706,7 @@
       border-bottom: 1px solid rgba(255,255,255,.16);
       overflow: hidden;
       color: var(--white);
-      animation: floatCard 6s ease-in-out infinite;
+      box-shadow: inset 14px 0 20px rgba(0,0,0,.12);
     }
 
     .cover-art::before,
@@ -837,23 +864,176 @@
     .contact-direct { color: var(--cream); background: var(--ink); border-color: var(--ink); }
     .contact-direct a { color: var(--gold); font-weight: 900; }
 
-    .digital-card {
-      max-width: 440px;
-      margin: 0 auto;
-      color: var(--cream);
-      text-align: center;
-      background: rgba(14, 12, 10, .96);
-      border: 1px solid rgba(201, 168, 76, .22);
+    /* CARTE PREMIUM */
+    .digital-premium-wrap {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .qr {
-      display: inline-block;
-      padding: 14px;
-      margin: 20px auto 24px;
-      border-radius: 16px;
-      background: var(--white);
-      animation: pulse 2.1s ease-in-out infinite;
+    .digital-card-premium {
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      color: var(--cream);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+        linear-gradient(135deg, #17130f, #0e0c0a);
+      border: 1px solid rgba(201, 168, 76, .22);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
+
+    .digital-card-premium::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .digital-card-premium h3 {
+      color: var(--gold-light);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .digital-card-premium p {
+      color: rgba(247,243,237,.72);
+      position: relative;
+      z-index: 1;
+    }
+
+    .digital-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .digital-meta span {
+      display: inline-flex;
+      align-items: center;
+      padding: .42rem .76rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201,168,76,.18);
+      background: rgba(201,168,76,.10);
+      color: var(--gold-light);
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .qr-premium-stage {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201,168,76,.08), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border: 1px solid rgba(201,168,76,.16);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr-premium-stage::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,123,110,.18), transparent 72%);
+      animation: pulseGlow 3.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .qr-shell-premium {
+      position: relative;
+      z-index: 1;
+      padding: 16px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7f4ef 100%);
+      box-shadow: 0 26px 80px rgba(0,0,0,.26);
+      animation: floatCard 5.5s ease-in-out infinite;
+    }
+
+    .qr-shell-premium img {
+      width: 230px;
+      height: 230px;
+      border-radius: 14px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .qr-caption {
+      margin-top: 14px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .qr-caption strong {
+      display: block;
+      color: var(--cream);
+      margin-bottom: 4px;
+      font-size: .96rem;
+    }
+
+    .qr-caption span {
+      display: block;
+      color: rgba(247,243,237,.60);
+      font-size: .82rem;
+    }
+
+    .wallet-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wallet-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: .46rem .78rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      color: rgba(247,243,237,.84);
+      font-size: .77rem;
+      font-weight: 700;
+    }
+
+    .wallet-chip.soon {
+      border-color: rgba(201,168,76,.18);
+      color: var(--gold-light);
+    }
+
+    .card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-links .btn { min-height: 42px; }
 
     .calendly-wrap {
       max-width: 930px;
@@ -895,7 +1075,7 @@
       gap: 18px;
     }
 
-    .footer-links a { color: rgba(247, 243, 237, .48); font-size: .86rem; }
+    .footer-links a { color: rgba(247, 243, 237, .52); font-size: .86rem; }
 
     .top {
       position: fixed;
@@ -920,11 +1100,6 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, .25); transform: scale(1); }
-      50% { box-shadow: 0 0 0 14px rgba(201, 168, 76, 0); transform: scale(1.025); }
-    }
-
     @keyframes rise {
       from { opacity: 0; transform: translateY(26px); }
       to { opacity: 1; transform: translateY(0); }
@@ -936,33 +1111,34 @@
     }
 
     @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: .18; }
-      50% { transform: scale(1.08); opacity: .28; }
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
-    @keyframes softBob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      0%, 100% { transform: scale(1); opacity: .22; }
+      50% { transform: scale(1.08); opacity: .36; }
     }
 
     @keyframes floatCard {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
+      50% { transform: translateY(-5px); }
     }
 
-    @keyframes fadePulse {
-      0%, 100% { opacity: .82; }
-      50% { opacity: 1; }
+    .btn:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 6px rgba(201, 168, 76, .18);
     }
 
     @media (max-width: 980px) {
-      .grid.two, .grid.three, .grid.four, .contact-grid, .offers-intro { grid-template-columns: 1fr; }
+      .grid.two, .grid.three, .grid.four, .contact-grid, .offers-intro, .digital-premium-wrap {
+        grid-template-columns: 1fr;
+      }
+
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
+
       .nav-links {
         position: fixed;
         top: 70px;
@@ -973,6 +1149,7 @@
         background: var(--ink-2);
         border-bottom: 1px solid rgba(201, 168, 76, .16);
       }
+
       .nav-links.open { display: grid; }
       .nav-links a { text-align: center; padding: .72rem 1rem; }
       .menu { display: grid; place-items: center; }
@@ -983,30 +1160,76 @@
       section { padding: 68px 18px; }
       .stats-inner { grid-template-columns: 1fr; }
       .eyebrow::before, .eyebrow::after { display: none; }
+
       .install-chip {
         left: 14px;
         right: 14px;
         justify-content: space-between;
         border-radius: var(--radius-lg);
       }
+
       .comparison-table { display: block; overflow-x: auto; }
+
+      .btn {
+        white-space: normal;
+        padding: .74rem 1rem;
+      }
+
+      .qr-shell-premium img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .wallet-row, .card-links {
+        justify-content: stretch;
+      }
+
+      .wallet-chip, .card-links .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "EduConcret",
+    "founder": "Moctar Touré",
+    "description": "Ingénierie pédagogique, romans pédagogiques et stimulation cognitive.",
+    "url": "https://educoncret.net",
+    "telephone": "+33624614451",
+    "email": "contact@educoncret.net",
+    "areaServed": "France",
+    "availableLanguage": ["French"],
+    "priceRange": "€€"
+  }
+  </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <noscript>
+    <div style="background:#c75a3a;color:#fff;padding:12px;text-align:center;">
+      JavaScript est désactivé. Certaines fonctionnalités peuvent être limitées.
+    </div>
+  </noscript>
+
   <div class="progress" id="progress"></div>
 
   <nav class="nav" aria-label="Navigation principale">
     <div class="nav-inner">
-      <a class="brand" href="#accueil">EduConcret</a>
-      <button class="menu" id="menu" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <a class="brand" href="#accueil" data-track="brand_click">EduConcret</a>
+      <button class="menu" id="menu" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+
       <ul class="nav-links" id="navLinks">
         <li><a href="#accueil" class="active">Accueil</a></li>
         <li><a href="#offres">Offres</a></li>
         <li><a href="#produits">Collections</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#carte">Carte digitale</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a class="cta" href="#rdv">RDV gratuit</a></li>
       </ul>
@@ -1021,19 +1244,28 @@
   <header class="hero" id="accueil">
     <div class="hero-inner">
       <p class="eyebrow">Ingénierie pédagogique · Enfance · Seniors · Qualiopi</p>
+
       <h1>Des ressources conçues pour <em>transmettre, structurer et faire progresser</em>.</h1>
-      <p class="hero-lead">J’accompagne les structures, les familles et les professionnels avec des offres pédagogiques lisibles, des contenus utiles et des dispositifs concrets.</p>
-      <p class="hero-sub">Audit Qualiopi light · Modules pédagogiques · Romans pédagogiques du CP à la 3e · Stimulation cognitive pour seniors · Parcours sur mesure</p>
+
+      <p class="hero-lead">
+        J’accompagne les structures, les familles et les professionnels avec des offres pédagogiques lisibles, des contenus utiles et des dispositifs concrets.
+      </p>
+
+      <p class="hero-sub">
+        Audit Qualiopi light · Modules pédagogiques · Romans pédagogiques du CP à la 3e · Stimulation cognitive pour seniors · Parcours sur mesure
+      </p>
+
       <div class="hero-proof">
         <span>Audit Qualiopi light dès 350€ HT</span>
         <span>Modules dès 500€ HT</span>
         <span>Romans pédagogiques à 59€ TTC</span>
         <span>Stimulation cognitive seniors à partir de 39€ TTC</span>
       </div>
+
       <div class="actions">
-        <a class="btn btn-gold" href="#offres">Découvrir les offres</a>
-        <a class="btn btn-outline" href="#produits">Voir les collections</a>
-        <a class="btn btn-outline" href="#rdv">Réserver un échange</a>
+        <a class="btn btn-gold" href="#offres" data-track="hero_offres">Découvrir les offres</a>
+        <a class="btn btn-outline" href="#produits" data-track="hero_collections">Voir les collections</a>
+        <a class="btn btn-outline" href="#rdv" data-track="hero_rdv">Réserver un échange</a>
       </div>
     </div>
   </header>
@@ -1047,575 +1279,751 @@
     </div>
   </div>
 
-  <section id="offres" class="dark">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Offres professionnelles</span>
-        <h2>Des prestations claires, utiles et prêtes à activer</h2>
-        <p>Chaque offre est pensée pour répondre vite à un besoin réel, avec des livrables compréhensibles, une exécution sérieuse et un niveau d’entrée accessible.</p>
-      </div>
+  <main id="main-content">
+    <section id="offres" class="dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Offres professionnelles</span>
+          <h2>Des prestations claires, utiles et prêtes à activer</h2>
+          <p>Chaque offre est pensée pour répondre vite à un besoin réel, avec des livrables compréhensibles, une exécution sérieuse et un niveau d’entrée accessible.</p>
+        </div>
 
-      <div class="offers-intro">
-        <article class="offer-hero-card reveal">
-          <h3>Des formats courts, solides et directement mobilisables</h3>
-          <p>Audit, structuration pédagogique, création de ressources, formation de formateurs ou accompagnement mensuel : EduConcret privilégie la clarté, la rapidité de décision et la qualité d’usage.</p>
-          <div class="offer-badges">
-            <span class="offer-badge">Audit Qualiopi light</span>
-            <span class="offer-badge">Modules pédagogiques</span>
-            <span class="offer-badge">Pack signature</span>
-            <span class="offer-badge">Paiement CB possible</span>
-          </div>
-        </article>
+        <div class="offers-intro">
+          <article class="offer-hero-card reveal">
+            <h3>Des formats courts, solides et directement mobilisables</h3>
+            <p>Audit, structuration pédagogique, création de ressources, formation de formateurs ou accompagnement mensuel : EduConcret privilégie la clarté, la rapidité de décision et la qualité d’usage.</p>
+            <div class="offer-badges">
+              <span class="offer-badge">Audit Qualiopi light</span>
+              <span class="offer-badge">Modules pédagogiques</span>
+              <span class="offer-badge">Pack signature</span>
+              <span class="offer-badge">Paiement CB possible</span>
+            </div>
+          </article>
 
-        <article class="price-card highlight reveal">
-          <h4>Audit Qualiopi Light</h4>
-          <div class="price-row">
-            <span class="price-label">Tarif EduConcret</span>
-            <span class="price-edu">350€ HT</span>
-          </div>
-          <div class="price-row">
-            <span class="price-label">Livrables</span>
-            <span class="price-value">Rapport + roadmap + templates</span>
-          </div>
-          <div class="price-row">
-            <span class="price-label">Format</span>
-            <span class="price-value">Simple, ciblé, actionnable</span>
-          </div>
-          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
-            Une entrée rapide pour les petites structures, indépendants, associations ou organismes qui veulent cadrer leurs priorités sans s’engager dans un audit lourd.
-          </p>
-          <a href="#rdv" class="btn btn-teal" style="width:100%; margin-top:1rem;">Réserver un audit</a>
-        </article>
-      </div>
-
-      <div class="grid three">
-        <article class="price-card reveal">
-          <h4>Module pédagogique</h4>
-          <div class="price-row">
-            <span class="price-label">Tarif</span>
-            <span class="price-edu">500€ HT</span>
-          </div>
-          <div class="price-row">
-            <span class="price-label">Livrables</span>
-            <span class="price-value">Texte, quiz, PDF ou capsule vidéo</span>
-          </div>
-          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
-            Une ressource claire, prête à intégrer dans un parcours ou à diffuser à vos publics.
-          </p>
-          <a href="#contact" class="btn btn-sky" style="width:100%; margin-top:1rem;">Demander un devis</a>
-        </article>
-
-        <article class="price-card reveal">
-          <h4>Parcours personnalisé</h4>
-          <div class="price-row">
-            <span class="price-label">Tarif</span>
-            <span class="price-edu">900–1800€ HT</span>
-          </div>
-          <div class="price-row">
-            <span class="price-label">Livrables</span>
-            <span class="price-value">Audit, progression, PDF prêt à déployer</span>
-          </div>
-          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
-            Pour les structures qui veulent une architecture pédagogique sur mesure, lisible et diffusable.
-          </p>
-          <a href="#contact" class="btn btn-dark" style="width:100%; margin-top:1rem;">Construire un parcours</a>
-        </article>
-
-        <article class="price-card reveal">
-          <h4>Formation de formateurs</h4>
-          <div class="price-row">
-            <span class="price-label">Tarif</span>
-            <span class="price-edu">400€ / 4h</span>
-          </div>
-          <div class="price-row">
-            <span class="price-label">Format</span>
-            <span class="price-value">Visio ou présentiel</span>
-          </div>
-          <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
-            Un format court, centré sur la posture, les gestes utiles et l’outillage pédagogique.
-          </p>
-          <a href="#contact" class="btn btn-dark" style="width:100%; margin-top:1rem;">Réserver une session</a>
-        </article>
-      </div>
-
-      <div class="pack-star reveal">
-        <h3>Pack signature : Audit + Module</h3>
-        <div class="price">750€ HT</div>
-        <div class="save">Offre combinée</div>
-        <p>Une solution claire pour poser un diagnostic, structurer vos priorités et repartir avec une ressource pédagogique prête à l’emploi.</p>
-        <p style="margin-top:1rem;"><a href="#rdv" class="btn btn-dark">Demander le pack</a></p>
-      </div>
-
-      <div class="trust-badges reveal">
-        <span class="trust-badge">Livrables concrets</span>
-        <span class="trust-badge">Paiement CB possible</span>
-        <span class="trust-badge">Réponse rapide</span>
-        <span class="trust-badge">10 ans d’expérience terrain</span>
-      </div>
-
-      <table class="comparison-table reveal">
-        <thead>
-          <tr>
-            <th>Prestation</th>
-            <th>Usage</th>
-            <th>Livrables</th>
-            <th>Tarif</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Audit Qualiopi Light</strong></td>
-            <td>Cadrer rapidement les priorités</td>
-            <td>Rapport, roadmap, templates</td>
-            <td>350€ HT</td>
-          </tr>
-          <tr>
-            <td><strong>Module pédagogique</strong></td>
-            <td>Produire une ressource diffusable</td>
-            <td>Texte, quiz, PDF ou vidéo</td>
-            <td>500€ HT</td>
-          </tr>
-          <tr>
-            <td><strong>Parcours personnalisé</strong></td>
-            <td>Structurer un dispositif complet</td>
-            <td>Audit, progression, livrable prêt</td>
-            <td>900–1800€ HT</td>
-          </tr>
-          <tr>
-            <td><strong>Formation de formateurs</strong></td>
-            <td>Renforcer la posture et les outils</td>
-            <td>Session de 4h</td>
-            <td>400€ HT</td>
-          </tr>
-          <tr>
-            <td><strong>Consulting veille</strong></td>
-            <td>Rester à jour en continu</td>
-            <td>Veille + synthèse mensuelle</td>
-            <td>250€/mois HT</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="produits" class="soft">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Collections</span>
-        <h2>Deux univers, une même exigence pédagogique</h2>
-        <p>Des romans pédagogiques pour les enfants du CP à la 3e, et des supports de stimulation cognitive pour les seniors, conçus pour être engageants, lisibles et réellement utiles.</p>
-      </div>
-
-      <article class="card reveal product-gamme" style="border-left:4px solid var(--sky);">
-        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
-          <span style="font-size:2.5rem;">🧒</span>
-          <div>
-            <h3 style="margin:0; font-size:1.55rem;">Maîtriser les mathématiques du CP à la 3e grâce à des romans pédagogiques immersifs</h3>
-            <p style="margin:0.3rem 0 0; color:var(--muted); font-size:0.95rem;">
-              Des histoires structurées qui transforment les notions scolaires en situations concrètes, pour apprendre avec régularité, autonomie et compréhension.
+          <article class="price-card highlight reveal">
+            <h4>Audit Qualiopi Light</h4>
+            <div class="price-row">
+              <span class="price-label">Tarif EduConcret</span>
+              <span class="price-edu">350€ HT</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Livrables</span>
+              <span class="price-value">Rapport + roadmap + templates</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Format</span>
+              <span class="price-value">Simple, ciblé, actionnable</span>
+            </div>
+            <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+              Une entrée rapide pour les petites structures, indépendants, associations ou organismes qui veulent cadrer leurs priorités sans s’engager dans un audit lourd.
             </p>
-          </div>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-box">
-            <strong>Pour qui ?</strong>
-            <p style="font-size:0.9rem; margin-top:0.3rem;">Élèves du CP à la 3e, parents souhaitant accompagner efficacement, enseignants et accompagnants pédagogiques.</p>
-          </div>
-          <div class="info-box info-box-success">
-            <strong>Ce que l’enfant apprend</strong>
-            <p style="font-size:0.9rem; margin-top:0.3rem;">Comprendre les notions plutôt que les réciter, résoudre des problèmes concrets, développer autonomie et confiance.</p>
-          </div>
-          <div class="info-box info-box-gold">
-            <strong>Méthode</strong>
-            <p style="font-size:0.9rem; margin-top:0.3rem;">Lecture immersive, compréhension des notions et entraînement progressif pour installer des bases solides durablement.</p>
-          </div>
-        </div>
-
-        <div class="books-grid">
-          <article class="book-mini">
-            <div class="cover-art cover-kids-1">
-              <div class="cover-content">
-                <span class="cover-chip">CP</span>
-                <span class="cover-title">Maths en aventure</span>
-                <span class="cover-sub">Nombres, repères, premières stratégies</span>
-              </div>
-            </div>
-            <span class="level" style="background:var(--sky);">CP</span>
-            <h5>Maths en aventure</h5>
-            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Un premier rapport positif aux maths grâce à une narration accessible.</p>
-            <div class="book-price">59€</div>
-          </article>
-
-          <article class="book-mini">
-            <div class="cover-art cover-kids-2">
-              <div class="cover-content">
-                <span class="cover-chip">CE1</span>
-                <span class="cover-title">Mission Calcul</span>
-                <span class="cover-sub">Calcul, comparaison, résolution</span>
-              </div>
-            </div>
-            <span class="level" style="background:var(--sky);">CE1</span>
-            <h5>Mission Calcul</h5>
-            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Pour passer des mécanismes aux premières vraies stratégies.</p>
-            <div class="book-price">59€</div>
-          </article>
-
-          <article class="book-mini">
-            <div class="cover-art cover-kids-3">
-              <div class="cover-content">
-                <span class="cover-chip">CE2</span>
-                <span class="cover-title">Explorations</span>
-                <span class="cover-sub">Opérations, logique, autonomie</span>
-              </div>
-            </div>
-            <span class="level" style="background:var(--sky);">CE2</span>
-            <h5>Explorations</h5>
-            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Une progression qui relie raisonnement et plaisir de lire.</p>
-            <div class="book-price">59€</div>
-          </article>
-
-          <article class="book-mini">
-            <div class="cover-art cover-kids-4">
-              <div class="cover-content">
-                <span class="cover-chip">CM1</span>
-                <span class="cover-title">Kawaii & Compagnie</span>
-                <span class="cover-sub">Gestion concrète, situations réelles</span>
-              </div>
-            </div>
-            <span class="level" style="background:var(--sky);">CM1</span>
-            <h5>Kawaii & Compagnie</h5>
-            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Des maths reliées à un univers vivant et motivant.</p>
-            <div class="book-price">59€</div>
-          </article>
-
-          <article class="book-mini">
-            <div class="cover-art cover-kids-5">
-              <div class="cover-content">
-                <span class="cover-chip">6e</span>
-                <span class="cover-title">Eliza in New York</span>
-                <span class="cover-sub">Fractions, repérage, raisonnement</span>
-              </div>
-            </div>
-            <span class="level" style="background:var(--terra);">6e</span>
-            <h5>Eliza in New York</h5>
-            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Une entrée dans le collège pensée pour rassurer et structurer.</p>
-            <div class="book-price">59€</div>
-          </article>
-
-          <article class="book-mini">
-            <div class="cover-art cover-kids-6">
-              <div class="cover-content">
-                <span class="cover-chip">4e</span>
-                <span class="cover-title">Barça Foot Math</span>
-                <span class="cover-sub">Proportions, stratégie, logique avancée</span>
-              </div>
-            </div>
-            <span class="level" style="background:var(--terra);">4e</span>
-            <h5>Barça Foot Math</h5>
-            <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Pour donner du sens aux notions plus complexes avec un univers fort.</p>
-            <div class="book-price">59€</div>
+            <a href="#rdv" class="btn btn-teal" style="width:100%; margin-top:1rem;" data-track="audit_rdv">Réserver un audit</a>
           </article>
         </div>
 
-        <div class="offer-stack">
-          <div class="offer-box">
-            <h4>Pack Progression Complète</h4>
-            <div class="price-big">199€ TTC</div>
-            <div class="price-note">Version papier</div>
-            <ul class="list" style="margin-top:0;">
-              <li>6 romans pédagogiques</li>
-              <li>Progression structurée et cohérente</li>
-              <li>Exercices intégrés + mise en situation</li>
-              <li>Adapté au travail autonome</li>
-            </ul>
-          </div>
-          <div class="offer-box">
-            <h4>Version numérique</h4>
-            <div class="price-big">99€ TTC</div>
-            <div class="price-note">PDF complet</div>
-            <ul class="list" style="margin-top:0;">
-              <li>Accès immédiat</li>
-              <li>Même contenu pédagogique</li>
-              <li>Utilisable sur tablette ou ordinateur</li>
-              <li>Idéal pour démarrer rapidement</li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-top:1.5rem; padding:1.2rem; background:rgba(46,111,168,0.08); border-radius:var(--radius);">
-          <p style="font-weight:700; margin-bottom:0.35rem;">Promesse pédagogique</p>
-          <p style="max-width:760px; margin:0 auto; font-size:0.92rem; color:var(--ink-3);">
-            Une méthode qui associe lecture immersive, compréhension des notions et entraînement progressif avec un objectif simple :
-            <strong style="color:var(--sky);">installer des bases solides en mathématiques durablement</strong>.
-          </p>
-          <p style="margin-top:0.9rem; font-size:0.82rem; color:var(--muted);">Satisfait ou remboursé 7 jours</p>
-          <div class="actions" style="margin-top:1rem;">
-            <a href="#contact" class="btn btn-sky">Recevoir le catalogue complet</a>
-            <a href="#rdv" class="btn btn-dark">Démarrer la progression</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card reveal product-gamme" style="border-left:4px solid var(--teal);">
-        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
-          <span style="font-size:2.5rem;">🧠</span>
-          <div>
-            <h3 style="margin:0; font-size:1.45rem;">Stimulation cognitive seniors</h3>
-            <p style="margin:0.3rem 0 0; color:var(--muted); font-size:0.95rem;">
-              Des supports conçus pour entretenir l’attention, la mémoire, la logique et le plaisir d’agir.
+        <div class="grid three">
+          <article class="price-card reveal">
+            <h4>Module pédagogique</h4>
+            <div class="price-row">
+              <span class="price-label">Tarif</span>
+              <span class="price-edu">500€ HT</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Livrables</span>
+              <span class="price-value">Texte, quiz, PDF ou capsule vidéo</span>
+            </div>
+            <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+              Une ressource claire, prête à intégrer dans un parcours ou à diffuser à vos publics.
             </p>
-          </div>
-        </div>
+            <a href="#contact" class="btn btn-sky" style="width:100%; margin-top:1rem;" data-track="module_devis">Demander un devis</a>
+          </article>
 
-        <div class="info-grid">
-          <div class="info-box info-box-teal">
-            <strong>Pour qui ?</strong>
-            <p style="font-size:0.9rem; margin-top:0.3rem;">Seniors actifs, familles, associations, résidences, CCAS, structures d’accompagnement.</p>
-          </div>
-          <div class="info-box info-box-success">
-            <strong>Promesse</strong>
-            <p style="font-size:0.9rem; margin-top:0.3rem;">Entretenir les fonctions cognitives dans un cadre digne, lisible et engageant.</p>
-          </div>
-          <div class="info-box info-box-gold">
-            <strong>Format</strong>
-            <p style="font-size:0.9rem; margin-top:0.3rem;">Situations concrètes, progression douce, consignes claires, grand confort de lecture.</p>
-          </div>
-        </div>
-
-        <div class="grid three" style="margin-top:1rem;">
-          <div class="book-mini" style="text-align:left;">
-            <div class="cover-art cover-senior-1">
-              <div class="cover-content">
-                <span class="cover-chip">Niveau 1</span>
-                <span class="cover-title">Les Maths du Quotidien</span>
-                <span class="cover-sub">Budget, courses, repères de vie courante</span>
-              </div>
+          <article class="price-card reveal">
+            <h4>Parcours personnalisé</h4>
+            <div class="price-row">
+              <span class="price-label">Tarif</span>
+              <span class="price-edu">900–1800€ HT</span>
             </div>
-            <span class="level" style="background:var(--teal);">Niveau 1</span>
-            <h5>Les Maths du Quotidien</h5>
-            <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Budget, courses, recettes, repères simples et calcul de la vie courante.</p>
-            <div class="book-price">39€</div>
-          </div>
-
-          <div class="book-mini" style="text-align:left;">
-            <div class="cover-art cover-senior-2">
-              <div class="cover-content">
-                <span class="cover-chip">Niveau 2</span>
-                <span class="cover-title">Repérage & Organisation</span>
-                <span class="cover-sub">Mémoire spatiale et planification</span>
-              </div>
+            <div class="price-row">
+              <span class="price-label">Livrables</span>
+              <span class="price-value">Audit, progression, PDF prêt à déployer</span>
             </div>
-            <span class="level" style="background:var(--teal);">Niveau 2</span>
-            <h5>Repérage & Organisation</h5>
-            <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Plans, horaires, trajets, mémoire spatiale et organisation du quotidien.</p>
-            <div class="book-price">39€</div>
-          </div>
+            <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+              Pour les structures qui veulent une architecture pédagogique sur mesure, lisible et diffusable.
+            </p>
+            <a href="#contact" class="btn btn-dark" style="width:100%; margin-top:1rem;" data-track="parcours_contact">Construire un parcours</a>
+          </article>
 
-          <div class="book-mini" style="text-align:left;">
-            <div class="cover-art cover-senior-3">
-              <div class="cover-content">
-                <span class="cover-chip">Niveau 3</span>
-                <span class="cover-title">Défis & Mémoire</span>
-                <span class="cover-sub">Attention, logique et flexibilité cognitive</span>
-              </div>
+          <article class="price-card reveal">
+            <h4>Formation de formateurs</h4>
+            <div class="price-row">
+              <span class="price-label">Tarif</span>
+              <span class="price-edu">400€ / 4h</span>
             </div>
-            <span class="level" style="background:var(--teal);">Niveau 3</span>
-            <h5>Défis & Mémoire</h5>
-            <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Suites logiques, attention, flexibilité cognitive et jeux de réflexion.</p>
-            <div class="book-price">39€</div>
-          </div>
+            <div class="price-row">
+              <span class="price-label">Format</span>
+              <span class="price-value">Visio ou présentiel</span>
+            </div>
+            <p style="margin-top:1rem; font-size:0.88rem; color:var(--muted);">
+              Un format court, centré sur la posture, les gestes utiles et l’outillage pédagogique.
+            </p>
+            <a href="#contact" class="btn btn-dark" style="width:100%; margin-top:1rem;" data-track="formateurs_contact">Réserver une session</a>
+          </article>
         </div>
 
-        <div style="background:rgba(42,123,110,0.08); padding:1.2rem; border-radius:var(--radius); margin:1.5rem 0;">
-          <h4 style="margin-bottom:0.5rem; color:var(--teal);">Ce qui fait la différence</h4>
-          <ul class="feature-list">
-            <li>Grand format, contrastes soignés et lecture plus confortable</li>
-            <li>Consignes claires, rythme respecté et exercices contextualisés</li>
-            <li>Usage individuel, en duo ou en atelier collectif</li>
-            <li>Approche stimulante sans être infantilisante</li>
-          </ul>
+        <div class="pack-star reveal">
+          <h3>Pack signature : Audit + Module</h3>
+          <div class="price">750€ HT</div>
+          <div class="save">Offre combinée</div>
+          <p>Une solution claire pour poser un diagnostic, structurer vos priorités et repartir avec une ressource pédagogique prête à l’emploi.</p>
+          <p style="margin-top:1rem;"><a href="#rdv" class="btn btn-dark" data-track="pack_signature">Demander le pack</a></p>
         </div>
 
-        <div style="text-align:center; margin-top:1.5rem; padding:1rem; background:rgba(42,123,110,0.08); border-radius:var(--radius);">
-          <p style="font-weight:700; margin-bottom:0.4rem;">Pack atelier collectif</p>
-          <p style="font:900 1.7rem var(--font-serif); color:var(--teal);">99€ TTC</p>
-          <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Trois niveaux + guide d’animation pour structures et professionnels.</p>
-          <a href="#contact" class="btn btn-teal">Demander le catalogue seniors</a>
+        <div class="trust-badges reveal">
+          <span class="trust-badge">Livrables concrets</span>
+          <span class="trust-badge">Paiement CB possible</span>
+          <span class="trust-badge">Réponse rapide</span>
+          <span class="trust-badge">10 ans d’expérience terrain</span>
         </div>
-      </article>
-    </div>
-  </section>
 
-  <section id="services">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Services</span>
-        <h2>Ingénierie pédagogique, orientation et accompagnement de projet</h2>
-        <p>Une approche professionnelle centrée sur les compétences, la progression, la clarification du projet et la mise en action.</p>
+        <table class="comparison-table reveal">
+          <thead>
+            <tr>
+              <th>Prestation</th>
+              <th>Usage</th>
+              <th>Livrables</th>
+              <th>Tarif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Audit Qualiopi Light</strong></td>
+              <td>Cadrer rapidement les priorités</td>
+              <td>Rapport, roadmap, templates</td>
+              <td>350€ HT</td>
+            </tr>
+            <tr>
+              <td><strong>Module pédagogique</strong></td>
+              <td>Produire une ressource diffusable</td>
+              <td>Texte, quiz, PDF ou vidéo</td>
+              <td>500€ HT</td>
+            </tr>
+            <tr>
+              <td><strong>Parcours personnalisé</strong></td>
+              <td>Structurer un dispositif complet</td>
+              <td>Audit, progression, livrable prêt</td>
+              <td>900–1800€ HT</td>
+            </tr>
+            <tr>
+              <td><strong>Formation de formateurs</strong></td>
+              <td>Renforcer la posture et les outils</td>
+              <td>Session de 4h</td>
+              <td>400€ HT</td>
+            </tr>
+            <tr>
+              <td><strong>Consulting veille</strong></td>
+              <td>Rester à jour en continu</td>
+              <td>Veille + synthèse mensuelle</td>
+              <td>250€/mois HT</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="grid four">
-        <article class="card reveal"><div class="icon">🎓</div><h3>Orientation</h3><ul class="list"><li>Clarification du projet personnel et professionnel.</li><li>Exploration des métiers et environnements.</li><li>Accompagnement des jeunes et adultes en transition.</li></ul></article>
-        <article class="card reveal"><div class="icon">👤</div><h3>Accompagnement individuel</h3><ul class="list"><li>Gestion de projet de la conception à la mise en œuvre.</li><li>Suivi individualisé et ajustement du parcours.</li><li>Valorisation des compétences.</li></ul></article>
-        <article class="card reveal"><div class="icon">🚀</div><h3>Création d'activité</h3><ul class="list"><li>Génération d'idées et structuration.</li><li>Parcours entrepreneuriaux progressifs.</li><li>Outils simples de pilotage.</li></ul></article>
-        <article class="card reveal"><div class="icon">🏢</div><h3>Formation et FOAD</h3><ul class="list"><li>Analyse des besoins et référentiels.</li><li>Scénarisation de parcours.</li><li>Digitalisation et suivi des acquis.</li></ul></article>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="portfolio" class="soft">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Portfolio</span>
-        <h2>Moctar Touré</h2>
-        <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
-      </div>
+    <section id="produits" class="soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Collections</span>
+          <h2>Deux univers, une même exigence pédagogique</h2>
+          <p>Des romans pédagogiques pour les enfants du CP à la 3e, et des supports de stimulation cognitive pour les seniors, conçus pour être engageants, lisibles et réellement utiles.</p>
+        </div>
 
-      <article class="card reveal">
-        <h3>Positionnement</h3>
-        <p>Je conçois et déploie des dispositifs d'apprentissage centrés sur l'individu, visant le développement des compétences, la structuration de projets professionnels et l'autonomisation des apprenants. Mon approche repose sur une ingénierie pédagogique rigoureuse, combinée à un accompagnement individualisé.</p>
-      </article>
-
-      <div class="grid two" style="margin-top:22px;">
-        <article class="card reveal"><h3>Missions principales</h3><ul class="list"><li>Analyse des besoins des apprenants et porteurs de projet.</li><li>Conception de parcours pédagogiques personnalisés.</li><li>Structuration de dispositifs d'accompagnement.</li><li>Suivi individualisé et évaluation des compétences.</li></ul></article>
-        <article class="card reveal"><h3>Approche pédagogique</h3><ul class="list"><li>Psychopédagogie : motivation, émotion et cognition.</li><li>Andragogie : autonomie et utilité immédiate.</li><li>Ingénierie : parcours progressifs orientés action.</li><li>Accompagnement socio-éducatif vers l'insertion.</li></ul></article>
-      </div>
-
-      <div class="section-head reveal" style="margin-top:70px; margin-bottom:28px;">
-        <span class="tag">Expériences</span>
-        <h2>Structures accompagnées</h2>
-        <p>Des missions concrètes de conception, structuration, accompagnement et pilotage pédagogique.</p>
-      </div>
-
-      <div class="grid auto">
-        <article class="card reveal"><p class="experience-meta">2024 - aujourd'hui</p><h3>LOGIX FORMA</h3><ul class="list"><li>Pilotage de la stratégie pédagogique.</li><li>Référentiels, programmes et qualité.</li><li>Digitalisation FOAD et indicateurs.</li></ul></article>
-        <article class="card reveal"><p class="experience-meta">2023 - 2024</p><h3>IAMTV</h3><ul class="list"><li>Formations aux métiers de l'audiovisuel.</li><li>Scénarisation par la pratique.</li><li>Supports vidéo pédagogiques.</li></ul></article>
-        <article class="card reveal"><p class="experience-meta">2024</p><h3>JIMCAB</h3><ul class="list"><li>Modules pour chauffeurs de taxi.</li><li>Relation client et réglementation.</li><li>Parcours d'intégration.</li></ul></article>
-        <article class="card reveal"><p class="experience-meta">2025</p><h3>CASON</h3><ul class="list"><li>Excellence opérationnelle.</li><li>Gestion du stress et relation client.</li><li>Supports e-learning mobile.</li></ul></article>
-        <article class="card reveal"><p class="experience-meta">2023 - 2024</p><h3>BOY PARIS EVENT</h3><ul class="list"><li>Parcours pour organisateurs et bénévoles.</li><li>Checklists, guides et ateliers.</li><li>Coordination et gestion de crise.</li></ul></article>
-      </div>
-
-      <div class="grid four" style="margin-top:24px;">
-        <article class="card metric reveal"><strong>+10 ans</strong><span>Expérience terrain</span></article>
-        <article class="card metric reveal"><strong>+50</strong><span>Dispositifs conçus</span></article>
-        <article class="card metric reveal"><strong>3 000+</strong><span>Apprenants accompagnés</span></article>
-        <article class="card metric reveal"><strong>Suivi</strong><span>Parcours contextualisés</span></article>
-      </div>
-
-      <p class="quote reveal">"On ne comprend vraiment que ce que l'on met en pratique."</p>
-    </div>
-  </section>
-
-  <section id="apropos" class="dark">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Profil</span>
-        <h2>Moctar Touré</h2>
-        <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
-      </div>
-      <div class="grid two">
-        <article class="card reveal"><h3>Une approche centrée sur l'utilité pédagogique</h3><p>Depuis plus de 10 ans, je travaille sur le lien entre les besoins réels des publics, les objectifs de progression et la mise en pratique. J'accompagne la clarification des parcours, la structuration des projets et la conception de dispositifs directement mobilisables.</p></article>
-        <article class="card reveal"><h3>Points d'appui</h3><ul class="list"><li>+50 dispositifs conçus et déployés.</li><li>3 000+ apprenants accompagnés.</li><li>Psychopédagogie, andragogie, FOAD et ingénierie.</li><li>Parcours personnalisés, suivi et mise en action.</li></ul></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Contact</span>
-        <h2>Parlons de votre besoin</h2>
-        <p>Premier échange gratuit pour clarifier votre projet, votre parcours ou votre dispositif pédagogique.</p>
-      </div>
-      <div class="contact-grid">
-        <article class="card reveal">
-          <h3>Formulaire de contact</h3>
-          <p style="margin:8px 0 18px; color:var(--muted);">Décrivez votre besoin et je vous répondrai rapidement.</p>
-          <form id="contactForm" action="https://formspree.io/f/xldgvkjq" method="POST">
-            <div><label for="name">Nom complet</label><input id="name" name="nom" autocomplete="name" required></div>
-            <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-            <div><label for="phone">Téléphone</label><input id="phone" name="telephone" type="tel" autocomplete="tel" placeholder="06 24 61 44 51"></div>
+        <article class="card reveal product-gamme" style="border-left:4px solid var(--sky);">
+          <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+            <span style="font-size:2.5rem;">🧒</span>
             <div>
-              <label for="subject">Sujet</label>
-              <select id="subject" name="sujet" required>
-                <option value="" selected disabled>Choisissez un sujet</option>
-                <option>Audit Qualiopi light</option>
-                <option>Module pédagogique</option>
-                <option>Pack signature</option>
-                <option>Romans pédagogiques enfants</option>
-                <option>Stimulation cognitive seniors</option>
-                <option>Commande groupe / établissement</option>
-                <option>Orientation et clarification de parcours</option>
-                <option>Création d'activité</option>
-                <option>Accompagnement individuel</option>
-                <option>Ingénierie pédagogique</option>
-                <option>FOAD / e-learning</option>
-                <option>Partenariat</option>
-              </select>
+              <h3 style="margin:0; font-size:1.55rem;">Maîtriser les mathématiques du CP à la 3e grâce à des romans pédagogiques immersifs</h3>
+              <p style="margin:0.3rem 0 0; color:var(--muted); font-size:0.95rem;">
+                Des histoires structurées qui transforment les notions scolaires en situations concrètes, pour apprendre avec régularité, autonomie et compréhension.
+              </p>
             </div>
-            <div><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
-            <input type="text" name="_gotcha" hidden>
-            <input type="hidden" name="_subject" value="Nouveau contact via educoncret.net">
-            <button class="btn btn-teal" type="submit">Envoyer le message</button>
-          </form>
-          <div class="success" id="success">Message envoyé. Je vous répondrai sous 24h ouvrées.</div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <strong>Pour qui ?</strong>
+              <p style="font-size:0.9rem; margin-top:0.3rem;">Élèves du CP à la 3e, parents souhaitant accompagner efficacement, enseignants et accompagnants pédagogiques.</p>
+            </div>
+            <div class="info-box info-box-success">
+              <strong>Ce que l’enfant apprend</strong>
+              <p style="font-size:0.9rem; margin-top:0.3rem;">Comprendre les notions plutôt que les réciter, résoudre des problèmes concrets, développer autonomie et confiance.</p>
+            </div>
+            <div class="info-box info-box-gold">
+              <strong>Méthode</strong>
+              <p style="font-size:0.9rem; margin-top:0.3rem;">Lecture immersive, compréhension des notions et entraînement progressif pour installer des bases solides durablement.</p>
+            </div>
+          </div>
+
+          <div class="books-grid">
+            <article class="book-mini">
+              <div class="cover-art cover-kids-1">
+                <div class="cover-content">
+                  <span class="cover-chip">CP</span>
+                  <span class="cover-title">Maths en aventure</span>
+                  <span class="cover-sub">Nombres, repères, premières stratégies</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--sky);">CP</span>
+              <h5>Maths en aventure</h5>
+              <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Un premier rapport positif aux maths grâce à une narration accessible.</p>
+              <div class="book-price">59€</div>
+            </article>
+
+            <article class="book-mini">
+              <div class="cover-art cover-kids-2">
+                <div class="cover-content">
+                  <span class="cover-chip">CE1</span>
+                  <span class="cover-title">Mission Calcul</span>
+                  <span class="cover-sub">Calcul, comparaison, résolution</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--sky);">CE1</span>
+              <h5>Mission Calcul</h5>
+              <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Pour passer des mécanismes aux premières vraies stratégies.</p>
+              <div class="book-price">59€</div>
+            </article>
+
+            <article class="book-mini">
+              <div class="cover-art cover-kids-3">
+                <div class="cover-content">
+                  <span class="cover-chip">CE2</span>
+                  <span class="cover-title">Explorations</span>
+                  <span class="cover-sub">Opérations, logique, autonomie</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--sky);">CE2</span>
+              <h5>Explorations</h5>
+              <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Une progression qui relie raisonnement et plaisir de lire.</p>
+              <div class="book-price">59€</div>
+            </article>
+
+            <article class="book-mini">
+              <div class="cover-art cover-kids-4">
+                <div class="cover-content">
+                  <span class="cover-chip">CM1</span>
+                  <span class="cover-title">Kawaii & Compagnie</span>
+                  <span class="cover-sub">Gestion concrète, situations réelles</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--sky);">CM1</span>
+              <h5>Kawaii & Compagnie</h5>
+              <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Des maths reliées à un univers vivant et motivant.</p>
+              <div class="book-price">59€</div>
+            </article>
+
+            <article class="book-mini">
+              <div class="cover-art cover-kids-5">
+                <div class="cover-content">
+                  <span class="cover-chip">6e</span>
+                  <span class="cover-title">Eliza in New York</span>
+                  <span class="cover-sub">Fractions, repérage, raisonnement</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--terra);">6e</span>
+              <h5>Eliza in New York</h5>
+              <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Une entrée dans le collège pensée pour rassurer et structurer.</p>
+              <div class="book-price">59€</div>
+            </article>
+
+            <article class="book-mini">
+              <div class="cover-art cover-kids-6">
+                <div class="cover-content">
+                  <span class="cover-chip">4e</span>
+                  <span class="cover-title">Barça Foot Math</span>
+                  <span class="cover-sub">Proportions, stratégie, logique avancée</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--terra);">4e</span>
+              <h5>Barça Foot Math</h5>
+              <p style="font-size:0.8rem; color:var(--muted); margin:0.3rem 0;">Pour donner du sens aux notions plus complexes avec un univers fort.</p>
+              <div class="book-price">59€</div>
+            </article>
+          </div>
+
+          <div class="offer-stack">
+            <div class="offer-box">
+              <h4>Pack Progression Complète</h4>
+              <div class="price-big">199€ TTC</div>
+              <div class="price-note">Version papier</div>
+              <ul class="list" style="margin-top:0;">
+                <li>6 romans pédagogiques</li>
+                <li>Progression structurée et cohérente</li>
+                <li>Exercices intégrés + mise en situation</li>
+                <li>Adapté au travail autonome</li>
+              </ul>
+            </div>
+            <div class="offer-box">
+              <h4>Version numérique</h4>
+              <div class="price-big">99€ TTC</div>
+              <div class="price-note">PDF complet</div>
+              <ul class="list" style="margin-top:0;">
+                <li>Accès immédiat</li>
+                <li>Même contenu pédagogique</li>
+                <li>Utilisable sur tablette ou ordinateur</li>
+                <li>Idéal pour démarrer rapidement</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="text-align:center; margin-top:1.5rem; padding:1.2rem; background:rgba(46,111,168,0.08); border-radius:var(--radius);">
+            <p style="font-weight:700; margin-bottom:0.35rem;">Promesse pédagogique</p>
+            <p style="max-width:760px; margin:0 auto; font-size:0.92rem; color:var(--ink-3);">
+              Une méthode qui associe lecture immersive, compréhension des notions et entraînement progressif avec un objectif simple :
+              <strong style="color:var(--sky);">installer des bases solides en mathématiques durablement</strong>.
+            </p>
+            <p style="margin-top:0.9rem; font-size:0.82rem; color:var(--muted);">Satisfait ou remboursé 7 jours</p>
+            <div class="actions" style="margin-top:1rem;">
+              <a href="#contact" class="btn btn-sky" data-track="catalogue_jeunesse">Recevoir le catalogue complet</a>
+              <a href="#rdv" class="btn btn-dark" data-track="progression_rdv">Démarrer la progression</a>
+            </div>
+          </div>
         </article>
 
-        <aside class="card contact-direct reveal">
-          <h3>Contact direct</h3>
-          <p style="margin-top:16px;">Email<br><a href="mailto:contact@educoncret.net">contact@educoncret.net</a></p>
-          <p style="margin-top:16px;">Téléphone<br><a href="tel:+33624614451">06 24 61 44 51</a></p>
-          <p style="margin-top:16px;">WhatsApp<br><a href="https://wa.me/33624614451" target="_blank" rel="noreferrer">Message direct</a></p>
-          <p style="margin-top:16px; color:rgba(247,243,237,.58);">Paris · interventions à distance partout en France</p>
-          <div style="margin-top:2rem; padding:1rem; background:rgba(201,168,76,.1); border-radius:var(--radius);">
-            <p style="font-size:.85rem; margin-bottom:.5rem;"><strong>💳 Paiement simple</strong></p>
-            <p style="font-size:.8rem;">CB possible via solution de paiement sécurisée.</p>
+        <article class="card reveal product-gamme" style="border-left:4px solid var(--teal);">
+          <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+            <span style="font-size:2.5rem;">🧠</span>
+            <div>
+              <h3 style="margin:0; font-size:1.45rem;">Stimulation cognitive seniors</h3>
+              <p style="margin:0.3rem 0 0; color:var(--muted); font-size:0.95rem;">
+                Des supports conçus pour entretenir l’attention, la mémoire, la logique et le plaisir d’agir.
+              </p>
+            </div>
           </div>
-        </aside>
-      </div>
-    </div>
-  </section>
 
-  <section class="soft" id="carte">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Carte digitale</span>
-        <h2>Ma carte de visite numérique</h2>
-        <p>Scannez le QR Code pour enregistrer mes coordonnées directement dans votre téléphone.</p>
-      </div>
-      <article class="card digital-card reveal">
-        <h3 style="color:var(--gold); font-size:1.55rem;">Ma Carte Digitale</h3>
-        <p style="color:rgba(247,243,237,.62);">Scannez pour enregistrer mes coordonnées.</p>
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://educoncret.net/contact.vcf" alt="QR Code Moctar Touré"></div>
-        <div class="actions">
-          <a class="btn btn-gold" href="https://educoncret.net/contact.vcf">Enregistrer le contact</a>
-          <a class="btn btn-outline" href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-      </article>
-    </div>
-  </section>
+          <div class="info-grid">
+            <div class="info-box info-box-teal">
+              <strong>Pour qui ?</strong>
+              <p style="font-size:0.9rem; margin-top:0.3rem;">Seniors actifs, familles, associations, résidences, CCAS, structures d’accompagnement.</p>
+            </div>
+            <div class="info-box info-box-success">
+              <strong>Promesse</strong>
+              <p style="font-size:0.9rem; margin-top:0.3rem;">Entretenir les fonctions cognitives dans un cadre digne, lisible et engageant.</p>
+            </div>
+            <div class="info-box info-box-gold">
+              <strong>Format</strong>
+              <p style="font-size:0.9rem; margin-top:0.3rem;">Situations concrètes, progression douce, consignes claires, grand confort de lecture.</p>
+            </div>
+          </div>
 
-  <section class="dark" id="rdv">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="tag">Prise de rendez-vous</span>
-        <h2>Réservez votre créneau</h2>
-        <p>Le premier échange de 30 minutes est gratuit.</p>
+          <div class="grid three" style="margin-top:1rem;">
+            <div class="book-mini" style="text-align:left;">
+              <div class="cover-art cover-senior-1">
+                <div class="cover-content">
+                  <span class="cover-chip">Niveau 1</span>
+                  <span class="cover-title">Les Maths du Quotidien</span>
+                  <span class="cover-sub">Budget, courses, repères de vie courante</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--teal);">Niveau 1</span>
+              <h5>Les Maths du Quotidien</h5>
+              <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Budget, courses, recettes, repères simples et calcul de la vie courante.</p>
+              <div class="book-price">39€</div>
+            </div>
+
+            <div class="book-mini" style="text-align:left;">
+              <div class="cover-art cover-senior-2">
+                <div class="cover-content">
+                  <span class="cover-chip">Niveau 2</span>
+                  <span class="cover-title">Repérage & Organisation</span>
+                  <span class="cover-sub">Mémoire spatiale et planification</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--teal);">Niveau 2</span>
+              <h5>Repérage & Organisation</h5>
+              <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Plans, horaires, trajets, mémoire spatiale et organisation du quotidien.</p>
+              <div class="book-price">39€</div>
+            </div>
+
+            <div class="book-mini" style="text-align:left;">
+              <div class="cover-art cover-senior-3">
+                <div class="cover-content">
+                  <span class="cover-chip">Niveau 3</span>
+                  <span class="cover-title">Défis & Mémoire</span>
+                  <span class="cover-sub">Attention, logique et flexibilité cognitive</span>
+                </div>
+              </div>
+              <span class="level" style="background:var(--teal);">Niveau 3</span>
+              <h5>Défis & Mémoire</h5>
+              <p style="font-size:0.85rem; color:var(--muted); margin:0.3rem 0;">Suites logiques, attention, flexibilité cognitive et jeux de réflexion.</p>
+              <div class="book-price">39€</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(42,123,110,0.08); padding:1.2rem; border-radius:var(--radius); margin:1.5rem 0;">
+            <h4 style="margin-bottom:0.5rem; color:var(--teal);">Ce qui fait la différence</h4>
+            <ul class="feature-list">
+              <li>Grand format, contrastes soignés et lecture plus confortable</li>
+              <li>Consignes claires, rythme respecté et exercices contextualisés</li>
+              <li>Usage individuel, en duo ou en atelier collectif</li>
+              <li>Approche stimulante sans être infantilisante</li>
+            </ul>
+          </div>
+
+          <div style="text-align:center; margin-top:1.5rem; padding:1rem; background:rgba(42,123,110,0.08); border-radius:var(--radius);">
+            <p style="font-weight:700; margin-bottom:0.4rem;">Pack atelier collectif</p>
+            <p style="font:900 1.7rem var(--font-serif); color:var(--teal);">99€ TTC</p>
+            <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Trois niveaux + guide d’animation pour structures et professionnels.</p>
+            <a href="#contact" class="btn btn-teal" data-track="catalogue_seniors">Demander le catalogue seniors</a>
+          </div>
+        </article>
       </div>
-      <div class="calendly-wrap reveal">
-        <div class="calendly-head">
-          <h3>Appel découverte offert · 30 minutes</h3>
-          <p>On échange sur votre projet, vos besoins et la forme d'accompagnement adaptée.</p>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Services</span>
+          <h2>Ingénierie pédagogique, orientation et accompagnement de projet</h2>
+          <p>Une approche professionnelle centrée sur les compétences, la progression, la clarification du projet et la mise en action.</p>
         </div>
-        <iframe title="Calendly EduConcret" src="https://calendly.com/contact-educoncret/30min"></iframe>
+        <div class="grid four">
+          <article class="card reveal">
+            <div class="icon">🎓</div>
+            <h3>Orientation</h3>
+            <ul class="list">
+              <li>Clarification du projet personnel et professionnel.</li>
+              <li>Exploration des métiers et environnements.</li>
+              <li>Accompagnement des jeunes et adultes en transition.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">👤</div>
+            <h3>Accompagnement individuel</h3>
+            <ul class="list">
+              <li>Gestion de projet de la conception à la mise en œuvre.</li>
+              <li>Suivi individualisé et ajustement du parcours.</li>
+              <li>Valorisation des compétences.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🚀</div>
+            <h3>Création d'activité</h3>
+            <ul class="list">
+              <li>Génération d'idées et structuration.</li>
+              <li>Parcours entrepreneuriaux progressifs.</li>
+              <li>Outils simples de pilotage.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🏢</div>
+            <h3>Formation et FOAD</h3>
+            <ul class="list">
+              <li>Analyse des besoins et référentiels.</li>
+              <li>Scénarisation de parcours.</li>
+              <li>Digitalisation et suivi des acquis.</li>
+            </ul>
+          </article>
+        </div>
       </div>
-      <div class="grid three" style="margin-top:24px;">
-        <article class="card reveal"><h3>Email</h3><p><a href="mailto:contact@educoncret.net">contact@educoncret.net</a></p></article>
-        <article class="card reveal"><h3>Téléphone</h3><p><a href="tel:+33624614451">06 24 61 44 51</a></p></article>
-        <article class="card reveal"><h3>WhatsApp</h3><p><a href="https://wa.me/33624614451" target="_blank" rel="noreferrer">Message WhatsApp</a></p></article>
+    </section>
+
+    <section id="portfolio" class="soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Portfolio</span>
+          <h2>Moctar Touré</h2>
+          <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
+        </div>
+
+        <article class="card reveal">
+          <h3>Positionnement</h3>
+          <p>Je conçois et déploie des dispositifs d'apprentissage centrés sur l'individu, visant le développement des compétences, la structuration de projets professionnels et l'autonomisation des apprenants. Mon approche repose sur une ingénierie pédagogique rigoureuse, combinée à un accompagnement individualisé.</p>
+        </article>
+
+        <div class="grid two" style="margin-top:22px;">
+          <article class="card reveal">
+            <h3>Missions principales</h3>
+            <ul class="list">
+              <li>Analyse des besoins des apprenants et porteurs de projet.</li>
+              <li>Conception de parcours pédagogiques personnalisés.</li>
+              <li>Structuration de dispositifs d'accompagnement.</li>
+              <li>Suivi individualisé et évaluation des compétences.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Approche pédagogique</h3>
+            <ul class="list">
+              <li>Psychopédagogie : motivation, émotion et cognition.</li>
+              <li>Andragogie : autonomie et utilité immédiate.</li>
+              <li>Ingénierie : parcours progressifs orientés action.</li>
+              <li>Accompagnement socio-éducatif vers l'insertion.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="section-head reveal" style="margin-top:70px; margin-bottom:28px;">
+          <span class="tag">Expériences</span>
+          <h2>Structures accompagnées</h2>
+          <p>Des missions concrètes de conception, structuration, accompagnement et pilotage pédagogique dans des secteurs variés.</p>
+        </div>
+
+        <div class="grid auto">
+          <article class="card reveal">
+            <p class="experience-meta">2024 - aujourd'hui</p>
+            <h3>LOGIX FORMA</h3>
+            <ul class="list">
+              <li>Pilotage de la stratégie pédagogique.</li>
+              <li>Référentiels, programmes et qualité.</li>
+              <li>Digitalisation FOAD et indicateurs.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <p class="experience-meta">2023 - 2024</p>
+            <h3>IAM TV</h3>
+            <ul class="list">
+              <li>Ingénierie pédagogique pour une structure audiovisuelle.</li>
+              <li>Scénarisation de contenus et supports de formation.</li>
+              <li>Valorisation pédagogique d’espaces et d’usages audiovisuels.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <p class="experience-meta">2024</p>
+            <h3>JIMCAB</h3>
+            <ul class="list">
+              <li>Conception de modules pour une société de transport.</li>
+              <li>Relation client, réglementation et intégration métier.</li>
+              <li>Parcours de montée en compétence opérationnelle.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <p class="experience-meta">2025</p>
+            <h3>CASON</h3>
+            <ul class="list">
+              <li>Excellence opérationnelle.</li>
+              <li>Gestion du stress et relation client.</li>
+              <li>Supports e-learning mobile.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <p class="experience-meta">2023 - 2024</p>
+            <h3>BOY PARIS EVENT</h3>
+            <ul class="list">
+              <li>Structuration pédagogique pour une activité événementielle.</li>
+              <li>Guides, checklists et parcours pour équipes et bénévoles.</li>
+              <li>Coordination, gestion de crise et qualité d’exécution terrain.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="grid four" style="margin-top:24px;">
+          <article class="card metric reveal"><strong>+10 ans</strong><span>Expérience terrain</span></article>
+          <article class="card metric reveal"><strong>+50</strong><span>Dispositifs conçus</span></article>
+          <article class="card metric reveal"><strong>3 000+</strong><span>Apprenants accompagnés</span></article>
+          <article class="card metric reveal"><strong>Suivi</strong><span>Parcours contextualisés</span></article>
+        </div>
+
+        <p class="quote reveal">"On ne comprend vraiment que ce que l'on met en pratique."</p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="apropos" class="dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Profil</span>
+          <h2>Moctar Touré</h2>
+          <p>Ingénieur pédagogique · Formateur · Accompagnement de parcours</p>
+        </div>
+
+        <div class="grid two">
+          <article class="card reveal">
+            <h3>Une approche centrée sur l'utilité pédagogique</h3>
+            <p>Depuis plus de 10 ans, je travaille sur le lien entre les besoins réels des publics, les objectifs de progression et la mise en pratique. J'accompagne la clarification des parcours, la structuration des projets et la conception de dispositifs directement mobilisables.</p>
+          </article>
+
+          <article class="card reveal">
+            <h3>Points d'appui</h3>
+            <ul class="list">
+              <li>+50 dispositifs conçus et déployés.</li>
+              <li>3 000+ apprenants accompagnés.</li>
+              <li>Psychopédagogie, andragogie, FOAD et ingénierie.</li>
+              <li>Parcours personnalisés, suivi et mise en action.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARTE DIGITALE PREMIUM -->
+    <section class="soft" id="carte">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Carte digitale premium</span>
+          <h2>Ma carte de visite numérique</h2>
+          <p>Scannez le QR Code pour enregistrer directement mes coordonnées. Cette section est pensée pour un usage immédiat en rendez-vous, en salon ou en prospection.</p>
+        </div>
+
+        <div class="digital-premium-wrap">
+          <article class="digital-card-premium reveal">
+            <h3>Moctar Touré · EduConcret</h3>
+            <p>
+              Ingénierie pédagogique, conception de dispositifs d’apprentissage, accompagnement de structures, ressources éducatives jeunesse et supports de stimulation cognitive.
+            </p>
+
+            <div class="digital-meta">
+              <span>Contact immédiat</span>
+              <span>QR vCard intégré</span>
+              <span>Prêt pour NFC</span>
+              <span>Prêt pour Wallet</span>
+            </div>
+
+            <div class="card-links">
+              <a class="btn btn-gold" href="#" id="downloadVCard" data-track="vcard_download_btn">Télécharger la vCard</a>
+              <a class="btn btn-outline" href="mailto:contact@educoncret.net" data-track="digital_email">Email</a>
+              <a class="btn btn-outline" href="https://www.linkedin.com/in/moctar-touré-5a7a87274" target="_blank" rel="noreferrer" data-track="digital_linkedin">LinkedIn</a>
+            </div>
+
+            <div class="card-links" style="margin-top:12px;">
+              <span class="wallet-chip soon">Apple Wallet prêt</span>
+              <span class="wallet-chip soon">Google Wallet prêt</span>
+              <span class="wallet-chip soon">Carte NFC prête</span>
+            </div>
+          </article>
+
+          <article class="qr-premium-stage reveal">
+            <div>
+              <div class="qr-shell-premium">
+                <img
+                  id="qrCode"
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=230x230&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Tour%C3%A9;Moctar%0AFN:Moctar%20Tour%C3%A9%0AORG:EduConcret%0ATITLE:Ing%C3%A9nieur%20p%C3%A9dagogique%0ATEL;TYPE=CELL:+33624614451%0AEMAIL;TYPE=INTERNET:contact@educoncret.net%0AURL:https://educoncret.net%0AADR;TYPE=WORK:;;Paris;;;;France%0ANOTE:EduConcret%20-%20Ing%C3%A9nierie%20p%C3%A9dagogique%2C%20ressources%20%C3%A9ducatives%20et%20accompagnement.%0AEND:VCARD"
+                  alt="QR Code carte de visite de Moctar Touré"
+                />
+              </div>
+
+              <div class="qr-caption">
+                <strong>Scanner pour enregistrer mon contact</strong>
+                <span>Téléphone, email, site et identité professionnelle inclus</span>
+              </div>
+
+              <div class="wallet-row">
+                <a class="btn btn-teal" href="tel:+33624614451" data-track="digital_phone">Appeler</a>
+                <a class="btn btn-dark" href="https://wa.me/33624614451" target="_blank" rel="noreferrer" data-track="digital_whatsapp">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Contact</span>
+          <h2>Parlons de votre besoin</h2>
+          <p>Premier échange gratuit pour clarifier votre projet, votre parcours ou votre dispositif pédagogique.</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card reveal">
+            <h3>Formulaire de contact</h3>
+            <p style="margin:8px 0 18px; color:var(--muted);">Décrivez votre besoin et je vous répondrai rapidement.</p>
+
+            <form id="contactForm" action="https://formspree.io/f/xldgvkjq" method="POST">
+              <div>
+                <label for="name">Nom complet</label>
+                <input id="name" name="nom" autocomplete="name" required />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div>
+                <label for="phone">Téléphone</label>
+                <input id="phone" name="telephone" type="tel" autocomplete="tel" placeholder="06 24 61 44 51" />
+              </div>
+
+              <div>
+                <label for="subject">Sujet</label>
+                <select id="subject" name="sujet" required>
+                  <option value="" selected disabled>Choisissez un sujet</option>
+                  <option>Audit Qualiopi light</option>
+                  <option>Module pédagogique</option>
+                  <option>Pack signature</option>
+                  <option>Romans pédagogiques enfants</option>
+                  <option>Stimulation cognitive seniors</option>
+                  <option>Commande groupe / établissement</option>
+                  <option>Orientation et clarification de parcours</option>
+                  <option>Création d'activité</option>
+                  <option>Accompagnement individuel</option>
+                  <option>Ingénierie pédagogique</option>
+                  <option>FOAD / e-learning</option>
+                  <option>Partenariat</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+
+              <input type="text" name="_gotcha" hidden />
+              <input type="hidden" name="_subject" value="Nouveau contact via educoncret.net" />
+              <button class="btn btn-teal" type="submit" data-track="contact_submit">Envoyer le message</button>
+            </form>
+
+            <div class="success" id="success">Message envoyé. Je vous répondrai sous 24h ouvrées.</div>
+          </article>
+
+          <aside class="card contact-direct reveal">
+            <h3>Contact direct</h3>
+            <p style="margin-top:16px;">Email<br><a href="mailto:contact@educoncret.net" data-track="contact_email">contact@educoncret.net</a></p>
+            <p style="margin-top:16px;">Téléphone<br><a href="tel:+33624614451" data-track="contact_phone">06 24 61 44 51</a></p>
+            <p style="margin-top:16px;">WhatsApp<br><a href="https://wa.me/33624614451" target="_blank" rel="noreferrer" data-track="contact_whatsapp">Message direct</a></p>
+            <p style="margin-top:16px; color:rgba(247,243,237,.58);">Paris · interventions à distance partout en France</p>
+
+            <div style="margin-top:2rem; padding:1rem; background:rgba(201,168,76,.1); border-radius:var(--radius);">
+              <p style="font-size:.85rem; margin-bottom:.5rem;"><strong>💳 Paiement simple</strong></p>
+              <p style="font-size:.8rem;">CB possible via solution de paiement sécurisée.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="rdv">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Prise de rendez-vous</span>
+          <h2>Réservez votre créneau</h2>
+          <p>Le premier échange de 30 minutes est gratuit.</p>
+        </div>
+
+        <div class="calendly-wrap reveal">
+          <div class="calendly-head">
+            <h3>Appel découverte offert · 30 minutes</h3>
+            <p>On échange sur votre projet, vos besoins et la forme d'accompagnement adaptée.</p>
+          </div>
+          <iframe title="Calendly EduConcret" src="https://calendly.com/contact-educoncret/30min"></iframe>
+        </div>
+
+        <div class="grid three" style="margin-top:24px;">
+          <article class="card reveal"><h3>Email</h3><p><a href="mailto:contact@educoncret.net" data-track="rdv_email">contact@educoncret.net</a></p></article>
+          <article class="card reveal"><h3>Téléphone</h3><p><a href="tel:+33624614451" data-track="rdv_phone">06 24 61 44 51</a></p></article>
+          <article class="card reveal"><h3>WhatsApp</h3><p><a href="https://wa.me/33624614451" target="_blank" rel="noreferrer" data-track="rdv_whatsapp">Message WhatsApp</a></p></article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <strong>EduConcret</strong>
@@ -1624,15 +2032,18 @@
     <p style="margin-top:1rem; font-size:.85rem; color:rgba(247,243,237,.6);">
       LOGIX FORMA Montreuil · 06 24 61 44 51
     </p>
+
     <div class="footer-links">
       <a href="#accueil">Accueil</a>
       <a href="#offres">Offres</a>
       <a href="#produits">Collections</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#carte">Carte digitale</a>
       <a href="#contact">Nous écrire</a>
       <a href="#rdv">RDV</a>
     </div>
+
     <p style="margin-top:18px; font-size:.78rem;">© 2026 Moctar Touré | EduConcret | Tous droits réservés</p>
     <p style="font-size:.75rem; color:rgba(247,243,237,.3); margin-top:.5rem;">
       Tarifs HT sauf mention TTC · Réponse rapide · Collections éducatives et supports pédagogiques conçus pour un usage concret
@@ -1646,6 +2057,21 @@
     const topButton = document.getElementById("top");
     const navLinks = document.getElementById("navLinks");
     const menu = document.getElementById("menu");
+
+    function trackEvent(name, params = {}) {
+      if (typeof gtag === "function") {
+        gtag("event", name, params);
+      }
+    }
+
+    document.querySelectorAll("[data-track]").forEach((el) => {
+      el.addEventListener("click", () => {
+        trackEvent("cta_click", {
+          event_category: "engagement",
+          event_label: el.getAttribute("data-track")
+        });
+      });
+    });
 
     function onScroll() {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -1693,29 +2119,115 @@
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
     const form = document.getElementById("contactForm");
+
+    function validateForm() {
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+
+      if (email.value && !email.value.includes("@")) {
+        alert("Email invalide");
+        return false;
+      }
+
+      if (phone.value && !phone.value.match(/^[0-9\s\+\(\)\.-]{10,}$/)) {
+        alert("Téléphone invalide");
+        return false;
+      }
+
+      return true;
+    }
+
     if (form) {
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        if (!validateForm()) return;
+
         const button = form.querySelector("button[type='submit']");
         const original = button.textContent;
         button.disabled = true;
         button.textContent = "Envoi en cours...";
+
         try {
           const response = await fetch(form.action, {
             method: "POST",
             body: new FormData(form),
             headers: { Accept: "application/json" }
           });
+
           if (!response.ok) throw new Error("Form error");
+
           form.style.display = "none";
           document.getElementById("success").classList.add("show");
+
+          trackEvent("form_submit_success", {
+            event_category: "contact_form",
+            event_label: "main_contact_form"
+          });
         } catch {
           button.textContent = "Erreur. Réessayez.";
+          trackEvent("form_submit_error", {
+            event_category: "contact_form",
+            event_label: "main_contact_form"
+          });
+
           setTimeout(() => {
             button.disabled = false;
             button.textContent = original;
           }, 2400);
         }
+      });
+    }
+
+    function buildVCard() {
+      return [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:Touré;Moctar",
+        "FN:Moctar Touré",
+        "ORG:EduConcret",
+        "TITLE:Ingénieur pédagogique",
+        "TEL;TYPE=CELL:+33624614451",
+        "EMAIL;TYPE=INTERNET:contact@educoncret.net",
+        "URL:https://educoncret.net",
+        "ADR;TYPE=WORK:;;Paris;;;;France",
+        "NOTE:EduConcret - Ingénierie pédagogique, ressources éducatives et accompagnement.",
+        "END:VCARD"
+      ].join("\\n");
+    }
+
+    function downloadVCard() {
+      const vcard = buildVCard();
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "moctar-toure-educoncret.vcf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+
+      trackEvent("download_vcard", {
+        event_category: "digital_card",
+        event_label: "main_site_vcard"
+      });
+    }
+
+    const downloadVCardBtn = document.getElementById("downloadVCard");
+    if (downloadVCardBtn) {
+      downloadVCardBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        downloadVCard();
+      });
+    }
+
+    const qrCode = document.getElementById("qrCode");
+    if (qrCode) {
+      qrCode.addEventListener("click", () => {
+        trackEvent("qr_click", {
+          event_category: "digital_card",
+          event_label: "qr_code_main_site"
+        });
       });
     }
 
@@ -1729,13 +2241,15 @@
       installChip.classList.add("show");
     });
 
-    installButton.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installChip.classList.remove("show");
-    });
+    if (installButton) {
+      installButton.addEventListener("click", async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installChip.classList.remove("show");
+      });
+    }
 
     window.addEventListener("appinstalled", () => installChip.classList.remove("show"));
 
@@ -1744,6 +2258,11 @@
         navigator.serviceWorker.register("/service-worker.js").catch(() => {});
       });
     }
+
+    trackEvent("page_view_main_site", {
+      event_category: "page",
+      event_label: "educoncret_home"
+    });
 
     onScroll();
   </script>
