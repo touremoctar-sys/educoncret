@@ -22,14 +22,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:ital,wght@0,600;0,800;0,900;1,700&display=swap" rel="stylesheet" />
 
-  <!-- Google Analytics 4 -->
-  <!-- Remplace G-XXXXXXXXXX par ton vrai identifiant -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J82QV5WGE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-XXXXXXXXXX");
+    gtag('js', new Date());
+    gtag('config', 'G-4J82QV5WGE');
   </script>
 
   <style>
@@ -864,7 +863,6 @@
     .contact-direct { color: var(--cream); background: var(--ink); border-color: var(--ink); }
     .contact-direct a { color: var(--gold); font-weight: 900; }
 
-    /* CARTE PREMIUM */
     .digital-premium-wrap {
       display: grid;
       grid-template-columns: 1.02fr .98fr;
@@ -1862,7 +1860,6 @@
       </div>
     </section>
 
-    <!-- CARTE DIGITALE PREMIUM -->
     <section class="soft" id="carte">
       <div class="container">
         <div class="section-head reveal">
@@ -2129,7 +2126,7 @@
         return false;
       }
 
-      if (phone.value && !phone.value.match(/^[0-9\s\+\(\)\.-]{10,}$/)) {
+      if (phone.value && !phone.value.match(/^[0-9\\s\\+\\(\\)\\.-]{10,}$/)) {
         alert("Téléphone invalide");
         return false;
       }
